@@ -17,4 +17,7 @@ public class Bibliotecario extends Persona{
     public void accederSistema(){
         System.out.println("Acceso permitido");
     }
+    public void a(){
+        
+    }
 }
