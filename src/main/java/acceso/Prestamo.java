@@ -1,5 +1,6 @@
 package acceso;
 
+import inventario.Ejemplar;
 import java.time.LocalDate;
 
 public class Prestamo {
@@ -8,6 +9,8 @@ public class Prestamo {
     private int idBibliotecario;
     private LocalDate fechaDevolucion;
     private String codigoDeBarras;
+    private Lector lector;
+    private Ejemplar ejemplar;
 
     public Prestamo() {
     }

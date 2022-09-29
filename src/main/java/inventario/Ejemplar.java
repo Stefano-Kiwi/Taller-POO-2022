@@ -1,13 +1,13 @@
 package inventario;
 
-public class Identificador {
+public class Ejemplar {
     private String idUnico;
     private String lugarFisico;
 
-    public Identificador() {
+    public Ejemplar() {
     }
 
-    public Identificador(String idUnico, String lugarFisico) {
+    public Ejemplar(String idUnico, String lugarFisico) {
         this.idUnico = idUnico;
         this.lugarFisico = lugarFisico;
     }

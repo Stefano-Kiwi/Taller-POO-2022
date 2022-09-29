@@ -13,7 +13,6 @@ public class Obra {
     private String areaTematica;
     private TipoObra tipo;
     private Edicion edicion;
-    private Identificador identUnico;
     private String codigoDeBarras;
     private String observaciones;
     private int prestamosAlumnosODocentes;
@@ -23,7 +22,7 @@ public class Obra {
     }
 
     public Obra(String titulo, String subtitulo, String autor1, String autor2, String autor3, String genero, String caracteristica, String ISBN, int ejemplares,
-            String areaTematica, TipoObra tipo, Edicion edicion, Identificador identUnico, String codigoDeBarras, String observaciones, int prestamosAlumnosODocentes, int prestamosGenerales) {
+            String areaTematica, TipoObra tipo, Edicion edicion,String codigoDeBarras, String observaciones, int prestamosAlumnosODocentes, int prestamosGenerales) {
         this.titulo = titulo;
         this.subtitulo = subtitulo;
         this.autor1 = autor1;
@@ -36,7 +35,6 @@ public class Obra {
         this.areaTematica = areaTematica;
         this.tipo = tipo;
         this.edicion = edicion;
-        this.identUnico = identUnico;
         this.codigoDeBarras = codigoDeBarras;
         this.observaciones = observaciones;
         this.prestamosAlumnosODocentes = prestamosAlumnosODocentes;

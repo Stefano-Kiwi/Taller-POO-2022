@@ -3,6 +3,8 @@ package acceso;
 import java.time.LocalDate;
 
 public class Lector extends Persona {
+    
+    private Multa multa;
 
     public Lector() {
     }
