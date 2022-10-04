@@ -2,6 +2,7 @@ package acceso;
 
 import inventario.Ejemplar;
 import java.time.LocalDate;
+import java.util.List;
 
 public class Prestamo {
     private TipoPrestamo tipoPrestamo;
@@ -10,7 +11,7 @@ public class Prestamo {
     private LocalDate fechaDevolucion;
     private String codigoDeBarras;
     private Lector lector;
-    private Ejemplar ejemplar;
+    private  List<Ejemplar> ejemplares;
 
     public Prestamo() {
     }
