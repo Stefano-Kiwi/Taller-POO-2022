@@ -1,5 +1,7 @@
 package inventario;
 
+import java.util.List;
+
 public class Obra {
     private String titulo;
     private String subtitulo;
@@ -17,6 +19,8 @@ public class Obra {
     private String observaciones;
     private int prestamosAlumnosODocentes;
     private int prestamosGenerales;
+    private List<Edicion> ediciones;
+    private List<Ejemplar> listaejemplares;
 
     public Obra() {
     }
@@ -40,5 +44,22 @@ public class Obra {
         this.prestamosAlumnosODocentes = prestamosAlumnosODocentes;
         this.prestamosGenerales = prestamosGenerales;
     }
-    
+    public void AgregarEdicion(Edicion edicion){
+        if(this.ediciones.isEmpty()){
+            this.ediciones.add(edicion);
+        }else{
+            if(!this.ediciones.contains(edicion)){
+                this.ediciones.add(edicion);
+            }
+        }
+    }
+       public void AgregarEjemplar(Ejemplar ejemplar){
+        if(this.listaejemplares.isEmpty()){
+            this.listaejemplares.add(ejemplar);
+        }else{
+            if(!this.listaejemplares.contains(ejemplar)){
+                this.listaejemplares.add(ejemplar);
+            }
+        }
+    }
 }

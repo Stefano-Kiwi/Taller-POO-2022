@@ -1,8 +1,12 @@
 package acceso;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Bibliotecario extends Persona{
+    
+    private List<Devolucion> devoluciones;
+    private List<Prestamo> prestamos;
 
     public Bibliotecario() {
     }
@@ -18,4 +22,22 @@ public class Bibliotecario extends Persona{
         System.out.println("Acceso permitido");
     }
     
+    public void AgregarPrestamo(Prestamo prestamo){
+        if(this.prestamos.isEmpty()){
+            this.prestamos.add(prestamo);
+        }else{
+            if(!this.prestamos.contains(prestamo)){
+                this.prestamos.add(prestamo);
+            }
+        }
+    }
+    public void AgregarDevolucion(Devolucion devolucion){
+        if(this.devoluciones.isEmpty()){
+            this.devoluciones.add(devolucion);
+        }else{
+            if(!this.devoluciones.contains(devolucion)){
+                this.devoluciones.add(devolucion);
+            }
+        }
+    }
 }
