@@ -3,6 +3,7 @@ package inventario;
 import java.util.List;
 
 public class Obra {
+    //maty
     private String titulo;
     private String subtitulo;
     private String autor1;
