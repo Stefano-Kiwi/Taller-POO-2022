@@ -42,4 +42,6 @@ public class Lector extends Persona {
     public void devolver(Prestamo prestamo){
         
     }
+    
+    //asdgasdgsdsdg
 }
