@@ -63,4 +63,54 @@ public class Obra {
             }
         }
     }
+
+       
+    //GETTERS
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getSubtitulo() {
+        return subtitulo;
+    }
+
+    public String getAutor1() {
+        return autor1;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public String getCaracteristica() {
+        return caracteristica;
+    }
+
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public String getAreaTematica() {
+        return areaTematica;
+    }
+
+    public TipoObra getTipo() {
+        return tipo;
+    }
+
+    public Edicion getEdicion() {
+        return edicion;
+    }
+
+    public String getCodigoDeBarras() {
+        return codigoDeBarras;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+       
+    
+    
+       
 }

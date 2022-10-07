@@ -11,5 +11,15 @@ public class Ejemplar {
         this.idUnico = idUnico;
         this.lugarFisico = lugarFisico;
     }
+
+    public String getIdUnico() {
+        return idUnico;
+    }
+
+    public String getLugarFisico() {
+        return lugarFisico;
+    }
+    
+    
     
 }
