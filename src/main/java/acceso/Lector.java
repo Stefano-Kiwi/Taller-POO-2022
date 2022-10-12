@@ -33,14 +33,7 @@ public class Lector extends Persona {
         return ListaDeEjemplares;
     }
 
-    public void setListaDeEjemplares(List<Ejemplar> ListaDeEjemplares) {
-        this.ListaDeEjemplares = ListaDeEjemplares;
-    }
-    
-    
-    
-    public void devolver(Prestamo prestamo){
-        
+    public void devolver(Prestamo prestamo){    
     }
     
     //asdgasdgsdsdg

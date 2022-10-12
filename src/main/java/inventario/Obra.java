@@ -1,9 +1,8 @@
 package inventario;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class Obra {
-    //maty
     private String titulo;
     private String subtitulo;
     private String autor1;
@@ -44,6 +43,8 @@ public class Obra {
         this.observaciones = observaciones;
         this.prestamosAlumnosODocentes = prestamosAlumnosODocentes;
         this.prestamosGenerales = prestamosGenerales;
+        ediciones = new ArrayList();
+        listaejemplares = new ArrayList();    
     }
     public void AgregarEdicion(Edicion edicion){
         if(this.ediciones.isEmpty()){
@@ -63,8 +64,7 @@ public class Obra {
             }
         }
     }
-
-       
+   
     //GETTERS
     public String getTitulo() {
         return titulo;
@@ -108,9 +108,5 @@ public class Obra {
 
     public String getObservaciones() {
         return observaciones;
-    }
-       
-    
-    
-       
+    }      
 }

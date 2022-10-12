@@ -9,7 +9,7 @@ public class Edicion {
     private String idioma;
     private int paginas;
     private String formato;
-
+    
     public Edicion() {
     }
 
