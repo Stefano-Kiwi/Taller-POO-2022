@@ -11,7 +11,7 @@ public class PerfilDeudas {
     private Obra [] debeEjemplares;
 
     public PerfilDeudas() {
-    }
+   }
 
     public PerfilDeudas(String nombre, String apellido, String tipoDocumento, int numeroDocumento, String nroCelular, Obra[] debeEjemplares) {
         this.nombre = nombre;
