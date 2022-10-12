@@ -4,7 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Bibliotecario extends Persona{
-    //maty
+    //private String nombreUsuario;
+    //private String contraseña;
     private List<Devolucion> devoluciones;
     private List<Prestamo> prestamos;
 
@@ -13,9 +14,11 @@ public class Bibliotecario extends Persona{
 
     public Bibliotecario(String nombre, String apellido, String tipoDocumento, int numDocumento,
             LocalDate fechaNacimiento, String sexo, String correo, String nroCelular, String nacionalidad,
-            String domicilio, int codigoPostal, String departamento, String localidad) {
+            String domicilio, int codigoPostal, String departamento, String localidad, String nombreusuario, String contraseña) {
         super(nombre, apellido, tipoDocumento, numDocumento, fechaNacimiento, sexo, correo, nroCelular,
                 nacionalidad,domicilio, codigoPostal, departamento, localidad);
+        //this.nombreUsuario = nombreusuario;
+        //this.contraseña = contraseña;
     }
     
     public void accederSistema(){
