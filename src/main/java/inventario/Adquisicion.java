@@ -9,7 +9,7 @@ public class Adquisicion {
 
     public Adquisicion() {
     }
-
+    
     public Adquisicion(LocalDate fechaAdquisicion, String formaDeCompra,String areaDeReferencia) {
         this.fechaAdquisicion = fechaAdquisicion;
         this.formaDeCompra = formaDeCompra;
