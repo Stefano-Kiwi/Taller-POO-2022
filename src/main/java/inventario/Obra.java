@@ -24,7 +24,8 @@ public class Obra {
 
     public Obra() {
     }
-
+    
+    
     public Obra(String titulo, String subtitulo, String autor1, String autor2, String autor3, String genero, String caracteristica, String ISBN, int ejemplares,
             String areaTematica, TipoObra tipo, Edicion edicion,String codigoDeBarras, String observaciones, int prestamosAlumnosODocentes, int prestamosGenerales) {
         this.titulo = titulo;
@@ -44,8 +45,11 @@ public class Obra {
         this.prestamosAlumnosODocentes = prestamosAlumnosODocentes;
         this.prestamosGenerales = prestamosGenerales;
         ediciones = new ArrayList();
+        ediciones.add(edicion);
         listaejemplares = new ArrayList();    
     }
+    
+    
     public void AgregarEdicion(Edicion edicion){
         if(this.ediciones.isEmpty()){
             this.ediciones.add(edicion);
@@ -108,5 +112,33 @@ public class Obra {
 
     public String getObservaciones() {
         return observaciones;
-    }      
+    }  
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Obra{");
+        sb.append("titulo=").append(titulo);
+        sb.append(", subtitulo=").append(subtitulo);
+        sb.append(", autor1=").append(autor1);
+        sb.append(", autor2=").append(autor2);
+        sb.append(", autor3=").append(autor3);
+        sb.append(", genero=").append(genero);
+        sb.append(", caracteristica=").append(caracteristica);
+        sb.append(", ISBN=").append(ISBN);
+        sb.append(", ejemplares=").append(ejemplares);
+        sb.append(", areaTematica=").append(areaTematica);
+        sb.append(", tipo=").append(tipo);
+        sb.append(", edicion=").append(edicion);
+        sb.append(", codigoDeBarras=").append(codigoDeBarras);
+        sb.append(", observaciones=").append(observaciones);
+        sb.append(", prestamosAlumnosODocentes=").append(prestamosAlumnosODocentes);
+        sb.append(", prestamosGenerales=").append(prestamosGenerales);
+        sb.append(", ediciones=").append(ediciones);
+        sb.append(", listaejemplares=").append(listaejemplares);
+        sb.append('}');
+        return sb.toString();
+    }
+    
+    
 }

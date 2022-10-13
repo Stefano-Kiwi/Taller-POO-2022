@@ -5,6 +5,7 @@ public enum TipoObra {
     ENSAYO,
     REVISTA,
     TESIS,
-    MANUAL
-    
+    MANUAL;
+   
+   
 }
