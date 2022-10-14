@@ -144,6 +144,11 @@ public abstract class Persona {
     public void setLocalidad(String localidad) {
         this.localidad = localidad;
     }
+
+    @Override
+    public String toString() {
+        return  "nombre=" + nombre + ", apellido=" + apellido + ", tipoDocumento=" + tipoDocumento + ", numDocumento=" + numDocumento + ", fechaNacimiento=" + fechaNacimiento + ", sexo=" + sexo + ", correo=" + correo + ", nroCelular=" + nroCelular + ", nacionalidad=" + nacionalidad + ", domicilio=" + domicilio + ", codigoPostal=" + codigoPostal + ", departamento=" + departamento + ", localidad=" + localidad ;
+    }
     
     
     

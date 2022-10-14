@@ -37,6 +37,6 @@ public class Alumno extends Lector {
 
     @Override
     public String toString() {
-        return "Alumno{" + "carrera=" + carrera + ", facultad=" + facultad + '}';
+        return "Alumno " + "carrera=" + carrera + ", facultad=" + facultad+ " " + super.toString();
     }   
 }
