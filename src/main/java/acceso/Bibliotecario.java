@@ -4,8 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Bibliotecario extends Persona{
-    //private String nombreUsuario;
-    //private String contraseña;
+    private String nombreUsuario;
+    private String contraseña;
     private List<Devolucion> devoluciones;
     private List<Prestamo> prestamos;
 
@@ -21,9 +21,7 @@ public class Bibliotecario extends Persona{
         //this.contraseña = contraseña;
     }
     
-    public void accederSistema(){
-        System.out.println("Acceso permitido");
-    }
+    
     
     public void AgregarPrestamo(Prestamo prestamo){
         if(this.prestamos.isEmpty()){
