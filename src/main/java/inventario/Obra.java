@@ -114,6 +114,62 @@ public class Obra {
         return observaciones;
     }  
 
+    public String getAutor2() {
+        return autor2;
+    }
+
+    public void setAutor2(String autor2) {
+        this.autor2 = autor2;
+    }
+
+    public String getAutor3() {
+        return autor3;
+    }
+
+    public void setAutor3(String autor3) {
+        this.autor3 = autor3;
+    }
+
+    public int getEjemplares() {
+        return ejemplares;
+    }
+
+    public void setEjemplares(int ejemplares) {
+        this.ejemplares = ejemplares;
+    }
+
+    public int getPrestamosAlumnosODocentes() {
+        return prestamosAlumnosODocentes;
+    }
+
+    public void setPrestamosAlumnosODocentes(int prestamosAlumnosODocentes) {
+        this.prestamosAlumnosODocentes = prestamosAlumnosODocentes;
+    }
+
+    public int getPrestamosGenerales() {
+        return prestamosGenerales;
+    }
+
+    public void setPrestamosGenerales(int prestamosGenerales) {
+        this.prestamosGenerales = prestamosGenerales;
+    }
+
+    public List<Edicion> getEdiciones() {
+        return ediciones;
+    }
+
+    public void setEdiciones(List<Edicion> ediciones) {
+        this.ediciones = ediciones;
+    }
+
+    public List<Ejemplar> getListaejemplares() {
+        return listaejemplares;
+    }
+
+    public void setListaejemplares(List<Ejemplar> listaejemplares) {
+        this.listaejemplares = listaejemplares;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

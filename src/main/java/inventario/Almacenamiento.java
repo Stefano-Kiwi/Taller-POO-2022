@@ -155,7 +155,7 @@ public class Almacenamiento {
             System.out.println(e);
         }
     }
- 
+    
     
     public List<Obra> getObras(){
         return this.obras;
@@ -164,5 +164,52 @@ public class Almacenamiento {
     // Retorar la lista de alumnos
     public List<Alumno> getAlumnos(){
         return this.alumnos;
+    }
+    
+    public List<Obra> busquedaObras(int tipoBusqueda,String busqueda){
+        List<Obra> resultado = new ArrayList();     // 1 Titulo o subtítulo 2 autor 3 genero 4 ISBN 5 Nombre de colección
+        switch(tipoBusqueda){
+            case 1: // TITULO O SUBTITULO
+                for (Obra obra : obras) {
+                    if((obra.getTitulo().equalsIgnoreCase(busqueda))||(obra.getSubtitulo().equalsIgnoreCase(busqueda))){
+                        resultado.add(obra);
+                    }
+                }
+                
+                break;
+            case 2: // CUALQUIERA DE SUS 3 AUTORES
+                for (Obra obra : obras) {
+                    if((obra.getAutor1().equalsIgnoreCase(busqueda))||(obra.getAutor2().equalsIgnoreCase(busqueda))||(obra.getAutor3().equalsIgnoreCase(busqueda))){
+                        resultado.add(obra);
+                    }
+                }
+                break;
+            case 3:
+                for (Obra obra : obras) {
+                    if((obra.getGenero().equalsIgnoreCase(busqueda))){
+                        resultado.add(obra);
+                    }
+                }
+                
+                break;
+                case 4:
+                for (Obra obra : obras) {
+                    if((obra.getISBN().equalsIgnoreCase(busqueda))){
+                        resultado.add(obra);
+                    }
+                }
+                
+                break;
+                /*          FALTA IMPLEMENTAR PARA COLECCIONES.
+                case 5:
+                for (Obra obra : obras) {
+                    if((obra.getColeccion().getNombreColeccion().equalsIgnoreCase(busqueda))){
+                        resultado.add(obra);
+                    }
+                }
+                
+                break; */
+        }
+        return resultado;
     }
 }
