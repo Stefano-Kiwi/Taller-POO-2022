@@ -1,6 +1,7 @@
 package acceso;
 
 import inventario.*;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -28,6 +29,25 @@ public class Cliente {
          * for (Alumno alumno : alumnos) { System.out.println(alumno); }
         *
          */
+        
+        //Prueba escribir CSV
+//        
+//          almacenamiento.escribirCSV("recursos/PrestamosAConfirmar.txt", "hola;");
+//          almacenamiento.escribirCSV("recursos/PrestamosAConfirmar.txt", "lala;");
+//          almacenamiento.escribirCSV("recursos/PrestamosAConfirmar.txt", "lolo;");
+//          almacenamiento.escribirCSV("recursos/PrestamosAConfirmar.txt", "laho;");
+//          
+        //Prueba borrar CSV
+            //borra la primera linea
+//          almacenamiento.borrarCSV("recursos/PrestamosAConfirmar.txt",1);
+
+            //borra la ultima linea
+//            almacenamiento.borrarCSV("recursos/PrestamosAConfirmar.txt",2);
+            
+            //borra todas las lineas
+//          almacenamiento.borrarCSV("recursos/PrestamosAConfirmar.txt", 0);        
+        
+        
         // ----------------------------------------------------------------- Esqueleto del programa ---------------------------------------------
         Scanner sc = new Scanner(System.in);
         int opcion = 0;

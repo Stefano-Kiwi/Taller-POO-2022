@@ -2,8 +2,11 @@ package inventario;
 
 import acceso.Alumno;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -152,5 +155,136 @@ public class Almacenamiento {
                 break; */
         }
         return resultado;
+    }
+    
+    public void escribirCSV(String direccion,String linea){
+        /* metodo para escribir una linea en un .txt ; dos parametros
+          1er paramatro direccion del .txt a modificar
+          2do parametro linea a escribir
+        */
+        
+        try{
+         File archivo= new File(direccion);
+         
+         FileReader fr= new FileReader(archivo);
+         BufferedReader br= new BufferedReader(fr);
+         
+        String a="";
+        if((a=br.readLine()) == null){
+             br.close();
+             FileWriter fw = new FileWriter(archivo);
+             BufferedWriter bw = new BufferedWriter(fw);
+             bw.write(linea+"\n");
+             bw.close();
+             fw.close();
+        }else{
+           String lineas="";
+           lineas=a;
+           while((a=br.readLine()) != null){
+             lineas=(lineas+"\n"+a);  
+           }
+           br.close();
+           fr.close();
+
+           FileWriter fw = new FileWriter(archivo);
+           BufferedWriter bw = new BufferedWriter(fw);
+           lineas=(lineas+"\n"+linea+"\n");
+           bw.write(lineas);
+           bw.close();
+           fw.close();
+         }
+              
+        }catch (Exception e) {
+            System.out.println(e);   
+        }
+    }
+    
+    
+    
+    public void borrarCSV(String direccion,int opcion){
+       /*borra lineas del .txt pasado por parametro dependiendo de la opcion
+         opcion 0 = borra todo
+         opcion 1 = borra la primera linea
+         opcion 3 = borra la ultima linea
+       */
+       switch(opcion){
+           case 0://borra todo lo que hay en la direccion
+               try{
+               File archivo=new File(direccion);
+               FileWriter fw = new FileWriter(archivo);
+               fw.flush();
+               fw.close();
+               }catch (Exception e) {
+                  System.out.println(e);   
+               }
+               break;
+           case 1://borra la primera linea de la direccion
+               try{
+                 File archivo= new File(direccion);
+                 FileReader fr =new FileReader(archivo);
+                 BufferedReader br = new BufferedReader(fr);
+                 String l="";
+                 if((l = br.readLine())==null){
+                     System.out.println("vacio 1");
+                     break;
+                 }else{
+                     ArrayList<String> lineas= new ArrayList<>();
+                     lineas.add(l);
+                     while((l = br.readLine()) != null){
+                         lineas.add(l);
+                     }
+  
+                     br.close();
+                     fr.close();
+                     FileWriter fw = new FileWriter(archivo);
+                     BufferedWriter bw= new BufferedWriter(fw);
+                     String resultado="";
+                     for(int i =1;i<lineas.size();i++){
+                        resultado=(resultado + lineas.get(i) +"\n"); 
+                     }
+                     bw.write(resultado);
+                     bw.close();
+                     fw.close();
+                 }
+               }catch(Exception e){
+                   System.out.println(e);
+               }
+               break;
+           case 2://borra la ultima linea de la direccion
+               try{
+                 File archivo=new File(direccion);
+                 FileReader fr=new FileReader(archivo);
+                 BufferedReader br = new BufferedReader(fr);
+                 String la= "";
+                 if((la = br.readLine())==null){
+                     System.out.println("vacio 2");
+                     break;
+                 }else{
+                     ArrayList<String> lineas= new ArrayList<>();
+                     lineas.add(la);
+                     while((la = br.readLine()) != null){
+                         lineas.add(la);
+                     }
+                     br.close();
+                     fr.close();
+                     FileWriter fw = new FileWriter(archivo);
+                     BufferedWriter bw= new BufferedWriter(fw);
+                     String resultado="";
+                     for(int i= 0;i<(lineas.size()-1);i++){
+                        resultado= (resultado + lineas.get(i)+"\n"); 
+                     }
+                     bw.write(resultado);
+                     bw.close();
+                     fw.close();
+                 }
+               }catch(Exception e){
+                   System.out.println(e);
+               }
+               break;
+                   
+       }
+               
+       
+       
     }
 }
