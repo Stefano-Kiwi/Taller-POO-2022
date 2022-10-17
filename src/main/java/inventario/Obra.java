@@ -195,6 +195,12 @@ public class Obra {
         sb.append('}');
         return sb.toString();
     }
+
+    public String tablaGUI() {
+        return titulo +","+autor1+","+ISBN+","+genero+"\n";
+    }
+    
+    
     
     
 }
