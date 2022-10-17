@@ -47,6 +47,7 @@ public class Login extends javax.swing.JFrame {
         btn_Salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Iniciar Sesion");
 
         LOGIN.setFont(new java.awt.Font("Sitka Small", 1, 36)); // NOI18N
         LOGIN.setText("LOGIN");
