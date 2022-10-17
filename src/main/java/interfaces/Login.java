@@ -4,7 +4,15 @@
  */
 package interfaces;
 
+import java.awt.Component;
 import java.awt.event.WindowStateListener;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -54,13 +62,13 @@ public class Login extends javax.swing.JFrame {
         });
 
         Usuario_Textbox.setToolTipText("");
-
-        btn_Salir.setText("Salir");
-        btn_Salir.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_SalirMouseClicked(evt);
+        Usuario_Textbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Usuario_TextboxActionPerformed(evt);
             }
         });
+
+        btn_Salir.setText("Salir");
         btn_Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_SalirActionPerformed(evt);
@@ -73,15 +81,15 @@ public class Login extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(179, 179, 179)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(179, 179, 179)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(Usuario_etiqueta, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Usuario_Textbox, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Contraseña_etiqueta)
-                            .addComponent(Contraseña_Textbox, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Usuario_Textbox, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Contraseña_etiqueta)
+                                .addComponent(Contraseña_Textbox, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(btn_Salir))
@@ -118,16 +126,20 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
-        // TODO add your handling code here:
+        try {
+            Ingresar();
+        } catch (Exception ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_IngresarActionPerformed
 
     private void btn_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirActionPerformed
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_btn_SalirActionPerformed
 
-    private void btn_SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SalirMouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_btn_SalirMouseClicked
+    private void Usuario_TextboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Usuario_TextboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Usuario_TextboxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,4 +185,47 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btn_Ingresar;
     private javax.swing.JButton btn_Salir;
     // End of variables declaration//GEN-END:variables
+
+    private void irAdministracion(){
+        this.setVisible(false);
+        new Administracion().setVisible(true);
+    }
+    
+    private void Ingresar() throws Exception {
+        boolean usuarioCorrecto = false;
+        boolean contraseniaCorrecta = false;
+        BufferedReader br = null;
+
+        try {
+            br = new BufferedReader(new FileReader("recursos/usuarios.txt"));
+            String line = br.readLine();
+            while (line != null) {
+                String[] campos = line.split(",");
+
+                if (Usuario_Textbox.getText().equals(campos[0])) {
+                    usuarioCorrecto = true;
+                }
+                if (usuarioCorrecto && Contraseña_Textbox.getText().equals(campos[1])) {
+                    irAdministracion();
+                
+                    contraseniaCorrecta = true;
+                }
+
+                line = br.readLine();
+            }
+
+            if (!usuarioCorrecto) {
+                throw new Exception("Usuario no existe");
+            }
+            if (!contraseniaCorrecta) {
+                throw new Exception("Contrasenia Incorrecta");
+            }
+
+            br.close();
+
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+        }
+    }
+    
 }
