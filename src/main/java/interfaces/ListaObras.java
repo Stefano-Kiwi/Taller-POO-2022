@@ -1,4 +1,5 @@
 package interfaces;
+
 import acceso.*;
 import inventario.*;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Daniel Altamirano
  */
 public class ListaObras extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form Principal
      */
@@ -31,7 +32,7 @@ public class ListaObras extends javax.swing.JFrame {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        Volver = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tablita = new javax.swing.JTable();
 
@@ -51,11 +52,11 @@ public class ListaObras extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Obras");
 
-        jButton1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jButton1.setText("Volver");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Volver.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        Volver.setText("Volver");
+        Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                VolverActionPerformed(evt);
             }
         });
 
@@ -75,14 +76,16 @@ public class ListaObras extends javax.swing.JFrame {
             new String [] {
                 "Nombre", "Autor", "ISBN", "Genero"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(Tablita);
-        if (Tablita.getColumnModel().getColumnCount() > 0) {
-            Tablita.getColumnModel().getColumn(0).setHeaderValue("Nombre");
-            Tablita.getColumnModel().getColumn(1).setHeaderValue("Autor");
-            Tablita.getColumnModel().getColumn(2).setHeaderValue("ISBN");
-            Tablita.getColumnModel().getColumn(3).setHeaderValue("Genero");
-        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,29 +94,30 @@ public class ListaObras extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(252, 252, 252)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                        .addGap(386, 386, 386)
+                        .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
         this.setVisible(false);
         new Administracion().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_VolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,40 +151,36 @@ public class ListaObras extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ListaObras().setVisible(true);
-                
+
             }
         });
     }
-    
-    public void cargarDatos(){
-        
+
+    public void cargarDatos() {
+
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Nombre");
         modelo.addColumn("Autor");
         modelo.addColumn("ISBN");
         modelo.addColumn("Genero");
         Tablita.setModel(modelo);
-      
+
         //Creamos de manaera manual bla bla etc
         Almacenamiento a = new Almacenamiento();
         a.obtenerObras("recursos/ListadoDeObras.txt");
-        List <Obra> obras = a.getObras();
-        
-        
-        
-        
+        List<Obra> obras = a.getObras();
+
         for (var obra : obras) {
             String[] campos = obra.tablaGUI().split(",");
             modelo.addRow(campos);
         }
-        
-        
+
     }
-    
-    
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tablita;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Volver;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;

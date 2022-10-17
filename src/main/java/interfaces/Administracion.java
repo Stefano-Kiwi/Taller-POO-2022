@@ -29,6 +29,7 @@ public class Administracion extends javax.swing.JFrame {
 
         salir = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        Deudores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ventana Principal");
@@ -52,6 +53,13 @@ public class Administracion extends javax.swing.JFrame {
             }
         });
 
+        Deudores.setText("Deudores");
+        Deudores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeudoresActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -63,7 +71,9 @@ public class Administracion extends javax.swing.JFrame {
                         .addComponent(salir))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                            .addComponent(Deudores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(543, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -71,7 +81,9 @@ public class Administracion extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 314, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
+                .addComponent(Deudores, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 245, Short.MAX_VALUE)
                 .addComponent(salir)
                 .addContainerGap())
         );
@@ -88,10 +100,14 @@ public class Administracion extends javax.swing.JFrame {
     }//GEN-LAST:event_salirMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.setVisible(false);
-        
+        this.setVisible(false);   
         new ListaObras().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void DeudoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeudoresActionPerformed
+       this.setVisible(false);
+        new ListaDeudores().setVisible(true);
+    }//GEN-LAST:event_DeudoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,6 +145,7 @@ public class Administracion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Deudores;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
