@@ -5,6 +5,7 @@
 package interfaces;
 
 import java.awt.Component;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowStateListener;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -65,6 +66,12 @@ public class Login extends javax.swing.JFrame {
         Usuario_Textbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Usuario_TextboxActionPerformed(evt);
+            }
+        });
+
+        Contraseña_Textbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                Contraseña_TextboxKeyReleased(evt);
             }
         });
 
@@ -141,6 +148,19 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Usuario_TextboxActionPerformed
 
+    private void Contraseña_TextboxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Contraseña_TextboxKeyReleased
+         if(evt.getExtendedKeyCode() == KeyEvent.VK_ENTER){
+            try {
+                if(Usuario_Textbox.getText().isEmpty() || Contraseña_Textbox.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "COMPLETAR LOS CAMPOS");
+                }
+                Ingresar();
+            } catch (Exception ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_Contraseña_TextboxKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -202,6 +222,10 @@ public class Login extends javax.swing.JFrame {
             while (line != null) {
                 String[] campos = line.split(",");
 
+                if(Usuario_Textbox.getText().isEmpty() || Contraseña_Textbox.getText().isEmpty()){
+                    JOptionPane.showMessageDialog(null, "Completar los campos correspondientes");
+                }
+                
                 if (Usuario_Textbox.getText().equals(campos[0])) {
                     usuarioCorrecto = true;
                 }
