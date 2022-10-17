@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package interfaces;
 
 import java.awt.Component;
@@ -150,9 +146,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_Usuario_TextboxActionPerformed
 
     private void Contraseña_TextboxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Contraseña_TextboxKeyReleased
-         if(evt.getExtendedKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
             try {
-                if(Usuario_Textbox.getText().isEmpty() || Contraseña_Textbox.getText().isEmpty()){
+                if (Usuario_Textbox.getText().isEmpty() || Contraseña_Textbox.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "COMPLETAR LOS CAMPOS");
                 }
                 Ingresar();
@@ -207,11 +203,11 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btn_Salir;
     // End of variables declaration//GEN-END:variables
 
-    private void irAdministracion(){
+    private void irAdministracion() {
         this.setVisible(false);
         new Administracion().setVisible(true);
     }
-    
+
     private void Ingresar() throws Exception {
         boolean usuarioCorrecto = false;
         boolean contraseniaCorrecta = false;
@@ -223,16 +219,16 @@ public class Login extends javax.swing.JFrame {
             while (line != null) {
                 String[] campos = line.split(",");
 
-                if(Usuario_Textbox.getText().isEmpty() || Contraseña_Textbox.getText().isEmpty()){
+                if (Usuario_Textbox.getText().isEmpty() || Contraseña_Textbox.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Completar los campos correspondientes");
                 }
-                
+
                 if (Usuario_Textbox.getText().equals(campos[0])) {
                     usuarioCorrecto = true;
                 }
                 if (usuarioCorrecto && Contraseña_Textbox.getText().equals(campos[1])) {
                     irAdministracion();
-                
+
                     contraseniaCorrecta = true;
                 }
 
@@ -248,9 +244,11 @@ public class Login extends javax.swing.JFrame {
 
             br.close();
 
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            Component frame = null;
+            JOptionPane.showMessageDialog(frame, e.getMessage());
         }
     }
-    
 }
