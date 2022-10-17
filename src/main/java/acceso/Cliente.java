@@ -16,12 +16,13 @@ public class Cliente {
         DatosDeAcceso datosDeAcceso = new DatosDeAcceso();
         //Almacenamiento.obtenerUsuarios();
         almacenamiento.obtenerObras("recursos/ListadoDeObras.txt");
-
+        almacenamiento.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
         datosDeAcceso.obtenerAlumnos("recursos/ListadoDeAlumnos.txt");
-
+        
+        
         List<Obra> obras = almacenamiento.getObras();
         List<Alumno> alumnos = datosDeAcceso.getAlumnos();
-
+        List<Ejemplar> ejemplares = almacenamiento.getEjemplares();
         /**
          * int i=0; for(Obra obra:obras){ i++; System.out.println("Obra "+i+":
          * "+obra); }
@@ -81,13 +82,25 @@ public class Cliente {
                         if (listaObras.size() < numOpcion) {
                             System.out.println("La opcion ingresada es incorrecta");
                         } else {
-                            System.out.println("Datos de la obra: \n" + listaObras.get(numOpcion - 1) + "\nDesea realizar una reserva de esta obra? si/no");
-                            busqueda = sc.nextLine();
+                            
+                            List<Ejemplar> ListEjemplares = listaObras.get(numOpcion -1).getListaejemplares();
+                            if(!ListEjemplares.isEmpty()){
+                                System.out.println("Los ejemplares disponibles son: ");
+                                int cont = 0;
+                                for (Ejemplar ListEjemplare : ListEjemplares) {
+                                    cont++;
+                                    System.out.println(cont+"= "+ListEjemplare+"\n");
+                                }
+                            }else{
+                                System.out.println("Datos de la obra: \n" + listaObras.get(numOpcion - 1) + "\nDesea realizar una reserva de esta obra? si/no");
+                                busqueda = sc.nextLine();
                             busqueda = sc.nextLine();
                             if (busqueda.equalsIgnoreCase("si")) {
                                 System.out.println("Reserva hecha con exito");
                                 // IMPLEMENTAR DEJAR RESERVADA UNA OBRA...
                             }
+                            }
+                            
                         }
 
                     }

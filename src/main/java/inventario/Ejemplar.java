@@ -3,18 +3,28 @@ package inventario;
 import java.util.Objects;
 
 public class Ejemplar {
+    private static int contadorEj = 0;  // Cuando se crea un nuevo ej aumenta
     private String idUnico;
     private String lugarFisico;
     private Obra obra;
     private Baja baja;
+    private Adquisicion adquisicion;
 
-    public Ejemplar() {
-    }
-
-    public Ejemplar(String idUnico, String lugarFisico,Obra obra) {
-        this.idUnico = idUnico;
+    public Ejemplar(String lugarFisico,Obra obra, Adquisicion adquisicion) {
+        this.contadorEj++;
         this.lugarFisico = lugarFisico;
         this.obra = obra;
+        this.idUnico = lugarFisico+String.valueOf(contadorEj);
+        this.adquisicion = adquisicion;
+        
+    }
+    public Ejemplar(String lugarFisico,Obra obra,Adquisicion adquisicion,Baja baja) {
+        this.contadorEj++;
+        this.lugarFisico = lugarFisico;
+        this.obra = obra;
+        this.idUnico = lugarFisico+String.valueOf(contadorEj);
+        this.baja = baja;
+        this.adquisicion = adquisicion;
     }
 
     @Override
@@ -38,6 +48,38 @@ public class Ejemplar {
         final Ejemplar other = (Ejemplar) obj;
         return Objects.equals(this.idUnico, other.idUnico);
     }
+
+    public static int getContadorEj() {
+        return contadorEj;
+    }
+
+    public static void setContadorEj(int contadorEj) {
+        Ejemplar.contadorEj = contadorEj;
+    }
+
+    public Obra getObra() {
+        return obra;
+    }
+
+    public void setObra(Obra obra) {
+        this.obra = obra;
+    }
+
+    public Baja getBaja() {
+        return baja;
+    }
+
+    public void setBaja(Baja baja) {
+        this.baja = baja;
+    }
+
+    public Adquisicion getAdquisicion() {
+        return adquisicion;
+    }
+
+    public void setAdquisicion(Adquisicion adquisicion) {
+        this.adquisicion = adquisicion;
+    }
     
     
 
@@ -48,6 +90,12 @@ public class Ejemplar {
     public String getLugarFisico() {
         return lugarFisico;
     }       
+
+    @Override
+    public String toString() {
+        return "Ejemplar{" + "idUnico=" + idUnico + ", lugarFisico=" + lugarFisico + ", obra=" + obra + ", baja=" + baja + ", adquisicion=" + adquisicion + '}';
+    }
+
     
     
     

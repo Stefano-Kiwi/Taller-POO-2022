@@ -21,10 +21,9 @@ public class Obra {
     private int prestamosGenerales;
     private List<Edicion> ediciones;
     private List<Ejemplar> listaejemplares;
-
+    
     public Obra() {
     }
-    
     
     public Obra(String titulo, String subtitulo, String autor1, String autor2, String autor3, String genero, String caracteristica, String ISBN, int ejemplares,
             String areaTematica, TipoObra tipo, Edicion edicion,String codigoDeBarras, String observaciones, int prestamosAlumnosODocentes, int prestamosGenerales) {
@@ -69,6 +68,7 @@ public class Obra {
         }
     }
    
+       
     //GETTERS
     public String getTitulo() {
         return titulo;
@@ -172,29 +172,12 @@ public class Obra {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Obra{");
-        sb.append("titulo=").append(titulo);
-        sb.append(", subtitulo=").append(subtitulo);
-        sb.append(", autor1=").append(autor1);
-        sb.append(", autor2=").append(autor2);
-        sb.append(", autor3=").append(autor3);
-        sb.append(", genero=").append(genero);
-        sb.append(", caracteristica=").append(caracteristica);
-        sb.append(", ISBN=").append(ISBN);
-        sb.append(", ejemplares=").append(ejemplares);
-        sb.append(", areaTematica=").append(areaTematica);
-        sb.append(", tipo=").append(tipo);
-        sb.append(", edicion=").append(edicion);
-        sb.append(", codigoDeBarras=").append(codigoDeBarras);
-        sb.append(", observaciones=").append(observaciones);
-        sb.append(", prestamosAlumnosODocentes=").append(prestamosAlumnosODocentes);
-        sb.append(", prestamosGenerales=").append(prestamosGenerales);
-        sb.append(", ediciones=").append(ediciones);
-        sb.append(", listaejemplares=").append(listaejemplares);
-        sb.append('}');
-        return sb.toString();
+        return "Obra{" + "titulo=" + titulo + ", subtitulo=" + subtitulo + ", autor1=" + autor1 + '}';
     }
+
+    
+
+    
 
     public String tablaGUI() {
         return titulo +","+autor1+","+ISBN+","+genero+"\n";

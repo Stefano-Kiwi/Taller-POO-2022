@@ -1,0 +1,8 @@
+ISBN, lugarFisico,fechaAdquisicion, formaDeCompra, si/no, fechaDeBaja,motivoBaja
+9780470087169,pasillo,  ,virtual,no,  , 
+1234567890000,entrada,  ,donacion,no,  , 
+9786073237215,estanteA,  ,donacion,si,  ,paginas rotas
+9780021233977,pasillo,  ,donacion,no,  ,
+9780021233977,pasillo,  ,comprado,no,  ,
+9780021233977,pasillo,  ,comprado,no,  ,
+9780021233977,pasillo,  ,comprado,si,  ,portada manchada sin recuperacion y dibujos obscenos en pagina 25
