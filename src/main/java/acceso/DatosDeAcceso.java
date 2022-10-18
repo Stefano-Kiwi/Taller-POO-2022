@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class DatosDeAcceso {
 
-    // Todos los lectores se guardan en esta lista
+    // Todos los lectores se guardan en esta lista asd
     private List<Lector> lectores = new ArrayList();
         
     private List<Bibliotecario> usuarios = new ArrayList();
