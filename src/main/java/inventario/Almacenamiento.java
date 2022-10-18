@@ -1,6 +1,6 @@
 package inventario;
 
-import acceso.Alumno;
+import acceso.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -18,6 +18,8 @@ public class Almacenamiento {
 
     private List<Obra> obras;
     private List<Ejemplar> ejemplares;
+    private List<Reserva> reservas;
+    
     public Almacenamiento() {
     }
 
@@ -181,8 +183,18 @@ public class Almacenamiento {
             System.out.println(e);
         }
     }
-
-
+    public Lector buscarLector(int dni){    // Implementar
+        return null;
+    }
+    
+    public void agregarReserva(Obra obra,int dni){
+        
+        reservas.add(new Reserva(obra,this.buscarLector(dni),LocalDate.now()));
+    }
+    
+    public void quitarReserva(int id){
+        reservas.remove(id);
+    }
     public void escribirCSV(String direccion,String linea){
         /* metodo para escribir una linea en un .txt ; dos parametros
           1er paramatro direccion del .txt a modificar
