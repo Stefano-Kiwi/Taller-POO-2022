@@ -83,6 +83,7 @@ public class Cliente {
                             System.out.println("La opcion ingresada es incorrecta");
                         } else {
                             
+                            Obra obraDeseada = listaObras.get(numOpcion -1);
                             List<Ejemplar> ListEjemplares = listaObras.get(numOpcion -1).getListaejemplares();
                             if(!ListEjemplares.isEmpty()){
                                 System.out.println("Los ejemplares disponibles son: ");
@@ -96,8 +97,10 @@ public class Cliente {
                                 busqueda = sc.nextLine();
                             busqueda = sc.nextLine();
                             if (busqueda.equalsIgnoreCase("si")) {
+                                System.out.println("Ingresa tu dni para reservar...");
+                                int dni = sc.nextInt();
                                 System.out.println("Reserva hecha con exito");
-                                // IMPLEMENTAR DEJAR RESERVADA UNA OBRA...
+                                almacenamiento.agregarReserva(obraDeseada,dni);
                             }
                             }
                             
