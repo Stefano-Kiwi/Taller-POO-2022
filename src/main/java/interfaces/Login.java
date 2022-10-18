@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author lucia
  */
 public class Login extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Login
      */
