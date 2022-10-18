@@ -172,13 +172,9 @@ public class Obra {
 
     @Override
     public String toString() {
-        return "Obra{" + "titulo=" + titulo + ", subtitulo=" + subtitulo + ", autor1=" + autor1 + '}';
+        return "Obra{" + "titulo=" + titulo + ", subtitulo=" + subtitulo + ", autor1=" + autor1 + ", autor2=" + autor2 + ", autor3=" + autor3 + ", genero=" + genero + ", ISBN=" + ISBN + ", areaTematica=" + areaTematica + ", tipo=" + tipo + ", edicion=" + edicion + '}';
     }
-
-    
-
-    
-
+    //NO TOCAR POR AHORA. PARA INTERFAZ GRAFICA.
     public String tablaGUI() {
         return titulo +","+autor1+","+ISBN+","+genero+"\n";
     }

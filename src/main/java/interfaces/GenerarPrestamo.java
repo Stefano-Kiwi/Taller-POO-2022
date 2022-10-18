@@ -1,5 +1,7 @@
 package interfaces;
 import inventario.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -9,8 +11,7 @@ import inventario.*;
  */
 public class GenerarPrestamo extends javax.swing.JFrame {
     
-    Almacenamiento a = new Almacenamiento();
-
+    private int numOption;
     /**
      * Creates new form GenerarPrestamo
      */
@@ -60,6 +61,7 @@ public class GenerarPrestamo extends javax.swing.JFrame {
         jLabel4.setText("Buscar libro por");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Titulo o subtitulo", "Autor", "Genero", "ISBN","Coleccion"}));
+        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -148,10 +150,10 @@ public class GenerarPrestamo extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,11 +175,31 @@ public class GenerarPrestamo extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-
+        switch (jComboBox1.getSelectedItem().toString()){
+            case "Titulo o subtitulo":
+                numOption = 1;
+                break;
+            case "Autor":
+                numOption = 2;
+                break;
+            case "Genero":
+                numOption = 3;
+                break;
+            case "ISBN":
+                numOption = 4;
+                break;
+            case "Coleccion":
+                numOption = 5;
+                break;   
+        }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        Almacenamiento a = new Almacenamiento();
+        a.obtenerObras("recursos/ListadoDeObras.txt");
+        a.busquedaObras(numOption, jTextField2.getText());
+        System.out.println(a.busquedaObras(numOption, jTextField2.getText()));
+        //System.out.println(obraBuscar);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
