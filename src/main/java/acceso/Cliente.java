@@ -113,13 +113,30 @@ public class Cliente {
 
                     }
                     break;
-                case 2:         // TAREAS: Agregar obra, consultar ejemplares(), agregar ejemplar, dar de baja ejemplar, observaciones sobre un ejemplar, 
+                case 2:         // TAREAS: 1 Agregar obra,2 consultar ejemplares(),3 agregar ejemplar,4 dar de baja ejemplar,5 observaciones sobre un ejemplar, 
                     //realizar nuevo prestamo,consultar info sobre un prestamo, devolucion de un ejemplar, 
                     System.out.println("Ingresa tu nombre de usuario...");
-                    String usuario = sc.nextLine();
+                    String vacio = sc.nextLine();
+                   String usuario = sc.nextLine();
+                    
                     System.out.println("Ingresa tu clave...");
+                    
                     String clave = sc.nextLine();
-
+                   
+                    if((usuario.equals("admin")&&(clave.equals("admin")))){
+                        boolean cerrarSesion = false;
+                        int opcionDeseada = 0;
+                        while(cerrarSesion==false){
+                            System.out.println("1: Agregar obra\n2: Consultar ejemplares\n3: Agregar ejemplar\n4: Dar de baja ejemplar\n5: Hacer una observacion sobre un ejemplar"
+                                    + "\n6: Realizar un préstamo\n7: Consultar prestamos\n8: Devolución de un ejemplar\n0: Cerrar sesión actual");
+                        switch(opcionDeseada){
+                            case 1: 
+                                System.out.println("Titulo, subtitulo, autor1, autor2, autor3, genero, caract, isbn, ejemplares,areaTematica,tipo,edicion,codigoBarras,observaciones");
+                                almacenamiento.getObras().add(new )
+                        }
+                        
+                        }
+                    }
                     break;
 
             }
