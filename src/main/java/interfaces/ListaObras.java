@@ -4,6 +4,7 @@ import acceso.*;
 import inventario.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JButton;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -169,7 +170,7 @@ public class ListaObras extends javax.swing.JFrame {
         Almacenamiento a = new Almacenamiento();
         a.obtenerObras("recursos/ListadoDeObras.txt");
         List<Obra> obras = a.getObras();
-
+        
         for (var obra : obras) {
             String[] campos = obra.tablaGUI().split(",");
             modelo.addRow(campos);

@@ -24,6 +24,6 @@ public class Docente extends Lector {
 
     @Override
     public String toString() {
-        return "Docente{" + "carrera=" + carrera + '}';
+        return "Docente" +super.toString() + "carrera=" + carrera + '}';
     }
 }

@@ -10,16 +10,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DatosDeAcceso {
-    private List<Alumno> alumnos = new ArrayList();
+
+    // Todos los lectores se guardan en esta lista
+    private List<Lector> lectores = new ArrayList();
+        
     private List<Bibliotecario> usuarios = new ArrayList();
 
     public DatosDeAcceso() {
     }
-    
-    
+
     public void obtenerAlumnos(String direccion) {
         try {
-            final String regex1 = "^(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*)$";
+            final String regex1 = "^(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*)";
 
             File archivo = new File(direccion);
             FileReader fr = new FileReader(archivo);
@@ -37,30 +39,42 @@ public class DatosDeAcceso {
                 if (matcher.matches()) {
                     //System.out.println("MATCHEA");
                 }
-               
-                 
-                String nombre = matcher.group(1);
-                String apellido = matcher.group(2);
-                String tipoDeDocumento = matcher.group(3);
-                String numDeDocumento = matcher.group(4);
-                String fechaNacimiento = matcher.group(5);
-                String sexo = matcher.group(6);
-                String correo = matcher.group(7);
-                String nroCelular = matcher.group(8);
-                String nacionalidad = matcher.group(9);
-                String domicilio = matcher.group(10);
-                String codigoPostal = matcher.group(11);
-                String departamento = matcher.group(12);
-                String localidad = matcher.group(13);
-                String carrera = matcher.group(14);
-                String facultad = matcher.group(15);
-                
+                //Tipo, si es 0 es publico general, si es 1 es Alumno, si es 2 es Docente
+                String tipo = matcher.group(1);
+                String nombre = matcher.group(2);
+                String apellido = matcher.group(3);
+                String tipoDeDocumento = matcher.group(4);
+                String numDeDocumento = matcher.group(5);
+                String fechaNacimiento = matcher.group(6);
+                String sexo = matcher.group(7);
+                String correo = matcher.group(8);
+                String nroCelular = matcher.group(9);
+                String nacionalidad = matcher.group(10);
+                String domicilio = matcher.group(11);
+                String codigoPostal = matcher.group(12);
+                String departamento = matcher.group(13);
+                String localidad = matcher.group(14);
+                String carrera = matcher.group(15);
+                String facultad = matcher.group(16);
+
                 //Splitea el String obtenido desde el .txt para usar en LocalDate.of
                 String[] fechaArr = fechaNacimiento.split("-");
-               
+
                 LocalDate fecha = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
-  
-                this.alumnos.add(new Alumno(nombre, apellido, tipoDeDocumento, Integer.parseInt(numDeDocumento), fecha, sexo, correo, nroCelular, nacionalidad, domicilio, Integer.parseInt(codigoPostal), departamento, localidad, carrera, facultad));
+
+                switch (tipo) {
+                    case "0":
+                        this.lectores.add(new Lector(nombre, apellido, tipoDeDocumento, Integer.parseInt(numDeDocumento), fecha, sexo, correo, nroCelular, nacionalidad, domicilio, Integer.parseInt(codigoPostal), departamento, localidad));
+                        break;
+                    case "1":
+                        this.lectores.add(new Alumno(nombre, apellido, tipoDeDocumento, Integer.parseInt(numDeDocumento), fecha, sexo, correo, nroCelular, nacionalidad, domicilio, Integer.parseInt(codigoPostal), departamento, localidad, carrera, facultad));
+                        break;
+                    case "2":
+                        this.lectores.add(new Docente(nombre, apellido, tipoDeDocumento, Integer.parseInt(numDeDocumento), fecha, sexo, correo, nroCelular, nacionalidad, domicilio, Integer.parseInt(codigoPostal), departamento, localidad, carrera));
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
 
             }
 
@@ -76,9 +90,9 @@ public class DatosDeAcceso {
     public void setUsuarios(List<Bibliotecario> usuarios) {
         this.usuarios = usuarios;
     }
-    
+
     // Retorar la lista de alumnos
-    public List<Alumno> getAlumnos(){
-        return this.alumnos;
+    public List<Lector> getLectores() {
+        return this.lectores;
     }
 }

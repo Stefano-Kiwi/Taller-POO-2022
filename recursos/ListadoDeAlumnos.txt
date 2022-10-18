@@ -1,2 +1,3 @@
 nombre, apellido, tipoDeDocumento, numDeDocumento, fechaNacimiento, sexo, correo, nroCelular, nacionalidad, domicilio, codigoPostal, departamento, localidad, carrera, facultad
-Luciano,Aguilar,dni,43148054,04-01-2001,Masculino,lucianodavidaguilar21@gmail.com,123456789,Argentina,Odiard 1535,3200,Concordia,Concordia,Lic en Sistemas,FCAD
+1,Luciano,Aguilar,dni,43148054,04-01-2001,Masculino,lucianodavidaguilar21@gmail.com,123456789,Argentina,Odiard 1535,3200,Concordia,Concordia,Lic en Sistemas,FCAD
+2,Luciano,Aguilar,dni,43148054,04-01-2001,Masculino,lucianodavidaguilar21@gmail.com,123456789,Argentina,Odiard 1535,3200,Concordia,Concordia,Lic en Sistemas,
