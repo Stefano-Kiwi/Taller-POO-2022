@@ -19,7 +19,7 @@ public class DatosDeAcceso {
     public DatosDeAcceso() {
     }
 
-    public void obtenerAlumnos(String direccion) {
+    public void obtenerLectores(String direccion) {
         try {
             final String regex1 = "^(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*)";
 
