@@ -36,8 +36,8 @@ public class Administracion extends javax.swing.JFrame {
         jLabelPrestamos = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabelRegistrar = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        btnRegistrarObra = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ventana Principal");
@@ -83,57 +83,53 @@ public class Administracion extends javax.swing.JFrame {
         jPanel1.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, -1, -1));
 
         jLabelPrestar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabelPrestar.setForeground(new java.awt.Color(0, 0, 0));
         jLabelPrestar.setText("Consultar");
         jPanel1.add(jLabelPrestar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, -1, -1));
 
         jLabelPrestamos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabelPrestamos.setForeground(new java.awt.Color(0, 0, 0));
         jLabelPrestamos.setText("Prestamos");
         jPanel1.add(jLabelPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 173, 690, 20));
 
         jLabelRegistrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabelRegistrar.setForeground(new java.awt.Color(0, 0, 0));
         jLabelRegistrar.setText("Registrar");
         jPanel1.add(jLabelRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
-
-        btnRegistrarObra.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistrarObra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnRegistrarObra.setText("Registrar Obra");
-        btnRegistrarObra.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRegistrarObra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnRegistrarObraMouseClicked(evt);
+        jButton3.setBackground(new java.awt.Color(0, 0, 0));
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Registrar Lector");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 140, 50));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnRegistrarObra, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnRegistrarObra, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 140, 50));
+        jButton4.setBackground(new java.awt.Color(0, 0, 0));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Registrar Obra");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 140, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -162,10 +158,15 @@ public class Administracion extends javax.swing.JFrame {
         new GenerarPrestamo().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void btnRegistrarObraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarObraMouseClicked
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       this.setVisible(false);
+       new NuevoLector().setVisible(true);        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         this.setVisible(false);
         new RegistrarObra().setVisible(true);
-    }//GEN-LAST:event_btnRegistrarObraMouseClicked
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,14 +205,14 @@ public class Administracion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Deudores;
-    private javax.swing.JLabel btnRegistrarObra;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabelPrestamos;
     private javax.swing.JLabel jLabelPrestar;
     private javax.swing.JLabel jLabelRegistrar;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables

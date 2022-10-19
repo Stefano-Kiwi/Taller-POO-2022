@@ -365,7 +365,9 @@ public class NuevoLector extends javax.swing.JFrame {
                 System.out.println(alumno.toCSV());
                 alma.escribirCSV("recursos/ListadoDeLectores.txt",alumno.toCSV());
                 break;
-        }  
+        } 
+        this.setVisible(false);
+        new Administracion().setVisible(true);
     }//GEN-LAST:event_botonCrearActionPerformed
 
     /**
