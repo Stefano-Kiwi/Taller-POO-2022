@@ -282,6 +282,8 @@ public class RegistrarObra extends javax.swing.JFrame {
 
     private void registrarLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarLabelMouseClicked
         registrarObra();
+        this.setVisible(false);
+        new Administracion().setVisible(true);
     }//GEN-LAST:event_registrarLabelMouseClicked
 
     /**
