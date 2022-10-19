@@ -58,7 +58,7 @@ public class DatosDeAcceso {
                 String facultad = matcher.group(16);
 
                 //Splitea el String obtenido desde el .txt para usar en LocalDate.of
-                String[] fechaArr = fechaNacimiento.split("-");
+                String[] fechaArr = fechaNacimiento.split("/");
 
                 LocalDate fecha = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
 
@@ -79,7 +79,8 @@ public class DatosDeAcceso {
             }
 
         } catch (Exception e) {
-            System.out.println(e);
+            //System.out.println(e.getStackTrace().toString());
+            e.printStackTrace();
         }
     }
 

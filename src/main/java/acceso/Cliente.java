@@ -23,11 +23,11 @@ public class Cliente {
         List<Obra> obras = almacenamiento.getObras();
         List<Lector> lectores = datosDeAcceso.getLectores();
         List<Ejemplar> ejemplares = almacenamiento.getEjemplares();
-//        
-//        for (Lector lectore : lectores) {
-//            System.out.println(lectore);
-//        }
-//        
+        
+        for (Lector lector : lectores) {
+            System.out.println(lector);
+        }
+        
         /**
          * int i=0; for(Obra obra:obras){ i++; System.out.println("Obra "+i+":
          * "+obra); }

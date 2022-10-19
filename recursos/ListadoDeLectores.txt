@@ -1,0 +1,16 @@
+TipoLector(0general,1alumno,2docente),nombre,apellido,tipoDocumento,numdocumento,fechaNacimiento,sexo,correo,Nrocelular,nacionalidad,domicilio,codigoPostal,departamento,localidad,carrera,facultad(16SiAlumno)(14SiGeneral)(15SiProfe)
+1,David,Zarco,DNI,40234923,23/02/1998,masculino,davidzarco@hotmail.com,3454039421,ARG,Peru 1023,3200,Concordia,Concordia,Lic. en sistemas,UNER
+1,Stefano,Carbajal,DNI,43945292,19/07/2001,masculino,StefanoB@gmail.com,3456023923,ARG,Rocamora 129,3200,Concordia,Concordia,Lic. en sistemas,UNER
+1,Daniel,Altamirano,DNI,42932420,24/01/2000,masculino,Altamirano_dan@gmail.com,3454000293,ARG,Tavella 972,3200,Concordia,Concordia,Lic. en sistemas,UNER
+1,Tomas,Berta,DNI,39203191,25/10/1997,masculino,tomiberta@hotmail.com,3456441589,ARG,Brown 552,3228,Chajari,Chajari,Lic. en sistemas,UNER
+1,Luciano,Aguilar,DNI,41050293,15/11/1999,masculino,luciano1999aguilar@gmail.com,3454429928,ARG,Laprida 892,3200,Concordia,Concordia,Lic. en sistemas,UNER
+2,Miguel,Heredia,DNI,19050293,30/10/1972,masculino,miguelHeredia72@gmail.com,3456920221,ARG,1ro de Mayo 300,3200,Concordia,Concordia,Contador Publico,
+2,Maria,Gomez,DNI,23050293,23/02/1981,femenino,gomezzmaria@gmail.com,3454340871,BOL,Rivadavia 669,3200,Concordia,Concordia,Contador Publico,
+2,Maria Jose,Espert,DNI,30428293,01/03/1989,femenino,joseeMariaa@gmail.com,3456920221,ARG,Batalla de Cepeda 230,3200,Concordia,Concordia,Sistemas,
+2,Juan,Erriuga,DNI,2711293,03/03/1976,masculino,juan@gmail.com,3454300293,ARG,Los viñedos 203,3200,Concordia,Concordia,Contador Publico,
+2,Sebastian,Gimenez,DNI,1902003,29/04/1971,masculino,sebagimenez1971@gmail.com,3456920221,ARG,Brown 322,3200,Concordia,Concordia,Turismo,
+0,Mauro,Del Orto,DNI,31399101,10/08/1982,masculino,maurito22@gmail.com,3454491327,ARG,Chile 177,3200,Concordia,Concordia,,
+0,Patricia,San Miguel,DNI,32399101,11/08/1987,femenino,patriii02@gmail.com,3456329077,ARG,San Luis 450,3200,Concordia,Concordia,,
+0,Alfonsina,Casanovas,DNI,27773001,10/08/1982,femenino,AlfonsinaC@gmail.com,3454022224,ARG,Chile 177,3200,Concordia,Concordia,,
+0,Guillermo,Del Toro,DNI,42300293,19/02/1982,masculino,guillermito@gmail.com,3454542694,ESP,Rawson 888,3200,Concordia,Concordia,,
+0,Reynaldo,Lopez,DNI,16373091,14/06/1963,masculino,reynaldo_lopez@gmail.com,3456023979,ARG,Augusto Niez 677,3200,Concordia,Concordia,,
