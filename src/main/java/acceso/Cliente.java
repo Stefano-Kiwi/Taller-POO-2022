@@ -17,7 +17,7 @@ public class Cliente {
         //Almacenamiento.obtenerUsuarios();
         almacenamiento.obtenerObras("recursos/ListadoDeObras.txt");
         almacenamiento.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
-        datosDeAcceso.obtenerAlumnos("recursos/ListadoDeAlumnos.txt");
+        datosDeAcceso.obtenerAlumnos("recursos/ListadoDeLectores.txt");
         
         
         List<Obra> obras = almacenamiento.getObras();
@@ -132,7 +132,7 @@ public class Cliente {
                         switch(opcionDeseada){
                             case 1: 
                                 System.out.println("Titulo, subtitulo, autor1, autor2, autor3, genero, caract, isbn, ejemplares,areaTematica,tipo,edicion,codigoBarras,observaciones");
-                                almacenamiento.getObras().add(new )
+                                //almacenamiento.getObras().add(new )
                         }
                         
                         }
