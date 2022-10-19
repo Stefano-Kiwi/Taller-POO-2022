@@ -4,6 +4,8 @@
  */
 package interfaces;
 
+import inventario.Almacenamiento;
+
 /**
  *
  * @author lucia
@@ -53,7 +55,7 @@ public class RegistrarObra extends javax.swing.JFrame {
         autor2TextField = new javax.swing.JTextField();
         autor3TextField = new javax.swing.JTextField();
         generoTextField = new javax.swing.JTextField();
-        carateristicaTextField = new javax.swing.JTextField();
+        caracteristicaTextField = new javax.swing.JTextField();
         isbnTextField = new javax.swing.JTextField();
         areaTematicaTextField = new javax.swing.JTextField();
         tipoTextField = new javax.swing.JTextField();
@@ -177,7 +179,7 @@ public class RegistrarObra extends javax.swing.JFrame {
         jPanel1.add(autor2TextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 210, -1));
         jPanel1.add(autor3TextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 210, -1));
         jPanel1.add(generoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 210, -1));
-        jPanel1.add(carateristicaTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 210, -1));
+        jPanel1.add(caracteristicaTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 210, -1));
         jPanel1.add(isbnTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 210, -1));
         jPanel1.add(areaTematicaTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 480, 210, -1));
         jPanel1.add(tipoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 530, 210, -1));
@@ -228,6 +230,11 @@ public class RegistrarObra extends javax.swing.JFrame {
         registrarLabel.setText("Registrar");
         registrarLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registrarLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        registrarLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registrarLabelMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -272,6 +279,10 @@ public class RegistrarObra extends javax.swing.JFrame {
         this.setVisible(false);
         new Administracion().setVisible(true);
     }//GEN-LAST:event_volverJButtonActionPerformed
+
+    private void registrarLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarLabelMouseClicked
+        registrarObra();
+    }//GEN-LAST:event_registrarLabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -320,7 +331,7 @@ public class RegistrarObra extends javax.swing.JFrame {
     private javax.swing.JLabel autorLabel;
     private javax.swing.JTextField autorTextField;
     private javax.swing.JLabel caracteristicaLabel;
-    private javax.swing.JTextField carateristicaTextField;
+    private javax.swing.JTextField caracteristicaTextField;
     private javax.swing.JLabel coleccionLabel;
     private javax.swing.JTextField coleccionTextField;
     private javax.swing.JLabel editorialNombreLabel;
@@ -356,4 +367,11 @@ public class RegistrarObra extends javax.swing.JFrame {
     private javax.swing.JTextField volumenesTextField;
     private javax.swing.JButton volverJButton;
     // End of variables declaration//GEN-END:variables
+
+    
+    public void registrarObra(){
+        new Almacenamiento().escribirCSV("recursos/ListadoDeObras.txt", tituloTextField.getText()+","+subtituloTextField.getText()+","+autorTextField.getText()+","+autor2TextField.getText()+","+autor3TextField.getText()+","+generoTextField.getText()+","+caracteristicaTextField.getText()+","+isbnTextField.getText()+","+areaTematicaTextField.getText()+","+tipoTextField.getText()+","+editorialTextField.getText()+","+paisTextField.getText()+","+numeroEdicionTextField.getText()+","+anioEdicionTextField.getText()+","+volumenesTextField.getText()+","+idiomaTextField.getText()+","+paginasTextField.getText()+","+formatoTextField.getText()+","+coleccionTextField.getText()+","+isbnColeccionTextField.getText());
+    }
+    
+
 }
