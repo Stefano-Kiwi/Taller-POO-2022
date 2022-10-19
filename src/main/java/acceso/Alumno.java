@@ -38,5 +38,8 @@ public class Alumno extends Lector {
     @Override
     public String toString() {
         return "Alumno " + "carrera=" + carrera + ", facultad=" + facultad+ " " + super.toString();
-    }   
+    }  
+    public String toCSV(){
+       return "1"+","+this.getNombre()+","+this.getApellido()+","+this.getTipoDocumento()+","+this.getNumDocumento()+","+this.getFechaNacimiento()+","+this.getSexo()+","+this.getCorreo()+","+this.getNroCelular()+","+this.getNacionalidad()+","+this.getDomicilio()+","+this.getCodigoPostal()+","+this.getDepartamento()+","+this.getLocalidad()+","+this.carrera+","+this.facultad;
+    }
 }

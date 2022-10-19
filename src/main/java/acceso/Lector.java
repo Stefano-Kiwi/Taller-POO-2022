@@ -36,6 +36,9 @@ public class Lector extends Persona {
     public void devolver(Prestamo prestamo){    
     }
     
+    public String toCSV(){
+       return "0"+","+this.getNombre()+","+this.getApellido()+","+this.getTipoDocumento()+","+this.getNumDocumento()+","+this.getFechaNacimiento()+","+this.getSexo()+","+this.getCorreo()+","+this.getNroCelular()+","+this.getNacionalidad()+","+this.getDomicilio()+","+this.getCodigoPostal()+","+this.getDepartamento()+","+this.getLocalidad()+","+",";
+     }
 
     
 }

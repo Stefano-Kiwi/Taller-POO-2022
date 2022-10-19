@@ -26,4 +26,7 @@ public class Docente extends Lector {
     public String toString() {
         return "Docente " +super.toString() + "carrera=" + carrera + '}';
     }
+    public String toCSV(){
+       return "2"+","+this.getNombre()+","+this.getApellido()+","+this.getTipoDocumento()+","+this.getNumDocumento()+","+this.getFechaNacimiento()+","+this.getSexo()+","+this.getCorreo()+","+this.getNroCelular()+","+this.getNacionalidad()+","+this.getDomicilio()+","+this.getCodigoPostal()+","+this.getDepartamento()+","+this.getLocalidad()+","+this.carrera+",";
+     }
 }
