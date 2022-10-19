@@ -1,10 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package interfaces;
 
 import inventario.Almacenamiento;
+import inventario.Edicion;
+import inventario.Obra;
+import inventario.TipoObra;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -372,8 +373,11 @@ public class RegistrarObra extends javax.swing.JFrame {
 
     
     public void registrarObra(){
+        Almacenamiento a = new Almacenamiento();
+        List <Obra> obras = a.getObras();
+       // Obra obra = new Obra(tituloTextField.getText(), subtituloTextField.getText(), autorTextField.getText(), autor2TextField.getText(), autor3TextField.getText(), generoTextField.getText(), caracteristicaTextField.getText(), isbnTextField.getText(), 0,areaTematicaTextField.getText(), tipoTextField.getText(), new Edicion(editorialTextField.getText(),numeroEdicionTextField.getText(), numeroEdicionTextField.getText(), Integer.parseInt(anioEdicionTextField.getText()), Integer.parseInt(volumenesTextField.getText()), idiomaTextField.getText(), Integer.parseInt(paginasTextField.getText()), formatoTextField.getText()), isbnTextField.getText(), "", 0, 0);
+       // if (!obras.contains(obra)){
         new Almacenamiento().escribirCSV("recursos/ListadoDeObras.txt", tituloTextField.getText()+","+subtituloTextField.getText()+","+autorTextField.getText()+","+autor2TextField.getText()+","+autor3TextField.getText()+","+generoTextField.getText()+","+caracteristicaTextField.getText()+","+isbnTextField.getText()+","+areaTematicaTextField.getText()+","+tipoTextField.getText()+","+editorialTextField.getText()+","+paisTextField.getText()+","+numeroEdicionTextField.getText()+","+anioEdicionTextField.getText()+","+volumenesTextField.getText()+","+idiomaTextField.getText()+","+paginasTextField.getText()+","+formatoTextField.getText()+","+coleccionTextField.getText()+","+isbnColeccionTextField.getText());
-    }
-    
-
+        //} else {JOptionPane.showMessageDialog(null, "Ya existe esta obra!", "Ventana emergente", 1);}
+    }     
 }
