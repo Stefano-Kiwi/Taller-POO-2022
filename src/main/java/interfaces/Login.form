@@ -115,9 +115,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Contrase&#xf1;a_Textbox">
-      <Events>
-        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="Contrase&#xf1;a_TextboxKeyReleased"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn_Salir">
       <Properties>

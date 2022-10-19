@@ -66,12 +66,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        Contraseña_Textbox.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                Contraseña_TextboxKeyReleased(evt);
-            }
-        });
-
         btn_Salir.setText("Salir");
         btn_Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,19 +138,6 @@ public class Login extends javax.swing.JFrame {
     private void Usuario_TextboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Usuario_TextboxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Usuario_TextboxActionPerformed
-
-    private void Contraseña_TextboxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Contraseña_TextboxKeyReleased
-        if (evt.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
-            try {
-                if (Usuario_Textbox.getText().isEmpty() || Contraseña_Textbox.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "COMPLETAR LOS CAMPOS");
-                }
-                Ingresar();
-            } catch (Exception ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }//GEN-LAST:event_Contraseña_TextboxKeyReleased
 
     /**
      * @param args the command line arguments
