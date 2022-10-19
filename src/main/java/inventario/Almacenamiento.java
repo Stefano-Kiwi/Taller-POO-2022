@@ -89,7 +89,7 @@ public class Almacenamiento {
     }
 
     public List<Obra> busquedaObras(int tipoBusqueda, String busqueda) {
-        List<Obra> resultado = new ArrayList();     // 1 Titulo o subtítulo 2 autor 3 genero 4 ISBN 5 Nombre de colección
+        List<Obra> resultado = new ArrayList();     // 1 Titulo o subtítulo 2 autor 3 genero 4 ISBN 5 Editorial 6 Nombre de colección
         switch (tipoBusqueda) {
             case 1: // TITULO O SUBTITULO
                 for (Obra obra : obras) {
@@ -107,7 +107,7 @@ public class Almacenamiento {
                 }
                 break;
             case 3:
-                for (Obra obra : obras) {
+                for (Obra obra : obras) { // GENERO
                     if ((obra.getGenero().equalsIgnoreCase(busqueda))) {
                         resultado.add(obra);
                     }
@@ -115,15 +115,23 @@ public class Almacenamiento {
 
                 break;
             case 4:
-                for (Obra obra : obras) {
+                for (Obra obra : obras) {   // ISBN
                     if ((obra.getISBN().equalsIgnoreCase(busqueda))) {
                         resultado.add(obra);
                     }
                 }
 
                 break;
-            /*          FALTA IMPLEMENTAR PARA COLECCIONES.
                 case 5:
+                for (Obra obra : obras) {   // Nombre editorial
+                    if ((obra.getEdicion().getNombreEditorial().equalsIgnoreCase(busqueda))) {
+                        resultado.add(obra);
+                    }
+                }
+
+                break;
+            /*          FALTA IMPLEMENTAR PARA COLECCIONES.
+                case 6:
                 for (Obra obra : obras) {
                     if((obra.getColeccion().getNombreColeccion().equalsIgnoreCase(busqueda))){
                         resultado.add(obra);

@@ -17,16 +17,14 @@ public class Cliente {
         //Almacenamiento.obtenerUsuarios();
         almacenamiento.obtenerObras("recursos/ListadoDeObras.txt");
         almacenamiento.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
-        datosDeAcceso.obtenerAlumnos("recursos/ListadoDeLectores.txt");
+        datosDeAcceso.obtenerLectores("recursos/ListadoDeLectores.txt");
         
         
         List<Obra> obras = almacenamiento.getObras();
         List<Lector> lectores = datosDeAcceso.getLectores();
         List<Ejemplar> ejemplares = almacenamiento.getEjemplares();
         
-        for (Lector lector : lectores) {
-            System.out.println(lector);
-        }
+        
         
         /**
          * int i=0; for(Obra obra:obras){ i++; System.out.println("Obra "+i+":
@@ -64,7 +62,7 @@ public class Cliente {
 
             switch (opcion) {
                 case 1:         // TAREAS QUE SE PUEDEN REALIZAR: Consultar obras y cuantos ejemplares tiene cada una
-                    System.out.println("BUSCAR POR:\n1: Titulo o subtítulo \n2: autor \n3: genero \n4: ISBN \n5 Nombre de colección");
+                    System.out.println("BUSCAR POR:\n1: Titulo o subtítulo \n2: autor \n3: genero \n4: ISBN \n5: Nombre editorial\n6: Nombre de colección");
                     int numOpcion = sc.nextInt();
                     System.out.println("Ingresa la búsqueda...");
                     String busqueda = sc.nextLine();
