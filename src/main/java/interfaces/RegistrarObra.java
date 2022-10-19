@@ -380,8 +380,15 @@ public class RegistrarObra extends javax.swing.JFrame {
                             break;
                     }
         Obra obra = new Obra(tituloTextField.getText(), subtituloTextField.getText(), autorTextField.getText(), autor2TextField.getText(), autor3TextField.getText(), generoTextField.getText(), caracteristicaTextField.getText(), isbnTextField.getText(), 0,areaTematicaTextField.getText(), tipoObra, new Edicion(editorialTextField.getText(),numeroEdicionTextField.getText(), numeroEdicionTextField.getText(), Integer.parseInt(anioEdicionTextField.getText()), Integer.parseInt(volumenesTextField.getText()), idiomaTextField.getText(), Integer.parseInt(paginasTextField.getText()), formatoTextField.getText()), isbnTextField.getText(), "", 0, 0);
-        if (!obras.contains(obra)){
-        new Almacenamiento().escribirCSV("recursos/ListadoDeObras.txt", tituloTextField.getText()+","+subtituloTextField.getText()+","+autorTextField.getText()+","+autor2TextField.getText()+","+autor3TextField.getText()+","+generoTextField.getText()+","+caracteristicaTextField.getText()+","+isbnTextField.getText()+","+areaTematicaTextField.getText()+","+ComboBoxTIPO.getSelectedItem().toString()+","+editorialTextField.getText()+","+paisTextField.getText()+","+numeroEdicionTextField.getText()+","+anioEdicionTextField.getText()+","+volumenesTextField.getText()+","+idiomaTextField.getText()+","+paginasTextField.getText()+","+formatoTextField.getText()+","+coleccionTextField.getText()+","+isbnColeccionTextField.getText());
+        boolean esta= false;
+        for (Obra obra1 : obras) {
+            if(obra.getISBN().equals(obra1.getISBN())){
+                esta = true;
+                break;
+            }
+        }
+        if (!esta){
+            new Almacenamiento().escribirCSV("recursos/ListadoDeObras.txt", tituloTextField.getText()+","+subtituloTextField.getText()+","+autorTextField.getText()+","+autor2TextField.getText()+","+autor3TextField.getText()+","+generoTextField.getText()+","+caracteristicaTextField.getText()+","+isbnTextField.getText()+","+areaTematicaTextField.getText()+","+ComboBoxTIPO.getSelectedItem().toString()+","+editorialTextField.getText()+","+paisTextField.getText()+","+numeroEdicionTextField.getText()+","+anioEdicionTextField.getText()+","+volumenesTextField.getText()+","+idiomaTextField.getText()+","+paginasTextField.getText()+","+formatoTextField.getText()+","+coleccionTextField.getText()+","+isbnColeccionTextField.getText());
         } else {JOptionPane.showMessageDialog(null, "Ya existe esta obra!", "Ventana emergente", 1);}
     }     
 }
