@@ -37,6 +37,7 @@ public class ListaObras extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Tablita = new javax.swing.JTable();
         editorialBox = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -96,34 +97,34 @@ public class ListaObras extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Obras filtradas por:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(editorialBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(269, 269, 269)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(editorialBox, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(104, 104, 104)
                         .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(editorialBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editorialBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -136,6 +137,28 @@ public class ListaObras extends javax.swing.JFrame {
     }//GEN-LAST:event_VolverActionPerformed
 
     private void editorialBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editorialBoxActionPerformed
+    String opcionElegida = editorialBox.getSelectedItem().toString();
+    Almacenamiento a = new Almacenamiento();
+    a.obtenerObras("recursos/ListadoDeObras.txt");
+    List<Obra> obras = a.getObras();
+    List<Obra> obrasAmostrar = new ArrayList();
+        for (Obra obra : obras) {
+            if(obra.getEdicion().getNombreEditorial().equals(opcionElegida)){
+                obrasAmostrar.add(obra);
+            }
+        }
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Autor");
+        modelo.addColumn("ISBN");
+        modelo.addColumn("Genero");
+        Tablita.setModel(modelo);
+        
+        for (Obra obra : obrasAmostrar) {
+            String[] campos = obra.tablaGUI().split(",");
+            modelo.addRow(campos);
+        }
         
     }//GEN-LAST:event_editorialBoxActionPerformed
 
@@ -221,6 +244,7 @@ public class ListaObras extends javax.swing.JFrame {
     private javax.swing.JTable Tablita;
     private javax.swing.JButton Volver;
     private javax.swing.JComboBox<String> editorialBox;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;

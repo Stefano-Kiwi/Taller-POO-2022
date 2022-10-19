@@ -64,6 +64,7 @@ public class NuevoLector extends javax.swing.JFrame {
         carrera = new javax.swing.JTextField();
         botonCrear = new javax.swing.JButton();
         Nacionalidad = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,6 +135,13 @@ public class NuevoLector extends javax.swing.JFrame {
         botonCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCrearActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("volver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -218,7 +226,9 @@ public class NuevoLector extends javax.swing.JFrame {
                             .addComponent(carrera))))
                 .addGap(90, 90, 90))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonCrear)
                 .addContainerGap())
         );
@@ -285,9 +295,14 @@ public class NuevoLector extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(facultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelFacultad))
-                .addGap(11, 11, 11)
-                .addComponent(botonCrear)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(botonCrear))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pack();
@@ -338,6 +353,7 @@ public class NuevoLector extends javax.swing.JFrame {
     private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
         Almacenamiento alma = new Almacenamiento();
         DatosDeAcceso da = new DatosDeAcceso();
+        da.obtenerLectores("recursos/ListadoDeLectores.txt");
         List<Lector> lectores = da.getLectores();
 
         String apellidonombre = this.ApellidoYNombre.getText();
@@ -350,35 +366,56 @@ public class NuevoLector extends javax.swing.JFrame {
         LocalDate fecha = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
 
         String opcion = tipoLector.getSelectedItem().toString();
+        boolean esta = false;
         switch (opcion) {
             case "Publico General":
                 Lector lector = new Lector(nombre, apellido, this.tipodocumento.getText(), Integer.parseInt(this.NroDocumento.getText()), fecha, this.Sexo.getText(), this.correo.getText(), this.numeroTelefono.getText(), this.Nacionalidad.getText(), this.domicilio.getText(), Integer.parseInt(this.CodigoPostal.getText()), this.Departamento.getText(), this.localidad.getText());
-                if (!lectores.contains(lector)) {
-                    alma.escribirCSV("recursos/ListadoDeLectores.txt", lector.toCSV());
-                } else {
+                for (Lector lector1 : lectores){
+                    if(lector.getNumDocumento() == lector1.getNumDocumento()){
+                    esta = true;
+                    }
+                }
+                if (esta) {
                     JOptionPane.showMessageDialog(null, "Ya existe este lector!", "Ventana emergente", 1);
+                } else {
+                  alma.escribirCSV("recursos/ListadoDeLectores.txt", lector.toCSV());
                 }
                 break;
             case "Docente":
                 Docente docente = new Docente(nombre, apellido, this.tipodocumento.getText(), Integer.parseInt(this.NroDocumento.getText()), fecha, this.Sexo.getText(), this.correo.getText(), this.numeroTelefono.getText(), this.Nacionalidad.getText(), this.domicilio.getText(), Integer.parseInt(this.CodigoPostal.getText()), this.Departamento.getText(), this.localidad.getText(), this.carrera.getText());
-                if (!lectores.contains(docente)) {
-                    alma.escribirCSV("recursos/ListadoDeLectores.txt", docente.toCSV());
-                } else {
+                for (Lector lector1 : lectores){
+                    if(docente.getNumDocumento() == lector1.getNumDocumento()){
+                    esta = true;
+                    }
+                }
+                if (esta)  {
                     JOptionPane.showMessageDialog(null, "Ya existe este lector!", "Ventana emergente", 1);
+                } else {
+                    alma.escribirCSV("recursos/ListadoDeLectores.txt", docente.toCSV());
                 }
                 break;
             case "Alumno":
                 Alumno alumno = new Alumno(nombre, apellido, this.tipodocumento.getText(), Integer.parseInt(this.NroDocumento.getText()), fecha, this.Sexo.getText(), this.correo.getText(), this.numeroTelefono.getText(), this.Nacionalidad.getText(), this.domicilio.getText(), Integer.parseInt(this.CodigoPostal.getText()), this.Departamento.getText(), this.localidad.getText(), this.carrera.getText(), this.facultad.getText());
-                if (!lectores.contains(alumno)) {
-                    alma.escribirCSV("recursos/ListadoDeLectores.txt", alumno.toCSV());
+               for (Lector lector1 : lectores){
+                    if(alumno.getNumDocumento() == lector1.getNumDocumento()){
+                    esta = true;
+                    }
+                }
+                if (esta) {
+                   JOptionPane.showMessageDialog(null, "Ya existe este lector!", "Ventana emergente", 1);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Ya existe este lector!", "Ventana emergente", 1);
+                    alma.escribirCSV("recursos/ListadoDeLectores.txt", alumno.toCSV());
                 }
                 break;
         }
         this.setVisible(false);
         new Administracion().setVisible(true);
     }//GEN-LAST:event_botonCrearActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     this.setVisible(false);
+     new Administracion().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -431,6 +468,7 @@ public class NuevoLector extends javax.swing.JFrame {
     private javax.swing.JTextField correo;
     private javax.swing.JTextField domicilio;
     private javax.swing.JTextField facultad;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
