@@ -27,13 +27,45 @@ public class Administracion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        salir = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        Deudores = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
+        Deudores = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
+        jLabelPrestar = new javax.swing.JLabel();
+        jLabelPrestamos = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabelRegistrar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ventana Principal");
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton2.setText("Prestar Ejemplar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 142, 50));
+
+        Deudores.setText("Deudores");
+        Deudores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeudoresActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Deudores, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 270, 150, 50));
+
+        jButton1.setText("Ver obras disponibles");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 190, 150, 50));
 
         salir.setText("Salir");
         salir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -46,57 +78,35 @@ public class Administracion extends javax.swing.JFrame {
                 salirActionPerformed(evt);
             }
         });
+        jPanel1.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, -1, -1));
 
-        jButton1.setText("Ver obras disponibles");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jLabelPrestar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelPrestar.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelPrestar.setText("Consultar");
+        jPanel1.add(jLabelPrestar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, -1, -1));
 
-        Deudores.setText("Deudores");
-        Deudores.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeudoresActionPerformed(evt);
-            }
-        });
+        jLabelPrestamos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelPrestamos.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelPrestamos.setText("Prestamos");
+        jPanel1.add(jLabelPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 173, 690, 20));
 
-        jButton2.setText("Prestar Ejemplar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        jLabelRegistrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabelRegistrar.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelRegistrar.setText("Registrar");
+        jPanel1.add(jLabelRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(salir))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Deudores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(461, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Deudores, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
-                .addComponent(salir)
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -164,6 +174,11 @@ public class Administracion extends javax.swing.JFrame {
     private javax.swing.JButton Deudores;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabelPrestamos;
+    private javax.swing.JLabel jLabelPrestar;
+    private javax.swing.JLabel jLabelRegistrar;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }
