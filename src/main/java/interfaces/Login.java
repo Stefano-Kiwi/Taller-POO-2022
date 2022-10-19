@@ -47,7 +47,8 @@ public class Login extends javax.swing.JFrame {
         setResizable(false);
 
         LOGIN.setFont(new java.awt.Font("Sitka Small", 1, 36)); // NOI18N
-        LOGIN.setText("LOGIN");
+        LOGIN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LOGIN.setText("Iniciar Sesion");
 
         Usuario_etiqueta.setText("Usuario");
 
@@ -69,6 +70,12 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        Contraseña_Textbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Contraseña_TextboxActionPerformed(evt);
+            }
+        });
+
         btn_Salir.setBackground(new java.awt.Color(0, 0, 0));
         btn_Salir.setForeground(new java.awt.Color(255, 255, 255));
         btn_Salir.setText("Salir");
@@ -82,28 +89,26 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(LOGIN)
-                .addGap(218, 218, 218))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(179, 179, 179)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Usuario_etiqueta, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Usuario_Textbox, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Contraseña_etiqueta)
-                                .addComponent(Contraseña_Textbox, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Usuario_etiqueta, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Usuario_Textbox, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(btn_Salir))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(226, 226, 226)
-                        .addComponent(btn_Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Contraseña_etiqueta)
+                            .addComponent(Contraseña_Textbox, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(180, Short.MAX_VALUE))
+            .addComponent(LOGIN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,6 +148,10 @@ public class Login extends javax.swing.JFrame {
     private void Usuario_TextboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Usuario_TextboxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Usuario_TextboxActionPerformed
+
+    private void Contraseña_TextboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Contraseña_TextboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Contraseña_TextboxActionPerformed
 
     /**
      * @param args the command line arguments

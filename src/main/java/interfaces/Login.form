@@ -25,24 +25,13 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="LOGIN" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="Usuario_etiqueta" min="-2" pref="48" max="-2" attributes="0"/>
-                              <Component id="Usuario_Textbox" min="-2" pref="208" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Component id="Contraseña_etiqueta" min="-2" max="-2" attributes="0"/>
-                              <Component id="Contraseña_Textbox" min="-2" pref="208" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="Usuario_etiqueta" min="-2" pref="48" max="-2" attributes="0"/>
+                          <Component id="Usuario_Textbox" min="-2" pref="208" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -53,9 +42,17 @@
                       <EmptySpace min="-2" pref="226" max="-2" attributes="0"/>
                       <Component id="btn_Ingresar" min="-2" pref="107" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="Contraseña_etiqueta" min="-2" max="-2" attributes="0"/>
+                          <Component id="Contraseña_Textbox" min="-2" pref="208" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
               <EmptySpace pref="180" max="32767" attributes="0"/>
           </Group>
+          <Component id="LOGIN" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -86,7 +83,8 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Sitka Small" size="36" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="LOGIN"/>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Iniciar Sesion"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="Usuario_etiqueta">
@@ -122,6 +120,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="Contrase&#xf1;a_Textbox">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Contrase&#xf1;a_TextboxActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn_Salir">
       <Properties>

@@ -36,6 +36,7 @@ public class ListaObras extends javax.swing.JFrame {
         Volver = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tablita = new javax.swing.JTable();
+        editorialBox = new javax.swing.JComboBox<>();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,6 +89,13 @@ public class ListaObras extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tablita);
 
+        editorialBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
+        editorialBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editorialBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,7 +106,9 @@ public class ListaObras extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(386, 386, 386)
+                        .addGap(45, 45, 45)
+                        .addComponent(editorialBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(269, 269, 269)
                         .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
@@ -107,8 +117,13 @@ public class ListaObras extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(editorialBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -119,6 +134,10 @@ public class ListaObras extends javax.swing.JFrame {
         this.setVisible(false);
         new Administracion().setVisible(true);
     }//GEN-LAST:event_VolverActionPerformed
+
+    private void editorialBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editorialBoxActionPerformed
+        
+    }//GEN-LAST:event_editorialBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,17 +190,31 @@ public class ListaObras extends javax.swing.JFrame {
         a.obtenerObras("recursos/ListadoDeObras.txt");
         List<Obra> obras = a.getObras();
         
+        List<String> nombreEditorial = new ArrayList();
+        
         for (var obra : obras) {
             String[] campos = obra.tablaGUI().split(",");
             modelo.addRow(campos);
+            if(!nombreEditorial.contains(obra.getEdicion().getNombreEditorial())){
+                nombreEditorial.add(obra.getEdicion().getNombreEditorial());
+            }
         }
-
+        String[] edit = new String[nombreEditorial.size()];
+        for (int i = 0; i < nombreEditorial.size(); i++) {
+            edit[i] = nombreEditorial.get(i);
+        }
+        
+        editorialBox.setModel(new javax.swing.DefaultComboBoxModel<>(edit));
+               
+        
+        
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tablita;
     private javax.swing.JButton Volver;
+    private javax.swing.JComboBox<String> editorialBox;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
