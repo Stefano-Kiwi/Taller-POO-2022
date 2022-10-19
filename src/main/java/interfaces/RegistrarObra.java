@@ -59,7 +59,6 @@ public class RegistrarObra extends javax.swing.JFrame {
         caracteristicaTextField = new javax.swing.JTextField();
         isbnTextField = new javax.swing.JTextField();
         areaTematicaTextField = new javax.swing.JTextField();
-        tipoTextField = new javax.swing.JTextField();
         editorialTextField = new javax.swing.JTextField();
         paisTextField = new javax.swing.JTextField();
         numeroEdicionTextField = new javax.swing.JTextField();
@@ -75,6 +74,7 @@ public class RegistrarObra extends javax.swing.JFrame {
         jLabelRegistrarObra = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         registrarLabel = new javax.swing.JLabel();
+        ComboBoxTIPO = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,84 +82,64 @@ public class RegistrarObra extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         isbnColeccionLabel.setBackground(new java.awt.Color(0, 0, 0));
-        isbnColeccionLabel.setForeground(new java.awt.Color(0, 0, 0));
         isbnColeccionLabel.setText("ISBN de colección");
         jPanel1.add(isbnColeccionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 510, 130, -1));
 
-        tituloLabel.setForeground(new java.awt.Color(0, 0, 0));
         tituloLabel.setText("Titulo");
         jPanel1.add(tituloLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, -1, -1));
 
-        subtituloLabel.setForeground(new java.awt.Color(0, 0, 0));
         subtituloLabel.setText("Subtitulo");
         jPanel1.add(subtituloLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
 
-        autorLabel.setForeground(new java.awt.Color(0, 0, 0));
         autorLabel.setText("Autor");
         jPanel1.add(autorLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, -1));
 
-        autor2Label.setForeground(new java.awt.Color(0, 0, 0));
         autor2Label.setText("Autor 2");
         jPanel1.add(autor2Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
 
-        autor3Label.setForeground(new java.awt.Color(0, 0, 0));
         autor3Label.setText("Autor 3");
         jPanel1.add(autor3Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, -1, -1));
 
-        generoLabel.setForeground(new java.awt.Color(0, 0, 0));
         generoLabel.setText("Genero");
         jPanel1.add(generoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, -1, -1));
 
-        caracteristicaLabel.setForeground(new java.awt.Color(0, 0, 0));
         caracteristicaLabel.setText("Caracteristica");
         jPanel1.add(caracteristicaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, -1));
 
-        isbnLabel.setForeground(new java.awt.Color(0, 0, 0));
         isbnLabel.setText("ISBN");
         jPanel1.add(isbnLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, -1, -1));
 
         areaTematicaLabel.setBackground(new java.awt.Color(0, 0, 0));
-        areaTematicaLabel.setForeground(new java.awt.Color(0, 0, 0));
         areaTematicaLabel.setText("Area Temática");
         jPanel1.add(areaTematicaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, -1, -1));
 
-        tipoLabel.setForeground(new java.awt.Color(0, 0, 0));
         tipoLabel.setText("Tipo");
         jPanel1.add(tipoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 510, -1, -1));
 
-        editorialNombreLabel.setForeground(new java.awt.Color(0, 0, 0));
         editorialNombreLabel.setText("Editorial");
         jPanel1.add(editorialNombreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
 
-        paisLabel.setForeground(new java.awt.Color(0, 0, 0));
         paisLabel.setText("País");
         jPanel1.add(paisLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, -1, -1));
 
-        numeroEdicionLabel.setForeground(new java.awt.Color(0, 0, 0));
         numeroEdicionLabel.setText("Numero de edición");
         jPanel1.add(numeroEdicionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, -1, -1));
 
-        anioEdicionLabel.setForeground(new java.awt.Color(0, 0, 0));
         anioEdicionLabel.setText("Año de edición");
         jPanel1.add(anioEdicionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, -1, -1));
 
-        volumenesLabel.setForeground(new java.awt.Color(0, 0, 0));
         volumenesLabel.setText("Volúmenes");
         jPanel1.add(volumenesLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, -1, -1));
 
-        idiomaLabel.setForeground(new java.awt.Color(0, 0, 0));
         idiomaLabel.setText("Idioma");
         jPanel1.add(idiomaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, -1, -1));
 
-        paginasLabel.setForeground(new java.awt.Color(0, 0, 0));
         paginasLabel.setText("Páginas");
         jPanel1.add(paginasLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 360, -1, -1));
 
-        formatoLabel.setForeground(new java.awt.Color(0, 0, 0));
         formatoLabel.setText("Formato");
         jPanel1.add(formatoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, -1, -1));
 
-        coleccionLabel.setForeground(new java.awt.Color(0, 0, 0));
         coleccionLabel.setText("Colección");
         jPanel1.add(coleccionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, -1, -1));
 
@@ -183,7 +163,6 @@ public class RegistrarObra extends javax.swing.JFrame {
         jPanel1.add(caracteristicaTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 210, -1));
         jPanel1.add(isbnTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 210, -1));
         jPanel1.add(areaTematicaTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 480, 210, -1));
-        jPanel1.add(tipoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 530, 210, -1));
         jPanel1.add(editorialTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 80, 210, -1));
         jPanel1.add(paisTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, 210, -1));
         jPanel1.add(numeroEdicionTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 180, 210, -1));
@@ -201,7 +180,7 @@ public class RegistrarObra extends javax.swing.JFrame {
                 volverJButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(volverJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 550, -1, -1));
+        jPanel1.add(volverJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 590, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -254,6 +233,9 @@ public class RegistrarObra extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 280, 120, 40));
 
+        ComboBoxTIPO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"","LIBRO","ENSAYO","REVISTA","TESIS","MANUAL"}));
+        jPanel1.add(ComboBoxTIPO, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 530, 210, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -262,7 +244,9 @@ public class RegistrarObra extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -323,6 +307,7 @@ public class RegistrarObra extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboBoxTIPO;
     private javax.swing.JLabel anioEdicionLabel;
     private javax.swing.JTextField anioEdicionTextField;
     private javax.swing.JLabel areaTematicaLabel;
@@ -363,7 +348,6 @@ public class RegistrarObra extends javax.swing.JFrame {
     private javax.swing.JLabel subtituloLabel;
     private javax.swing.JTextField subtituloTextField;
     private javax.swing.JLabel tipoLabel;
-    private javax.swing.JTextField tipoTextField;
     private javax.swing.JLabel tituloLabel;
     private javax.swing.JTextField tituloTextField;
     private javax.swing.JLabel volumenesLabel;
@@ -374,10 +358,30 @@ public class RegistrarObra extends javax.swing.JFrame {
     
     public void registrarObra(){
         Almacenamiento a = new Almacenamiento();
-        List <Obra> obras = a.getObras();
-       // Obra obra = new Obra(tituloTextField.getText(), subtituloTextField.getText(), autorTextField.getText(), autor2TextField.getText(), autor3TextField.getText(), generoTextField.getText(), caracteristicaTextField.getText(), isbnTextField.getText(), 0,areaTematicaTextField.getText(), tipoTextField.getText(), new Edicion(editorialTextField.getText(),numeroEdicionTextField.getText(), numeroEdicionTextField.getText(), Integer.parseInt(anioEdicionTextField.getText()), Integer.parseInt(volumenesTextField.getText()), idiomaTextField.getText(), Integer.parseInt(paginasTextField.getText()), formatoTextField.getText()), isbnTextField.getText(), "", 0, 0);
-       // if (!obras.contains(obra)){
-        new Almacenamiento().escribirCSV("recursos/ListadoDeObras.txt", tituloTextField.getText()+","+subtituloTextField.getText()+","+autorTextField.getText()+","+autor2TextField.getText()+","+autor3TextField.getText()+","+generoTextField.getText()+","+caracteristicaTextField.getText()+","+isbnTextField.getText()+","+areaTematicaTextField.getText()+","+tipoTextField.getText()+","+editorialTextField.getText()+","+paisTextField.getText()+","+numeroEdicionTextField.getText()+","+anioEdicionTextField.getText()+","+volumenesTextField.getText()+","+idiomaTextField.getText()+","+paginasTextField.getText()+","+formatoTextField.getText()+","+coleccionTextField.getText()+","+isbnColeccionTextField.getText());
-        //} else {JOptionPane.showMessageDialog(null, "Ya existe esta obra!", "Ventana emergente", 1);}
+        a.obtenerObras("recursos/ListadoDeObras.txt");
+        List<Obra> obras = a.getObras();
+        
+        TipoObra tipoObra = TipoObra.LIBRO;
+         switch (ComboBoxTIPO.getSelectedItem().toString()) {
+                        case "LIBRO":
+                            tipoObra = TipoObra.LIBRO;
+                            break;
+                        case "REVISTA":
+                            tipoObra = TipoObra.REVISTA;
+                            break;
+                        case "ENSAYO":
+                            tipoObra = TipoObra.ENSAYO;
+                            break;
+                        case "TESIS":
+                            tipoObra = TipoObra.TESIS;
+                            break;
+                        case "MANUAL":
+                            tipoObra = TipoObra.MANUAL;
+                            break;
+                    }
+        Obra obra = new Obra(tituloTextField.getText(), subtituloTextField.getText(), autorTextField.getText(), autor2TextField.getText(), autor3TextField.getText(), generoTextField.getText(), caracteristicaTextField.getText(), isbnTextField.getText(), 0,areaTematicaTextField.getText(), tipoObra, new Edicion(editorialTextField.getText(),numeroEdicionTextField.getText(), numeroEdicionTextField.getText(), Integer.parseInt(anioEdicionTextField.getText()), Integer.parseInt(volumenesTextField.getText()), idiomaTextField.getText(), Integer.parseInt(paginasTextField.getText()), formatoTextField.getText()), isbnTextField.getText(), "", 0, 0);
+        if (!obras.contains(obra)){
+        new Almacenamiento().escribirCSV("recursos/ListadoDeObras.txt", tituloTextField.getText()+","+subtituloTextField.getText()+","+autorTextField.getText()+","+autor2TextField.getText()+","+autor3TextField.getText()+","+generoTextField.getText()+","+caracteristicaTextField.getText()+","+isbnTextField.getText()+","+areaTematicaTextField.getText()+","+ComboBoxTIPO.getSelectedItem().toString()+","+editorialTextField.getText()+","+paisTextField.getText()+","+numeroEdicionTextField.getText()+","+anioEdicionTextField.getText()+","+volumenesTextField.getText()+","+idiomaTextField.getText()+","+paginasTextField.getText()+","+formatoTextField.getText()+","+coleccionTextField.getText()+","+isbnColeccionTextField.getText());
+        } else {JOptionPane.showMessageDialog(null, "Ya existe esta obra!", "Ventana emergente", 1);}
     }     
 }

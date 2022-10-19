@@ -38,6 +38,7 @@ public class Administracion extends javax.swing.JFrame {
         jLabelRegistrar = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ventana Principal");
@@ -59,9 +60,9 @@ public class Administracion extends javax.swing.JFrame {
                 DeudoresActionPerformed(evt);
             }
         });
-        jPanel1.add(Deudores, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 270, 150, 50));
+        jPanel1.add(Deudores, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 150, 50));
 
-        jButton1.setText("Ver obras disponibles");
+        jButton1.setText("Todas las obras");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -114,6 +115,15 @@ public class Administracion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 140, 50));
+
+        jButton5.setText("Prestamos vigentes");
+        jButton5.setToolTipText("");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 260, 150, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -168,6 +178,11 @@ public class Administracion extends javax.swing.JFrame {
         new RegistrarObra().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+     this.setVisible(false);
+     new PrestamosVigentes().setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -209,6 +224,7 @@ public class Administracion extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabelPrestamos;
     private javax.swing.JLabel jLabelPrestar;
     private javax.swing.JLabel jLabelRegistrar;

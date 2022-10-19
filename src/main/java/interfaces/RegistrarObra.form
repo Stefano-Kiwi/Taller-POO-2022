@@ -28,7 +28,10 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPanel1" min="-2" pref="625" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -49,9 +52,6 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="ISBN de colecci&#xf3;n"/>
           </Properties>
           <Constraints>
@@ -62,9 +62,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="tituloLabel">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Titulo"/>
           </Properties>
           <Constraints>
@@ -75,9 +72,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="subtituloLabel">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Subtitulo"/>
           </Properties>
           <Constraints>
@@ -88,9 +82,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="autorLabel">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Autor"/>
           </Properties>
           <Constraints>
@@ -101,9 +92,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="autor2Label">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Autor 2"/>
           </Properties>
           <Constraints>
@@ -114,9 +102,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="autor3Label">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Autor 3"/>
           </Properties>
           <Constraints>
@@ -127,9 +112,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="generoLabel">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Genero"/>
           </Properties>
           <Constraints>
@@ -140,9 +122,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="caracteristicaLabel">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Caracteristica"/>
           </Properties>
           <Constraints>
@@ -153,9 +132,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="isbnLabel">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="ISBN"/>
           </Properties>
           <Constraints>
@@ -169,9 +145,6 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Area Tem&#xe1;tica"/>
           </Properties>
           <Constraints>
@@ -182,9 +155,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="tipoLabel">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Tipo"/>
           </Properties>
           <Constraints>
@@ -195,9 +165,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="editorialNombreLabel">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Editorial"/>
           </Properties>
           <Constraints>
@@ -208,9 +175,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="paisLabel">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Pa&#xed;s"/>
           </Properties>
           <Constraints>
@@ -221,9 +185,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="numeroEdicionLabel">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Numero de edici&#xf3;n"/>
           </Properties>
           <Constraints>
@@ -234,9 +195,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="anioEdicionLabel">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="A&#xf1;o de edici&#xf3;n"/>
           </Properties>
           <Constraints>
@@ -247,9 +205,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="volumenesLabel">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Vol&#xfa;menes"/>
           </Properties>
           <Constraints>
@@ -260,9 +215,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="idiomaLabel">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Idioma"/>
           </Properties>
           <Constraints>
@@ -273,9 +225,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="paginasLabel">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="P&#xe1;ginas"/>
           </Properties>
           <Constraints>
@@ -286,9 +235,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="formatoLabel">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Formato"/>
           </Properties>
           <Constraints>
@@ -299,9 +245,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="coleccionLabel">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Colecci&#xf3;n"/>
           </Properties>
           <Constraints>
@@ -376,13 +319,6 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="80" y="480" width="210" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tipoTextField">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="80" y="530" width="210" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -465,7 +401,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="850" y="550" width="-1" height="-1"/>
+              <AbsoluteConstraints x="880" y="590" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -558,6 +494,21 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JComboBox" name="ComboBoxTIPO">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] {&quot;&quot;,&quot;LIBRO&quot;,&quot;ENSAYO&quot;,&quot;REVISTA&quot;,&quot;TESIS&quot;,&quot;MANUAL&quot;})" type="code"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="80" y="530" width="210" height="-1"/>
+            </Constraint>
+          </Constraints>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

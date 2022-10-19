@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package interfaces;
 
 import acceso.Alumno;
@@ -11,6 +7,9 @@ import inventario.Almacenamiento;
 import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import acceso.*;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -311,8 +310,9 @@ public class NuevoLector extends javax.swing.JFrame {
     }//GEN-LAST:event_carreraComponentHidden
 
     private void tipoLectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoLectorActionPerformed
-        String opcion=tipoLector.getSelectedItem().toString();
-        switch(opcion){
+
+        String opcion = tipoLector.getSelectedItem().toString();
+        switch (opcion) {
             case "Publico General":
                 this.labelCarrera.setVisible(false);
                 this.labelFacultad.setVisible(false);
@@ -332,40 +332,50 @@ public class NuevoLector extends javax.swing.JFrame {
                 this.facultad.setVisible(true);
                 break;
         }
-        
+
     }//GEN-LAST:event_tipoLectorActionPerformed
 
     private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCrearActionPerformed
-        Almacenamiento alma=new Almacenamiento();
-        
-        String apellidonombre=this.ApellidoYNombre.getText();
-        String[]ApellidoNombre=apellidonombre.split("\\s");
-        String apellido=ApellidoNombre[0];
-        String nombre=ApellidoNombre[1];
-        String fechaNacimiento=this.FechaNacimiento.getText();
+        Almacenamiento alma = new Almacenamiento();
+        DatosDeAcceso da = new DatosDeAcceso();
+        List<Lector> lectores = da.getLectores();
+
+        String apellidonombre = this.ApellidoYNombre.getText();
+        String[] ApellidoNombre = apellidonombre.split("\\s");
+        String apellido = ApellidoNombre[0];
+        String nombre = ApellidoNombre[1];
+        String fechaNacimiento = this.FechaNacimiento.getText();
         String[] fechaArr = fechaNacimiento.split("/");
 
         LocalDate fecha = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
-        
-        
-        String opcion=tipoLector.getSelectedItem().toString();
-        switch(opcion){
+
+        String opcion = tipoLector.getSelectedItem().toString();
+        switch (opcion) {
             case "Publico General":
-                Lector lector=new Lector(nombre,apellido,this.tipodocumento.getText(),Integer.parseInt(this.NroDocumento.getText()),fecha,this.Sexo.getText(),this.correo.getText(),this.numeroTelefono.getText(),this.Nacionalidad.getText(),this.domicilio.getText(),Integer.parseInt(this.CodigoPostal.getText()),this.Departamento.getText(),this.localidad.getText());
-                System.out.println(lector.toCSV());
-                alma.escribirCSV("recursos/ListadoDeLectores.txt",lector.toCSV());
+                Lector lector = new Lector(nombre, apellido, this.tipodocumento.getText(), Integer.parseInt(this.NroDocumento.getText()), fecha, this.Sexo.getText(), this.correo.getText(), this.numeroTelefono.getText(), this.Nacionalidad.getText(), this.domicilio.getText(), Integer.parseInt(this.CodigoPostal.getText()), this.Departamento.getText(), this.localidad.getText());
+                if (!lectores.contains(lector)) {
+                    alma.escribirCSV("recursos/ListadoDeLectores.txt", lector.toCSV());
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ya existe este lector!", "Ventana emergente", 1);
+                }
                 break;
             case "Docente":
-                Docente docente=new Docente(nombre,apellido,this.tipodocumento.getText(),Integer.parseInt(this.NroDocumento.getText()),fecha,this.Sexo.getText(),this.correo.getText(),this.numeroTelefono.getText(),this.Nacionalidad.getText(),this.domicilio.getText(),Integer.parseInt(this.CodigoPostal.getText()),this.Departamento.getText(),this.localidad.getText(),this.carrera.getText());
-                System.out.println(docente.toCSV());
-                alma.escribirCSV("recursos/ListadoDeLectores.txt",docente.toCSV());
+                Docente docente = new Docente(nombre, apellido, this.tipodocumento.getText(), Integer.parseInt(this.NroDocumento.getText()), fecha, this.Sexo.getText(), this.correo.getText(), this.numeroTelefono.getText(), this.Nacionalidad.getText(), this.domicilio.getText(), Integer.parseInt(this.CodigoPostal.getText()), this.Departamento.getText(), this.localidad.getText(), this.carrera.getText());
+                if (!lectores.contains(docente)) {
+                    alma.escribirCSV("recursos/ListadoDeLectores.txt", docente.toCSV());
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ya existe este lector!", "Ventana emergente", 1);
+                }
                 break;
             case "Alumno":
-                Alumno alumno=new Alumno(nombre,apellido,this.tipodocumento.getText(),Integer.parseInt(this.NroDocumento.getText()),fecha,this.Sexo.getText(),this.correo.getText(),this.numeroTelefono.getText(),this.Nacionalidad.getText(),this.domicilio.getText(),Integer.parseInt(this.CodigoPostal.getText()),this.Departamento.getText(),this.localidad.getText(),this.carrera.getText(),this.facultad.getText());
-                System.out.println(alumno.toCSV());
-                alma.escribirCSV("recursos/ListadoDeLectores.txt",alumno.toCSV());
+                Alumno alumno = new Alumno(nombre, apellido, this.tipodocumento.getText(), Integer.parseInt(this.NroDocumento.getText()), fecha, this.Sexo.getText(), this.correo.getText(), this.numeroTelefono.getText(), this.Nacionalidad.getText(), this.domicilio.getText(), Integer.parseInt(this.CodigoPostal.getText()), this.Departamento.getText(), this.localidad.getText(), this.carrera.getText(), this.facultad.getText());
+                if (!lectores.contains(alumno)) {
+                    alma.escribirCSV("recursos/ListadoDeLectores.txt", alumno.toCSV());
+                } else {
+                    JOptionPane.showMessageDialog(null, "Ya existe este lector!", "Ventana emergente", 1);
+                }
                 break;
-        } 
+        }
         this.setVisible(false);
         new Administracion().setVisible(true);
     }//GEN-LAST:event_botonCrearActionPerformed
@@ -373,7 +383,6 @@ public class NuevoLector extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-
     /**
      * @param args the command line arguments
      */
