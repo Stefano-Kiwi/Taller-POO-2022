@@ -199,11 +199,17 @@ public class ListaObras extends javax.swing.JFrame {
                 nombreEditorial.add(obra.getEdicion().getNombreEditorial());
             }
         }
+        
+        //array de Strings para luego usarlo en el combobox
+        
         String[] edit = new String[nombreEditorial.size()];
+        
+        //Iteramos los nombre de las editoriales
         for (int i = 0; i < nombreEditorial.size(); i++) {
-            edit[i] = nombreEditorial.get(i);
+            edit[i] = nombreEditorial.get(i); //Agregamos al array los nombres
         }
         
+        // Se muestran los nombres en el combobox
         editorialBox.setModel(new javax.swing.DefaultComboBoxModel<>(edit));
                
         
