@@ -15,6 +15,7 @@ public class ListaDeudores extends javax.swing.JFrame {
      */
     public ListaDeudores() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

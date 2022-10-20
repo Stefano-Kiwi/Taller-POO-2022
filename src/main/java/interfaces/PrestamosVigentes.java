@@ -15,6 +15,7 @@ public class PrestamosVigentes extends javax.swing.JFrame {
      */
     public PrestamosVigentes() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

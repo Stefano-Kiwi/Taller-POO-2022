@@ -20,6 +20,7 @@ public class ListaObras extends javax.swing.JFrame {
     public ListaObras() {
         initComponents();
         cargarDatos();
+        this.setLocationRelativeTo(null);
     }
 
     /**

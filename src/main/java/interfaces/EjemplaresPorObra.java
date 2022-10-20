@@ -18,6 +18,7 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
     public EjemplaresPorObra() {
         initComponents();
         cargarDatos();
+        this.setLocationRelativeTo(null);
     }
 
     /**

@@ -22,6 +22,7 @@ public class NuevoLector extends javax.swing.JFrame {
      */
     public NuevoLector() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

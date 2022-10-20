@@ -18,6 +18,7 @@ public class RegistrarObra extends javax.swing.JFrame {
      */
     public RegistrarObra() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
