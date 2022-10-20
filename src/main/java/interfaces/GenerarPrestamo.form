@@ -240,7 +240,7 @@
     <Component class="javax.swing.JComboBox" name="duracionPrestamo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] {&quot;1 dia&quot;,&quot;2 dias&quot;,&quot;3 dias&quot;,&quot;4 dias&quot;})" type="code"/>
+          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] {&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;})" type="code"/>
         </Property>
       </Properties>
       <Events>

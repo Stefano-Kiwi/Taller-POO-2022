@@ -1,6 +1,10 @@
 package interfaces;
+import acceso.DatosDeAcceso;
+import acceso.Lector;
 import acceso.Prestamo;
+import acceso.TipoPrestamo;
 import inventario.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -112,7 +116,7 @@ public class GenerarPrestamo extends javax.swing.JFrame {
             }
         });
 
-        duracionPrestamo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"1 dia","2 dias","3 dias","4 dias"}));
+        duracionPrestamo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"1","2","3","4"}));
         duracionPrestamo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 duracionPrestamoActionPerformed(evt);
@@ -251,29 +255,63 @@ public class GenerarPrestamo extends javax.swing.JFrame {
     private void botonPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPrestamoActionPerformed
         Almacenamiento a = new Almacenamiento();
         a.obtenerObras("recursos/ListadoDeObras.txt");
+        DatosDeAcceso da=new DatosDeAcceso();
         a.busquedaObras(numOption, BusquedaLibro.getText());
         List<Obra>Resultado=new ArrayList();
         Resultado=a.busquedaObras(numOption, BusquedaLibro.getText());
-        for(Obra obra : Resultado){
-            System.out.println(obra);
+        
+        da.obtenerLectores("recursos/ListadoDeLectores.txt");
+        List<Lector> lectores=da.getLectores();
+        int nroDocumento=Integer.valueOf(documento.getText());
+   
+        Lector lector=null;    
+        for(Lector lector1:lectores){
+            if(lector1.getNumDocumento()==nroDocumento){
+                lector=lector1;
+                break;
+            }
         }
         
+        String fecha=fechaPrestamo.getText();
+        String[] fechaArr = fecha.split("/");
+        LocalDate fechaprestamo = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
         
-        //System.out.println(obraBuscar);
-       //prueba listas
-//         a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
-//        List<Ejemplar>disponibles=a.getEjemplarDisponibles();
-//        List<Ejemplar>prestados=a.getEjemplaresPrestados();
-//        List<Ejemplar>dadosdebaja=a.getEjemplaresDadosDeBaja();
-//        for(Ejemplar ejemplar:disponibles){
-//            System.out.println(ejemplar.getIdUnico());
-//        }
-//        for(Ejemplar ejemplar:prestados){
-//            System.out.println(ejemplar+"prestados");
-//        }
-//        for(Ejemplar ejemplar:dadosdebaja){
-//            System.out.println(ejemplar+"dados de baja");
-//        }
+        String opcion1=tipoPrestamo.getSelectedItem().toString();
+        LocalDate fechaDevolucion=null;
+        TipoPrestamo tpPrestamo=null;
+        switch(opcion1){
+            case "Sala":
+                fechaDevolucion=fechaprestamo;
+                tpPrestamo=tpPrestamo.SALA;
+                break;
+            case "Domicilio":
+                int dias=Integer.valueOf(duracionPrestamo.getSelectedItem().toString());
+                int anio=fechaprestamo.getYear();
+                int mes=fechaprestamo.getMonthValue();
+                fechaDevolucion=LocalDate.of(anio,mes,(fechaprestamo.getDayOfMonth()+ dias));
+                tpPrestamo=tpPrestamo.DOMICILIO;
+                break;
+        }
+        Obra obra=null;
+        if(Resultado.size()==1){
+           obra=Resultado.get(0);      
+        }
+ 
+        a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
+        List<Ejemplar>disponibles=a.getEjemplarDisponibles();
+        Ejemplar ejemplar=null;
+        for(Ejemplar ejemplar1:disponibles){
+            if(ejemplar1.getObra().equals(obra)){
+                ejemplar=ejemplar1;
+                break;
+            }
+        }
+        
+        int hora=Integer.parseInt(horaPrestamo.getText());
+        Prestamo prestamo=new Prestamo(tpPrestamo,fechaprestamo,hora,3,fechaDevolucion,lector,ejemplar);
+        
+        a.escribirCSV("recursos/ListaPrestamos.txt", prestamo.toCSV());
+        
     }//GEN-LAST:event_botonPrestamoActionPerformed
 
     private void BusquedaLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BusquedaLibroActionPerformed
