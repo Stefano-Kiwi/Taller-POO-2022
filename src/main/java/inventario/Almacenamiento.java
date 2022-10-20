@@ -22,6 +22,9 @@ public class Almacenamiento {
     private List<Ejemplar> ejemplarDisponibles;
     private List<Ejemplar> ejemplaresPrestados;
     private List<Ejemplar> ejemplaresDadosDeBaja;
+    private List<Prestamo> prestamosActivos;
+    private List<Prestamo> prestamosTerminados;
+    
     
     
     public Almacenamiento() {
@@ -350,11 +353,104 @@ public class Almacenamiento {
                break;
                    
        }
-               
-       
-       
+                
+    }
+    
+    public void obtenerPrestamos(String direccion){
+        
+        this.prestamosActivos=new ArrayList();
+        this.prestamosTerminados=new ArrayList();
+        
+        DatosDeAcceso da=new DatosDeAcceso();
+        da.obtenerLectores("recursos/ListadoDeLectores.txt");
+        List<Lector> lectores=da.getLectores();
+        
+        try{
+        String regex1="^(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*)$";
+        File archivo=new File(direccion);
+        FileReader fr= new FileReader(archivo);
+        BufferedReader br = new BufferedReader(fr);
+        Pattern pattern = Pattern.compile(regex1);
+        String linea;
+        linea = br.readLine();
+        Matcher matcher;
+        
+        while((linea=br.readLine())!=null){
+            matcher = pattern.matcher(linea);
+            if (matcher.matches()) { 
+              String opcion=matcher.group(1);
+              Lector lector=null;
+              int dniLector=Integer.parseInt(matcher.group(7));
+              for(Lector lector1:lectores){
+                  if(lector1.getNumDocumento()==dniLector){
+                      lector=lector1;
+                      break;
+                  }
+              }
+              
+              String idunico=matcher.group(8);
+              Ejemplar ejemplar=null;
+              for(Ejemplar ejemplar1:ejemplares){
+                  if(ejemplar1.getIdUnico().equalsIgnoreCase(idunico)){
+                      ejemplar=ejemplar1;
+                      break;
+                  }
+              }
+              
+              TipoPrestamo tp=null;
+              String Tipo=matcher.group(2);
+              switch(Tipo){
+                  case "SALA":
+                      tp=tp.SALA;
+                      break;
+                  case "DOMICILIO":
+                      tp=tp.DOMICILIO;
+                      break;
+              }
+              
+              String fechaPrestamo=matcher.group(3);
+              String[] fechaArr = fechaPrestamo.split("/");
+              LocalDate fecha = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
+              
+              String fechaDevolucion=matcher.group(6);
+              String[] fechaArr2 = fechaDevolucion.split("/");
+              LocalDate fechaDev = LocalDate.of(Integer.parseInt(fechaArr2[2]), Integer.parseInt(fechaArr2[1]), Integer.parseInt(fechaArr2[0]));
+              
+              switch(opcion){
+                  case "1":
+                      this.prestamosActivos.add(new Prestamo(tp,fecha,Integer.parseInt(matcher.group(4)),Integer.parseInt(matcher.group(5)),fechaDev,lector,ejemplar));
+                      break;
+                  case "2":
+                      this.prestamosTerminados.add(new Prestamo(tp,fecha,Integer.parseInt(matcher.group(4)),Integer.parseInt(matcher.group(5)),fechaDev,lector,ejemplar));
+                      break;
+              }
+            }
+            
+        }
+
+        
+        }catch(Exception e){
+           System.out.println(e);
+        }
     }
 
+    public List<Prestamo> getPrestamosActivos() {
+        return prestamosActivos;
+    }
+
+    public void setPrestamosActivos(List<Prestamo> prestamosActivos) {
+        this.prestamosActivos = prestamosActivos;
+    }
+
+    public List<Prestamo> getPrestamosTerminados() {
+        return prestamosTerminados;
+    }
+
+    public void setPrestamosTerminados(List<Prestamo> prestamosTerminados) {
+        this.prestamosTerminados = prestamosTerminados;
+    }
+
+    
     public List<Ejemplar> getEjemplarDisponibles() {
         return ejemplarDisponibles;
     }

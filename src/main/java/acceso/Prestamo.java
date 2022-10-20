@@ -28,6 +28,11 @@ public class Prestamo {
         this.lector=lector;
         this.ejemplar=ejemplar;
     }
+
+    @Override
+    public String toString() {
+        return "Prestamo{" + "tipoPrestamo=" + tipoPrestamo + ", fechaPrestamo=" + fechaPrestamo + ", horaPrestamo=" + horaPrestamo + ", idBibliotecario=" + idBibliotecario + ", fechaDevolucion=" + fechaDevolucion + ", codigoDeBarras=" + codigoDeBarras + ", lector=" + lector + ", ejemplar=" + ejemplar + '}';
+    }
     
     public String toCSV(){
        LocalDate fechaprestamo=this.fechaPrestamo;

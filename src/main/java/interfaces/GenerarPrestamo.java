@@ -1,4 +1,5 @@
 package interfaces;
+import acceso.Prestamo;
 import inventario.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -256,14 +257,16 @@ public class GenerarPrestamo extends javax.swing.JFrame {
         for(Obra obra : Resultado){
             System.out.println(obra);
         }
+        
+        
         //System.out.println(obraBuscar);
        //prueba listas
-//        a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
+//         a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
 //        List<Ejemplar>disponibles=a.getEjemplarDisponibles();
 //        List<Ejemplar>prestados=a.getEjemplaresPrestados();
 //        List<Ejemplar>dadosdebaja=a.getEjemplaresDadosDeBaja();
 //        for(Ejemplar ejemplar:disponibles){
-//            System.out.println(ejemplar+"disponible");
+//            System.out.println(ejemplar.getIdUnico());
 //        }
 //        for(Ejemplar ejemplar:prestados){
 //            System.out.println(ejemplar+"prestados");
