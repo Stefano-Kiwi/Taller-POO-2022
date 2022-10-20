@@ -19,6 +19,10 @@ public class Almacenamiento {
     private List<Obra> obras;
     private List<Ejemplar> ejemplares;
     private List<Reserva> reservas;
+    private List<Ejemplar> ejemplarDisponibles;
+    private List<Ejemplar> ejemplaresPrestados;
+    private List<Ejemplar> ejemplaresDadosDeBaja;
+    
     
     public Almacenamiento() {
     }
@@ -145,8 +149,11 @@ public class Almacenamiento {
 
     public void obtenerEjemplares(String direccion) {
         this.ejemplares = new ArrayList();
+        this.ejemplarDisponibles=new ArrayList();
+        this.ejemplaresPrestados=new ArrayList();
+        this.ejemplaresDadosDeBaja=new ArrayList();
         try {
-            final String regex1 = "^(.*),(.*),(.*),(.*),(.*),(.*),(.*)$";
+            final String regex1 = "^(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*)$";
 
             File archivo = new File(direccion);
             FileReader fr = new FileReader(archivo);
@@ -162,28 +169,42 @@ public class Almacenamiento {
             while ((linea = br.readLine()) != null) {
                 matcher = pattern.matcher(linea);
                 if (matcher.matches()) {    // ISBN, lugarFisico,fechaAdquisicion, formaDeCompra, si/no, fechaDeBaja,motivoBaja
-                    String isbn = matcher.group(1);
-                    String lugar = matcher.group(2);
-                    String estaDadoDeBaja = matcher.group(5);
+                    
+                    String disponibilidad=matcher.group(1);
+                        
+                    String isbn = matcher.group(2);
+                    String lugar = matcher.group(3);
+                    String estaDadoDeBaja = matcher.group(6);
                     
                     LocalDate fechaBaja = LocalDate.now();
-                    String motivo = matcher.group(7);
+                    String motivo = matcher.group(8);
                     
                     for (Obra obra : obras) {
                         if(obra.getISBN().equals(isbn)){
-                            obra.setEjemplares(obra.getEjemplares()+1);                         // ESTO LO AGREGA A LA OBRA EN SÍ.
-                 
+                            obra.setEjemplares(obra.getEjemplares()+1);  // ESTO LO AGREGA A LA OBRA EN SÍ.
+                            
+                            switch(disponibilidad){
+                             case "1":
+                                this.ejemplarDisponibles.add(new Ejemplar(lugar, obra,new Adquisicion(LocalDate.now(), matcher.group(5), obra.getAreaTematica())));
+                                break;
+                             case "2":
+                                this.ejemplaresPrestados.add(new Ejemplar(lugar, obra,new Adquisicion(LocalDate.now(), matcher.group(5), obra.getAreaTematica())));
+                                break;
+                             case "3":
+                                this.ejemplaresDadosDeBaja.add(new Ejemplar(lugar, obra,new Adquisicion(LocalDate.now(), matcher.group(5), obra.getAreaTematica()),new Baja(LocalDate.now(), motivo, lugar)));
+                                break;
+                            }
+                            
                             if(estaDadoDeBaja.equalsIgnoreCase("no")){          // ESTO LO AGREGA A LA LISTA DE EJEMPLARES GENERAL.
-                                ejemplares.add(new Ejemplar(lugar, obra,new Adquisicion(LocalDate.now(), matcher.group(4), obra.getAreaTematica())));
-                                obra.AgregarEjemplar(new Ejemplar(lugar, obra,new Adquisicion(LocalDate.now(), matcher.group(4), obra.getAreaTematica())));
+                                ejemplares.add(new Ejemplar(lugar, obra,new Adquisicion(LocalDate.now(), matcher.group(5), obra.getAreaTematica())));
+                                obra.AgregarEjemplar(new Ejemplar(lugar, obra,new Adquisicion(LocalDate.now(), matcher.group(5), obra.getAreaTematica())));
                                 
                             }else{
-                                ejemplares.add(new Ejemplar(lugar, obra,new Adquisicion(LocalDate.now(), matcher.group(4), obra.getAreaTematica()),new Baja(LocalDate.now(), motivo, lugar)));
-                                obra.AgregarEjemplar(new Ejemplar(lugar, obra,new Adquisicion(LocalDate.now(), matcher.group(4), obra.getAreaTematica()),new Baja(LocalDate.now(), motivo, lugar)));
+                                ejemplares.add(new Ejemplar(lugar, obra,new Adquisicion(LocalDate.now(), matcher.group(5), obra.getAreaTematica()),new Baja(LocalDate.now(), motivo, lugar)));
+                                obra.AgregarEjemplar(new Ejemplar(lugar, obra,new Adquisicion(LocalDate.now(), matcher.group(5), obra.getAreaTematica()),new Baja(LocalDate.now(), motivo, lugar)));
                             }
                         }
-                    }
-                    
+                    }     
                     
                 }
             }
@@ -332,6 +353,30 @@ public class Almacenamiento {
                
        
        
+    }
+
+    public List<Ejemplar> getEjemplarDisponibles() {
+        return ejemplarDisponibles;
+    }
+
+    public void setEjemplarDisponibles(List<Ejemplar> ejemplarDisponibles) {
+        this.ejemplarDisponibles = ejemplarDisponibles;
+    }
+
+    public List<Ejemplar> getEjemplaresPrestados() {
+        return ejemplaresPrestados;
+    }
+
+    public void setEjemplaresPrestados(List<Ejemplar> ejemplaresPrestados) {
+        this.ejemplaresPrestados = ejemplaresPrestados;
+    }
+
+    public List<Ejemplar> getEjemplaresDadosDeBaja() {
+        return ejemplaresDadosDeBaja;
+    }
+
+    public void setEjemplaresDadosDeBaja(List<Ejemplar> ejemplaresDadosDeBaja) {
+        this.ejemplaresDadosDeBaja = ejemplaresDadosDeBaja;
     }
 
     public List<Ejemplar> getEjemplares() {
