@@ -41,7 +41,7 @@ public class Lector extends Persona {
        int dia=a.getDayOfMonth();
        int mes=a.getMonthValue();
        int anio=a.getYear();
-       return "0"+","+this.getNombre()+","+this.getApellido()+","+dia+"/"+mes+"/"+anio+","+this.getNumDocumento()+","+this.getFechaNacimiento()+","+this.getSexo()+","+this.getCorreo()+","+this.getNroCelular()+","+this.getNacionalidad()+","+this.getDomicilio()+","+this.getCodigoPostal()+","+this.getDepartamento()+","+this.getLocalidad()+","+",";
+       return "0"+","+this.getNombre()+","+this.getApellido()+","+this.getNumDocumento()+","+dia+"/"+mes+"/"+anio+","+this.getSexo()+","+this.getCorreo()+","+this.getNroCelular()+","+this.getNacionalidad()+","+this.getDomicilio()+","+this.getCodigoPostal()+","+this.getDepartamento()+","+this.getLocalidad()+","+",";
      }
 
     

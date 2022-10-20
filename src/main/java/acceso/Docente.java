@@ -31,6 +31,6 @@ public class Docente extends Lector {
        int dia=a.getDayOfMonth();
        int mes=a.getMonthValue();
        int anio=a.getYear();
-       return "2"+","+this.getNombre()+","+this.getApellido()+","+this.getTipoDocumento()+","+this.getNumDocumento()+","+dia+"/"+mes+"/"+anio+","+","+this.getSexo()+","+this.getCorreo()+","+this.getNroCelular()+","+this.getNacionalidad()+","+this.getDomicilio()+","+this.getCodigoPostal()+","+this.getDepartamento()+","+this.getLocalidad()+","+this.carrera+",";
+       return "2"+","+this.getNombre()+","+this.getApellido()+","+this.getTipoDocumento()+","+this.getNumDocumento()+","+dia+"/"+mes+"/"+anio+","+this.getSexo()+","+this.getCorreo()+","+this.getNroCelular()+","+this.getNacionalidad()+","+this.getDomicilio()+","+this.getCodigoPostal()+","+this.getDepartamento()+","+this.getLocalidad()+","+this.carrera+",";
      }
 }
