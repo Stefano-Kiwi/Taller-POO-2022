@@ -1,6 +1,7 @@
 package interfaces;
 
 import inventario.Almacenamiento;
+import inventario.Ejemplar;
 import inventario.Obra;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +62,11 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         jLabel1.setText("Buscar ejemplares de la obra:");
 
         ComboBoxTitulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboBoxTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxTituloActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,6 +98,36 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ComboBoxTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxTituloActionPerformed
+        String opcionElegida = ComboBoxTitulo.getSelectedItem().toString();
+
+        Almacenamiento a = new Almacenamiento();
+        a.obtenerObras("recursos/ListadoDeObras.txt");
+        a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
+        List<Obra> obras = a.getObras();
+        List<Ejemplar> ejemplares = a.getEjemplares();
+
+        List<Ejemplar> ejemplaresAMostrar = new ArrayList();
+        
+        for (Obra obra : obras) {
+            for (Ejemplar ejemplar : ejemplares) {
+                if(obra.getTitulo().equals(opcionElegida) && obra.getISBN().equals(ejemplar.getObra().getISBN())){
+                    ejemplaresAMostrar.add(ejemplar);
+            }
+            }
+        }
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Obra");
+        modelo.addColumn("Lugar del ejemplar");
+        TablaEjemplar.setModel(modelo);
+        
+         for (Ejemplar ejemplar : ejemplaresAMostrar) {
+            String[] campos = ejemplar.tablaGUI().split(",");
+            modelo.addRow(campos);
+        }
+        
+    }//GEN-LAST:event_ComboBoxTituloActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,7 +163,7 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public void cargarDatos() {
 
         Almacenamiento a = new Almacenamiento();
@@ -139,26 +175,21 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         modelo.addColumn("Lugar del ejemplar");
         TablaEjemplar.setModel(modelo);
 
-        List <String> nombreDeObras = new ArrayList();
+        List<String> nombreDeObras = new ArrayList();
+
         for (Obra obraNombre : obras) {
-            if (!nombreDeObras.contains(obraNombre.getTitulo())){
+            if (!nombreDeObras.contains(obraNombre.getTitulo())) {
                 nombreDeObras.add(obraNombre.getTitulo());
             }
         }
-        
         String[] edit = new String[nombreDeObras.size()];
-        
+
         for (int i = 0; i < nombreDeObras.size(); i++) {
             edit[i] = nombreDeObras.get(i);
         }
-        
+
         ComboBoxTitulo.setModel(new javax.swing.DefaultComboBoxModel<>(edit));
         //Comparar ejemplares por isbn y luego por el titulo que esta en el combobox.
-        for (var obra : obras) {
-            String[] campos = obra.tablaGUI().split(",");
-            modelo.addRow(campos);
-            }
-         
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

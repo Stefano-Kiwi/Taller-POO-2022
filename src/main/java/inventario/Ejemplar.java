@@ -97,6 +97,8 @@ public class Ejemplar {
     }
 
     
-    
+      public String tablaGUI() {
+        return obra.getTitulo() +","+ this.lugarFisico;
+    }
     
 }
