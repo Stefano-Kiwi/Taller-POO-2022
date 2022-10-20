@@ -16,10 +16,15 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
     /**
      * Creates new form EjemplaresPorObra
      */
+    
+        
+    
+    Almacenamiento a = new Almacenamiento();
     public EjemplaresPorObra() {
         initComponents();
         cargarDatos();
         this.setLocationRelativeTo(null);
+ 
     }
 
     /**
@@ -102,21 +107,19 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
     private void ComboBoxTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxTituloActionPerformed
         String opcionElegida = ComboBoxTitulo.getSelectedItem().toString();
 
-        Almacenamiento a = new Almacenamiento();
-        a.obtenerObras("recursos/ListadoDeObras.txt");
         a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
-        List<Obra> obras = a.getObras();
+
         List<Ejemplar> ejemplares = a.getEjemplares();
 
         List<Ejemplar> ejemplaresAMostrar = new ArrayList();
         
-        for (Obra obra : obras) {
-            for (Ejemplar ejemplar : ejemplares) {
-                if(obra.getTitulo().equals(opcionElegida) && obra.getISBN().equals(ejemplar.getObra().getISBN())){
-                    ejemplaresAMostrar.add(ejemplar);
-            }
+        //CORRECCION SOLO PIDO EL TITULO DE LA OBRA DEL EJEMPLAR Y COMPARO CON LA OPCION ELEGIDA
+        for (Ejemplar ejemplar : ejemplares) {
+            if(ejemplar.getObra().getTitulo().equals(opcionElegida)){
+                ejemplaresAMostrar.add(ejemplar);
             }
         }
+
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Obra");
         modelo.addColumn("Lugar del ejemplar");
@@ -165,11 +168,13 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
     }
 
     public void cargarDatos() {
-
-        Almacenamiento a = new Almacenamiento();
+        
         a.obtenerObras("recursos/ListadoDeObras.txt");
-        List<Obra> obras = a.getObras();
 
+        List<Obra> obras = a.getObras();
+        
+ 
+        
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Obra");
         modelo.addColumn("Lugar del ejemplar");
@@ -189,7 +194,9 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         }
 
         ComboBoxTitulo.setModel(new javax.swing.DefaultComboBoxModel<>(edit));
-        //Comparar ejemplares por isbn y luego por el titulo que esta en el combobox.
+        
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
