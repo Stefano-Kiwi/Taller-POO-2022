@@ -16,15 +16,13 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
     /**
      * Creates new form EjemplaresPorObra
      */
-    
-        
-    
     Almacenamiento a = new Almacenamiento();
+
     public EjemplaresPorObra() {
         initComponents();
         cargarDatos();
         this.setLocationRelativeTo(null);
- 
+
     }
 
     /**
@@ -40,6 +38,7 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         TablaEjemplar = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         ComboBoxTitulo = new javax.swing.JComboBox<>();
+        jButtonVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,18 +72,30 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
             }
         });
 
+        jButtonVolver.setText("Volver");
+        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ComboBoxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButtonVolver)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ComboBoxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,13 +109,22 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ComboBoxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jButtonVolver)
+                .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void ComboBoxTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxTituloActionPerformed
+
+        /**
+         *
+         * @author Luciano Aguilar
+         *
+         */
         String opcionElegida = ComboBoxTitulo.getSelectedItem().toString();
 
         a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
@@ -112,10 +132,10 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         List<Ejemplar> ejemplares = a.getEjemplares();
 
         List<Ejemplar> ejemplaresAMostrar = new ArrayList();
-        
+
         //CORRECCION SOLO PIDO EL TITULO DE LA OBRA DEL EJEMPLAR Y COMPARO CON LA OPCION ELEGIDA
         for (Ejemplar ejemplar : ejemplares) {
-            if(ejemplar.getObra().getTitulo().equals(opcionElegida)){
+            if (ejemplar.getObra().getTitulo().equals(opcionElegida)) {
                 ejemplaresAMostrar.add(ejemplar);
             }
         }
@@ -124,13 +144,18 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         modelo.addColumn("Obra");
         modelo.addColumn("Lugar del ejemplar");
         TablaEjemplar.setModel(modelo);
-        
-         for (Ejemplar ejemplar : ejemplaresAMostrar) {
+
+        for (Ejemplar ejemplar : ejemplaresAMostrar) {
             String[] campos = ejemplar.tablaGUI().split(",");
             modelo.addRow(campos);
         }
-        
+
     }//GEN-LAST:event_ComboBoxTituloActionPerformed
+
+    private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
+        this.setVisible(false);
+        new Administracion().setVisible(true);
+    }//GEN-LAST:event_jButtonVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,13 +193,11 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
     }
 
     public void cargarDatos() {
-        
+
         a.obtenerObras("recursos/ListadoDeObras.txt");
 
         List<Obra> obras = a.getObras();
-        
- 
-        
+
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Obra");
         modelo.addColumn("Lugar del ejemplar");
@@ -194,14 +217,13 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         }
 
         ComboBoxTitulo.setModel(new javax.swing.DefaultComboBoxModel<>(edit));
-        
-        
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxTitulo;
     private javax.swing.JTable TablaEjemplar;
+    private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
