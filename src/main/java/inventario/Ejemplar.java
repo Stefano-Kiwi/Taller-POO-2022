@@ -1,5 +1,6 @@
 package inventario;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Ejemplar {
@@ -101,4 +102,12 @@ public class Ejemplar {
         return obra.getTitulo() +","+ this.lugarFisico;
     }
     
+    public String toCSV(){
+        LocalDate fAdquisicion=adquisicion.getFechaAdquisicion();
+        int dia=fAdquisicion.getDayOfMonth();
+        int mes=fAdquisicion.getMonthValue();
+        int año=fAdquisicion.getYear();
+        
+        return "1"+","+obra.getISBN()+","+lugarFisico+","+dia+"/"+mes+"/"+año+","+adquisicion.getFormaDeCompra()+","+"no"+","+" "+",";
+    }
 }
