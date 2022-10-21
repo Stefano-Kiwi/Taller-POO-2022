@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -149,7 +150,11 @@ public class Almacenamiento {
         }
         return resultado;
     }
-
+    
+    public void agregarObra(Obra obra){
+        obras.add(obra);
+        
+    }
     public void obtenerEjemplares(String direccion) {
         this.ejemplares = new ArrayList();
         this.ejemplarDisponibles=new ArrayList();
@@ -258,19 +263,30 @@ public class Almacenamiento {
 
            FileWriter fw = new FileWriter(archivo);
            BufferedWriter bw = new BufferedWriter(fw);
-           lineas=(lineas+"\n"+linea+"\n");
-           bw.write(lineas);
-           bw.close();
-           fw.close();
-         }
-              
-        }catch (Exception e) {
-            System.out.println(e);   
+                lineas = (lineas + "\n" + linea + "\n");
+                bw.write(lineas);
+                bw.close();
+                fw.close();
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
-    
-    
-    
+
+    public void agregarNuevoRenglonCSV(String direccion, String contenido) {
+        try {
+            Writer output;
+            output = new BufferedWriter(new FileWriter(new File(direccion), true));
+            output.append("New Line!");
+            output.close();
+        } catch (Exception e) {
+
+        }
+
+    }
+
+
     public void borrarCSV(String direccion,int opcion){
        /*borra lineas del .txt pasado por parametro dependiendo de la opcion
          opcion 0 = borra todo
