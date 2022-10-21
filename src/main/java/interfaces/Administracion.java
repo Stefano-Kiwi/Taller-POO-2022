@@ -40,6 +40,7 @@ public class Administracion extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         EjemplaresPorObra = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ventana Principal");
@@ -105,7 +106,7 @@ public class Administracion extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 140, 50));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 140, 50));
 
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
@@ -133,6 +134,16 @@ public class Administracion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(EjemplaresPorObra, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, 150, 50));
+
+        jButton6.setBackground(new java.awt.Color(0, 0, 0));
+        jButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jButton6.setText("Registrar Ejemplar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 140, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,8 +204,13 @@ public class Administracion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void EjemplaresPorObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EjemplaresPorObraActionPerformed
-        // TODO add your handling code here:
+       this.setVisible(false);
+       new EjemplaresPorObra().setVisible(true);
     }//GEN-LAST:event_EjemplaresPorObraActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,6 +255,7 @@ public class Administracion extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabelPrestamos;
     private javax.swing.JLabel jLabelPrestar;
     private javax.swing.JLabel jLabelRegistrar;
