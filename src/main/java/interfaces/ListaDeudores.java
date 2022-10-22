@@ -3,6 +3,7 @@ package interfaces;
 import acceso.Lector;
 import acceso.Prestamo;
 import inventario.Almacenamiento;
+import inventario.Ejemplar;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ public class ListaDeudores extends javax.swing.JFrame {
     /**
      * Creates new form ListaDeudores
      */
-    List<Lector> deudores = new ArrayList<>();
+    
     Almacenamiento a = new Almacenamiento();
 
     public ListaDeudores() {
@@ -140,11 +141,15 @@ public class ListaDeudores extends javax.swing.JFrame {
     }
 
     public List<Lector> devolverDeudores() {
-        
+        List<Lector> deudores = new ArrayList<>();
+        a.obtenerObras("recursos/ListadoDeObras.txt");
+        a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
         a.obtenerPrestamos("recursos/ListaPrestamos.txt");
+       
         
         List<Prestamo> prestamos = a.getPrestamosActivos();
 
+        
         for (Prestamo prestamo : prestamos) {
             if(prestamo.getFechaDevolucion().isAfter(LocalDate.now())){
                 deudores.add(prestamo.getLector());

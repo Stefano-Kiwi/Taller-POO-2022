@@ -465,7 +465,7 @@ public class Almacenamiento {
 
         
         }catch(Exception e){
-           e.getStackTrace();
+            System.out.println(e);
         }
     }
     
