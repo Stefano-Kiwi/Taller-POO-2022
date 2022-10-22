@@ -209,7 +209,8 @@ public class Administracion extends javax.swing.JFrame {
     }//GEN-LAST:event_EjemplaresPorObraActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+     this.setVisible(false);
+     new RegistrarEjemplar().setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
