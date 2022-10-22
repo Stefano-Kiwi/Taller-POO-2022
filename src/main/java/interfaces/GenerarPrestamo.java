@@ -1,5 +1,7 @@
 package interfaces;
+import acceso.Alumno;
 import acceso.DatosDeAcceso;
+import acceso.Docente;
 import acceso.Lector;
 import acceso.Prestamo;
 import acceso.TipoPrestamo;
@@ -310,8 +312,16 @@ public class GenerarPrestamo extends javax.swing.JFrame {
         int hora=Integer.parseInt(horaPrestamo.getText());
         Prestamo prestamo=new Prestamo(tpPrestamo,fechaprestamo,hora,3,fechaDevolucion,lector,ejemplar);
         
-        a.escribirCSV("recursos/ListaPrestamos.txt", prestamo.toCSV());
+        a.escribirCSV("recursos/ListaPrestamos.txt", prestamo.toCSV(1));
+        //cambia el estado del ejemplar a prestado(2)
+        a.modificarCSV("recursos/ListadoDeEjemplares.txt",ejemplar.toCSV(1),ejemplar.toCSV(2));
         
+        //agrega nuevo prestamo al contador correspondiente en obra
+        if(lector instanceof Docente || lector instanceof Alumno){
+            obra.agregarNuevoPrestamoAlumnoODocente();
+        }else{
+            obra.agregarNuevoPrestamoPublicoGeneral();
+        }
     }//GEN-LAST:event_botonPrestamoActionPerformed
 
     private void BusquedaLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BusquedaLibroActionPerformed

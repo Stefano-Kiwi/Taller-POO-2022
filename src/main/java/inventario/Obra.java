@@ -18,7 +18,7 @@ public class Obra {
     private String codigoDeBarras;
     private String observaciones;
     private int prestamosAlumnosODocentes;
-    private int prestamosGenerales;
+    private int prestamosPublicoGeneral;
     private List<Edicion> ediciones;
     private List<Ejemplar> listaejemplares;
     
@@ -42,7 +42,7 @@ public class Obra {
         this.codigoDeBarras = codigoDeBarras;
         this.observaciones = observaciones;
         this.prestamosAlumnosODocentes = prestamosAlumnosODocentes;
-        this.prestamosGenerales = prestamosGenerales;
+        this.prestamosPublicoGeneral = prestamosGenerales;
         ediciones = new ArrayList();
         ediciones.add(edicion);
         listaejemplares = new ArrayList();    
@@ -145,13 +145,19 @@ public class Obra {
     public void setPrestamosAlumnosODocentes(int prestamosAlumnosODocentes) {
         this.prestamosAlumnosODocentes = prestamosAlumnosODocentes;
     }
-
-    public int getPrestamosGenerales() {
-        return prestamosGenerales;
+    
+    public void agregarNuevoPrestamoAlumnoODocente(){
+        this.prestamosAlumnosODocentes=this.prestamosAlumnosODocentes+1;
     }
-
+    public int getPrestamosGenerales() {
+        return prestamosPublicoGeneral;
+    }
+    public void agregarNuevoPrestamoPublicoGeneral(){
+        this.prestamosAlumnosODocentes=this.prestamosAlumnosODocentes+1;
+    }
+    
     public void setPrestamosGenerales(int prestamosGenerales) {
-        this.prestamosGenerales = prestamosGenerales;
+        this.prestamosPublicoGeneral = this.prestamosPublicoGeneral+1;
     }
 
     public List<Edicion> getEdiciones() {

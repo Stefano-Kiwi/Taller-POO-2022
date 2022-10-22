@@ -14,4 +14,4 @@ TipoLector(0general,1alumno,2docente),nombre,apellido,tipoDocumento,numdocumento
 0,Alfonsina,Casanovas,DNI,27773001,10/08/1982,femenino,AlfonsinaC@gmail.com,3454022224,ARG,Chile 177,3200,Concordia,Concordia,,
 0,Guillermo,Del Toro,DNI,42300293,19/02/1982,masculino,guillermito@gmail.com,3454542694,ESP,Rawson 888,3200,Concordia,Concordia,,
 0,Reynaldo,Lopez,DNI,16373091,14/06/1963,masculino,reynaldo_lopez@gmail.com,3456023979,ARG,Augusto Niez 677,3200,Concordia,Concordia,,
-1,Matias,Beneitez,dni,40987654,2001-03-15,masculino,MatyElMejor@hotmail.com,3456784544,argentina,Brown 1326,3200,concordia,concordia,Lic. en Sistemas,UNER
+1,Matias,Beneitez,dni,40987654,15/03/2001,masculino,MatyElMejor@hotmail.com,3456784544,argentina,Brown 1326,3200,concordia,concordia,Lic. en Sistemas,UNER

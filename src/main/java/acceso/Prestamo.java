@@ -34,7 +34,9 @@ public class Prestamo {
         return "Prestamo{" + "tipoPrestamo=" + tipoPrestamo + ", fechaPrestamo=" + fechaPrestamo + ", horaPrestamo=" + horaPrestamo + ", idBibliotecario=" + idBibliotecario + ", fechaDevolucion=" + fechaDevolucion + ", codigoDeBarras=" + codigoDeBarras + ", lector=" + lector + ", ejemplar=" + ejemplar + '}';
     }
     
-    public String toCSV(){
+    public String toCSV(int disponibilidad){
+        //parametro disponibilidad (1:prestamo activo 2:prestamo terminado)
+       String resultado="";
        LocalDate fechaprestamo=this.fechaPrestamo;
        int dia=fechaprestamo.getDayOfMonth();
        int mes=fechaprestamo.getMonthValue();
@@ -43,7 +45,9 @@ public class Prestamo {
        int diaDev=fechadevolucion.getDayOfMonth();
        int mesDev=fechadevolucion.getMonthValue();
        int anioDev=fechadevolucion.getYear();
-       
-       return "1"+","+this.tipoPrestamo+","+dia+"/"+mes+"/"+anio+","+this.horaPrestamo+","+this.idBibliotecario+","+diaDev+"/"+mesDev+"/"+anioDev+","+this.lector.getNumDocumento()+","+this.ejemplar.getIdUnico();
+       if(disponibilidad==1 || disponibilidad==2 ){
+        resultado="1"+","+this.tipoPrestamo+","+dia+"/"+mes+"/"+anio+","+this.horaPrestamo+","+this.idBibliotecario+","+diaDev+"/"+mesDev+"/"+anioDev+","+this.lector.getNumDocumento()+","+this.ejemplar.getIdUnico();
+       }
+       return resultado;
     }
 }

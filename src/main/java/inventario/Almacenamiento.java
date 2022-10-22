@@ -449,6 +449,43 @@ public class Almacenamiento {
            System.out.println(e);
         }
     }
+    
+    public void modificarCSV(String direccion,String lineaaModificar,String lineaNueva){
+        /*
+        metodo para modificar un txt pensado para actualizar el txt
+        luego de un prestamo o devolucion
+        */
+        
+         File archivo= new File(direccion);
+        try{
+           FileReader fr= new FileReader(archivo);
+           BufferedReader br= new BufferedReader(fr);
+         
+           String a="";
+           String lineas="";
+           a=br.readLine();
+           lineas=a;
+           while((a=br.readLine())!=null){
+               if(a.equalsIgnoreCase(lineaaModificar)){
+                   lineas=lineas+"\n"+lineaNueva;
+               }else{
+                   lineas=lineas+"\n"+a;
+               }
+           }
+           br.close();
+           fr.close();
+           FileWriter fw=new FileWriter(archivo);
+           BufferedWriter bw=new BufferedWriter(fw);
+           
+           bw.write(lineas);
+           
+           bw.close();
+           fw.close();
+           
+        }catch(Exception e){
+        System.out.println(e);
+        }
+    }
 
     public List<Prestamo> getPrestamosActivos() {
         return prestamosActivos;
