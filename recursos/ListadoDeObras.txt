@@ -1,6 +1,6 @@
 titulo, subtitulo, autor1, autor2, autor3, genero, caracteristica, isbn, areaTematica, tipo(LIBRO,REVISTA,MANUAL,TESIS,ENSAYO), nombreEditorial, pais, numeroEdicion, anioEdicion, volumenes, idioma, paginas, formato(papel, video), nombreColeccion, ISBNColeccion
 Mis Matematicas,Mis matematicas  ,STEM,  ,  ,escolar,manuales,9780021233977,matematica,MANUAL,McGraw Hill,EEUU,1,2022,3,espanol,422,papel,My Math Grade 3,9780021233970
-Java para principiantes,Java For Dummies,Burd Barry,  ,  ,universitario,manuales,9780470087169,programacion,MANUAL,For Dummies,EEUU,4,2006,1,espanol,530,papel,For Dummies,9780470087160
+Java para principiantes,Java For Dummies,Burd Barry,  ,  ,universitario,manuales,9780470087169,Programacion,MANUAL,For Dummies,EEUU,4,2006,1,espanol,530,papel,For Dummies,9780470087160
 Python para principiantes,Python for Dummies,Stef Maruch,Aahz Maruch,  ,universitario,manuales,9780471778646,Programacion,MANUAL,For Dummies,EEUU,2,2010,1,ingles,450,papel,For Dummies,9780471778640
 Huaca la vaca 2,Huaca la vaca 2,Erbiti Alejandra,  ,  ,escolar,manuales,9789875472884,matematica,MANUAL,Puerto de palos,Argentina,4,2010,4,espanol,96,papel,Huaca la Vaca,9789875472880
 Empresas en Concordia,Empresas en Concordia,Tisocco Fabian,  ,  ,universitario,documentales,1234567890000,Administracion de empresas,TESIS,UNER,Argentina,1,2021,1,espanol,1,video,  ,
