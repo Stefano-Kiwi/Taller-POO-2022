@@ -1,5 +1,13 @@
 package interfaces;
 
+import acceso.Lector;
+import acceso.Prestamo;
+import inventario.Almacenamiento;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Daniel Altamirano
@@ -9,8 +17,12 @@ public class ListaDeudores extends javax.swing.JFrame {
     /**
      * Creates new form ListaDeudores
      */
+    List<Lector> deudores = new ArrayList<>();
+    Almacenamiento a = new Almacenamiento();
+
     public ListaDeudores() {
         initComponents();
+        cargarDeudores();
         this.setLocationRelativeTo(null);
     }
 
@@ -24,13 +36,13 @@ public class ListaDeudores extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaDeudores = new javax.swing.JTable();
         Volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Listado de deudores");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaDeudores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -51,7 +63,7 @@ public class ListaDeudores extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaDeudores);
 
         Volver.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         Volver.setText("Volver");
@@ -88,8 +100,8 @@ public class ListaDeudores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
-          this.setVisible(false);
-            new Administracion().setVisible(true);
+        this.setVisible(false);
+        new Administracion().setVisible(true);
     }//GEN-LAST:event_VolverActionPerformed
 
     /**
@@ -127,9 +139,50 @@ public class ListaDeudores extends javax.swing.JFrame {
         });
     }
 
+    public List<Lector> devolverDeudores() {
+        
+        a.obtenerPrestamos("recursos/ListaPrestamos.txt");
+        
+        List<Prestamo> prestamos = a.getPrestamosActivos();
+
+        for (Prestamo prestamo : prestamos) {
+            if(prestamo.getFechaDevolucion().isAfter(LocalDate.now())){
+                deudores.add(prestamo.getLector());
+                System.out.println(prestamo);
+            }
+            System.out.println(prestamo);
+
+        }
+
+        return deudores;
+    }
+
+    public void cargarDeudores() {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Tipo Documento");
+        modelo.addColumn("DNI");
+        modelo.addColumn("Telefono");
+        modelo.addColumn("Ejemplares");
+        tablaDeudores.setModel(modelo);
+
+        List<Lector> deu = devolverDeudores();
+
+        for (Lector lector : deu) {
+            System.out.println(lector);
+        }
+
+        for (Lector lector : deu) {
+            String[] campos = lector.tablaGUI().split(",");
+            modelo.addRow(campos);
+        }
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Volver;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaDeudores;
     // End of variables declaration//GEN-END:variables
 }

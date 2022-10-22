@@ -1,2 +1,2 @@
 (1:prestamo activo 2:prestamo terminado),tipoPrestamo,fechaprestamo,horaprestamo,idbibliotecario,fechadevolucion,nroDni lector,id unico ejemplar
-1,SALA,22/10/2022,19,3,22/10/2022,40234923,pasillo157
+1,DOMICILIO,10/10/2022,19,3,10/10/2022,40234923,pasillo52

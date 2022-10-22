@@ -50,4 +50,71 @@ public class Prestamo {
        }
        return resultado;
     }
+
+    public TipoPrestamo getTipoPrestamo() {
+        return tipoPrestamo;
+    }
+
+    public void setTipoPrestamo(TipoPrestamo tipoPrestamo) {
+        this.tipoPrestamo = tipoPrestamo;
+    }
+
+    public LocalDate getFechaPrestamo() {
+        return fechaPrestamo;
+    }
+
+    public void setFechaPrestamo(LocalDate fechaPrestamo) {
+        this.fechaPrestamo = fechaPrestamo;
+    }
+
+    public int getHoraPrestamo() {
+        return horaPrestamo;
+    }
+
+    public void setHoraPrestamo(int horaPrestamo) {
+        this.horaPrestamo = horaPrestamo;
+    }
+
+    public int getIdBibliotecario() {
+        return idBibliotecario;
+    }
+
+    public void setIdBibliotecario(int idBibliotecario) {
+        this.idBibliotecario = idBibliotecario;
+    }
+
+    public LocalDate getFechaDevolucion() {
+        return fechaDevolucion;
+    }
+
+    public void setFechaDevolucion(LocalDate fechaDevolucion) {
+        this.fechaDevolucion = fechaDevolucion;
+    }
+
+    public String getCodigoDeBarras() {
+        return codigoDeBarras;
+    }
+
+    public void setCodigoDeBarras(String codigoDeBarras) {
+        this.codigoDeBarras = codigoDeBarras;
+    }
+
+    public Lector getLector() {
+        return lector;
+    }
+
+    public void setLector(Lector lector) {
+        this.lector = lector;
+    }
+
+    public Ejemplar getEjemplar() {
+        return ejemplar;
+    }
+
+    public void setEjemplar(Ejemplar ejemplar) {
+        this.ejemplar = ejemplar;
+    }
+    
+    
+    
 }

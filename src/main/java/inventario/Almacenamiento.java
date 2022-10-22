@@ -183,16 +183,26 @@ public class Almacenamiento {
                     String isbn = matcher.group(2);
                     String lugar = matcher.group(3);
                     String estaDadoDeBaja = matcher.group(6);
-                    
+                     
                     String fechaAd=matcher.group(4);
+                    System.out.println(fechaAd);
                     String[] fechaArr = fechaAd.split("/");
-
+                    
+                   
+                    
                     LocalDate fechaAdquisicion = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
                     
+                    System.out.println(fechaAdquisicion);
+                    
                     String fechaBA=matcher.group(7);
-                    String[] fechaAr = fechaBA.split("/");
-
-                    LocalDate fechaBAJA = LocalDate.of(Integer.parseInt(fechaAr[2]), Integer.parseInt(fechaAr[1]), Integer.parseInt(fechaAr[0]));
+                    
+                    LocalDate fechaBAJA = null;
+                    if(!(fechaBA == "")){
+                        String[] fechaAr = fechaBA.split("/");
+                    
+                        fechaBAJA = LocalDate.of(Integer.parseInt(fechaAr[2]), Integer.parseInt(fechaAr[1]), Integer.parseInt(fechaAr[0]));
+                    }
+                    
                     
                     String motivo = matcher.group(8);
                     
@@ -455,7 +465,7 @@ public class Almacenamiento {
 
         
         }catch(Exception e){
-           System.out.println(e);
+           e.getStackTrace();
         }
     }
     

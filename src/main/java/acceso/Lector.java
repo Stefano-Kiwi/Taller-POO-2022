@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lector extends Persona {
-    
+
     private Multa multa;
     private List<Ejemplar> ListaDeEjemplares;
 
@@ -33,16 +33,19 @@ public class Lector extends Persona {
         return ListaDeEjemplares;
     }
 
-    public void devolver(Prestamo prestamo){    
+    public void devolver(Prestamo prestamo) {
     }
-    
-    public String toCSV(){
-       LocalDate a=this.getFechaNacimiento();
-       int dia=a.getDayOfMonth();
-       int mes=a.getMonthValue();
-       int anio=a.getYear();
-       return "0"+","+this.getNombre()+","+this.getApellido()+","+this.getTipoDocumento()+","+this.getNumDocumento()+","+dia+"/"+mes+"/"+anio+","+this.getSexo()+","+this.getCorreo()+","+this.getNroCelular()+","+this.getNacionalidad()+","+this.getDomicilio()+","+this.getCodigoPostal()+","+this.getDepartamento()+","+this.getLocalidad()+","+",";
-     }
 
-    
+    public String toCSV() {
+        LocalDate a = this.getFechaNacimiento();
+        int dia = a.getDayOfMonth();
+        int mes = a.getMonthValue();
+        int anio = a.getYear();
+        return "0" + "," + this.getNombre() + "," + this.getApellido() + "," + this.getTipoDocumento() + "," + this.getNumDocumento() + "," + dia + "/" + mes + "/" + anio + "," + this.getSexo() + "," + this.getCorreo() + "," + this.getNroCelular() + "," + this.getNacionalidad() + "," + this.getDomicilio() + "," + this.getCodigoPostal() + "," + this.getDepartamento() + "," + this.getLocalidad() + "," + ",";
+    }
+
+    public String tablaGUI() {
+        return getNombre() + "," + getApellido() + "," + getTipoDocumento() + "," + getNumDocumento() + "," + getNroCelular() + "," + ListaDeEjemplares.toString() + "\n";
+    }
+
 }
