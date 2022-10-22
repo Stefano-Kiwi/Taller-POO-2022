@@ -40,8 +40,8 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         ComboBoxTitulo = new javax.swing.JComboBox<>();
         jButtonVolver = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        areaTematicaLabel = new javax.swing.JLabel();
+        areaTematicaCB = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,11 +83,14 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Ejemplares disponible de area:");
+        areaTematicaLabel.setText("Ejemplares disponibles del Área:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setSelectedIndex(-1);
-        jComboBox1.setToolTipText("");
+        areaTematicaCB.setToolTipText("");
+        areaTematicaCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                areaTematicaCBActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,10 +109,10 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(ComboBoxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(190, 190, 190)
+                        .addGap(129, 129, 129)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(areaTematicaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(areaTematicaCB, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -117,15 +120,15 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(areaTematicaLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1)
+                    .addComponent(areaTematicaCB)
                     .addComponent(ComboBoxTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
-                .addGap(40, 40, 40)
+                .addGap(37, 37, 37)
                 .addComponent(jButtonVolver)
                 .addContainerGap())
         );
@@ -139,7 +142,7 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         /**
          *
          * @author Luciano Aguilar
-         *
+         *  Al seleccionar la opcioón en ComboBox saldra la informacion requerida en la tabla
          */
         String opcionElegida = ComboBoxTitulo.getSelectedItem().toString();
 
@@ -175,6 +178,41 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         this.setVisible(false);
         new Administracion().setVisible(true);
     }//GEN-LAST:event_jButtonVolverActionPerformed
+
+    private void areaTematicaCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaTematicaCBActionPerformed
+         /**
+         *
+         * @author Luciano Aguilar
+         *
+         */
+        String opcionElegida = areaTematicaCB.getSelectedItem().toString();
+
+        a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
+
+        List<Ejemplar> ejemplares = a.getEjemplarDisponibles();
+
+        List<Ejemplar> ejemplaresAMostrar = new ArrayList();
+
+        //CORRECCION SOLO PIDO EL TITULO DE LA OBRA DEL EJEMPLAR Y COMPARO CON LA OPCION ELEGIDA
+        if(opcionElegida == ""){
+            new JOptionPane().showMessageDialog(rootPane, "Seleccionar opción");
+        }
+        for (Ejemplar ejemplar : ejemplares) {
+            if (ejemplar.getObra().getAreaTematica().equals(opcionElegida)) {
+                ejemplaresAMostrar.add(ejemplar);
+            }
+        }
+
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Obra");
+        modelo.addColumn("Lugar del ejemplar");
+        TablaEjemplar.setModel(modelo);
+
+        for (Ejemplar ejemplar : ejemplaresAMostrar) {
+            String[] campos = ejemplar.tablaGUI().split(",");
+            modelo.addRow(campos);
+        }
+    }//GEN-LAST:event_areaTematicaCBActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,29 +261,48 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         TablaEjemplar.setModel(modelo);
 
         List<String> nombreDeObras = new ArrayList();
-
+        
+        //Lista para guardar las areas temáticas
+        List<String> areasTematicas = new ArrayList();
+        
         for (Obra obraNombre : obras) {
             if (!nombreDeObras.contains(obraNombre.getTitulo())) {
                 nombreDeObras.add(obraNombre.getTitulo());
             }
         }
-        String[] edit = new String[nombreDeObras.size()+1];
-       edit[0] = "";
-        for (int i =1; i < nombreDeObras.size(); i++) {
+        
+        //obtengo las areas temáticas
+        for (Obra obra : obras) {
+            if (!areasTematicas.contains(obra.getAreaTematica())) {
+                areasTematicas.add(obra.getAreaTematica());
+            }
+        }
+        
+        String[] edit = new String[nombreDeObras.size()];
+        //edit[0] = "";
+        for (int i =0; i < nombreDeObras.size(); i++) {
             edit[i] = nombreDeObras.get(i);
+        }
+        
+        //guardo las areas temáticas
+        String[] areas = new String[areasTematicas.size()];
+       //areas[0] = ""; //primera posicion string vacio
+        for (int i =0; i < areasTematicas.size(); i++) {
+            areas[i] = areasTematicas.get(i);
         }
 
         ComboBoxTitulo.setModel(new javax.swing.DefaultComboBoxModel<>(edit));
+        areaTematicaCB.setModel(new javax.swing.DefaultComboBoxModel<>(areas));
 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxTitulo;
     private javax.swing.JTable TablaEjemplar;
+    private javax.swing.JComboBox<String> areaTematicaCB;
+    private javax.swing.JLabel areaTematicaLabel;
     private javax.swing.JButton jButtonVolver;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
