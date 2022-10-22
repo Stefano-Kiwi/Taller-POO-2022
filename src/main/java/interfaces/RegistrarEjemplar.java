@@ -179,7 +179,7 @@ public class RegistrarEjemplar extends javax.swing.JFrame {
             String [] fechaAux = FechaAdquisionTextField.getText().split("/");
             LocalDate fecha = LocalDate.of(Integer.parseInt(fechaAux[2]), Integer.parseInt(fechaAux[1]), Integer.parseInt(fechaAux[0]));
             Ejemplar ejemplar = new Ejemplar(LugarFisicoTextField.getText(), obraAux,new Adquisicion(fecha,FormaCompraTextField.getText(), obraAux.getAreaTematica()));
-            a.escribirCSV("recursos/ListadoDeEjemplares.txt", ejemplar.toCSV());
+            a.escribirCSV("recursos/ListadoDeEjemplares.txt", ejemplar.toCSV(1));
             this.setVisible(false);
             new Administracion().setVisible(true);
         }

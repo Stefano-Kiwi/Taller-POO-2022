@@ -2,7 +2,7 @@ disponibilidad(1:disponible 2:prestado 3:dado de baja),ISBN, lugarFisico,fechaAd
 1,9780470087169,pasillo,  ,virtual,no,  , 
 1,1234567890000,entrada,  ,donacion,no,  , 
 3,9786073237215,estanteA,  ,donacion,si,  ,paginas rotas
-1,9780021233977,pasillo,  ,donacion,no,  ,
+2,9780021233977,pasillo,  ,donacion,no,  ,
 1,9780021233977,pasillo,  ,comprado,no,  ,
 1,9780021233977,pasillo,  ,comprado,no,  ,
 3,9780021233977,pasillo,  ,comprado,si,  ,portada manchada sin recuperacion y dibujos obscenos en pagina 25

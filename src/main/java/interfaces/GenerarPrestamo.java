@@ -9,6 +9,7 @@ import inventario.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 
 
@@ -304,8 +305,15 @@ public class GenerarPrestamo extends javax.swing.JFrame {
         for(Ejemplar ejemplar1:disponibles){
             if(ejemplar1.getObra().equals(obra)){
                 ejemplar=ejemplar1;
+                JOptionPane.showMessageDialog(null, "Prestamo realizado exitosamente");
+                this.setVisible(false);
+                new Administracion().setVisible(true);
                 break;
             }
+        }
+        
+        if(ejemplar == null){
+            JOptionPane.showMessageDialog(null, "No hay ejemplares disponibles");
         }
         
         int hora=Integer.parseInt(horaPrestamo.getText());

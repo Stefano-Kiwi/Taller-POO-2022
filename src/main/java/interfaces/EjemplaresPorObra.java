@@ -66,9 +66,8 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TablaEjemplar);
 
-        jLabel1.setText("Buscar ejemplares de la obra:");
+        jLabel1.setText("Ejemplares en la biblioteca:");
 
-        ComboBoxTitulo.setSelectedIndex(-1);
         ComboBoxTitulo.setToolTipText("");
         ComboBoxTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

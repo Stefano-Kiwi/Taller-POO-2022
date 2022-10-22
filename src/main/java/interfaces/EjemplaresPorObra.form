@@ -111,7 +111,7 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Buscar ejemplares de la obra:"/>
+        <Property name="text" type="java.lang.String" value="Ejemplares en la biblioteca:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="ComboBoxTitulo">
@@ -119,7 +119,6 @@
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
         </Property>
-        <Property name="selectedIndex" type="int" value="-1"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
