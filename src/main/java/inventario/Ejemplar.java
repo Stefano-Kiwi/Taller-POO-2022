@@ -104,15 +104,15 @@ public class Ejemplar {
     
     public String toCSV(int disponibilidad){
           //paramatro disponibilidad =(1: disponible 2: prestado)
-//        LocalDate fAdquisicion=adquisicion.getFechaAdquisicion();
-//        int dia=fAdquisicion.getDayOfMonth();
-//        int mes=fAdquisicion.getMonthValue();
-//        int año=fAdquisicion.getYear();
-//        +dia+"/"+mes+"/"+año+
-           //dejo comentada la fecha este porque en la prueba de reemplazar necesito que este asi 
+        LocalDate fAdquisicion=adquisicion.getFechaAdquisicion();
+        int dia=fAdquisicion.getDayOfMonth();
+        int mes=fAdquisicion.getMonthValue();
+        int año=fAdquisicion.getYear();
+        
+         //dejo comentada la fecha este porque en la prueba de reemplazar necesito que este asi 
         String resultado="";
         if(disponibilidad==1 || disponibilidad==2 ){
-           resultado= disponibilidad+","+obra.getISBN()+","+lugarFisico+","+"  "+","+adquisicion.getFormaDeCompra()+","+"no"+","+"  "+",";
+           resultado= disponibilidad+","+obra.getISBN()+","+lugarFisico+","+dia+"/"+mes+"/"+año+","+adquisicion.getFormaDeCompra()+","+"no"+","+"  "+",";
         }
         return resultado;
     }

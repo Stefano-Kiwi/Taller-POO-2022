@@ -184,7 +184,16 @@ public class Almacenamiento {
                     String lugar = matcher.group(3);
                     String estaDadoDeBaja = matcher.group(6);
                     
-                    LocalDate fechaBaja = LocalDate.now();
+                    String fechaAd=matcher.group(4);
+                    String[] fechaArr = fechaAd.split("/");
+
+                    LocalDate fechaAdquisicion = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
+                    
+                    String fechaBA=matcher.group(7);
+                    String[] fechaAr = fechaBA.split("/");
+
+                    LocalDate fechaBAJA = LocalDate.of(Integer.parseInt(fechaAr[2]), Integer.parseInt(fechaAr[1]), Integer.parseInt(fechaAr[0]));
+                    
                     String motivo = matcher.group(8);
                     
                     for (Obra obra : obras) {
@@ -193,23 +202,23 @@ public class Almacenamiento {
                             
                             switch(disponibilidad){
                              case "1":
-                                this.ejemplarDisponibles.add(new Ejemplar(lugar, obra,new Adquisicion(LocalDate.now(), matcher.group(5), obra.getAreaTematica())));
+                                this.ejemplarDisponibles.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica())));
                                 break;
                              case "2":
-                                this.ejemplaresPrestados.add(new Ejemplar(lugar, obra,new Adquisicion(LocalDate.now(), matcher.group(5), obra.getAreaTematica())));
+                                this.ejemplaresPrestados.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica())));
                                 break;
                              case "3":
-                                this.ejemplaresDadosDeBaja.add(new Ejemplar(lugar, obra,new Adquisicion(LocalDate.now(), matcher.group(5), obra.getAreaTematica()),new Baja(LocalDate.now(), motivo, lugar)));
+                                this.ejemplaresDadosDeBaja.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),new Baja(fechaBAJA, motivo, lugar)));
                                 break;
                             }
                             
                             if(estaDadoDeBaja.equalsIgnoreCase("no")){          // ESTO LO AGREGA A LA LISTA DE EJEMPLARES GENERAL.
-                                ejemplares.add(new Ejemplar(lugar, obra,new Adquisicion(LocalDate.now(), matcher.group(5), obra.getAreaTematica())));
-                                obra.AgregarEjemplar(new Ejemplar(lugar, obra,new Adquisicion(LocalDate.now(), matcher.group(5), obra.getAreaTematica())));
+                                ejemplares.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica())));
+                                obra.AgregarEjemplar(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica())));
                                 
                             }else{
-                                ejemplares.add(new Ejemplar(lugar, obra,new Adquisicion(LocalDate.now(), matcher.group(5), obra.getAreaTematica()),new Baja(LocalDate.now(), motivo, lugar)));
-                                obra.AgregarEjemplar(new Ejemplar(lugar, obra,new Adquisicion(LocalDate.now(), matcher.group(5), obra.getAreaTematica()),new Baja(LocalDate.now(), motivo, lugar)));
+                                ejemplares.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),new Baja(fechaBAJA, motivo, lugar)));
+                                obra.AgregarEjemplar(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),new Baja(fechaBAJA, motivo, lugar)));
                             }
                         }
                     }     

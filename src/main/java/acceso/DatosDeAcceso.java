@@ -60,8 +60,7 @@ public class DatosDeAcceso {
                 //Splitea el String obtenido desde el .txt para usar en LocalDate.of
                 String[] fechaArr = fechaNacimiento.split("/");
 
-                //LocalDate fecha = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
-                LocalDate fecha = LocalDate.now();
+                LocalDate fecha = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
                 switch (tipo) {
                     case "0":
                         this.lectores.add(new Lector(nombre, apellido, tipoDeDocumento, Integer.parseInt(numDeDocumento), fecha, sexo, correo, nroCelular, nacionalidad, domicilio, Integer.parseInt(codigoPostal), departamento, localidad));
