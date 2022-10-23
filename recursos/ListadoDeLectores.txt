@@ -1,5 +1,5 @@
 TipoLector(0general,1alumno,2docente),nombre,apellido,tipoDocumento,numdocumento,fechaNacimiento,sexo,correo,Nrocelular,nacionalidad,domicilio,codigoPostal,departamento,localidad,carrera,facultad(16SiAlumno)(14SiGeneral)(15SiProfe)
-1,David,Zarco,DNI,40234923,23/02/1998,masculino,davidzarco@hotmail.com,3454039421,ARG,Peru 1023,3200,Concordia,Concordia,Lic. en sistemas,UNER
+1,David,Zarco,DNI,1,23/02/1998,masculino,davidzarco@hotmail.com,3454039421,ARG,Peru 1023,3200,Concordia,Concordia,Lic. en sistemas,UNER
 1,Stefano,Carbajal,DNI,43945292,19/07/2001,masculino,StefanoB@gmail.com,3456023923,ARG,Rocamora 129,3200,Concordia,Concordia,Lic. en sistemas,UNER
 1,Daniel,Altamirano,DNI,42932420,24/01/2000,masculino,Altamirano_dan@gmail.com,3454000293,ARG,Tavella 972,3200,Concordia,Concordia,Lic. en sistemas,UNER
 1,Tomas,Berta,DNI,39203191,25/10/1997,masculino,tomiberta@hotmail.com,3456441589,ARG,Brown 552,3228,Chajari,Chajari,Lic. en sistemas,UNER

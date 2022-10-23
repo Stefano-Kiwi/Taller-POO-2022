@@ -4,6 +4,8 @@ import inventario.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -127,10 +129,19 @@ public class Cliente {
                         while(cerrarSesion==false){
                             System.out.println("1: Agregar obra\n2: Consultar ejemplares\n3: Agregar ejemplar\n4: Dar de baja ejemplar\n5: Hacer una observacion sobre un ejemplar"
                                     + "\n6: Realizar un préstamo\n7: Consultar prestamos\n8: Devolución de un ejemplar\n0: Cerrar sesión actual");
+                            opcion = sc.nextInt();
                         switch(opcionDeseada){
                             case 1: 
-                                System.out.println("Titulo, subtitulo, autor1, autor2, autor3, genero, caract, isbn, ejemplares,areaTematica,tipo,edicion,codigoBarras,observaciones");
-                                //almacenamiento.getObras().add(new )
+                                System.out.println("Titulo, subtitulo, autor1, autor2, autor3, genero, caract, isbn, ejemplares,areaTematica,tipo,nombreEditorial,pais,numeroEdicion,anio,volumenes,idioma,paginas,formato,codigoBarras,observaciones");
+                                String datosNuevaObra = sc.nextLine();
+                                final String regex1 = "^(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*)$";
+                                Pattern pattern = Pattern.compile(regex1);
+                                Matcher matcher = pattern.matcher(datosNuevaObra);
+                                 if (matcher.matches()) {   // Guardando los datos de la nueva obra
+                                     almacenamiento.agregarObra(new Obra(matcher.group(1), matcher.group(2), matcher.group(3), matcher.group(4), matcher.group(5), matcher.group(6), matcher.group(7), matcher.group(8), Integer.parseInt(matcher.group(9)), matcher.group(10), TipoObra.LIBRO, new Edicion(matcher.group(11), matcher.group(12), matcher.group(13), matcher.group(14), matcher.group(15), matcher.group(16), matcher.group(17), matcher.group(18)), matcher.group(13), matcher.group(14), 0, 0));
+                                 }else{
+                                     System.out.println("Los datos ingresados son incorrectos, asegurarse de usar bien las comas");
+                                 }
                         }
                         
                         }

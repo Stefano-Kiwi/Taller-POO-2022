@@ -56,7 +56,7 @@ public class ListaDeudores extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Apellido", "Tipo documento", "DNI", "Telefono", "Cantidad de ejemplares vencidos"
+                "Nombre", "Apellido", "Tipo documento", "DNI", "Telefono", "Ejemplares vencidos"
             }
         ) {
             boolean[] canEdit = new boolean [] {

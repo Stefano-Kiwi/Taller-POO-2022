@@ -64,7 +64,7 @@
                 <Column editable="false" title="Tipo documento" type="java.lang.Object"/>
                 <Column editable="false" title="DNI" type="java.lang.Object"/>
                 <Column editable="false" title="Telefono" type="java.lang.Object"/>
-                <Column editable="false" title="Cantidad de ejemplares vencidos" type="java.lang.Object"/>
+                <Column editable="false" title="Ejemplares vencidos" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
