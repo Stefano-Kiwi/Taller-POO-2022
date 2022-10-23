@@ -185,15 +185,12 @@ public class Almacenamiento {
                     String estaDadoDeBaja = matcher.group(6);
                      
                     String fechaAd=matcher.group(4);
-                    System.out.println(fechaAd);
                     String[] fechaArr = fechaAd.split("/");
                     
                    
                     
                     LocalDate fechaAdquisicion = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
-                    
-                    System.out.println(fechaAdquisicion);
-                    
+                                        
                     String fechaBA=matcher.group(7);
                     
                     LocalDate fechaBAJA = null;

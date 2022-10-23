@@ -2,12 +2,14 @@ package acceso;
 
 import inventario.Ejemplar;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Lector extends Persona {
 
-    private Multa multa;
+    private Multa multaActiva;
+    private List<Multa> multas;
     private List<Ejemplar> ListaDeEjemplares;
 
     public Lector() {
@@ -18,17 +20,44 @@ public class Lector extends Persona {
             String domicilio, int codigoPostal, String departamento, String localidad) {
         super(nombre, apellido, tipoDocumento, numDocumento, fechaNacimiento, sexo, correo, nroCelular, nacionalidad,
                 domicilio, codigoPostal, departamento, localidad);
+        
+        TerminarMulta();
         ListaDeEjemplares = new ArrayList<Ejemplar>();
+        multas=new ArrayList<Multa>();
     }
 
     public Multa getMulta() {
-        return multa;
+        return multaActiva;
     }
 
     public void setMulta(Multa multa) {
-        this.multa = multa;
+        this.multaActiva = multa;
+        multas.add(multa);
     }
-
+    public void TerminarMulta(){
+        LocalDate hoy=null;
+        hoy=LocalDate.now();
+        LocalDate fechaMulta = multaActiva.getFecha();
+        
+        if(multaActiva!=null){
+         
+         LocalDate fechaVencimiento=null;
+         int DiafechaMulta=fechaMulta.getDayOfMonth();
+         int dias=multaActiva.getDiasMulta(); 
+         int diaVencimiento=DiafechaMulta+dias;
+       
+         fechaVencimiento=LocalDate.of(fechaMulta.getYear(),fechaMulta.getMonthValue(), diaVencimiento);
+        
+         if(hoy.isAfter(fechaVencimiento)){
+            this.multaActiva=null;
+         }
+        }
+    }
+    
+    public List<Multa> getMultas() {
+        return multas;
+    }
+    
     public List<Ejemplar> getListaDeEjemplares() {
         return ListaDeEjemplares;
     }

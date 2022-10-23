@@ -7,24 +7,24 @@ import java.time.LocalDate;
  */
 public class Multa {
     
-    private String multa;
+    private int DiasMulta;
     private LocalDate fecha;
     private Devolucion devolucion;
     private Lector lector;
 
-    public Multa(String multa, LocalDate fecha, Devolucion devolucion, Lector lector) {
-        this.multa = multa;
+    public Multa(int DiasMulta, LocalDate fecha) {
+        this.DiasMulta = DiasMulta;
         this.fecha = fecha;
-        this.devolucion = devolucion;
-        this.lector = lector;
+//        this.devolucion = devolucion;
+//        this.lector = lector;
     }
 
-    public String getMulta() {
-        return multa;
+    public int getDiasMulta() {
+        return DiasMulta;
     }
 
-    public void setMulta(String multa) {
-        this.multa = multa;
+    public void setDiasMulta(int DiasMulta) {
+        this.DiasMulta = DiasMulta;
     }
 
     public LocalDate getFecha() {
@@ -53,7 +53,7 @@ public class Multa {
 
     @Override
     public String toString() {
-        return "Multa{" + "multa=" + multa + ", fecha=" + fecha + ", devolucion=" + devolucion + ", lector=" + lector + '}';
+        return "Multa{" + "multa=" + DiasMulta + ", fecha=" + fecha +'}';
     }
     
     
