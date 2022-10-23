@@ -113,10 +113,22 @@ public class Ejemplar {
         int mes=fAdquisicion.getMonthValue();
         int año=fAdquisicion.getYear();
         
-         //dejo comentada la fecha este porque en la prueba de reemplazar necesito que este asi 
+        String DIA;
+        String MES;
+        if(dia<10){
+           DIA="0"+String.valueOf(dia);
+        }else{
+            DIA=String.valueOf(dia);
+        }
+        if(mes<10){
+            MES="0"+String.valueOf(mes);
+        }else{
+            MES=String.valueOf(mes);
+        }
+        
         String resultado="";
         if(disponibilidad==1 || disponibilidad==2 ){
-           resultado= disponibilidad+","+obra.getISBN()+","+lugarFisico+","+dia+"/"+mes+"/"+año+","+adquisicion.getFormaDeCompra()+","+"no"+","+"  "+",";
+           resultado=disponibilidad+","+obra.getISBN()+","+lugarFisico+","+DIA+"/"+MES+"/"+año+","+adquisicion.getFormaDeCompra()+","+"no"+","+",";
         }
         return resultado;
     }
