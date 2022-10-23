@@ -120,6 +120,8 @@ public class GenerarDevolucion extends javax.swing.JFrame {
 
     private void BotonDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDevolverActionPerformed
         Almacenamiento a = new Almacenamiento();
+        a.obtenerObras("recursos/ListadoDeObras.txt");
+        a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
         a.obtenerPrestamos("recursos/ListaPrestamos.txt");
         List<Prestamo> prestamosActivos = a.getPrestamosActivos();
         Prestamo prestamo=null;
@@ -153,14 +155,16 @@ public class GenerarDevolucion extends javax.swing.JFrame {
             fueradeTermino=true;
         }
         
-        Devolucion devolucion=new Devolucion(hoy,fueradeTermino,prestamo);
-        
         Ejemplar ejemplar = prestamo.getEjemplar();
         //actualiza los datos de los txt
         //cambia la disponibilidad del ejemplar a 1=disponible
         a.modificarCSV("recursos/ListadoDeEjemplares.txt",ejemplar.toCSV(2), ejemplar.toCSV(1));
         //cambia la disponibilidad del prestamo a 2=terminado
-        a.modificarCSV("recursos/ListaPrestamos", prestamo.toCSV(1), prestamo.toCSV(2));
+        //no esta funcionando por alguna razon el idunico es distinto 
+        a.modificarCSV("recursos/ListaPrestamos.txt", prestamo.toCSV(1),prestamo.toCSV(2));
+        
+         Devolucion devolucion=new Devolucion(hoy,fueradeTermino,prestamo);
+
     }//GEN-LAST:event_BotonDevolverActionPerformed
 
     /**
