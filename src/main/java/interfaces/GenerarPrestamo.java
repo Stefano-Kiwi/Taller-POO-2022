@@ -272,8 +272,6 @@ public class GenerarPrestamo extends javax.swing.JFrame {
         for(Lector lector1:lectores){
             if(lector1.getNumDocumento()==nroDocumento){
                 lector=lector1;
-                System.out.println("ejemplar generar prestamo"+lector);
-               
                 break;
             }
         }
@@ -322,9 +320,7 @@ public class GenerarPrestamo extends javax.swing.JFrame {
         for(Ejemplar ejemplar1:disponibles){
             if(ejemplar1.getObra().equals(obra)){
                 ejemplar=ejemplar1;
-                 lector.AgregarEjemplar(ejemplar1);//no esta implememtado
-                 System.out.println("ejempplares lector"+lector.getListaDeEjemplares());
-                System.out.println("ejemplar generar prestamo "+ejemplar);
+                 lector.AgregarEjemplar(ejemplar1);
                 JOptionPane.showMessageDialog(null, "Prestamo realizado exitosamente");
                 this.setVisible(false);
                 new Administracion().setVisible(true);

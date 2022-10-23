@@ -176,15 +176,10 @@ public class ListaDeudores extends javax.swing.JFrame {
                 prestamo.getLector().AgregarEjemplar(prestamo.getEjemplar());
                 if (!deudores.contains(prestamo.getLector())){
                 deudores.add(prestamo.getLector());
-                }
-                
-                System.out.println("prestamo ejemplar"+prestamo.getEjemplar());
-                       
+                }           
             }
         }
-        
-       
-        
+              
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");
