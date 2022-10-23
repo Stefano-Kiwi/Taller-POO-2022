@@ -11,13 +11,13 @@ public class Devolucion {
     
     private LocalDate fechaYHoraDevolucion;
     private boolean FueraDeTermino;
-    private String codigoDeBarras;
+   // private String codigoDeBarras;
     private Prestamo prestamo;
 
-    public Devolucion(LocalDate fechaYHoraDevolucion, boolean FueraDeTermino, String codigoDeBarras, Prestamo prestamo) {
+    public Devolucion(LocalDate fechaYHoraDevolucion, boolean FueraDeTermino,Prestamo prestamo) {
         this.fechaYHoraDevolucion = fechaYHoraDevolucion;
         this.FueraDeTermino = FueraDeTermino;
-        this.codigoDeBarras = codigoDeBarras;
+        //this.codigoDeBarras = codigoDeBarras;
         this.prestamo = prestamo;
     }
 
@@ -35,14 +35,6 @@ public class Devolucion {
 
     public void setFueraDeTermino(boolean FueraDeTermino) {
         this.FueraDeTermino = FueraDeTermino;
-    }
-
-    public String getCodigoDeBarras() {
-        return codigoDeBarras;
-    }
-
-    public void setCodigoDeBarras(String codigoDeBarras) {
-        this.codigoDeBarras = codigoDeBarras;
     }
 
     public Prestamo getPrestamo() {
@@ -74,9 +66,9 @@ public class Devolucion {
         if (this.FueraDeTermino != other.FueraDeTermino) {
             return false;
         }
-        if (!Objects.equals(this.codigoDeBarras, other.codigoDeBarras)) {
-            return false;
-        }
+//        if (!Objects.equals(this.codigoDeBarras, other.codigoDeBarras)) {
+//            return false;
+//        }
         if (!Objects.equals(this.fechaYHoraDevolucion, other.fechaYHoraDevolucion)) {
             return false;
         }
@@ -85,6 +77,6 @@ public class Devolucion {
 
     @Override
     public String toString() {
-        return "Devolucion{" + "fechaYHoraDevolucion=" + fechaYHoraDevolucion + ", FueraDeTermino=" + FueraDeTermino + ", codigoDeBarras=" + codigoDeBarras + ", prestamo=" + prestamo + '}';
+        return "Devolucion{" + "fechaYHoraDevolucion=" + fechaYHoraDevolucion + ", FueraDeTermino=" + FueraDeTermino + ", prestamo=" + prestamo + '}';
     }   
 }
