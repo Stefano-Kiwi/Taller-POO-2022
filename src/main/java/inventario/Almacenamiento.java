@@ -185,10 +185,14 @@ public class Almacenamiento {
                     String estaDadoDeBaja = matcher.group(6);
                      
                     String fechaAd=matcher.group(4);
-                   
+                    System.out.println(fechaAd);
                     String[] fechaArr = fechaAd.split("/");
                     
+                   
+                    
                     LocalDate fechaAdquisicion = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
+                    
+                    System.out.println(fechaAdquisicion);
                     
                     String fechaBA=matcher.group(7);
                     
@@ -481,8 +485,7 @@ public class Almacenamiento {
            a=br.readLine();
            lineas=a;
            while((a=br.readLine())!=null){
-               //si encuentra la linea buscada la reemplaza por la nueva
-               if(lineaaModificar.equalsIgnoreCase(a)){
+               if(a.equalsIgnoreCase(lineaaModificar)){
                    lineas=lineas+"\n"+lineaNueva;
                }else{
                    lineas=lineas+"\n"+a;
