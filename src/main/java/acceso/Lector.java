@@ -77,8 +77,13 @@ public class Lector extends Persona {
     }
 
     public String tablaGUI() {
-
-        return getNombre()+ ","+getApellido()+","+getTipoDocumento()+","+getNumDocumento()+"," +getNroCelular()+ ","+this.ListaDeEjemplares.size()+"\n";
+        
+        String ejemplares="";
+        for (Ejemplar ej: this.ListaDeEjemplares) {
+            ejemplares += ej.getObra().getTitulo() + "/";
+        }
+        
+        return getNombre()+ ","+getApellido()+","+getTipoDocumento()+","+getNumDocumento()+"," +getNroCelular()+ ","+ejemplares+"\n";
     }
 
 }
