@@ -255,17 +255,18 @@ public class GenerarPrestamo extends javax.swing.JFrame {
     }//GEN-LAST:event_opcionBuscarActionPerformed
 
     private void botonPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPrestamoActionPerformed
+        //TRAE LAS OBRAS DISPONIBLES EN LA BIBLIOTECA
         Almacenamiento a = new Almacenamiento();
         a.obtenerObras("recursos/ListadoDeObras.txt");
         DatosDeAcceso da=new DatosDeAcceso();
         a.busquedaObras(numOption, BusquedaLibro.getText());
         List<Obra>Resultado=new ArrayList();
         Resultado=a.busquedaObras(numOption, BusquedaLibro.getText());
-        
+        //CARGA TODOS LOS LECTORES
         da.obtenerLectores("recursos/ListadoDeLectores.txt");
         List<Lector> lectores=da.getLectores();
         int nroDocumento=Integer.valueOf(documento.getText());
-   
+        //FILTRA EL LECTOR POR SU DOCUMENTO
         Lector lector=null;    
         for(Lector lector1:lectores){
             if(lector1.getNumDocumento()==nroDocumento){
@@ -294,24 +295,25 @@ public class GenerarPrestamo extends javax.swing.JFrame {
                 tpPrestamo=tpPrestamo.DOMICILIO;
                 break;
         }
-        Obra obra=null;
+        Obra obra= new Obra();
         if(Resultado.size()==1){
            obra=Resultado.get(0);      
         }
  
         a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
         List<Ejemplar>disponibles=a.getEjemplarDisponibles();
-        Ejemplar ejemplar=null;
+        Ejemplar ejemplar=new Ejemplar();
         for(Ejemplar ejemplar1:disponibles){
             if(ejemplar1.getObra().equals(obra)){
                 ejemplar=ejemplar1;
+                lector.AgregarEjemplar(ejemplar1);
                 JOptionPane.showMessageDialog(null, "Prestamo realizado exitosamente");
                 this.setVisible(false);
                 new Administracion().setVisible(true);
                 break;
             }
         }
-        
+                
         if(ejemplar == null){
             JOptionPane.showMessageDialog(null, "No hay ejemplares disponibles");
         }

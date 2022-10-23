@@ -24,7 +24,6 @@ public class ListaDeudores extends javax.swing.JFrame {
     public ListaDeudores() {
         initComponents();
         cargarDeudores();
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -45,6 +44,10 @@ public class ListaDeudores extends javax.swing.JFrame {
 
         tablaDeudores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -140,29 +143,22 @@ public class ListaDeudores extends javax.swing.JFrame {
         });
     }
 
-    public List<Lector> devolverDeudores() {
+    public void cargarDeudores() {
         List<Lector> deudores = new ArrayList<>();
         a.obtenerObras("recursos/ListadoDeObras.txt");
         a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
         a.obtenerPrestamos("recursos/ListaPrestamos.txt");
-       
-        
+           
         List<Prestamo> prestamos = a.getPrestamosActivos();
-
+        LocalDate hoy = LocalDate.now();
         
         for (Prestamo prestamo : prestamos) {
-            if(prestamo.getFechaDevolucion().isAfter(LocalDate.now())){
+            if(!prestamo.getFechaDevolucion().isAfter(hoy)){
+                if (!deudores.contains(prestamo.getLector())){
                 deudores.add(prestamo.getLector());
-                System.out.println(prestamo);
+                }
             }
-            System.out.println(prestamo);
-
         }
-
-        return deudores;
-    }
-
-    public void cargarDeudores() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Apellido");
         modelo.addColumn("Nombre");
@@ -172,17 +168,10 @@ public class ListaDeudores extends javax.swing.JFrame {
         modelo.addColumn("Ejemplares");
         tablaDeudores.setModel(modelo);
 
-        List<Lector> deu = devolverDeudores();
-
-        for (Lector lector : deu) {
-            System.out.println(lector);
-        }
-
-        for (Lector lector : deu) {
+        for (Lector lector : deudores) {
             String[] campos = lector.tablaGUI().split(",");
             modelo.addRow(campos);
         }
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

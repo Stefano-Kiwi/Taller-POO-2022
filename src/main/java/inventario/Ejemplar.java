@@ -28,6 +28,10 @@ public class Ejemplar {
         this.adquisicion = adquisicion;
     }
 
+    public Ejemplar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;

@@ -18,7 +18,7 @@ public class Lector extends Persona {
             String domicilio, int codigoPostal, String departamento, String localidad) {
         super(nombre, apellido, tipoDocumento, numDocumento, fechaNacimiento, sexo, correo, nroCelular, nacionalidad,
                 domicilio, codigoPostal, departamento, localidad);
-        ListaDeEjemplares = new ArrayList();
+        ListaDeEjemplares = new ArrayList<Ejemplar>();
     }
 
     public Multa getMulta() {
@@ -32,6 +32,11 @@ public class Lector extends Persona {
     public List<Ejemplar> getListaDeEjemplares() {
         return ListaDeEjemplares;
     }
+    
+    public void AgregarEjemplar(Ejemplar ejemplar){
+    this.ListaDeEjemplares.add(ejemplar);
+    }
+            
 
     public void devolver(Prestamo prestamo) {
     }
@@ -45,7 +50,7 @@ public class Lector extends Persona {
     }
 
     public String tablaGUI() {
-        return getNombre() + "," + getApellido() + "," + getTipoDocumento() + "," + getNumDocumento() + "," + getNroCelular() + "," + ListaDeEjemplares.toString() + "\n";
+        return getNombre()+ ","+getApellido()+","+getTipoDocumento()+","+getNumDocumento()+"," +getNroCelular()+ "," +this.ListaDeEjemplares+"\n";
     }
 
 }
