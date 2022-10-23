@@ -398,7 +398,7 @@ public class Almacenamiento {
         List<Lector> lectores=da.getLectores();
         
         try{
-        String regex1="^(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*)$";
+        String regex1="^(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*)$";
         File archivo=new File(direccion);
         FileReader fr= new FileReader(archivo);
         BufferedReader br = new BufferedReader(fr);
@@ -421,12 +421,15 @@ public class Almacenamiento {
               }
               
               String idunico=matcher.group(8);
+              String isbn = matcher.group(9);
               Ejemplar ejemplar=null;
               for(Ejemplar ejemplar1:ejemplares){
-                  if(ejemplar1.getIdUnico().equalsIgnoreCase(idunico)){
+                  if(ejemplar1.getObra().getISBN().equals(isbn)){
                       ejemplar=ejemplar1;
+                      System.out.println("ejemplar obtener prestamo"+ejemplar1);
                       break;
                   }
+                 
               }
               
               TipoPrestamo tp=null;

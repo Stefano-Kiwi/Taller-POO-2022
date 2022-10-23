@@ -272,12 +272,14 @@ public class GenerarPrestamo extends javax.swing.JFrame {
         for(Lector lector1:lectores){
             if(lector1.getNumDocumento()==nroDocumento){
                 lector=lector1;
+                System.out.println("ejemplar generar prestamo"+lector);
+               
                 break;
             }
         }
         
         //prueba agegarle una multa al lector
-        LocalDate fechamulta=LocalDate.of(2022, 11, 12);
+        LocalDate fechamulta=LocalDate.of(2022, 10, 12);
         lector.setMulta(new Multa(2,fechamulta));
          
         //si el lector tiene una multa activa no se puede realizar el prestamo
@@ -307,6 +309,7 @@ public class GenerarPrestamo extends javax.swing.JFrame {
                 int DIA=fechaprestamo.getDayOfMonth()+dias;
                 fechaDevolucion=LocalDate.of(anio,mes,(fechaprestamo.getDayOfMonth()+ DIA));
                 tpPrestamo=tpPrestamo.DOMICILIO;
+                System.out.println(DIA);
                 break;
         }
         Obra obra= new Obra();
@@ -320,7 +323,9 @@ public class GenerarPrestamo extends javax.swing.JFrame {
         for(Ejemplar ejemplar1:disponibles){
             if(ejemplar1.getObra().equals(obra)){
                 ejemplar=ejemplar1;
-//                lector.AgregarEjemplar(ejemplar1);//no esta implememtado
+                 lector.AgregarEjemplar(ejemplar1);//no esta implememtado
+                 System.out.println("ejempplares lector"+lector.getListaDeEjemplares());
+                System.out.println("ejemplar generar prestamo "+ejemplar);
                 JOptionPane.showMessageDialog(null, "Prestamo realizado exitosamente");
                 this.setVisible(false);
                 new Administracion().setVisible(true);

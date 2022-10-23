@@ -19,7 +19,7 @@ public class ListaDeudores extends javax.swing.JFrame {
      * Creates new form ListaDeudores
      */
     
-    Almacenamiento a = new Almacenamiento();
+    
 
     public ListaDeudores() {
         initComponents();
@@ -88,8 +88,8 @@ public class ListaDeudores extends javax.swing.JFrame {
                         .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1337, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,21 +144,32 @@ public class ListaDeudores extends javax.swing.JFrame {
     }
 
     public void cargarDeudores() {
+        Almacenamiento a = new Almacenamiento();
         List<Lector> deudores = new ArrayList<>();
         a.obtenerObras("recursos/ListadoDeObras.txt");
         a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
         a.obtenerPrestamos("recursos/ListaPrestamos.txt");
-           
+        
+        List<Ejemplar> ejemplares = a.getEjemplaresPrestados();
         List<Prestamo> prestamos = a.getPrestamosActivos();
+        System.out.println(prestamos);
         LocalDate hoy = LocalDate.now();
         
         for (Prestamo prestamo : prestamos) {
             if(!prestamo.getFechaDevolucion().isAfter(hoy)){
                 if (!deudores.contains(prestamo.getLector())){
+                prestamo.getLector().AgregarEjemplar(prestamo.getEjemplar());
                 deudores.add(prestamo.getLector());
+                
                 }
+                
+                System.out.println("prestamo ejemplar"+prestamo.getEjemplar());
+                       
             }
         }
+        
+       
+        
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Apellido");
         modelo.addColumn("Nombre");
