@@ -53,7 +53,7 @@ public class Prestamo {
            MPres=String.valueOf(mes);
        }
        
-       LocalDate fechadevolucion=this.fechaPrestamo;
+       LocalDate fechadevolucion=this.fechaDevolucion;
        int diaDev=fechadevolucion.getDayOfMonth();
        int mesDev=fechadevolucion.getMonthValue();
        int anioDev=fechadevolucion.getYear();

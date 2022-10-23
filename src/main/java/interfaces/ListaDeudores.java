@@ -56,7 +56,7 @@ public class ListaDeudores extends javax.swing.JFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Apellido", "Tipo documento", "DNI", "Telefono", "Ejemplares"
+                "Nombre", "Apellido", "Tipo documento", "DNI", "Telefono", "Cantidad de ejemplares vencidos"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -68,6 +68,25 @@ public class ListaDeudores extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tablaDeudores);
+        if (tablaDeudores.getColumnModel().getColumnCount() > 0) {
+            tablaDeudores.getColumnModel().getColumn(0).setMinWidth(30);
+            tablaDeudores.getColumnModel().getColumn(0).setPreferredWidth(100);
+            tablaDeudores.getColumnModel().getColumn(0).setMaxWidth(100);
+            tablaDeudores.getColumnModel().getColumn(1).setMinWidth(30);
+            tablaDeudores.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tablaDeudores.getColumnModel().getColumn(1).setMaxWidth(100);
+            tablaDeudores.getColumnModel().getColumn(2).setMinWidth(30);
+            tablaDeudores.getColumnModel().getColumn(2).setPreferredWidth(80);
+            tablaDeudores.getColumnModel().getColumn(2).setMaxWidth(80);
+            tablaDeudores.getColumnModel().getColumn(3).setMinWidth(65);
+            tablaDeudores.getColumnModel().getColumn(3).setPreferredWidth(80);
+            tablaDeudores.getColumnModel().getColumn(3).setMaxWidth(80);
+            tablaDeudores.getColumnModel().getColumn(4).setMinWidth(80);
+            tablaDeudores.getColumnModel().getColumn(4).setPreferredWidth(90);
+            tablaDeudores.getColumnModel().getColumn(4).setMaxWidth(90);
+            tablaDeudores.getColumnModel().getColumn(5).setMinWidth(10);
+            tablaDeudores.getColumnModel().getColumn(5).setPreferredWidth(200);
+        }
 
         Volver.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         Volver.setText("Volver");
@@ -82,22 +101,21 @@ public class ListaDeudores extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(476, 476, 476)
-                        .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1337, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(447, 447, 447)
+                .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(639, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
-                .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -150,17 +168,14 @@ public class ListaDeudores extends javax.swing.JFrame {
         a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
         a.obtenerPrestamos("recursos/ListaPrestamos.txt");
         
-        List<Ejemplar> ejemplares = a.getEjemplaresPrestados();
         List<Prestamo> prestamos = a.getPrestamosActivos();
-        System.out.println(prestamos);
         LocalDate hoy = LocalDate.now();
         
         for (Prestamo prestamo : prestamos) {
             if(!prestamo.getFechaDevolucion().isAfter(hoy)){
-                if (!deudores.contains(prestamo.getLector())){
                 prestamo.getLector().AgregarEjemplar(prestamo.getEjemplar());
+                if (!deudores.contains(prestamo.getLector())){
                 deudores.add(prestamo.getLector());
-                
                 }
                 
                 System.out.println("prestamo ejemplar"+prestamo.getEjemplar());
@@ -171,13 +186,15 @@ public class ListaDeudores extends javax.swing.JFrame {
        
         
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Apellido");
         modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
         modelo.addColumn("Tipo Documento");
         modelo.addColumn("DNI");
         modelo.addColumn("Telefono");
-        modelo.addColumn("Ejemplares");
+        modelo.addColumn("Cantidad de ejemplares vencidos");
         tablaDeudores.setModel(modelo);
+        
+        tablaDeudores.getColumnModel().getColumn(0).setPreferredWidth(5);
 
         for (Lector lector : deudores) {
             String[] campos = lector.tablaGUI().split(",");

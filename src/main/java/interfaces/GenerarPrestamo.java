@@ -303,13 +303,12 @@ public class GenerarPrestamo extends javax.swing.JFrame {
                 tpPrestamo=tpPrestamo.SALA;
                 break;
             case "Domicilio":
-                int dias=Integer.valueOf(duracionPrestamo.getSelectedItem().toString());
+                int dias = Integer.parseInt(duracionPrestamo.getSelectedItem().toString());
                 int anio=fechaprestamo.getYear();
                 int mes=fechaprestamo.getMonthValue();
-                int DIA=fechaprestamo.getDayOfMonth()+dias;
-                fechaDevolucion=LocalDate.of(anio,mes,(fechaprestamo.getDayOfMonth()+ DIA));
+                int DIA= fechaprestamo.getDayOfMonth()+ dias;
+                fechaDevolucion=LocalDate.of(anio,mes,DIA);
                 tpPrestamo=tpPrestamo.DOMICILIO;
-                System.out.println(DIA);
                 break;
         }
         Obra obra= new Obra();
@@ -339,10 +338,10 @@ public class GenerarPrestamo extends javax.swing.JFrame {
         int hora=Integer.parseInt(horaPrestamo.getText());
         Prestamo prestamo=new Prestamo(tpPrestamo,fechaprestamo,hora,3,fechaDevolucion,lector,ejemplar);
         
+        
         a.escribirCSV("recursos/ListaPrestamos.txt", prestamo.toCSV(1));
         //cambia el estado del ejemplar a prestado(2)
         a.modificarCSV("recursos/ListadoDeEjemplares.txt",ejemplar.toCSV(1),ejemplar.toCSV(2));
-        
         //agrega nuevo prestamo al contador correspondiente en obra
         if(lector instanceof Docente || lector instanceof Alumno){
             obra.agregarNuevoPrestamoAlumnoODocente();

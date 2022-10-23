@@ -78,7 +78,7 @@ public class Lector extends Persona {
 
     public String tablaGUI() {
 
-        return getNombre()+ ","+getApellido()+","+getTipoDocumento()+","+getNumDocumento()+"," +getNroCelular()+ "," +this.ListaDeEjemplares.size()+"\n";
+        return getNombre()+ ","+getApellido()+","+getTipoDocumento()+","+getNumDocumento()+"," +getNroCelular()+ ","+this.ListaDeEjemplares.size()+"\n";
     }
 
 }
