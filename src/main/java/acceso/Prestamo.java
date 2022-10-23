@@ -2,7 +2,6 @@ package acceso;
 
 import inventario.Ejemplar;
 import java.time.LocalDate;
-//import java.util.List;
 
 public class Prestamo {
     private TipoPrestamo tipoPrestamo;

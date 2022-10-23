@@ -107,7 +107,7 @@ public class Ejemplar {
     }
     
     public String toCSV(int disponibilidad){
-          //paramatro disponibilidad =(1: disponible 2: prestado)
+          //disponibilidad =(1: disponible 2: prestado)
         LocalDate fAdquisicion=adquisicion.getFechaAdquisicion();
         int dia=fAdquisicion.getDayOfMonth();
         int mes=fAdquisicion.getMonthValue();

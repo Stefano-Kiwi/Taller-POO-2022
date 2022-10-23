@@ -481,6 +481,7 @@ public class Almacenamiento {
            a=br.readLine();
            lineas=a;
            while((a=br.readLine())!=null){
+               //si encuentra la linea buscada la reemplaza por la nueva
                if(lineaaModificar.equalsIgnoreCase(a)){
                    lineas=lineas+"\n"+lineaNueva;
                }else{
