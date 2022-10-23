@@ -273,6 +273,11 @@ public class GenerarPrestamo extends javax.swing.JFrame {
             if(lector1.getNumDocumento()==nroDocumento){
                 lector=lector1;
                 break;
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe lector con ese documento!. Debe crearse un lector primero");
+                this.setVisible(false);
+                new NuevoLector().setVisible(true);
+                break;
             }
         }
         
