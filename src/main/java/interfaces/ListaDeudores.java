@@ -191,10 +191,8 @@ public class ListaDeudores extends javax.swing.JFrame {
         modelo.addColumn("Tipo Documento");
         modelo.addColumn("DNI");
         modelo.addColumn("Telefono");
-        modelo.addColumn("Cantidad de ejemplares vencidos");
+        modelo.addColumn("Ejemplares vencidos");
         tablaDeudores.setModel(modelo);
-        
-        tablaDeudores.getColumnModel().getColumn(0).setPreferredWidth(5);
 
         for (Lector lector : deudores) {
             String[] campos = lector.tablaGUI().split(",");
