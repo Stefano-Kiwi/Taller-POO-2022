@@ -275,12 +275,18 @@ public class GenerarPrestamo extends javax.swing.JFrame {
                 break;
             }
         }
-        System.out.println("encuentra el lector");
-//        System.out.println(lector.getMulta());
-//        LocalDate fechaMulta=null;
-//        fechaMulta=LocalDate.of(2022, 10, 13);
-//        lector.setMulta(new Multa(2,fechaMulta));
-//        System.out.println(lector.getMulta());
+        
+        //prueba agegarle una multa al lector
+        LocalDate fechamulta=LocalDate.of(2022, 11, 12);
+        lector.setMulta(new Multa(2,fechamulta));
+         
+        //si el lector tiene una multa activa no se puede realizar el prestamo
+        Multa multa=lector.getMulta();
+        if(multa!=null){
+            JOptionPane.showMessageDialog(null, "no se puede realizar el prestamo por que el lector tiene una multa activa"+"\n"+"fecha de vencimiento de la multa: "+multa.fechaVencimiento());
+            this.setVisible(false);
+            new Administracion().setVisible(true);
+        }else{
         
         String fecha=fechaPrestamo.getText();
         String[] fechaArr = fecha.split("/");
@@ -298,16 +304,15 @@ public class GenerarPrestamo extends javax.swing.JFrame {
                 int dias=Integer.valueOf(duracionPrestamo.getSelectedItem().toString());
                 int anio=fechaprestamo.getYear();
                 int mes=fechaprestamo.getMonthValue();
-                fechaDevolucion=LocalDate.of(anio,mes,(fechaprestamo.getDayOfMonth()+ dias));
+                int DIA=fechaprestamo.getDayOfMonth()+dias;
+                fechaDevolucion=LocalDate.of(anio,mes,(fechaprestamo.getDayOfMonth()+ DIA));
                 tpPrestamo=tpPrestamo.DOMICILIO;
                 break;
         }
-        System.out.println("encuentra el tipo prestamo");
         Obra obra= new Obra();
         if(Resultado.size()==1){
            obra=Resultado.get(0);      
         }
-        System.out.println("obtiene la obra");
  
         a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
         List<Ejemplar> disponibles=a.getEjemplarDisponibles();
@@ -322,7 +327,6 @@ public class GenerarPrestamo extends javax.swing.JFrame {
                 break;
             }
         }
-        System.out.println("asigna el ejemplar");        
         if(ejemplar == null){
             JOptionPane.showMessageDialog(null, "No hay ejemplares disponibles");
         }
@@ -340,6 +344,7 @@ public class GenerarPrestamo extends javax.swing.JFrame {
         }else{
             obra.agregarNuevoPrestamoPublicoGeneral();
         }
+       }
     }//GEN-LAST:event_botonPrestamoActionPerformed
 
     private void BusquedaLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BusquedaLibroActionPerformed

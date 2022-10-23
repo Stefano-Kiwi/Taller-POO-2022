@@ -18,7 +18,17 @@ public class Multa {
 //        this.devolucion = devolucion;
 //        this.lector = lector;
     }
-
+    
+    public String fechaVencimiento(){
+        String resultado="";
+        LocalDate fechaVencimiento=null;
+        int diaVen=fecha.getDayOfMonth()+DiasMulta;
+        fechaVencimiento=LocalDate.of(fecha.getYear(),fecha.getMonthValue(),diaVen);
+        int dia=fechaVencimiento.getDayOfMonth();
+        int mes=fechaVencimiento.getMonthValue();
+        int anio=fechaVencimiento.getYear();
+        return dia+"/"+mes+"/"+anio;    
+    }
     public int getDiasMulta() {
         return DiasMulta;
     }

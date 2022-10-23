@@ -127,7 +127,7 @@ public class Ejemplar {
         }
         String resultado="";
         if(disponibilidad==1 || disponibilidad==2 ){
-           resultado= disponibilidad+","+obra.getISBN()+","+lugarFisico+","+DIA+"/"+MES+"/"+año+","+adquisicion.getFormaDeCompra()+","+"no"+","+"  "+",";
+           resultado= disponibilidad+","+obra.getISBN()+","+lugarFisico+","+DIA+"/"+MES+"/"+año+","+adquisicion.getFormaDeCompra()+","+"no"+","+",";
         }
         return resultado;
     }

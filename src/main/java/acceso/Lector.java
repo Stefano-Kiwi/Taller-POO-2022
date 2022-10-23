@@ -9,10 +9,10 @@ import java.util.List;
 public class Lector extends Persona {
 
     private Multa multaActiva;
-    private List<Multa> multas;
-    private List<Ejemplar> ListaDeEjemplares;
+    private List<Multa> multas= new ArrayList();
+    private List<Ejemplar> ListaDeEjemplares=new ArrayList();
 
-    public Lector() {
+    public Lector(){
     }
 
     public Lector(String nombre, String apellido, String tipoDocumento, int numDocumento,
@@ -20,10 +20,7 @@ public class Lector extends Persona {
             String domicilio, int codigoPostal, String departamento, String localidad) {
         super(nombre, apellido, tipoDocumento, numDocumento, fechaNacimiento, sexo, correo, nroCelular, nacionalidad,
                 domicilio, codigoPostal, departamento, localidad);
-        
         TerminarMulta();
-        ListaDeEjemplares = new ArrayList<Ejemplar>();
-        multas=new ArrayList<Multa>();
     }
 
     public Multa getMulta() {
@@ -33,8 +30,10 @@ public class Lector extends Persona {
     public void setMulta(Multa multa) {
         this.multaActiva = multa;
         multas.add(multa);
+        TerminarMulta();
     }
     public void TerminarMulta(){
+        //verifica si la multa ya caducó
         LocalDate hoy=null;
         hoy=LocalDate.now();
         

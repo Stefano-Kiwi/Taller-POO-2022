@@ -482,7 +482,7 @@ public class Almacenamiento {
            a=br.readLine();
            lineas=a;
            while((a=br.readLine())!=null){
-               if(a.equalsIgnoreCase(lineaaModificar)){
+               if(lineaaModificar.equalsIgnoreCase(a)){
                    lineas=lineas+"\n"+lineaNueva;
                }else{
                    lineas=lineas+"\n"+a;
