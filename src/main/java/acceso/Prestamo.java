@@ -40,12 +40,38 @@ public class Prestamo {
        int dia=fechaprestamo.getDayOfMonth();
        int mes=fechaprestamo.getMonthValue();
        int anio=fechaprestamo.getYear();
+       String DPres;
+       String MPres;
+       if(dia<10){
+           DPres="0"+String.valueOf(dia);
+       }else{
+           DPres=String.valueOf(dia);
+       }
+       if(mes<10){
+           MPres="0"+String.valueOf(mes);
+       }else{
+           MPres=String.valueOf(mes);
+       }
+       
        LocalDate fechadevolucion=this.fechaPrestamo;
        int diaDev=fechadevolucion.getDayOfMonth();
        int mesDev=fechadevolucion.getMonthValue();
        int anioDev=fechadevolucion.getYear();
+       String DDev;
+       String MDev;
+       if(diaDev<10){
+           DDev="0"+String.valueOf(diaDev);
+       }else{
+           DDev=String.valueOf(diaDev);
+       }
+       if(mesDev<10){
+           MDev="0"+String.valueOf(mesDev);
+       }else{
+           MDev=String.valueOf(mesDev);
+       }
+       
        if(disponibilidad==1 || disponibilidad==2 ){
-        resultado="1"+","+this.tipoPrestamo+","+dia+"/"+mes+"/"+anio+","+this.horaPrestamo+","+this.idBibliotecario+","+diaDev+"/"+mesDev+"/"+anioDev+","+this.lector.getNumDocumento()+","+this.ejemplar.getIdUnico();
+        resultado="1"+","+this.tipoPrestamo+","+DPres+"/"+MPres+"/"+anio+","+this.horaPrestamo+","+this.idBibliotecario+","+DDev+"/"+MDev+"/"+anioDev+","+this.lector.getNumDocumento()+","+this.ejemplar.getIdUnico();
        }
        return resultado;
     }
