@@ -3,6 +3,7 @@ import acceso.Alumno;
 import acceso.DatosDeAcceso;
 import acceso.Docente;
 import acceso.Lector;
+import acceso.Multa;
 import acceso.Prestamo;
 import acceso.TipoPrestamo;
 import inventario.*;
@@ -274,6 +275,12 @@ public class GenerarPrestamo extends javax.swing.JFrame {
                 break;
             }
         }
+        System.out.println("encuentra el lector");
+//        System.out.println(lector.getMulta());
+//        LocalDate fechaMulta=null;
+//        fechaMulta=LocalDate.of(2022, 10, 13);
+//        lector.setMulta(new Multa(2,fechaMulta));
+//        System.out.println(lector.getMulta());
         
         String fecha=fechaPrestamo.getText();
         String[] fechaArr = fecha.split("/");
@@ -295,25 +302,27 @@ public class GenerarPrestamo extends javax.swing.JFrame {
                 tpPrestamo=tpPrestamo.DOMICILIO;
                 break;
         }
+        System.out.println("encuentra el tipo prestamo");
         Obra obra= new Obra();
         if(Resultado.size()==1){
            obra=Resultado.get(0);      
         }
+        System.out.println("obtiene la obra");
  
         a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
-        List<Ejemplar>disponibles=a.getEjemplarDisponibles();
-        Ejemplar ejemplar=new Ejemplar();
+        List<Ejemplar> disponibles=a.getEjemplarDisponibles();
+        Ejemplar ejemplar=null;
         for(Ejemplar ejemplar1:disponibles){
             if(ejemplar1.getObra().equals(obra)){
                 ejemplar=ejemplar1;
-                lector.AgregarEjemplar(ejemplar1);
+//                lector.AgregarEjemplar(ejemplar1);//no esta implememtado
                 JOptionPane.showMessageDialog(null, "Prestamo realizado exitosamente");
                 this.setVisible(false);
                 new Administracion().setVisible(true);
                 break;
             }
         }
-                
+        System.out.println("asigna el ejemplar");        
         if(ejemplar == null){
             JOptionPane.showMessageDialog(null, "No hay ejemplares disponibles");
         }

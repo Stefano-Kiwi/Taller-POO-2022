@@ -37,10 +37,9 @@ public class Lector extends Persona {
     public void TerminarMulta(){
         LocalDate hoy=null;
         hoy=LocalDate.now();
-        LocalDate fechaMulta = multaActiva.getFecha();
         
         if(multaActiva!=null){
-         
+         LocalDate fechaMulta = multaActiva.getFecha();
          LocalDate fechaVencimiento=null;
          int DiafechaMulta=fechaMulta.getDayOfMonth();
          int dias=multaActiva.getDiasMulta(); 
