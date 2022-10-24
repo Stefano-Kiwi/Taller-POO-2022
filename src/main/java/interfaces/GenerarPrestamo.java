@@ -263,6 +263,7 @@ public class GenerarPrestamo extends javax.swing.JFrame {
         a.busquedaObras(numOption, BusquedaLibro.getText());
         List<Obra>Resultado=new ArrayList();
         Resultado=a.busquedaObras(numOption, BusquedaLibro.getText());
+        a.obtenerMultas("recursos/ListaMultas.txt");
         //CARGA TODOS LOS LECTORES
         da.obtenerLectores("recursos/ListadoDeLectores.txt");
         List<Lector> lectores=da.getLectores();
@@ -284,7 +285,7 @@ public class GenerarPrestamo extends javax.swing.JFrame {
         //prueba agegarle una multa al lector
 //        LocalDate fechamulta=LocalDate.of(2022, 10, 12);
 //        lector.setMulta(new Multa(2,fechamulta));
-         
+        a.obtenerMulta(lector);
         //si el lector tiene una multa activa no se puede realizar el prestamo
         Multa multa=lector.getMulta();
         if(multa!=null){

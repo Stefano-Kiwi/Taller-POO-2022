@@ -26,7 +26,8 @@ public class Almacenamiento {
     private List<Prestamo> prestamosActivos;
     private List<Prestamo> prestamosTerminados;
     private List<Multa> multas;
-
+    private Lector LectorMultado;
+    
     public Almacenamiento() {
     }
 
@@ -540,14 +541,24 @@ public class Almacenamiento {
                             break;
                         }
                     }
-
-                    this.multas.add(new Multa(Integer.parseInt(cantDiasMulta), fecha, lector));
+                    
+                    Multa multa2=new Multa(Integer.parseInt(cantDiasMulta), fecha,lector);
+                    
+                    this.multas.add(multa2);
 
                 }
             }
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    
+    public void obtenerMulta(Lector lector){
+        for(Multa multa:multas){
+            if(multa.getLector().getNumDocumento()==lector.getNumDocumento()){
+                lector.setMulta(multa);
+            }
         }
     }
 
