@@ -4,6 +4,11 @@
  */
 package interfaces;
 
+import acceso.Prestamo;
+import inventario.Almacenamiento;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Daniel Altamirano
@@ -16,6 +21,7 @@ public class PrestamosVigentes extends javax.swing.JFrame {
     public PrestamosVigentes() {
         initComponents();
         this.setLocationRelativeTo(null);
+        cargardatos();
     }
 
     /**
@@ -28,12 +34,13 @@ public class PrestamosVigentes extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        PrestamoVTabla = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Prestamos vigente a la fecha");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        PrestamoVTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -44,7 +51,7 @@ public class PrestamosVigentes extends javax.swing.JFrame {
                 "Nombre", "Apellido", "Ejemplar", "Fecha de prestamo"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(PrestamoVTabla);
 
         jButton1.setText("Volver");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -60,19 +67,19 @@ public class PrestamosVigentes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 860, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(414, 414, 414)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(82, Short.MAX_VALUE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(65, 65, 65)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 861, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
@@ -119,10 +126,31 @@ public class PrestamosVigentes extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void cargardatos() {
+        Almacenamiento a = new Almacenamiento();
+        a.obtenerObras("recursos/ListadoDeObras.txt");
+        a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
+        a.obtenerPrestamos("recursos/ListaPrestamos.txt");
+
+        List<Prestamo> prestamoAux = a.getPrestamosActivos();
+
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Ejemplar");
+        modelo.addColumn("Fecha de prestamo");
+        PrestamoVTabla.setModel(modelo);
+
+        for (Prestamo prestamo : prestamoAux) {
+            String[] campos = prestamo.tablaGUI().split(",");
+            modelo.addRow(campos);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable PrestamoVTabla;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

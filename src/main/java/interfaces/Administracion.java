@@ -56,7 +56,7 @@ public class Administracion extends javax.swing.JFrame {
                 devolverActionPerformed(evt);
             }
         });
-        jPanel1.add(devolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 142, 50));
+        jPanel1.add(devolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 142, 50));
 
         Deudores.setText("Deudores");
         Deudores.addActionListener(new java.awt.event.ActionListener() {
@@ -64,7 +64,7 @@ public class Administracion extends javax.swing.JFrame {
                 DeudoresActionPerformed(evt);
             }
         });
-        jPanel1.add(Deudores, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 150, 50));
+        jPanel1.add(Deudores, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, 150, 50));
 
         jButton1.setText("Todas las obras");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -72,7 +72,7 @@ public class Administracion extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 190, 150, 50));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, 150, 50));
 
         salir.setText("Salir");
         salir.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -85,20 +85,20 @@ public class Administracion extends javax.swing.JFrame {
                 salirActionPerformed(evt);
             }
         });
-        jPanel1.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, -1, -1));
+        jPanel1.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, -1, -1));
 
         jLabelPrestar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabelPrestar.setText("Consultar");
-        jPanel1.add(jLabelPrestar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, -1, -1));
+        jPanel1.add(jLabelPrestar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, -1, -1));
 
         jLabelPrestamos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabelPrestamos.setText("Prestamos");
-        jPanel1.add(jLabelPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, -1, -1));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 173, 690, 20));
+        jPanel1.add(jLabelPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(343, 80, 90, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 690, 20));
 
         jLabelRegistrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabelRegistrar.setText("Registrar");
-        jPanel1.add(jLabelRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
+        jPanel1.add(jLabelRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, -1));
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
@@ -108,7 +108,7 @@ public class Administracion extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 140, 50));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 140, 50));
 
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
@@ -118,7 +118,7 @@ public class Administracion extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 140, 50));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 140, 50));
 
         jButton5.setText("Prestamos vigentes");
         jButton5.setToolTipText("");
@@ -127,7 +127,7 @@ public class Administracion extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 260, 150, 50));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 150, 50));
 
         EjemplaresPorObra.setText("Ejemplares por Obra");
         EjemplaresPorObra.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +135,7 @@ public class Administracion extends javax.swing.JFrame {
                 EjemplaresPorObraActionPerformed(evt);
             }
         });
-        jPanel1.add(EjemplaresPorObra, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 400, 150, 50));
+        jPanel1.add(EjemplaresPorObra, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 150, 50));
 
         jButton6.setBackground(new java.awt.Color(0, 0, 0));
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
@@ -145,7 +145,7 @@ public class Administracion extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 140, 50));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 140, 50));
 
         jButton7.setText("Prestar Ejemplar");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -153,7 +153,7 @@ public class Administracion extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 142, 50));
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 142, 50));
 
         jButton2.setText("Reservas");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +161,7 @@ public class Administracion extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 470, 150, 50));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 430, 150, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

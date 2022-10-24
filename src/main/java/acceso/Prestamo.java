@@ -162,6 +162,12 @@ public class Prestamo {
         this.ejemplar = ejemplar;
     }
     
-    
-    
+   public String tablaGUI() {
+       LocalDate fechaprestamo = this.fechaPrestamo;
+       int dia=fechaprestamo.getDayOfMonth();
+       int mes=fechaprestamo.getMonthValue();
+       int anio=fechaprestamo.getYear();
+        
+        return lector.getNombre()+","+lector.getApellido()+","+ejemplar.getObra().getTitulo()+","+dia+"/"+mes+"/"+anio+"\n";
+    }     
 }

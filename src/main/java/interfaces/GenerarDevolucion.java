@@ -222,9 +222,7 @@ public class GenerarDevolucion extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"se devolvio el ejemplar despues de la fecha de devolucion \n se le aplico una multa por 3 dias al lector");
             fueradeTermino=true;
         }
-        
         a.obtenerMultas("recursos/ListaMultas.txt");
-        System.out.println(a.getMultas());
         
         Ejemplar ejemplar = prestamo.getEjemplar();
         //actualiza los datos de los txt
