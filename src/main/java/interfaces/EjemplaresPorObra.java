@@ -30,6 +30,10 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         initComponents();
         cargarDatos();
         this.esConsulta = consulta;
+            if(esConsulta == true){
+            ComboBoxTitulo.setVisible(false);
+            labelAdmin.setVisible(false);
+        }
     }
 
     /**
@@ -43,7 +47,7 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaEjemplar = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        labelAdmin = new javax.swing.JLabel();
         ComboBoxTitulo = new javax.swing.JComboBox<>();
         jButtonVolver = new javax.swing.JButton();
         areaTematicaLabel = new javax.swing.JLabel();
@@ -75,7 +79,12 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TablaEjemplar);
 
-        jLabel1.setText("Ejemplares total de la biblioteca:");
+        labelAdmin.setText("Ejemplares total de la biblioteca:");
+        labelAdmin.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                labelAdminComponentHidden(evt);
+            }
+        });
 
         ComboBoxTitulo.setToolTipText("");
         ComboBoxTitulo.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +142,7 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(labelAdmin)
                     .addComponent(ComboBoxTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +160,7 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(areaTematicaLabel)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -173,16 +182,9 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
 
 
     private void ComboBoxTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxTituloActionPerformed
-        /**
-         *
-         * @author Luciano Aguilar
-         *  Al seleccionar la opcioón en ComboBox saldra la informacion requerida en la tabla
-         */
+       
         
-            if(esConsulta == true){
-            ComboBoxTitulo.setVisible(false);
-            jLabel1.setVisible(false);
-        }
+        
             
         String opcionElegida = ComboBoxTitulo.getSelectedItem().toString();
 
@@ -259,6 +261,10 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         this.setVisible(false);
         new HacerReservas().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void labelAdminComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_labelAdminComponentHidden
+        // TODO add your handling code here:
+    }//GEN-LAST:event_labelAdminComponentHidden
 
     /**
      * @param args the command line arguments
@@ -349,9 +355,9 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
     private javax.swing.JLabel areaTematicaLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonVolver;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelAdmin;
     // End of variables declaration//GEN-END:variables
 }
