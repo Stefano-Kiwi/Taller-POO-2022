@@ -4,6 +4,15 @@
  */
 package interfaces;
 
+import acceso.DatosDeAcceso;
+import acceso.Lector;
+import acceso.Multa;
+import inventario.Almacenamiento;
+import inventario.Obra;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author lucia
@@ -15,6 +24,7 @@ public class RankingLectores extends javax.swing.JFrame {
      */
     public RankingLectores() {
         initComponents();
+        cargarDatos();
     }
 
     /**
@@ -27,11 +37,11 @@ public class RankingLectores extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        rankingTabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        rankingTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -42,7 +52,7 @@ public class RankingLectores extends javax.swing.JFrame {
                 "Lector", "DNI", "Multas"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(rankingTabla);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,9 +102,38 @@ public class RankingLectores extends javax.swing.JFrame {
             }
         });
     }
+public void cargarDatos() {
 
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Lector");
+        modelo.addColumn("DNI");
+        modelo.addColumn("Multas");
+        rankingTabla.setModel(modelo);
+
+        //Creamos de manaera manual bla bla etc
+        Almacenamiento a = new Almacenamiento();
+        DatosDeAcceso datos = new DatosDeAcceso();
+        
+        datos.obtenerLectores("recursos/ListadoDeLectores.txt");
+        a.obtenerMultas("recursos/ListaMultas.txt");
+        List<Multa> multas = a.getMultas();
+        List<Lector> lectores = datos.getLectores();
+        
+        
+        for (Multa multa : multas) {
+            
+                    String[] campos = multa.tablaGUI().split(",");
+                    modelo.addRow(campos);
+                
+        }
+            
+        }
+        
+ 
+        
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable rankingTabla;
     // End of variables declaration//GEN-END:variables
 }
