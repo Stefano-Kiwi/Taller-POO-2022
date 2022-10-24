@@ -1,1 +1,4 @@
 (1:prestamo activo 2:prestamo terminado),tipoPrestamo,fechaprestamo,horaprestamo,idbibliotecario,fechadevolucion,nroDni lector,id unico ejemplar
+1,DOMICILIO,22/10/2022,18,3,26/10/2022,1,pasillo700,9780021233977
+1,DOMICILIO,20/10/2022,18,3,21/10/2022,1,pasillo766,9780021233977
+1,DOMICILIO,22/10/2022,18,3,26/10/2022,1,salon464,9789875472884

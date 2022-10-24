@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListaObras extends javax.swing.JFrame {
 
+    boolean esConsulta = false;
     /**
      * Creates new form Principal
      */
@@ -22,7 +23,13 @@ public class ListaObras extends javax.swing.JFrame {
         cargarDatos();
         this.setLocationRelativeTo(null);
     }
-
+    
+    public ListaObras(boolean esConsulta) {
+        initComponents();
+        cargarDatos();
+        this.setLocationRelativeTo(null);
+        this.esConsulta = esConsulta;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -132,9 +139,14 @@ public class ListaObras extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                        
 
-    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {                                       
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {    
         this.setVisible(false);
-        new Administracion().setVisible(true);
+        if(esConsulta==true){
+            new Consultas().setVisible(true);
+        }else{
+            new Administracion().setVisible(true);
+        }
+        
     }                                      
 
     private void editorialBoxActionPerformed(java.awt.event.ActionEvent evt) {                                             
