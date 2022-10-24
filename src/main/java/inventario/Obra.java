@@ -183,9 +183,20 @@ public class Obra {
     //NO TOCAR POR AHORA. PARA INTERFAZ GRAFICA.
     public String tablaGUI() {
         return titulo +","+autor1+","+ISBN+","+genero+"\n";
-    }
+    }    
     
-    
-    
-    
+     public String MasSolicitados(int opcion) {
+         
+         String resultado = "";
+         
+         switch(opcion){
+             case 1:
+                 resultado = titulo + ","+ ISBN + "," + getPrestamosAlumnosODocentes();
+        break;
+             case 2:
+                 resultado = titulo +","+ISBN + "," + getPrestamosGenerales();
+                 break;
+    } 
+         return resultado;
+}
 }
