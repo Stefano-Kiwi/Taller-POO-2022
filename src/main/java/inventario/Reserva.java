@@ -68,4 +68,8 @@ public class Reserva {
        }
        return resultado; 
 }    
+
+    public String tablaGUI() {
+       return obra.getTitulo()+","+lector.getNumDocumento()+","+fecha+"\n";
+    }
 }

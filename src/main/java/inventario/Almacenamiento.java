@@ -19,6 +19,7 @@ public class Almacenamiento {
 
     private List<Obra> obras;
     private List<Ejemplar> ejemplares;
+    private List<Reserva> reservasRealizas;
     private List<Reserva> reservas;
     private List<Ejemplar> ejemplarDisponibles;
     private List<Ejemplar> ejemplaresPrestados;
@@ -27,7 +28,7 @@ public class Almacenamiento {
     private List<Prestamo> prestamosTerminados;
     private List<Multa> multas;
     private Lector LectorMultado;
-    
+
     public Almacenamiento() {
     }
 
@@ -92,6 +93,14 @@ public class Almacenamiento {
         }
     }
 
+    public List<Reserva> getReservasRealizas() {
+        return reservasRealizas;
+    }
+
+    public List<Reserva> getReservas() {
+        return this.reservas;
+    }
+    
     public List<Obra> getObras() {
         return this.obras;
     }
@@ -541,9 +550,9 @@ public class Almacenamiento {
                             break;
                         }
                     }
-                    
-                    Multa multa2=new Multa(Integer.parseInt(cantDiasMulta), fecha,lector);
-                    
+
+                    Multa multa2 = new Multa(Integer.parseInt(cantDiasMulta), fecha, lector);
+
                     this.multas.add(multa2);
 
                 }
@@ -553,10 +562,10 @@ public class Almacenamiento {
             e.printStackTrace();
         }
     }
-    
-    public void obtenerMulta(Lector lector){
-        for(Multa multa:multas){
-            if(multa.getLector().getNumDocumento()==lector.getNumDocumento()){
+
+    public void obtenerMulta(Lector lector) {
+        for (Multa multa : multas) {
+            if (multa.getLector().getNumDocumento() == lector.getNumDocumento()) {
                 lector.setMulta(multa);
             }
         }
@@ -618,4 +627,74 @@ public class Almacenamiento {
         this.multas = multas;
     }
 
+    public void ObtenerReservas(String direccion) {
+        //carga los lectores
+        DatosDeAcceso da = new DatosDeAcceso();
+        da.obtenerLectores("recursos/ListadoDeLectores.txt");
+        List<Lector> lectores = da.getLectores();
+
+        Lector lector = null;
+        Obra obra = null;
+        reservas = new ArrayList();
+
+        File archivo = new File(direccion);
+        try {
+            int disponibilidad = 0;
+            final String regex1 = "^(.*),(.*),(.*),(.*)$"; //disponibilidad,titulo,nrodni,fechareserva
+            FileReader fr = new FileReader(archivo);
+            BufferedReader br = new BufferedReader(fr);
+
+            Pattern pattern = Pattern.compile(regex1);
+            String linea;
+
+            linea = br.readLine();
+            Matcher matcher;
+
+            while ((linea = br.readLine()) != null) {
+                matcher = pattern.matcher(linea);
+                if (matcher.matches()) {
+
+                    disponibilidad = Integer.parseInt(matcher.group(1));
+                    String titulo = matcher.group(2);
+                    int NumDNI = Integer.parseInt(matcher.group(3));
+                    String fechaReserva = matcher.group(4);
+
+                    //busca obra por titulo
+                    for (Obra obra1 : obras) {
+                        if (obra1.getTitulo().equalsIgnoreCase(titulo)) {
+                            obra = obra1;
+                            System.out.println(obra);
+                        }
+                    }
+                    //busca lector por documento
+                    for (Lector lector1 : lectores) {
+                        if (lector1.getNumDocumento() == NumDNI) {
+                            lector = lector1;
+                            System.out.println(lector);
+                        }
+                    }
+
+                    //parsea la fecha a tipo Localdate
+                    String[] fechaArr = fechaReserva.split("/");
+                    LocalDate fecha = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
+
+                    Reserva reserva;
+
+                    switch (disponibilidad) {
+                        case 1:
+                            reserva = new Reserva(obra, lector, fecha);
+                            this.reservas.add(reserva);
+                            break;
+                        case 2:
+                            reserva = new Reserva(obra, lector, fecha);
+                            this.reservasRealizas.add(reserva);
+                            break;
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+
+        }
+    }
 }
