@@ -12,6 +12,7 @@ import inventario.Almacenamiento;
 import inventario.Ejemplar;
 import java.time.LocalDate;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -44,6 +45,7 @@ public class GenerarDevolucion extends javax.swing.JFrame {
         tagParametroBuscar = new javax.swing.JLabel();
         texto = new javax.swing.JTextField();
         BotonDevolver = new javax.swing.JButton();
+        botonVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,6 +65,13 @@ public class GenerarDevolucion extends javax.swing.JFrame {
             }
         });
 
+        botonVolver.setText("Volver");
+        botonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,9 +87,11 @@ public class GenerarDevolucion extends javax.swing.JFrame {
                     .addComponent(texto, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(384, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BotonDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(298, 298, 298))
+                .addGap(237, 237, 237))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,9 +104,11 @@ public class GenerarDevolucion extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buscarPrestamoPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(texto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 329, Short.MAX_VALUE)
-                .addComponent(BotonDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BotonDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17))
         );
 
         pack();
@@ -125,11 +138,13 @@ public class GenerarDevolucion extends javax.swing.JFrame {
         a.obtenerPrestamos("recursos/ListaPrestamos.txt");
         List<Prestamo> prestamosActivos = a.getPrestamosActivos();
         Prestamo prestamo=null;
+        
+        
         switch(opcion){
             case "Lector":
                 int dni=Integer.valueOf(texto.getText());
                 for(Prestamo p:prestamosActivos){
-                    if(p.getLector().getNumDocumento()==dni){
+                    if(p.getLector().getNumDocumento() == dni){
                         prestamo=p;
                         break;
                     }
@@ -139,6 +154,7 @@ public class GenerarDevolucion extends javax.swing.JFrame {
                 String idunico=texto.getText();
                 for(Prestamo p:prestamosActivos){
                     if(p.getEjemplar().getIdUnico().equalsIgnoreCase(idunico)){
+                        System.out.println(p.getEjemplar().getIdUnico()+"|"+idunico);
                         prestamo=p;
                         break;
                     }
@@ -163,9 +179,18 @@ public class GenerarDevolucion extends javax.swing.JFrame {
         //no esta funcionando por alguna razon el idunico es distinto 
         a.modificarCSV("recursos/ListaPrestamos.txt", prestamo.toCSV(1),prestamo.toCSV(2));
         
-         Devolucion devolucion=new Devolucion(hoy,fueradeTermino,prestamo);
+        Devolucion devolucion=new Devolucion(hoy,fueradeTermino,prestamo);
+        
+         JOptionPane.showMessageDialog(null,"devolucion realizada con exito");
+         this.setVisible(false);
+         new Administracion().setVisible(true);
+        
 
     }//GEN-LAST:event_BotonDevolverActionPerformed
+
+    private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
+        this.setVisible(false);
+        new Administracion().setVisible(true);    }//GEN-LAST:event_botonVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,6 +230,7 @@ public class GenerarDevolucion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonDevolver;
     private javax.swing.JLabel TagBuscarPor;
+    private javax.swing.JButton botonVolver;
     private javax.swing.JComboBox<String> buscarPrestamoPor;
     private javax.swing.JLabel tagParametroBuscar;
     private javax.swing.JTextField texto;

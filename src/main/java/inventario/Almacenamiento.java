@@ -161,7 +161,7 @@ public class Almacenamiento {
         this.ejemplaresPrestados=new ArrayList();
         this.ejemplaresDadosDeBaja=new ArrayList();
         try {
-            final String regex1 = "^(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*)$";
+            final String regex1 = "^(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*)$";
 
             File archivo = new File(direccion);
             FileReader fr = new FileReader(archivo);
@@ -182,7 +182,8 @@ public class Almacenamiento {
                         
                     String isbn = matcher.group(2);
                     String lugar = matcher.group(3);
-                    String estaDadoDeBaja = matcher.group(6);
+                    String idunico=matcher.group(6);
+                    String estaDadoDeBaja = matcher.group(7);
                      
                     String fechaAd=matcher.group(4);
                     String[] fechaArr = fechaAd.split("/");
@@ -191,7 +192,7 @@ public class Almacenamiento {
                     
                     LocalDate fechaAdquisicion = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
                                         
-                    String fechaBA=matcher.group(7);
+                    String fechaBA=matcher.group(8);
                     
                     LocalDate fechaBAJA = null;
                     if(!(fechaBA == "")){
@@ -201,7 +202,7 @@ public class Almacenamiento {
                     }
                     
                     
-                    String motivo = matcher.group(8);
+                    String motivo = matcher.group(9);
                     
                     for (Obra obra : obras) {
                         if(obra.getISBN().equals(isbn)){
@@ -209,23 +210,23 @@ public class Almacenamiento {
                             
                             switch(disponibilidad){
                              case "1":
-                                this.ejemplarDisponibles.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica())));
+                                this.ejemplarDisponibles.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),idunico));
                                 break;
                              case "2":
-                                this.ejemplaresPrestados.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica())));
+                                this.ejemplaresPrestados.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),idunico));
                                 break;
                              case "3":
-                                this.ejemplaresDadosDeBaja.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),new Baja(fechaBAJA, motivo, lugar)));
+                                this.ejemplaresDadosDeBaja.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),idunico,new Baja(fechaBAJA, motivo, lugar)));
                                 break;
                             }
                             
                             if(estaDadoDeBaja.equalsIgnoreCase("no")){          // ESTO LO AGREGA A LA LISTA DE EJEMPLARES GENERAL.
-                                ejemplares.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica())));
-                                obra.AgregarEjemplar(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica())));
+                                ejemplares.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),idunico));
+                                obra.AgregarEjemplar(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),idunico));
                                 
                             }else{
-                                ejemplares.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),new Baja(fechaBAJA, motivo, lugar)));
-                                obra.AgregarEjemplar(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),new Baja(fechaBAJA, motivo, lugar)));
+                                ejemplares.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),idunico,new Baja(fechaBAJA, motivo, lugar)));
+                                obra.AgregarEjemplar(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),idunico,new Baja(fechaBAJA, motivo, lugar)));
                             }
                         }
                     }     
@@ -398,7 +399,7 @@ public class Almacenamiento {
         List<Lector> lectores=da.getLectores();
         
         try{
-        String regex1="^(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*)$";
+        String regex1="^(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*)$";
         File archivo=new File(direccion);
         FileReader fr= new FileReader(archivo);
         BufferedReader br = new BufferedReader(fr);
@@ -421,14 +422,15 @@ public class Almacenamiento {
               }
               
               String idunico=matcher.group(8);
-              String isbn = matcher.group(9);
+//              String isbn = matcher.group(9);//no es necesario ya que la busqueda por idunico funciona
               Ejemplar ejemplar=null;
               for(Ejemplar ejemplar1:ejemplares){
-                  if(ejemplar1.getObra().getISBN().equals(isbn)){
+//                  if(ejemplar1.getObra().getISBN().equals(isbn)){
+                  if(idunico.equalsIgnoreCase(ejemplar1.getIdUnico())){
                       ejemplar=ejemplar1;
-                      System.out.println("ejemplar obtener prestamo"+ejemplar1);
                       break;
-                  }
+                  
+                 }
                  
               }
               

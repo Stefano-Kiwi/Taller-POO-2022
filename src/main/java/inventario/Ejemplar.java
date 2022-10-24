@@ -27,6 +27,20 @@ public class Ejemplar {
         this.baja = baja;
         this.adquisicion = adquisicion;
     }
+    public Ejemplar(String lugarFisico,Obra obra,Adquisicion adquisicion,String idunico,Baja baja) {
+        this.lugarFisico = lugarFisico;
+        this.obra = obra;
+        this.idUnico = idunico;
+        this.baja = baja;
+        this.adquisicion = adquisicion;
+        
+    }
+    public Ejemplar(String lugarFisico,Obra obra, Adquisicion adquisicion,String idunico){
+        this.lugarFisico = lugarFisico;
+        this.obra = obra;
+        this.adquisicion = adquisicion;
+        this.idUnico=idunico;
+    }
 
     public Ejemplar() {
     }
@@ -126,7 +140,7 @@ public class Ejemplar {
         }
         String resultado="";
         if(disponibilidad==1 || disponibilidad==2 ){
-           resultado= disponibilidad+","+obra.getISBN()+","+lugarFisico+","+DIA+"/"+MES+"/"+año+","+adquisicion.getFormaDeCompra()+","+"no"+","+",";
+           resultado= disponibilidad+","+obra.getISBN()+","+lugarFisico+","+DIA+"/"+MES+"/"+año+","+adquisicion.getFormaDeCompra()+","+this.idUnico+","+"no"+","+",";
         }
         return resultado;
     }

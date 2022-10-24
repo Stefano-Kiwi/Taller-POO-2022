@@ -282,8 +282,8 @@ public class GenerarPrestamo extends javax.swing.JFrame {
         }
         
         //prueba agegarle una multa al lector
-        LocalDate fechamulta=LocalDate.of(2022, 10, 12);
-        lector.setMulta(new Multa(2,fechamulta));
+//        LocalDate fechamulta=LocalDate.of(2022, 10, 12);
+//        lector.setMulta(new Multa(2,fechamulta));
          
         //si el lector tiene una multa activa no se puede realizar el prestamo
         Multa multa=lector.getMulta();
@@ -337,9 +337,7 @@ public class GenerarPrestamo extends javax.swing.JFrame {
         }
         
         int hora=Integer.parseInt(horaPrestamo.getText());
-        Prestamo prestamo=new Prestamo(tpPrestamo,fechaprestamo,hora,3,fechaDevolucion,lector,ejemplar);
-        
-        
+        Prestamo prestamo=new Prestamo(tpPrestamo,fechaprestamo,hora,3,fechaDevolucion,lector,ejemplar);        
         a.escribirCSV("recursos/ListaPrestamos.txt", prestamo.toCSV(1));
         //cambia el estado del ejemplar a prestado(2)
         a.modificarCSV("recursos/ListadoDeEjemplares.txt",ejemplar.toCSV(1),ejemplar.toCSV(2));

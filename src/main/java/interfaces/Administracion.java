@@ -28,7 +28,7 @@ public class Administracion extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        devolver = new javax.swing.JButton();
         Deudores = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         salir = new javax.swing.JButton();
@@ -41,6 +41,7 @@ public class Administracion extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         EjemplaresPorObra = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ventana Principal");
@@ -48,13 +49,13 @@ public class Administracion extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setText("Prestar Ejemplar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        devolver.setText("Devolver Ejemplar");
+        devolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                devolverActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 142, 50));
+        jPanel1.add(devolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 142, 50));
 
         Deudores.setText("Deudores");
         Deudores.addActionListener(new java.awt.event.ActionListener() {
@@ -145,6 +146,14 @@ public class Administracion extends javax.swing.JFrame {
         });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 140, 50));
 
+        jButton7.setText("Prestar Ejemplar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 142, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -183,10 +192,10 @@ public class Administracion extends javax.swing.JFrame {
         new ListaDeudores().setVisible(true);
     }//GEN-LAST:event_DeudoresActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    this.setVisible(false);
-        new GenerarPrestamo().setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void devolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverActionPerformed
+       this.setVisible(false);
+        new GenerarDevolucion().setVisible(true);
+    }//GEN-LAST:event_devolverActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        this.setVisible(false);
@@ -212,6 +221,10 @@ public class Administracion extends javax.swing.JFrame {
      this.setVisible(false);
      new RegistrarEjemplar().setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,12 +264,13 @@ public class Administracion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Deudores;
     private javax.swing.JButton EjemplaresPorObra;
+    private javax.swing.JButton devolver;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabelPrestamos;
     private javax.swing.JLabel jLabelPrestar;
     private javax.swing.JLabel jLabelRegistrar;
