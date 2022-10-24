@@ -24,14 +24,11 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
     public EjemplaresPorObra() {
         initComponents();
         cargarDatos();
-        this.setLocationRelativeTo(null);
-
     }
     
     public EjemplaresPorObra(boolean consulta) {
         initComponents();
         cargarDatos();
-        this.setLocationRelativeTo(null);
         this.esConsulta = consulta;
     }
 
@@ -176,12 +173,17 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
 
 
     private void ComboBoxTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxTituloActionPerformed
-
         /**
          *
          * @author Luciano Aguilar
          *  Al seleccionar la opcioón en ComboBox saldra la informacion requerida en la tabla
          */
+        
+            if(esConsulta == true){
+            ComboBoxTitulo.setVisible(false);
+            jLabel1.setVisible(false);
+        }
+            
         String opcionElegida = ComboBoxTitulo.getSelectedItem().toString();
 
         a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
@@ -209,7 +211,7 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
             String[] campos = ejemplar.tablaGUI().split(",");
             modelo.addRow(campos);
         }
-
+        
     }//GEN-LAST:event_ComboBoxTituloActionPerformed
    
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
@@ -294,7 +296,8 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
     }
 
     public void cargarDatos() {
-
+        
+        
         a.obtenerObras("recursos/ListadoDeObras.txt");
 
         List<Obra> obras = a.getObras();
@@ -337,7 +340,6 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
 
         ComboBoxTitulo.setModel(new javax.swing.DefaultComboBoxModel<>(edit));
         areaTematicaCB.setModel(new javax.swing.DefaultComboBoxModel<>(areas));
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
