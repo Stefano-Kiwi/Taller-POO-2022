@@ -273,14 +273,14 @@ public class GenerarPrestamo extends javax.swing.JFrame {
             if(lector1.getNumDocumento()==nroDocumento){
                 lector=lector1;
                 break;
-            } else {
-                JOptionPane.showMessageDialog(null, "No existe lector con ese documento!. Debe crearse un lector primero");
-                this.setVisible(false);
-                new NuevoLector().setVisible(true);
-                break;
             }
         }
         
+        if(lector==null){
+            JOptionPane.showMessageDialog(null, "No existe lector con ese documento!. Debe crearse un lector primero");   
+                this.setVisible(false);
+                new NuevoLector().setVisible(true);
+        }else{
         //prueba agegarle una multa al lector
 //        LocalDate fechamulta=LocalDate.of(2022, 10, 12);
 //        lector.setMulta(new Multa(2,fechamulta));
@@ -348,10 +348,11 @@ public class GenerarPrestamo extends javax.swing.JFrame {
             obra.agregarNuevoPrestamoPublicoGeneral();
         }
        }
+      }
     }//GEN-LAST:event_botonPrestamoActionPerformed
 
     private void BusquedaLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BusquedaLibroActionPerformed
-        // TODO add your handling code here:
+         // TODO add your handling code here:
     }//GEN-LAST:event_BusquedaLibroActionPerformed
 
     private void fechaPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaPrestamoActionPerformed
