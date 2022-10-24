@@ -70,6 +70,10 @@ public class Reserva {
 }    
 
     public String tablaGUI() {
-       return obra.getTitulo()+","+lector.getNumDocumento()+","+fecha+"\n";
+        LocalDate fechaReserva = this.fecha;
+       int dia=fecha.getDayOfMonth();
+       int mes=fecha.getMonthValue();
+       int anio=fecha.getYear(); 
+       return obra.getTitulo()+","+lector.getNumDocumento()+","+dia+"/"+mes+"/"+anio+"\n";
     }
 }

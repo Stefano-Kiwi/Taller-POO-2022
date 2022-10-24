@@ -633,8 +633,6 @@ public class Almacenamiento {
         da.obtenerLectores("recursos/ListadoDeLectores.txt");
         List<Lector> lectores = da.getLectores();
 
-        Lector lector = null;
-        Obra obra = null;
         reservas = new ArrayList();
 
         File archivo = new File(direccion);
@@ -653,24 +651,23 @@ public class Almacenamiento {
             while ((linea = br.readLine()) != null) {
                 matcher = pattern.matcher(linea);
                 if (matcher.matches()) {
-
                     disponibilidad = Integer.parseInt(matcher.group(1));
                     String titulo = matcher.group(2);
                     int NumDNI = Integer.parseInt(matcher.group(3));
                     String fechaReserva = matcher.group(4);
 
                     //busca obra por titulo
-                    for (Obra obra1 : obras) {
+                    Obra obra = null;
+                    for (Obra obra1 : this.obras) {
                         if (obra1.getTitulo().equalsIgnoreCase(titulo)) {
                             obra = obra1;
-                            System.out.println(obra);
                         }
                     }
                     //busca lector por documento
+                    Lector lector = null;
                     for (Lector lector1 : lectores) {
                         if (lector1.getNumDocumento() == NumDNI) {
                             lector = lector1;
-                            System.out.println(lector);
                         }
                     }
 
