@@ -1,7 +1,11 @@
 package inventario;
 
+import io.nayuki.qrcodegen.QrCode;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.time.LocalDate;
 import java.util.Objects;
+import javax.imageio.ImageIO;
 
 public class Ejemplar {
     private static int contadorEj = 0;  // Cuando se crea un nuevo ej aumenta
@@ -10,13 +14,15 @@ public class Ejemplar {
     private Obra obra;
     private Baja baja;
     private Adquisicion adquisicion;
-
+    private String linkCodigoQR;
+    
     public Ejemplar(String lugarFisico,Obra obra, Adquisicion adquisicion) {
         this.contadorEj++;
         this.lugarFisico = lugarFisico;
         this.obra = obra;
         this.idUnico = lugarFisico+String.valueOf(contadorEj);
         this.adquisicion = adquisicion;
+        this.linkCodigoQR = "recursos/codigosQR/"+idUnico+".png";
         
     }
     public Ejemplar(String lugarFisico,Obra obra,Adquisicion adquisicion,Baja baja) {
@@ -26,6 +32,7 @@ public class Ejemplar {
         this.idUnico = lugarFisico+String.valueOf(contadorEj);
         this.baja = baja;
         this.adquisicion = adquisicion;
+        this.linkCodigoQR = "recursos/codigosQR/"+idUnico+".png";
     }
     public Ejemplar(String lugarFisico,Obra obra,Adquisicion adquisicion,String idunico,Baja baja) {
         this.lugarFisico = lugarFisico;
@@ -33,16 +40,35 @@ public class Ejemplar {
         this.idUnico = idunico;
         this.baja = baja;
         this.adquisicion = adquisicion;
+        this.linkCodigoQR = "recursos/codigosQR/"+idUnico+".png";
         
     }
     public Ejemplar(String lugarFisico,Obra obra, Adquisicion adquisicion,String idunico){
         this.lugarFisico = lugarFisico;
         this.obra = obra;
         this.adquisicion = adquisicion;
-        this.idUnico=idunico;
+        this.idUnico = idunico;
+        this.linkCodigoQR = "recursos/codigosQR/" + idUnico + ".png";
     }
 
     public Ejemplar() {
+    }
+
+    public void generarQR() throws Exception {
+        try {
+            File archivo = new File(linkCodigoQR);
+            if (archivo.exists()) {
+                //System.out.println("Ya existe su codigo QR");
+            } else {
+                QrCode qr0 = QrCode.encodeText(idUnico, QrCode.Ecc.MEDIUM);
+                BufferedImage img = qr0.toImage(4, 10);
+                ImageIO.write(img, "png", archivo);
+                //System.out.println("Se imprimió el codigo QR del ejemplar: "+linkCodigoQR);
+            }
+
+        } catch (Exception e) {
+
+        }
     }
 
     @Override
@@ -111,7 +137,7 @@ public class Ejemplar {
 
     @Override
     public String toString() {
-        return "Ejemplar{" + "idUnico=" + idUnico + ", lugarFisico=" + lugarFisico + ", obra=" + obra + ", baja=" + baja + ", adquisicion=" + adquisicion + '}';
+        return "Ejemplar{" + "idUnico=" + idUnico + ", lugarFisico=" + lugarFisico + ", obra=" + obra + ", linkCodigoQR"+linkCodigoQR + "baja=" + baja + ", adquisicion=" + adquisicion + '}';
     }
 
     

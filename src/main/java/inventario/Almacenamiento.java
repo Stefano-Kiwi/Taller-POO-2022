@@ -212,6 +212,8 @@ public class Almacenamiento {
                     String motivo = matcher.group(9);
 
                     for (Obra obra : obras) {
+                        Ejemplar ej = new Ejemplar(lugar, obra, new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()), idunico);
+                                ej.generarQR(); // CON ESTO GENERO SU QR UNICAMENTE.
                         if (obra.getISBN().equals(isbn)) {
                             obra.setEjemplares(obra.getEjemplares() + 1);  // ESTO LO AGREGA A LA OBRA EN SÍ.
 
