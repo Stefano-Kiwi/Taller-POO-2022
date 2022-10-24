@@ -45,7 +45,7 @@ public class Obra {
         this.prestamosPublicoGeneral = prestamosGenerales;
         ediciones = new ArrayList();
         ediciones.add(edicion);
-        listaejemplares = new ArrayList();    
+        listaejemplares = new ArrayList();
     }
     
     

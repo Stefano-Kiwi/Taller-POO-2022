@@ -437,9 +437,13 @@ public class Almacenamiento {
                         if (idunico.equalsIgnoreCase(ejemplar1.getIdUnico())) {
                             ejemplar = ejemplar1;
                             break;
-
-                        }
-
+                        }                       
+                    }
+                    
+                    if (lector instanceof Docente || lector instanceof Alumno) {
+                        ejemplar.getObra().agregarNuevoPrestamoAlumnoODocente();
+                    } else {
+                        ejemplar.getObra().agregarNuevoPrestamoPublicoGeneral();
                     }
 
                     TipoPrestamo tp = null;
