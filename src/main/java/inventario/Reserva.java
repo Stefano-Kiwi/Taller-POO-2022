@@ -43,5 +43,29 @@ public class Reserva {
         return "Reserva{" + "obra=" + obra + ", lector=" + lector + ", fecha=" + fecha + '}';
     }
 
-   
+     public String toCSV(int disponibilidad){
+        //parametro disponibilidad (1:prestamo activo 2:prestamo terminado)
+       String resultado="";
+       LocalDate fechaReserva = this.fecha;
+       int dia=fecha.getDayOfMonth();
+       int mes=fecha.getMonthValue();
+       int anio=fecha.getYear();
+       String DPres;
+       String MPres;
+      if(dia<10){
+           DPres="0"+String.valueOf(dia);
+       }else{
+           DPres=String.valueOf(dia);
+       }
+       if(mes<10){
+           MPres="0"+String.valueOf(mes);
+       }else{
+           MPres=String.valueOf(mes);
+       }
+       
+       if(disponibilidad==1 || disponibilidad==2 ){
+        resultado=disponibilidad+","+ this.obra.getTitulo()+","+this.lector.getNumDocumento()+","+dia+"/"+mes+"/"+anio;
+       }
+       return resultado; 
+}    
 }

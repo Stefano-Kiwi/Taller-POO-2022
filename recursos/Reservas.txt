@@ -1,0 +1,1 @@
+(1:activa 2:realizada),Titulo de la obra,NumDNI,FechaReserva
