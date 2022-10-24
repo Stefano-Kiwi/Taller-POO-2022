@@ -32,6 +32,7 @@ public class Consultas extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Consultas");
 
         jButton1.setText("Consultar Ejemplares disponibles");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

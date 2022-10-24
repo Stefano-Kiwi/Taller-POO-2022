@@ -10,11 +10,23 @@
             <artifactId>AbsoluteLayout</artifactId>
             <version>RELEASE130</version>
         </dependency>
+        <dependency>
+	    <groupId>com.github.nayuki</groupId>
+	    <artifactId>QR-Code-generator</artifactId>
+	    <version>v1.6.0</version>
+	</dependency>
     </dependencies>
+     <repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
         <exec.mainClass>com.mycompany.tallerpoo2022.Tallerpoo2022</exec.mainClass>
     </properties>
+    
 </project>
