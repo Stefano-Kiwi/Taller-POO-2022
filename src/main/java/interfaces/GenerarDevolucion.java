@@ -168,8 +168,12 @@ public class GenerarDevolucion extends javax.swing.JFrame {
         if(hoy.isAfter(prestamo.getFechaDevolucion())){
             Lector lector = prestamo.getLector();
             lector.setMulta(new Multa(3,hoy));
+            a.escribirCSV("recursos/ListaMultas.txt", lector.toCSVMulta());
             fueradeTermino=true;
         }
+        
+        a.obtenerMultas("recursos/ListaMultas.txt");
+        System.out.println(a.getMultas());
         
         Ejemplar ejemplar = prestamo.getEjemplar();
         //actualiza los datos de los txt

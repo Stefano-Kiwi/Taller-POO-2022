@@ -85,5 +85,13 @@ public class Lector extends Persona {
         
         return getNombre()+ ","+getApellido()+","+getTipoDocumento()+","+getNumDocumento()+"," +getNroCelular()+ ","+ejemplares+"\n";
     }
+    
+    public String toCSVMulta(){
+        LocalDate a = this.multaActiva.getFecha();
+        int dia = a.getDayOfMonth();
+        int mes = a.getMonthValue();
+        int anio = a.getYear();
+        return getNumDocumento()+","+this.multaActiva.getDiasMulta()+","+dia+"/"+mes+"/"+anio;
+    }
 
 }

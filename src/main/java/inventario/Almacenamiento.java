@@ -25,9 +25,8 @@ public class Almacenamiento {
     private List<Ejemplar> ejemplaresDadosDeBaja;
     private List<Prestamo> prestamosActivos;
     private List<Prestamo> prestamosTerminados;
-    
-    
-    
+    private List<Multa> multas;
+
     public Almacenamiento() {
     }
 
@@ -130,7 +129,7 @@ public class Almacenamiento {
                 }
 
                 break;
-                case 5:
+            case 5:
                 for (Obra obra : obras) {   // Nombre editorial
                     if ((obra.getEdicion().getNombreEditorial().equalsIgnoreCase(busqueda))) {
                         resultado.add(obra);
@@ -150,16 +149,17 @@ public class Almacenamiento {
         }
         return resultado;
     }
-    
-    public void agregarObra(Obra obra){
+
+    public void agregarObra(Obra obra) {
         obras.add(obra);
-        
+
     }
+
     public void obtenerEjemplares(String direccion) {
         this.ejemplares = new ArrayList();
-        this.ejemplarDisponibles=new ArrayList();
-        this.ejemplaresPrestados=new ArrayList();
-        this.ejemplaresDadosDeBaja=new ArrayList();
+        this.ejemplarDisponibles = new ArrayList();
+        this.ejemplaresPrestados = new ArrayList();
+        this.ejemplaresDadosDeBaja = new ArrayList();
         try {
             final String regex1 = "^(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*)$";
 
@@ -177,109 +177,108 @@ public class Almacenamiento {
             while ((linea = br.readLine()) != null) {
                 matcher = pattern.matcher(linea);
                 if (matcher.matches()) {    // ISBN, lugarFisico,fechaAdquisicion, formaDeCompra, si/no, fechaDeBaja,motivoBaja
-                    
-                    String disponibilidad=matcher.group(1);
-                        
+
+                    String disponibilidad = matcher.group(1);
+
                     String isbn = matcher.group(2);
                     String lugar = matcher.group(3);
-                    String idunico=matcher.group(6);
+                    String idunico = matcher.group(6);
                     String estaDadoDeBaja = matcher.group(7);
-                     
-                    String fechaAd=matcher.group(4);
+
+                    String fechaAd = matcher.group(4);
                     String[] fechaArr = fechaAd.split("/");
-                    
-                   
-                    
+
                     LocalDate fechaAdquisicion = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
-                                        
-                    String fechaBA=matcher.group(8);
-                    
+
+                    String fechaBA = matcher.group(8);
+
                     LocalDate fechaBAJA = null;
-                    if(!(fechaBA == "")){
+                    if (!(fechaBA == "")) {
                         String[] fechaAr = fechaBA.split("/");
-                    
+
                         fechaBAJA = LocalDate.of(Integer.parseInt(fechaAr[2]), Integer.parseInt(fechaAr[1]), Integer.parseInt(fechaAr[0]));
                     }
-                    
-                    
+
                     String motivo = matcher.group(9);
-                    
+
                     for (Obra obra : obras) {
-                        if(obra.getISBN().equals(isbn)){
-                            obra.setEjemplares(obra.getEjemplares()+1);  // ESTO LO AGREGA A LA OBRA EN SÍ.
-                            
-                            switch(disponibilidad){
-                             case "1":
-                                this.ejemplarDisponibles.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),idunico));
-                                break;
-                             case "2":
-                                this.ejemplaresPrestados.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),idunico));
-                                break;
-                             case "3":
-                                this.ejemplaresDadosDeBaja.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),idunico,new Baja(fechaBAJA, motivo, lugar)));
-                                break;
+                        if (obra.getISBN().equals(isbn)) {
+                            obra.setEjemplares(obra.getEjemplares() + 1);  // ESTO LO AGREGA A LA OBRA EN SÍ.
+
+                            switch (disponibilidad) {
+                                case "1":
+                                    this.ejemplarDisponibles.add(new Ejemplar(lugar, obra, new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()), idunico));
+                                    break;
+                                case "2":
+                                    this.ejemplaresPrestados.add(new Ejemplar(lugar, obra, new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()), idunico));
+                                    break;
+                                case "3":
+                                    this.ejemplaresDadosDeBaja.add(new Ejemplar(lugar, obra, new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()), idunico, new Baja(fechaBAJA, motivo, lugar)));
+                                    break;
                             }
-                            
-                            if(estaDadoDeBaja.equalsIgnoreCase("no")){          // ESTO LO AGREGA A LA LISTA DE EJEMPLARES GENERAL.
-                                ejemplares.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),idunico));
-                                obra.AgregarEjemplar(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),idunico));
-                                
-                            }else{
-                                ejemplares.add(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),idunico,new Baja(fechaBAJA, motivo, lugar)));
-                                obra.AgregarEjemplar(new Ejemplar(lugar, obra,new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()),idunico,new Baja(fechaBAJA, motivo, lugar)));
+
+                            if (estaDadoDeBaja.equalsIgnoreCase("no")) {          // ESTO LO AGREGA A LA LISTA DE EJEMPLARES GENERAL.
+                                ejemplares.add(new Ejemplar(lugar, obra, new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()), idunico));
+                                obra.AgregarEjemplar(new Ejemplar(lugar, obra, new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()), idunico));
+
+                            } else {
+                                ejemplares.add(new Ejemplar(lugar, obra, new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()), idunico, new Baja(fechaBAJA, motivo, lugar)));
+                                obra.AgregarEjemplar(new Ejemplar(lugar, obra, new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()), idunico, new Baja(fechaBAJA, motivo, lugar)));
                             }
                         }
-                    }     
-                    
+                    }
+
                 }
             }
         } catch (Exception e) {
             System.out.println(e);
         }
     }
-    public Lector buscarLector(int dni){    // Implementar
+
+    public Lector buscarLector(int dni) {    // Implementar
         return null;
     }
-    
-    public void agregarReserva(Obra obra,int dni){
-        
-        reservas.add(new Reserva(obra,this.buscarLector(dni),LocalDate.now()));
+
+    public void agregarReserva(Obra obra, int dni) {
+
+        reservas.add(new Reserva(obra, this.buscarLector(dni), LocalDate.now()));
     }
-    
-    public void quitarReserva(int id){
+
+    public void quitarReserva(int id) {
         reservas.remove(id);
     }
-    public void escribirCSV(String direccion,String linea){
+
+    public void escribirCSV(String direccion, String linea) {
         /* metodo para escribir una linea en un .txt ; dos parametros
           1er paramatro direccion del .txt a modificar
           2do parametro linea a escribir
-        */
-        
-        try{
-         File archivo= new File(direccion);
-         
-         FileReader fr= new FileReader(archivo);
-         BufferedReader br= new BufferedReader(fr);
-         
-        String a="";
-        if((a=br.readLine()) == null){
-             br.close();
-             FileWriter fw = new FileWriter(archivo);
-             BufferedWriter bw = new BufferedWriter(fw);
-             bw.write(linea+"\n");
-             bw.close();
-             fw.close();
-        }else{
-           String lineas="";
-           lineas=a;
-           while((a=br.readLine()) != null){
-             lineas=(lineas+"\n"+a);  
-           }
-           br.close();
-           fr.close();
+         */
 
-           FileWriter fw = new FileWriter(archivo);
-           BufferedWriter bw = new BufferedWriter(fw);
+        try {
+            File archivo = new File(direccion);
+
+            FileReader fr = new FileReader(archivo);
+            BufferedReader br = new BufferedReader(fr);
+
+            String a = "";
+            if ((a = br.readLine()) == null) {
+                br.close();
+                FileWriter fw = new FileWriter(archivo);
+                BufferedWriter bw = new BufferedWriter(fw);
+                bw.write(linea + "\n");
+                bw.close();
+                fw.close();
+            } else {
+                String lineas = "";
+                lineas = a;
+                while ((a = br.readLine()) != null) {
+                    lineas = (lineas + "\n" + a);
+                }
+                br.close();
+                fr.close();
+
+                FileWriter fw = new FileWriter(archivo);
+                BufferedWriter bw = new BufferedWriter(fw);
                 lineas = (lineas + "\n" + linea + "\n");
                 bw.write(lineas);
                 bw.close();
@@ -303,208 +302,252 @@ public class Almacenamiento {
 
     }
 
-
-    public void borrarCSV(String direccion,int opcion){
-       /*borra lineas del .txt pasado por parametro dependiendo de la opcion
+    public void borrarCSV(String direccion, int opcion) {
+        /*borra lineas del .txt pasado por parametro dependiendo de la opcion
          opcion 0 = borra todo
          opcion 1 = borra la primera linea
          opcion 3 = borra la ultima linea
-       */
-       switch(opcion){
-           case 0://borra todo lo que hay en la direccion
-               try{
-               File archivo=new File(direccion);
-               FileWriter fw = new FileWriter(archivo);
-               fw.flush();
-               fw.close();
-               }catch (Exception e) {
-                  System.out.println(e);   
-               }
-               break;
-           case 1://borra la primera linea de la direccion
-               try{
-                 File archivo= new File(direccion);
-                 FileReader fr =new FileReader(archivo);
-                 BufferedReader br = new BufferedReader(fr);
-                 String l="";
-                 if((l = br.readLine())==null){
-                     System.out.println("vacio 1");
-                     break;
-                 }else{
-                     ArrayList<String> lineas= new ArrayList<>();
-                     lineas.add(l);
-                     while((l = br.readLine()) != null){
-                         lineas.add(l);
-                     }
-  
-                     br.close();
-                     fr.close();
-                     FileWriter fw = new FileWriter(archivo);
-                     BufferedWriter bw= new BufferedWriter(fw);
-                     String resultado="";
-                     for(int i =1;i<lineas.size();i++){
-                        resultado=(resultado + lineas.get(i) +"\n"); 
-                     }
-                     bw.write(resultado);
-                     bw.close();
-                     fw.close();
-                 }
-               }catch(Exception e){
-                   System.out.println(e);
-               }
-               break;
-           case 2://borra la ultima linea de la direccion
-               try{
-                 File archivo=new File(direccion);
-                 FileReader fr=new FileReader(archivo);
-                 BufferedReader br = new BufferedReader(fr);
-                 String la= "";
-                 if((la = br.readLine())==null){
-                     System.out.println("vacio 2");
-                     break;
-                 }else{
-                     ArrayList<String> lineas= new ArrayList<>();
-                     lineas.add(la);
-                     while((la = br.readLine()) != null){
-                         lineas.add(la);
-                     }
-                     br.close();
-                     fr.close();
-                     FileWriter fw = new FileWriter(archivo);
-                     BufferedWriter bw= new BufferedWriter(fw);
-                     String resultado="";
-                     for(int i= 0;i<(lineas.size()-1);i++){
-                        resultado= (resultado + lineas.get(i)+"\n"); 
-                     }
-                     bw.write(resultado);
-                     bw.close();
-                     fw.close();
-                 }
-               }catch(Exception e){
-                   System.out.println(e);
-               }
-               break;
-                   
-       }
-                
-    }
-    
-    public void obtenerPrestamos(String direccion){
-        
-        this.prestamosActivos=new ArrayList();
-        this.prestamosTerminados=new ArrayList();
-        
-        DatosDeAcceso da=new DatosDeAcceso();
-        da.obtenerLectores("recursos/ListadoDeLectores.txt");
-        List<Lector> lectores=da.getLectores();
-        
-        try{
-        String regex1="^(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*)$";
-        File archivo=new File(direccion);
-        FileReader fr= new FileReader(archivo);
-        BufferedReader br = new BufferedReader(fr);
-        Pattern pattern = Pattern.compile(regex1);
-        String linea;
-        linea = br.readLine();
-        Matcher matcher;
-        
-        while((linea=br.readLine())!=null){
-            matcher = pattern.matcher(linea);
-            if (matcher.matches()) { 
-              String opcion=matcher.group(1);
-              Lector lector=null;
-              int dniLector=Integer.parseInt(matcher.group(7));
-              for(Lector lector1:lectores){
-                  if(lector1.getNumDocumento()==dniLector){
-                      lector=lector1;
-                      break;
-                  }
-              }
-              
-              String idunico=matcher.group(8);
-//              String isbn = matcher.group(9);//no es necesario ya que la busqueda por idunico funciona
-              Ejemplar ejemplar=null;
-              for(Ejemplar ejemplar1:ejemplares){
-//                  if(ejemplar1.getObra().getISBN().equals(isbn)){
-                  if(idunico.equalsIgnoreCase(ejemplar1.getIdUnico())){
-                      ejemplar=ejemplar1;
-                      break;
-                  
-                 }
-                 
-              }
-              
-              TipoPrestamo tp=null;
-              String Tipo=matcher.group(2);
-              switch(Tipo){
-                  case "SALA":
-                      tp=tp.SALA;
-                      break;
-                  case "DOMICILIO":
-                      tp=tp.DOMICILIO;
-                      break;
-              }
-              
-              String fechaPrestamo=matcher.group(3);
-              String[] fechaArr = fechaPrestamo.split("/");
-              LocalDate fecha = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
-              
-              String fechaDevolucion=matcher.group(6);
-              String[] fechaArr2 = fechaDevolucion.split("/");
-              LocalDate fechaDev = LocalDate.of(Integer.parseInt(fechaArr2[2]), Integer.parseInt(fechaArr2[1]), Integer.parseInt(fechaArr2[0]));
-              
-              switch(opcion){
-                  case "1":
-                      this.prestamosActivos.add(new Prestamo(tp,fecha,Integer.parseInt(matcher.group(4)),Integer.parseInt(matcher.group(5)),fechaDev,lector,ejemplar));
-                      break;
-                  case "2":
-                      this.prestamosTerminados.add(new Prestamo(tp,fecha,Integer.parseInt(matcher.group(4)),Integer.parseInt(matcher.group(5)),fechaDev,lector,ejemplar));
-                      break;
-              }
+         */
+        switch (opcion) {
+            case 0://borra todo lo que hay en la direccion
+               try {
+                File archivo = new File(direccion);
+                FileWriter fw = new FileWriter(archivo);
+                fw.flush();
+                fw.close();
+            } catch (Exception e) {
+                System.out.println(e);
             }
-            
+            break;
+            case 1://borra la primera linea de la direccion
+               try {
+                File archivo = new File(direccion);
+                FileReader fr = new FileReader(archivo);
+                BufferedReader br = new BufferedReader(fr);
+                String l = "";
+                if ((l = br.readLine()) == null) {
+                    System.out.println("vacio 1");
+                    break;
+                } else {
+                    ArrayList<String> lineas = new ArrayList<>();
+                    lineas.add(l);
+                    while ((l = br.readLine()) != null) {
+                        lineas.add(l);
+                    }
+
+                    br.close();
+                    fr.close();
+                    FileWriter fw = new FileWriter(archivo);
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    String resultado = "";
+                    for (int i = 1; i < lineas.size(); i++) {
+                        resultado = (resultado + lineas.get(i) + "\n");
+                    }
+                    bw.write(resultado);
+                    bw.close();
+                    fw.close();
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+            break;
+            case 2://borra la ultima linea de la direccion
+               try {
+                File archivo = new File(direccion);
+                FileReader fr = new FileReader(archivo);
+                BufferedReader br = new BufferedReader(fr);
+                String la = "";
+                if ((la = br.readLine()) == null) {
+                    System.out.println("vacio 2");
+                    break;
+                } else {
+                    ArrayList<String> lineas = new ArrayList<>();
+                    lineas.add(la);
+                    while ((la = br.readLine()) != null) {
+                        lineas.add(la);
+                    }
+                    br.close();
+                    fr.close();
+                    FileWriter fw = new FileWriter(archivo);
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    String resultado = "";
+                    for (int i = 0; i < (lineas.size() - 1); i++) {
+                        resultado = (resultado + lineas.get(i) + "\n");
+                    }
+                    bw.write(resultado);
+                    bw.close();
+                    fw.close();
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+            break;
+
         }
 
-        
-        }catch(Exception e){
+    }
+
+    public void obtenerPrestamos(String direccion) {
+
+        this.prestamosActivos = new ArrayList();
+        this.prestamosTerminados = new ArrayList();
+
+        DatosDeAcceso da = new DatosDeAcceso();
+        da.obtenerLectores("recursos/ListadoDeLectores.txt");
+        List<Lector> lectores = da.getLectores();
+
+        try {
+            String regex1 = "^(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*)$";
+            File archivo = new File(direccion);
+            FileReader fr = new FileReader(archivo);
+            BufferedReader br = new BufferedReader(fr);
+            Pattern pattern = Pattern.compile(regex1);
+            String linea;
+            linea = br.readLine();
+            Matcher matcher;
+
+            while ((linea = br.readLine()) != null) {
+                matcher = pattern.matcher(linea);
+                if (matcher.matches()) {
+                    String opcion = matcher.group(1);
+                    Lector lector = null;
+                    int dniLector = Integer.parseInt(matcher.group(7));
+                    for (Lector lector1 : lectores) {
+                        if (lector1.getNumDocumento() == dniLector) {
+                            lector = lector1;
+                            break;
+                        }
+                    }
+
+                    String idunico = matcher.group(8);
+//              String isbn = matcher.group(9);//no es necesario ya que la busqueda por idunico funciona
+                    Ejemplar ejemplar = null;
+                    for (Ejemplar ejemplar1 : ejemplares) {
+//                  if(ejemplar1.getObra().getISBN().equals(isbn)){
+                        if (idunico.equalsIgnoreCase(ejemplar1.getIdUnico())) {
+                            ejemplar = ejemplar1;
+                            break;
+
+                        }
+
+                    }
+
+                    TipoPrestamo tp = null;
+                    String Tipo = matcher.group(2);
+                    switch (Tipo) {
+                        case "SALA":
+                            tp = tp.SALA;
+                            break;
+                        case "DOMICILIO":
+                            tp = tp.DOMICILIO;
+                            break;
+                    }
+
+                    String fechaPrestamo = matcher.group(3);
+                    String[] fechaArr = fechaPrestamo.split("/");
+                    LocalDate fecha = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
+
+                    String fechaDevolucion = matcher.group(6);
+                    String[] fechaArr2 = fechaDevolucion.split("/");
+                    LocalDate fechaDev = LocalDate.of(Integer.parseInt(fechaArr2[2]), Integer.parseInt(fechaArr2[1]), Integer.parseInt(fechaArr2[0]));
+
+                    switch (opcion) {
+                        case "1":
+                            this.prestamosActivos.add(new Prestamo(tp, fecha, Integer.parseInt(matcher.group(4)), Integer.parseInt(matcher.group(5)), fechaDev, lector, ejemplar));
+                            break;
+                        case "2":
+                            this.prestamosTerminados.add(new Prestamo(tp, fecha, Integer.parseInt(matcher.group(4)), Integer.parseInt(matcher.group(5)), fechaDev, lector, ejemplar));
+                            break;
+                    }
+                }
+
+            }
+
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
-    
-    public void modificarCSV(String direccion,String lineaaModificar,String lineaNueva){
+
+    public void modificarCSV(String direccion, String lineaaModificar, String lineaNueva) {
         /*
         metodo para modificar un txt pensado para actualizar el txt
         luego de un prestamo o devolucion
-        */
-        
-         File archivo= new File(direccion);
-        try{
-           FileReader fr= new FileReader(archivo);
-           BufferedReader br= new BufferedReader(fr);
-         
-           String a="";
-           String lineas="";
-           a=br.readLine();
-           lineas=a;
-           while((a=br.readLine())!=null){
-               if(lineaaModificar.equalsIgnoreCase(a)){
-                   lineas=lineas+"\n"+lineaNueva;
-               }else{
-                   lineas=lineas+"\n"+a;
-               }
-           }
-           br.close();
-           fr.close();
-           FileWriter fw=new FileWriter(archivo);
-           BufferedWriter bw=new BufferedWriter(fw);
-           
-           bw.write(lineas);
-           
-           bw.close();
-           fw.close();
-           
-        }catch(Exception e){
-        System.out.println(e);
+         */
+
+        File archivo = new File(direccion);
+        try {
+            FileReader fr = new FileReader(archivo);
+            BufferedReader br = new BufferedReader(fr);
+
+            String a = "";
+            String lineas = "";
+            a = br.readLine();
+            lineas = a;
+            while ((a = br.readLine()) != null) {
+                if (lineaaModificar.equalsIgnoreCase(a)) {
+                    lineas = lineas + "\n" + lineaNueva;
+                } else {
+                    lineas = lineas + "\n" + a;
+                }
+            }
+            br.close();
+            fr.close();
+            FileWriter fw = new FileWriter(archivo);
+            BufferedWriter bw = new BufferedWriter(fw);
+
+            bw.write(lineas);
+
+            bw.close();
+            fw.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void obtenerMultas(String direccion) {
+        this.multas = new ArrayList();
+        try {
+            String regex1 = "^(.*),(.*),(.*)$";
+            File archivo = new File(direccion);
+            FileReader fr = new FileReader(archivo);
+            BufferedReader br = new BufferedReader(fr);
+            Pattern pattern = Pattern.compile(regex1);
+            String linea;
+            linea = br.readLine();
+            Matcher matcher;
+
+            DatosDeAcceso da = new DatosDeAcceso();
+
+            da.obtenerLectores("recursos/ListadoDeLectores.txt");
+
+            List<Lector> lectores = da.getLectores();
+
+            while ((linea = br.readLine()) != null) {
+                matcher = pattern.matcher(linea);
+                if (matcher.matches()) {
+                    String dniLector = matcher.group(1);
+                    String cantDiasMulta = matcher.group(2);
+                    String fechaDevolucion = matcher.group(3);
+
+                    String[] fechaArr = fechaDevolucion.split("/");
+
+                    LocalDate fecha = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
+                    Lector lector = null;
+                    for (Lector lector1 : lectores) {
+                        if (lector1.getNumDocumento() == Integer.parseInt(dniLector)) {
+                            lector = lector1;
+                            break;
+                        }
+                    }
+
+                    this.multas.add(new Multa(Integer.parseInt(cantDiasMulta), fecha, lector));
+
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -524,7 +567,6 @@ public class Almacenamiento {
         this.prestamosTerminados = prestamosTerminados;
     }
 
-    
     public List<Ejemplar> getEjemplarDisponibles() {
         return ejemplarDisponibles;
     }
@@ -556,9 +598,13 @@ public class Almacenamiento {
     public void setEjemplares(List<Ejemplar> ejemplares) {
         this.ejemplares = ejemplares;
     }
-    
-    
-    
-    
-    
+
+    public List<Multa> getMultas() {
+        return multas;
+    }
+
+    public void setMultas(List<Multa> multas) {
+        this.multas = multas;
+    }
+
 }

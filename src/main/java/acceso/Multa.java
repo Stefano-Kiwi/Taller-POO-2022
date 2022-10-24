@@ -19,6 +19,13 @@ public class Multa {
 //        this.lector = lector;
     }
     
+    public Multa(int DiasMulta, LocalDate fecha,Lector lector) {
+        this.DiasMulta = DiasMulta;
+        this.fecha = fecha;
+//        this.devolucion = devolucion;
+        this.lector = lector;
+    }
+    
     public String fechaVencimiento(){
         String resultado="";
         LocalDate fechaVencimiento=null;
@@ -66,6 +73,14 @@ public class Multa {
         return "Multa{" + "multa=" + DiasMulta + ", fecha=" + fecha +'}';
     }
     
+    
+    public String toCSVMulta(){
+        LocalDate a = this.fecha;
+        int dia = a.getDayOfMonth();
+        int mes = a.getMonthValue();
+        int anio = a.getYear();
+        return this.getLector().getNumDocumento()+","+this.DiasMulta+","+dia+"/"+mes+"/"+anio;
+    }
     
    
 }
