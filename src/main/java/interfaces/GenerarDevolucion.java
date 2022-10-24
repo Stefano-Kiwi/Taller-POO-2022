@@ -11,8 +11,10 @@ import acceso.Prestamo;
 import inventario.Almacenamiento;
 import inventario.Ejemplar;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -24,11 +26,22 @@ public class GenerarDevolucion extends javax.swing.JFrame {
      * Creates new form GenerarDevolucion
      */
     private String opcion;
+    private List<Prestamo> prestamosActivos;
+    private List<Prestamo> prestamos;
+    private Almacenamiento a;
+    private Prestamo prestamo;
+    private String prestamosADevolver;
+    private List<Prestamo> prestamosADev;
+
     
     public GenerarDevolucion() {
         initComponents();
+        a = new Almacenamiento();
+        prestamos=new ArrayList();
         tagParametroBuscar.setVisible(false);
         texto.setVisible(false);
+        BotonDevolver.setVisible(false);
+        buscarPrestamos.setVisible(false);
     }
 
     /**
@@ -46,6 +59,12 @@ public class GenerarDevolucion extends javax.swing.JFrame {
         texto = new javax.swing.JTextField();
         BotonDevolver = new javax.swing.JButton();
         botonVolver = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TablaPrestamos = new javax.swing.JTable();
+        PrestamosADevolver = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        buscarPrestamos = new javax.swing.JButton();
+        tagPrestamosADevolver = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,6 +74,12 @@ public class GenerarDevolucion extends javax.swing.JFrame {
         buscarPrestamoPor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarPrestamoPorActionPerformed(evt);
+            }
+        });
+
+        texto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textoActionPerformed(evt);
             }
         });
 
@@ -72,26 +97,68 @@ public class GenerarDevolucion extends javax.swing.JFrame {
             }
         });
 
+        TablaPrestamos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "DNI Lector", "ID unico ejemplar", "Fecha de devolucion"
+            }
+        ));
+        jScrollPane1.setViewportView(TablaPrestamos);
+
+        PrestamosADevolver.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
+        PrestamosADevolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrestamosADevolverActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Prestamo/s Encontrados:");
+
+        buscarPrestamos.setText("Buscar");
+        buscarPrestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarPrestamosActionPerformed(evt);
+            }
+        });
+
+        tagPrestamosADevolver.setText("Prestamos a devolver:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TagBuscarPor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buscarPrestamoPor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(114, 114, 114)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tagParametroBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(texto, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(384, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BotonDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(237, 237, 237))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(TagBuscarPor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(buscarPrestamoPor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(114, 114, 114)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(tagParametroBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(texto, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(39, 39, 39)
+                                .addComponent(buscarPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1))
+                        .addGap(0, 338, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(175, 175, 175)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tagPrestamosADevolver, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                            .addComponent(PrestamosADevolver, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BotonDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(159, 159, 159))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,11 +170,19 @@ public class GenerarDevolucion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buscarPrestamoPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(texto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
+                    .addComponent(texto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarPrestamos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGap(8, 8, 8)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(tagPrestamosADevolver)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PrestamosADevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17))
         );
 
@@ -121,47 +196,22 @@ public class GenerarDevolucion extends javax.swing.JFrame {
                 tagParametroBuscar.setText("numero dni del lector: ");
                 tagParametroBuscar.setVisible(true);
                 texto.setVisible(true);
+                buscarPrestamos.setVisible(true);
                 break;
             case "Ejemplar":
                 tagParametroBuscar.setText("id unico del ejemplar: ");
                 tagParametroBuscar.setVisible(true);
                 texto.setVisible(true);
+                buscarPrestamos.setVisible(true);
                 break;
         }
                 
     }//GEN-LAST:event_buscarPrestamoPorActionPerformed
 
     private void BotonDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDevolverActionPerformed
-        Almacenamiento a = new Almacenamiento();
-        a.obtenerObras("recursos/ListadoDeObras.txt");
-        a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
-        a.obtenerPrestamos("recursos/ListaPrestamos.txt");
-        List<Prestamo> prestamosActivos = a.getPrestamosActivos();
-        Prestamo prestamo=null;
         
-        
-        switch(opcion){
-            case "Lector":
-                int dni=Integer.valueOf(texto.getText());
-                for(Prestamo p:prestamosActivos){
-                    if(p.getLector().getNumDocumento() == dni){
-                        prestamo=p;
-                        break;
-                    }
-                }
-                break;
-            case "Ejemplar":
-                String idunico=texto.getText();
-                for(Prestamo p:prestamosActivos){
-                    if(p.getEjemplar().getIdUnico().equalsIgnoreCase(idunico)){
-                        System.out.println(p.getEjemplar().getIdUnico()+"|"+idunico);
-                        prestamo=p;
-                        break;
-                    }
-                }
-                break;
-        }
-        
+      for(Prestamo pres:prestamosADev){   
+        prestamo=pres;
         //verifica si la devolucion esta a tiempo o no
         LocalDate hoy=LocalDate.now();
         boolean fueradeTermino=false;
@@ -184,17 +234,90 @@ public class GenerarDevolucion extends javax.swing.JFrame {
         a.modificarCSV("recursos/ListaPrestamos.txt", prestamo.toCSV(1),prestamo.toCSV(2));
         
         Devolucion devolucion=new Devolucion(hoy,fueradeTermino,prestamo);
-        
-         JOptionPane.showMessageDialog(null,"devolucion realizada con exito");
+        JOptionPane.showMessageDialog(null,"se devolcio el ejemplar: "+ejemplar.getIdUnico()+"\n"+"ubiquelo en: "+ejemplar.getLugarFisico());
+       }
+         JOptionPane.showMessageDialog(null,"devolucion/es realizada con exito");
          this.setVisible(false);
          new Administracion().setVisible(true);
-        
-
     }//GEN-LAST:event_BotonDevolverActionPerformed
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
         this.setVisible(false);
         new Administracion().setVisible(true);    }//GEN-LAST:event_botonVolverActionPerformed
+
+    private void textoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoActionPerformed
+        Prestamo prestamo=null; 
+    }//GEN-LAST:event_textoActionPerformed
+
+    private void buscarPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPrestamosActionPerformed
+        a.obtenerObras("recursos/ListadoDeObras.txt");
+        a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
+        a.obtenerPrestamos("recursos/ListaPrestamos.txt");
+        prestamosActivos = a.getPrestamosActivos();
+        
+        switch(opcion){
+            case "Lector":
+                int dni=Integer.valueOf(texto.getText());
+                for(Prestamo p:prestamosActivos){
+                    if(p.getLector().getNumDocumento() == dni){
+                        prestamos.add(p);
+                    }
+                }
+                break;
+            case "Ejemplar":
+                String idunico=texto.getText();
+                for(Prestamo p:prestamosActivos){
+                    if(p.getEjemplar().getIdUnico().equalsIgnoreCase(idunico)){
+                        prestamos.add(p);
+                        prestamo=p;
+                        break;
+                    }
+                }
+                break;
+        }
+        if (prestamos.size()==0){
+            JOptionPane.showMessageDialog(null,"no hay prestamos activos para el "+opcion.toLowerCase());
+             this.setVisible(false);
+             new Administracion().setVisible(true);  
+        }
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("DNI Lector");
+        modelo.addColumn("ID unico ejemplar");
+        modelo.addColumn("Fecha de devolucion");
+        TablaPrestamos.setModel(modelo);
+        
+        for(Prestamo pres:prestamos){
+            String[] campos = pres.tablaDevolucion().split(",");
+            modelo.addRow(campos);
+        }
+        
+        
+        String[] Prestamos = new String[prestamos.size()+1];
+        Prestamos[0]="Todos";
+        int x=1;
+        for (int i =0; i < prestamos.size(); i++) {
+            Prestamos[x] = prestamos.get(i).tablaDevolucion();
+            x++;
+        }
+         PrestamosADevolver.setModel(new javax.swing.DefaultComboBoxModel<>(Prestamos));
+    }//GEN-LAST:event_buscarPrestamosActionPerformed
+
+    private void PrestamosADevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrestamosADevolverActionPerformed
+        prestamosADev=new ArrayList();
+        prestamosADevolver=PrestamosADevolver.getSelectedItem().toString();
+        if(prestamosADevolver.equals("Todos")){
+            for(Prestamo presta:prestamos){
+                prestamosADev.add(presta);
+            }
+        }else{
+            for(Prestamo presta:prestamos){
+               if(presta.tablaDevolucion().equalsIgnoreCase(prestamosADevolver)) 
+                 prestamosADev.add(presta);
+            }
+        }
+        BotonDevolver.setVisible(true);
+    }//GEN-LAST:event_PrestamosADevolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,10 +356,16 @@ public class GenerarDevolucion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonDevolver;
+    private javax.swing.JComboBox<String> PrestamosADevolver;
+    private javax.swing.JTable TablaPrestamos;
     private javax.swing.JLabel TagBuscarPor;
     private javax.swing.JButton botonVolver;
     private javax.swing.JComboBox<String> buscarPrestamoPor;
+    private javax.swing.JButton buscarPrestamos;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel tagParametroBuscar;
+    private javax.swing.JLabel tagPrestamosADevolver;
     private javax.swing.JTextField texto;
     // End of variables declaration//GEN-END:variables
 }

@@ -75,6 +75,28 @@ public class Prestamo {
        }
        return resultado;
     }
+    
+    public String tablaDevolucion(){
+        
+       LocalDate fechadevolucion=this.fechaDevolucion;
+       int diaDev=fechadevolucion.getDayOfMonth();
+       int mesDev=fechadevolucion.getMonthValue();
+       int anioDev=fechadevolucion.getYear();
+       String DDev;
+       String MDev;
+       if(diaDev<10){
+           DDev="0"+String.valueOf(diaDev);
+       }else{
+           DDev=String.valueOf(diaDev);
+       }
+       if(mesDev<10){
+           MDev="0"+String.valueOf(mesDev);
+       }else{
+           MDev=String.valueOf(mesDev);
+       }
+       
+       return this.lector.getNumDocumento()+","+this.ejemplar.getIdUnico()+","+diaDev+"/"+mesDev+"/"+anioDev;
+    }
 
     public TipoPrestamo getTipoPrestamo() {
         return tipoPrestamo;
