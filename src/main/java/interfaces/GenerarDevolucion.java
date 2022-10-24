@@ -217,7 +217,9 @@ public class GenerarDevolucion extends javax.swing.JFrame {
         boolean fueradeTermino=false;
         if(hoy.isAfter(prestamo.getFechaDevolucion())){
             Lector lector = prestamo.getLector();
-            lector.setMulta(new Multa(3,hoy));
+            Multa multa = new Multa(3,hoy);
+            lector.setMulta(multa);
+            
             a.escribirCSV("recursos/ListaMultas.txt", lector.toCSVMulta());
             JOptionPane.showMessageDialog(null,"se devolvio el ejemplar despues de la fecha de devolucion \n se le aplico una multa por 3 dias al lector");
             fueradeTermino=true;

@@ -88,28 +88,28 @@ public class Multa {
     
     public String tablaGUI() {
         
-        Almacenamiento a = new Almacenamiento();
-        DatosDeAcceso datos = new DatosDeAcceso();
-        
-        datos.obtenerLectores("recursos/ListadoDeLectores.txt");
-        a.obtenerMultas("recursos/ListaMultas.txt");
-        List<Lector> lectores = datos.getLectores();
-        List<Multa> multas = a.getMultas();
-        int cant = 0; // contador para contar multas
-        List<Integer> dnis = new ArrayList();
-        for (Multa multa : multas) {
-            dnis.add(multa.getLector().getNumDocumento());
-            for (Lector lector : lectores) {
-                if(lector.getNumDocumento() == multa.getLector().getNumDocumento()){
-                    cant++;
-                }
-        }
-        }
-        
-        
+//        Almacenamiento a = new Almacenamiento();
+//        DatosDeAcceso datos = new DatosDeAcceso();
+//        
+//        datos.obtenerLectores("recursos/ListadoDeLectores.txt");
+//        a.obtenerMultas("recursos/ListaMultas.txt");
+//        List<Lector> lectores = datos.getLectores();
+//        List<Multa> multas = a.getMultas();
+//        int cant = 0; // contador para contar multas
+//        List<Integer> dnis = new ArrayList();
+//        for (Multa multa : multas) {
+//            dnis.add(multa.getLector().getNumDocumento());
+//            for (Lector lector : lectores) {
+//                if(lector.getNumDocumento() == multa.getLector().getNumDocumento()){
+//                    cant++;
+//                }
+//        }
+//        }
         
         
-        return this.lector.getNombre() +" "+ this.lector.getApellido() +","+this.lector.getNumDocumento()+","+cant+"\n";
+        
+        
+        return this.lector.getNombre() +" "+ this.lector.getApellido() +","+this.lector.getNumDocumento()+"\n";
     }
    
 }

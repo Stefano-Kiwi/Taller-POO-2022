@@ -102,7 +102,8 @@ public class RankingLectores extends javax.swing.JFrame {
             }
         });
     }
-public void cargarDatos() {
+
+    public void cargarDatos() {
 
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Lector");
@@ -113,25 +114,32 @@ public void cargarDatos() {
         //Creamos de manaera manual bla bla etc
         Almacenamiento a = new Almacenamiento();
         DatosDeAcceso datos = new DatosDeAcceso();
-        
+
         datos.obtenerLectores("recursos/ListadoDeLectores.txt");
         a.obtenerMultas("recursos/ListaMultas.txt");
         List<Multa> multas = a.getMultas();
         List<Lector> lectores = datos.getLectores();
+
         
+        List<String> multados = new ArrayList();
         
         for (Multa multa : multas) {
+            if(!multados.contains(multa.getLector().tablaGUIRanking())){
+                multados.add(multa.getLector().tablaGUIRanking());
+            }
             
-                    String[] campos = multa.tablaGUI().split(",");
-                    modelo.addRow(campos);
-                
         }
-            
+        
+        for (String multado : multados) {
+            String[] campos = multado.split(",");
+            modelo.addRow(campos);
         }
         
  
-        
-    
+
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable rankingTabla;

@@ -1,5 +1,6 @@
 package acceso;
 
+import inventario.Almacenamiento;
 import inventario.Ejemplar;
 import java.time.LocalDate;
 import java.time.Month;
@@ -56,6 +57,10 @@ public class Lector extends Persona {
         return multas;
     }
     
+    public void agregarMulta(Multa multa){
+        this.multas.add(multa);
+    }
+    
     public List<Ejemplar> getListaDeEjemplares() {
         return ListaDeEjemplares;
     }
@@ -94,4 +99,28 @@ public class Lector extends Persona {
         return getNumDocumento()+","+this.multaActiva.getDiasMulta()+","+dia+"/"+mes+"/"+anio;
     }
 
+    
+    public String tablaGUIRanking() {
+        
+        Almacenamiento a = new Almacenamiento();
+        DatosDeAcceso datos = new DatosDeAcceso();
+
+        datos.obtenerLectores("recursos/ListadoDeLectores.txt");
+        a.obtenerMultas("recursos/ListaMultas.txt");
+        List<Multa> multas = a.getMultas();
+        List<Lector> lectores = datos.getLectores();
+
+        
+        List<String> multados = new ArrayList();
+        int cant= 0;
+        for (Multa multa : multas) {
+            if(multa.getLector().getNumDocumento() == this.getNumDocumento()){
+                cant++;
+            }
+            
+        }
+        
+        return getNombre()+ " "+getApellido()+","+getNumDocumento()+","+cant+"\n";
+    }
+    
 }
