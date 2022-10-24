@@ -234,7 +234,7 @@ public class GenerarDevolucion extends javax.swing.JFrame {
         a.modificarCSV("recursos/ListaPrestamos.txt", prestamo.toCSV(1),prestamo.toCSV(2));
         
         Devolucion devolucion=new Devolucion(hoy,fueradeTermino,prestamo);
-        JOptionPane.showMessageDialog(null,"se devolcio el ejemplar: "+ejemplar.getIdUnico()+"\n"+"ubiquelo en: "+ejemplar.getLugarFisico());
+        JOptionPane.showMessageDialog(null,"se devolvio el ejemplar con id unico: "+ejemplar.getIdUnico()+"\n"+"ubiquelo en: "+ejemplar.getLugarFisico());
        }
          JOptionPane.showMessageDialog(null,"devolucion/es realizada con exito");
          this.setVisible(false);
