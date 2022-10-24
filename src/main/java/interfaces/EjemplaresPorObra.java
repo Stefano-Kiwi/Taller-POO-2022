@@ -18,12 +18,21 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
      * Creates new form EjemplaresPorObra
      */
     Almacenamiento a = new Almacenamiento();
-
+    boolean esConsulta = false;
+    
+    
     public EjemplaresPorObra() {
         initComponents();
         cargarDatos();
         this.setLocationRelativeTo(null);
 
+    }
+    
+    public EjemplaresPorObra(boolean consulta) {
+        initComponents();
+        cargarDatos();
+        this.setLocationRelativeTo(null);
+        this.esConsulta = consulta;
     }
 
     /**
@@ -172,18 +181,19 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_ComboBoxTituloActionPerformed
-
+   
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
         this.setVisible(false);
-        new Administracion().setVisible(true);
+        if(esConsulta==true){
+            new Consultas().setVisible(true);
+        }else{
+            new Administracion().setVisible(true);
+        }
+        
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
     private void areaTematicaCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaTematicaCBActionPerformed
-         /**
-         *
-         * @author Luciano Aguilar
-         *
-         */
+       
         String opcionElegida = areaTematicaCB.getSelectedItem().toString();
 
         a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");

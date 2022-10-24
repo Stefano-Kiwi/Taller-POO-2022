@@ -41,9 +41,12 @@ public class Login extends javax.swing.JFrame {
         Usuario_Textbox = new javax.swing.JTextField();
         Contraseña_Textbox = new javax.swing.JTextField();
         btn_Salir = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar Sesion");
+        setBackground(new java.awt.Color(255, 153, 102));
+        setFocusCycleRoot(false);
         setResizable(false);
 
         LOGIN.setFont(new java.awt.Font("Sitka Small", 1, 36)); // NOI18N
@@ -85,6 +88,14 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("CONSULTAS");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,6 +120,10 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(Contraseña_Textbox, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(180, Short.MAX_VALUE))
             .addComponent(LOGIN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(108, 108, 108))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +140,9 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(Contraseña_Textbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
                 .addComponent(btn_Salir)
                 .addGap(18, 18, 18))
         );
@@ -153,6 +170,12 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Contraseña_TextboxActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       this.setVisible(false);
+       new Consultas().setVisible(true);
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -196,6 +219,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Usuario_etiqueta;
     private javax.swing.JButton btn_Ingresar;
     private javax.swing.JButton btn_Salir;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 
     private void irAdministracion() {

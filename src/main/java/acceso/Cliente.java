@@ -138,7 +138,7 @@ public class Cliente {
                                 Pattern pattern = Pattern.compile(regex1);
                                 Matcher matcher = pattern.matcher(datosNuevaObra);
                                  if (matcher.matches()) {   // Guardando los datos de la nueva obra
-                                     almacenamiento.agregarObra(new Obra(matcher.group(1), matcher.group(2), matcher.group(3), matcher.group(4), matcher.group(5), matcher.group(6), matcher.group(7), matcher.group(8), Integer.parseInt(matcher.group(9)), matcher.group(10), TipoObra.LIBRO, new Edicion(matcher.group(11), matcher.group(12), matcher.group(13), matcher.group(14), matcher.group(15), matcher.group(16), matcher.group(17), matcher.group(18)), matcher.group(13), matcher.group(14), 0, 0));
+                             //        almacenamiento.agregarObra(new Obra(matcher.group(1), matcher.group(2), matcher.group(3), matcher.group(4), matcher.group(5), matcher.group(6), matcher.group(7), matcher.group(8), Integer.parseInt(matcher.group(9)), matcher.group(10), TipoObra.LIBRO, new Edicion(matcher.group(11), matcher.group(12), matcher.group(13), matcher.group(14), matcher.group(15), matcher.group(16), matcher.group(17), matcher.group(18)), matcher.group(13), matcher.group(14), 0, 0));
                                  }else{
                                      System.out.println("Los datos ingresados son incorrectos, asegurarse de usar bien las comas");
                                  }
