@@ -7,12 +7,13 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Lector extends Persona {
+public class Lector extends Persona implements Comparable<Lector>{
 
     private Multa multaActiva;
     private List<Multa> multas= new ArrayList();
     private List<Ejemplar> ListaDeEjemplares=new ArrayList();
-
+    private int cantMultas = 0;
+    
     public Lector(){
     }
 
@@ -119,8 +120,29 @@ public class Lector extends Persona {
             }
             
         }
+        this.cantMultas = cant;
         
         return getNombre()+ " "+getApellido()+","+getNumDocumento()+","+cant+"\n";
     }
+
+    @Override
+    public int compareTo(Lector o) {
+        if(o.getCantMultas() < this.getCantMultas()){
+            return -1;
+        }
+        if(o.getCantMultas() > this.cantMultas){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    public int getCantMultas() {
+        return cantMultas;
+    }
+
+  
+    
+    
     
 }

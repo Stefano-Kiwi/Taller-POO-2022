@@ -10,6 +10,7 @@ import acceso.Multa;
 import inventario.Almacenamiento;
 import inventario.Obra;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -122,6 +123,7 @@ public class RankingLectores extends javax.swing.JFrame {
 
         
         List<String> multados = new ArrayList();
+        List<Lector> lectors = new ArrayList();
         
         for (Multa multa : multas) {
             if(!multados.contains(multa.getLector().tablaGUIRanking())){
@@ -130,10 +132,19 @@ public class RankingLectores extends javax.swing.JFrame {
             
         }
         
-        for (String multado : multados) {
-            String[] campos = multado.split(",");
+        for (Multa multa : multas) {
+            if(!lectors.contains(multa.getLector())){
+                lectors.add(multa.getLector());
+            }
+        }
+        Collections.sort(lectors);
+        
+        for (Lector lector : lectors) {
+            System.out.println(lector.getCantMultas());
+            String[] campos = lector.tablaGUIRanking().split(",");
             modelo.addRow(campos);
         }
+        
         
  
 
