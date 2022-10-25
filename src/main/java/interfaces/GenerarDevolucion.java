@@ -230,6 +230,8 @@ public class GenerarDevolucion extends javax.swing.JFrame {
         //no esta funcionando por alguna razon el idunico es distinto 
         a.modificarCSV("recursos/ListaPrestamos.txt", prestamo.toCSV(1),prestamo.toCSV(2));
         
+        System.out.println("hasta aca");
+        
         Devolucion devolucion=new Devolucion(hoy,prestamo.getBibliotecario(),ejemplar);
         a.escribirCSV("recursos/ListaDevoluciones.txt", devolucion.toCSV());
         

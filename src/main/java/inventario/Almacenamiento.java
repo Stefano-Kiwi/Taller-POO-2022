@@ -412,6 +412,8 @@ public class Almacenamiento {
         DatosDeAcceso da = new DatosDeAcceso();
         da.obtenerLectores("recursos/ListadoDeLectores.txt");
         List<Lector> lectores = da.getLectores();
+        da.obtenerBibliotecario();
+        List<Bibliotecario> usuarios=da.getUsuarios();
 
         try {
             String regex1 = "^(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*)$";
@@ -435,16 +437,25 @@ public class Almacenamiento {
                             break;
                         }
                     }
-
+                     
+                    if(lector==null){
+                        System.out.println("no encuentra lector");
+                    }
+                    
                     String idunico = matcher.group(8);
-//              String isbn = matcher.group(9);//no es necesario ya que la busqueda por idunico funciona
+//                  String isbn = matcher.group(9);//no es necesario ya que la busqueda por idunico funciona
                     Ejemplar ejemplar = null;
+                    
                     for (Ejemplar ejemplar1 : ejemplares) {
 //                  if(ejemplar1.getObra().getISBN().equals(isbn)){
                         if (idunico.equalsIgnoreCase(ejemplar1.getIdUnico())) {
                             ejemplar = ejemplar1;
                             break;
                         }                       
+                    }
+                    
+                    if(ejemplar==null){
+                        System.out.println("no encuentra ejemplar");
                     }
                     
                     if (lector instanceof Docente || lector instanceof Alumno) {
@@ -473,21 +484,25 @@ public class Almacenamiento {
                     LocalDate fechaDev = LocalDate.of(Integer.parseInt(fechaArr2[2]), Integer.parseInt(fechaArr2[1]), Integer.parseInt(fechaArr2[0]));
                     
                     int DNIbibliotecario=Integer.parseInt(matcher.group(5));
-                    da.obtenerBibliotecario();
-                    List<Bibliotecario> usuarios=da.getUsuarios();
                     Bibliotecario bibliotecario=null;
                     for(Bibliotecario bibli:usuarios){
                        if(bibli.getNumDocumento()==DNIbibliotecario){
                            bibliotecario=bibli;
                        }
                     }
+                    if(bibliotecario==null){
+                        System.out.println("no encuentra bibliotecario");
+                    }
                     
-                    switch (opcion) {
+                    Prestamo p= null;
+                    switch (opcion){
                         case "1":
-                            this.prestamosActivos.add(new Prestamo(tp, fecha, Integer.parseInt(matcher.group(4)), bibliotecario, fechaDev, lector, ejemplar));
+                            p=new Prestamo(tp, fecha, Integer.parseInt(matcher.group(4)), bibliotecario, fechaDev, lector, ejemplar);
+                            this.prestamosActivos.add(p);
                             break;
                         case "2":
-                            this.prestamosTerminados.add(new Prestamo(tp, fecha, Integer.parseInt(matcher.group(4)), bibliotecario, fechaDev, lector, ejemplar));
+                            p=new Prestamo(tp, fecha, Integer.parseInt(matcher.group(4)), bibliotecario, fechaDev, lector, ejemplar);
+                            this.prestamosTerminados.add(p);
                             break;
                     }
                 }
@@ -591,11 +606,51 @@ public class Almacenamiento {
             }
         }
     }
+    
     public void obtenerDevoluciones(){
         this.devoluciones=new ArrayList();
-        File direccion = new File("recursos/ListaDevoluciones.txt");
+        DatosDeAcceso da= new DatosDeAcceso(); 
+        da.obtenerBibliotecario();
+        List<Bibliotecario> usuarios = da.getUsuarios();
         try{
-            
+            String regex1 = "^(.*),(.*),(.*)$";
+            File archivo = new File("recursos/ListaDevoluciones.txt");
+            FileReader fr = new FileReader(archivo);
+            BufferedReader br = new BufferedReader(fr);
+            Pattern pattern = Pattern.compile(regex1);
+            String linea;
+            linea = br.readLine();
+            Matcher matcher; 
+          
+            while((linea=br.readLine())!=null){
+                matcher = pattern.matcher(linea);
+                if(matcher.matches()){
+                    int DniBibliotecario=Integer.valueOf(matcher.group(1));
+                    String idUnico=matcher.group(2);
+                    String f=matcher.group(3);
+                    String[] ar=f.split("/");
+                    LocalDate fechaDevolucion=LocalDate.of(Integer.valueOf(ar[2]),Integer.valueOf(ar[1]),Integer.valueOf(ar[0]));
+                    
+                    Bibliotecario bibliotecario=null;
+                    for(Bibliotecario biblio:usuarios){
+                        if(biblio.getNumDocumento()==DniBibliotecario){
+                            bibliotecario=biblio;
+                            break;
+                        }
+                    }
+                    
+                    Ejemplar ejemplar=null;
+                    for(Ejemplar ejemplar1:ejemplares){
+                        if(ejemplar1.getIdUnico().equalsIgnoreCase(idUnico)){
+                            ejemplar=ejemplar1;
+                            break;
+                        }
+                    }
+                    
+                    devoluciones.add(new Devolucion(fechaDevolucion,bibliotecario,ejemplar));
+                }
+            }
+                    
         }catch(Exception e){
             System.out.println(e);
         }
@@ -616,7 +671,11 @@ public class Almacenamiento {
     }
     
     public void obtenerDevolucionesBibliotecario(Bibliotecario b){
-        
+        for(Devolucion dev:this.devoluciones){
+            if(dev.getBibliotecario().getNumDocumento()==b.getNumDocumento()){
+                b.AgregarDevolucion(dev);
+            }
+        }
     }
 
     public List<Prestamo> getPrestamosActivos() {
