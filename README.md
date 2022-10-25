@@ -11,7 +11,7 @@ En cuanto a su **funcionalidad**:
 
 ✔ Realizar y gestionar préstamos de ejemplares.
 
-✔En cuanto a su **almacenamiento**, ingresar de forma manual o por medio de un CSV:
+En cuanto a su **almacenamiento**, ingresar de forma manual o por medio de un CSV:
 
 ✔Ingresar obras.
 
