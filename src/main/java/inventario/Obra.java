@@ -21,6 +21,7 @@ public class Obra {
     private int prestamosPublicoGeneral;
     private List<Edicion> ediciones;
     private List<Ejemplar> listaejemplares;
+    Coleccion coleccion = null;
     
     public Obra() {
     }
@@ -48,7 +49,30 @@ public class Obra {
         listaejemplares = new ArrayList();
     }
     
-    
+     public Obra(String titulo, String subtitulo, String autor1, String autor2, String autor3, String genero, String caracteristica, String ISBN, int ejemplares,
+            String areaTematica, TipoObra tipo, Edicion edicion,String codigoDeBarras, String observaciones, int prestamosAlumnosODocentes, int prestamosGenerales,Coleccion coleccion) {
+        this.titulo = titulo;
+        this.subtitulo = subtitulo;
+        this.autor1 = autor1;
+        this.autor2 = autor2;
+        this.autor3 = autor3;
+        this.genero = genero;
+        this.caracteristica = caracteristica;
+        this.ISBN = ISBN;
+        this.ejemplares = ejemplares;
+        this.areaTematica = areaTematica;
+        this.tipo = tipo;
+        this.edicion = edicion;
+        this.codigoDeBarras = codigoDeBarras;
+        this.observaciones = observaciones;
+        this.prestamosAlumnosODocentes = prestamosAlumnosODocentes;
+        this.prestamosPublicoGeneral = prestamosGenerales;
+        ediciones = new ArrayList();
+        ediciones.add(edicion);
+        listaejemplares = new ArrayList();
+        this.coleccion = coleccion;
+    }
+     
     public void AgregarEdicion(Edicion edicion){
         if(this.ediciones.isEmpty()){
             this.ediciones.add(edicion);
@@ -176,9 +200,25 @@ public class Obra {
         this.listaejemplares = listaejemplares;
     }
 
+    public int getPrestamosPublicoGeneral() {
+        return prestamosPublicoGeneral;
+    }
+
+    public void setPrestamosPublicoGeneral(int prestamosPublicoGeneral) {
+        this.prestamosPublicoGeneral = prestamosPublicoGeneral;
+    }
+
+    public Coleccion getColeccion() {
+        return coleccion;
+    }
+
+    public void setColeccion(Coleccion coleccion) {
+        this.coleccion = coleccion;
+    }
+
     @Override
     public String toString() {
-        return "Obra{" + "titulo=" + titulo + ", subtitulo=" + subtitulo + ", autor1=" + autor1 + ", autor2=" + autor2 + ", autor3=" + autor3 + ", genero=" + genero + ", ISBN=" + ISBN + ", areaTematica=" + areaTematica + ", tipo=" + tipo + ", edicion=" + edicion + '}';
+        return "Obra{" + "titulo=" + titulo + ", subtitulo=" + subtitulo + ", autor1=" + autor1 + ", autor2=" + autor2 + ", autor3=" + autor3 + ", genero=" + genero + ", ISBN=" + ISBN + ", areaTematica=" + areaTematica + ", tipo=" + tipo + ", edicion=" + edicion +", coleccion=" +coleccion+'}';
     }
     
     public String tablaGUI() {

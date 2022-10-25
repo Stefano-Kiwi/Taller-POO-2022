@@ -137,7 +137,7 @@ public class Ejemplar {
 
     @Override
     public String toString() {
-        return "Ejemplar{" + "idUnico=" + idUnico + ", lugarFisico=" + lugarFisico + ", obra=" + obra + ", linkCodigoQR"+linkCodigoQR + "baja=" + baja + ", adquisicion=" + adquisicion + '}';
+        return "Ejemplar{" + "idUnico=" + idUnico + ", lugarFisico=" + lugarFisico + ", obra=" + obra + ", linkCodigoQR= "+linkCodigoQR + ", baja=" + baja + ", adquisicion=" + adquisicion + '}';
     }
 
     

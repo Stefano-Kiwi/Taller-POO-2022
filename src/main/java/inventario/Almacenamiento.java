@@ -82,9 +82,14 @@ public class Almacenamiento {
                     Edicion edicion = new Edicion(matcher.group(11), matcher.group(12), matcher.group(13), Integer.parseInt(matcher.group(14)), Integer.parseInt(matcher.group(15)),
                             matcher.group(16), Integer.parseInt(matcher.group(17)), matcher.group(18));
 
-                    Coleccion coleccion = new Coleccion(matcher.group(19), matcher.group(20));  // DE MOMENTO NO GUARDADA EN NINGUN LUGAR
-
-                    this.obras.add(new Obra(titulo, subtitulo, autor1, autor2, autor3, genero, caract, isbn, 0, areaTematica, tipoObra, edicion, "0", "observaciones:", 0, 0));
+                    
+                    if(matcher.group(19)!=""){
+                      Coleccion coleccion = new Coleccion(matcher.group(19), matcher.group(20)); 
+                      this.obras.add(new Obra(titulo, subtitulo, autor1, autor2, autor3, genero, caract, isbn, 0, areaTematica, tipoObra, edicion, "0", "observaciones:", 0, 0,coleccion));
+                    }else{
+                        this.obras.add(new Obra(titulo, subtitulo, autor1, autor2, autor3, genero, caract, isbn, 0, areaTematica, tipoObra, edicion, "0", "observaciones:", 0, 0));
+                    }
+                    
                 }
             }
 

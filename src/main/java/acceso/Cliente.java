@@ -20,7 +20,7 @@ public class Cliente {
         almacenamiento.obtenerObras("recursos/ListadoDeObras.txt");
         almacenamiento.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
         datosDeAcceso.obtenerLectores("recursos/ListadoDeLectores.txt");
-
+        
         List<Obra> obras = almacenamiento.getObras();
         List<Lector> lectores = datosDeAcceso.getLectores();
         List<Ejemplar> ejemplares = almacenamiento.getEjemplares();
