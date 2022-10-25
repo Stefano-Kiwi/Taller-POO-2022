@@ -110,7 +110,7 @@ public class Almacenamiento {
             File archivo = new File(direccion);
             FileReader fr = new FileReader(archivo);
             BufferedReader br = new BufferedReader(fr);
-
+            
             Pattern pattern = Pattern.compile(regex1);
             String linea;
 

@@ -387,24 +387,25 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         boolean encontrado = false;
         //System.out.println("El id es: "+idEjemplar+", la observacion "+observaciones);
         a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
+        a.obtenerObservaciones("recursos/ListaObservaciones.txt");
 
         List<Ejemplar> ejemplares = a.getEjemplares();
         for (Ejemplar ejemplar : ejemplares) {
             if (ejemplar.getIdUnico().equals(idEjemplar)) { // SOLO MODIFICO LA LISTA EN ALMACENAMIENTO
-                ejemplar.setObservaciones(observaciones);       
+                if (ejemplar.getObservaciones() == null) {
+                    a.agregarNuevoRenglonCSV("recursos/ListaObservaciones.txt", idEjemplar + "," + observaciones);
+                }
+                ejemplar.setObservaciones(observaciones);
                 encontrado = true;
+                System.out.println("Lo encontré y modifiqué");
                 break;
             }
-        }
-        if (encontrado) {   // Y QUE CAMBIE EL TXT DE OBSERVACIONES TAMBIEN
-            
-            
-            
-            
-        } else {
-            if (encontrado == false) {
-                System.out.println("El id Unico ingresado es incorrecto");
-            }
+        }       // HASTA ACA FUNCIONA
+
+        if (encontrado == false) {
+            System.out.println("El id Unico ingresado es incorrecto");
+            JOptionPane.showMessageDialog(null, "Id Unico incorrecto", "El id unico ingresado es incorrecto.", 3);
+
         }
     }//GEN-LAST:event_botonObservacionesActionPerformed
 
