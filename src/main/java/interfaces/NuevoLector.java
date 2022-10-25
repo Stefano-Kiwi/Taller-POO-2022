@@ -43,7 +43,7 @@ public NuevoLector(Bibliotecario b) {
         jLabel1 = new javax.swing.JLabel();
         tipoLector = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        ApellidoYNombre = new javax.swing.JTextField();
+        apellidoPanel = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         tipodocumento = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -72,6 +72,9 @@ public NuevoLector(Bibliotecario b) {
         botonCrear = new javax.swing.JButton();
         Nacionalidad = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        nombrePanel = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Nuevo lector");
@@ -87,9 +90,9 @@ public NuevoLector(Bibliotecario b) {
 
         jLabel2.setText("Apellido y Nombre");
 
-        ApellidoYNombre.addActionListener(new java.awt.event.ActionListener() {
+        apellidoPanel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ApellidoYNombreActionPerformed(evt);
+                apellidoPanelActionPerformed(evt);
             }
         });
 
@@ -153,104 +156,119 @@ public NuevoLector(Bibliotecario b) {
             }
         });
 
+        jLabel14.setText("Nombre");
+
+        jScrollPane1.setViewportView(nombrePanel);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(correo))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel10)
-                                            .addComponent(jLabel13))
-                                        .addGap(4, 4, 4))
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(localidad, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(domicilio, javax.swing.GroupLayout.Alignment.TRAILING)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tipoLector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(numeroTelefono))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel11))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CodigoPostal)
-                                    .addComponent(Departamento)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(FechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(NroDocumento))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tipodocumento))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ApellidoYNombre))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Nacionalidad))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Sexo))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelCarrera)
-                                .addGap(19, 19, 19))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(labelFacultad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(facultad)
-                            .addComponent(carrera))))
-                .addGap(90, 90, 90))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(botonCrear)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(labelCarrera)
+                                        .addGap(19, 19, 19))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(labelFacultad, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(facultad)
+                                    .addComponent(carrera)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel14)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(correo))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel10)
+                                            .addComponent(jLabel13))
+                                        .addGap(16, 16, 16)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(localidad, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(domicilio, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(numeroTelefono))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel12)
+                                            .addComponent(jLabel11))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(CodigoPostal)
+                                            .addComponent(Departamento)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(FechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(NroDocumento))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tipodocumento))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(Nacionalidad))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(Sexo)))))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tipoLector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(apellidoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)))
+                        .addGap(90, 90, 90))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tipoLector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel1)
+                    .addComponent(tipoLector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ApellidoYNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(apellidoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tipodocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -303,22 +321,19 @@ public NuevoLector(Bibliotecario b) {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(facultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelFacultad))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(botonCrear))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonCrear)
+                    .addComponent(jButton1))
+                .addGap(15, 15, 15))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ApellidoYNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApellidoYNombreActionPerformed
+    private void apellidoPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoPanelActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ApellidoYNombreActionPerformed
+    }//GEN-LAST:event_apellidoPanelActionPerformed
 
     private void tipodocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipodocumentoActionPerformed
         // TODO add your handling code here:
@@ -364,10 +379,6 @@ public NuevoLector(Bibliotecario b) {
         da.obtenerLectores("recursos/ListadoDeLectores.txt");
         List<Lector> lectores = da.getLectores();
 
-        String apellidonombre = this.ApellidoYNombre.getText();
-        String[] ApellidoNombre = apellidonombre.split("\\s");
-        String apellido = ApellidoNombre[0];
-        String nombre = ApellidoNombre[1];
         String fechaNacimiento = this.FechaNacimiento.getText();
         String[] fechaArr = fechaNacimiento.split("/");
     
@@ -377,7 +388,7 @@ public NuevoLector(Bibliotecario b) {
         boolean esta = false;
         switch (opcion) {
             case "Publico General":
-                Lector lector = new Lector(nombre, apellido, this.tipodocumento.getText(), Integer.parseInt(this.NroDocumento.getText()), fecha, this.Sexo.getText(), this.correo.getText(), this.numeroTelefono.getText(), this.Nacionalidad.getText(), this.domicilio.getText(), Integer.parseInt(this.CodigoPostal.getText()), this.Departamento.getText(), this.localidad.getText());
+                Lector lector = new Lector(this.nombrePanel.getText(), this.apellidoPanel.getText(), this.tipodocumento.getText(), Integer.parseInt(this.NroDocumento.getText()), fecha, this.Sexo.getText(), this.correo.getText(), this.numeroTelefono.getText(), this.Nacionalidad.getText(), this.domicilio.getText(), Integer.parseInt(this.CodigoPostal.getText()), this.Departamento.getText(), this.localidad.getText());
                 for (Lector lector1 : lectores){
                     if(lector.getNumDocumento() == lector1.getNumDocumento()){
                     esta = true;
@@ -390,7 +401,7 @@ public NuevoLector(Bibliotecario b) {
                 }
                 break;
             case "Docente":
-                Docente docente = new Docente(nombre, apellido, this.tipodocumento.getText(), Integer.parseInt(this.NroDocumento.getText()), fecha, this.Sexo.getText(), this.correo.getText(), this.numeroTelefono.getText(), this.Nacionalidad.getText(), this.domicilio.getText(), Integer.parseInt(this.CodigoPostal.getText()), this.Departamento.getText(), this.localidad.getText(), this.carrera.getText());
+                Docente docente = new Docente(this.nombrePanel.getText(), this.apellidoPanel.getText(), this.tipodocumento.getText(), Integer.parseInt(this.NroDocumento.getText()), fecha, this.Sexo.getText(), this.correo.getText(), this.numeroTelefono.getText(), this.Nacionalidad.getText(), this.domicilio.getText(), Integer.parseInt(this.CodigoPostal.getText()), this.Departamento.getText(), this.localidad.getText(), this.carrera.getText());
                 for (Lector lector1 : lectores){
                     if(docente.getNumDocumento() == lector1.getNumDocumento()){
                     esta = true;
@@ -403,7 +414,7 @@ public NuevoLector(Bibliotecario b) {
                 }
                 break;
             case "Alumno":
-                Alumno alumno = new Alumno(nombre, apellido, this.tipodocumento.getText(), Integer.parseInt(this.NroDocumento.getText()), fecha, this.Sexo.getText(), this.correo.getText(), this.numeroTelefono.getText(), this.Nacionalidad.getText(), this.domicilio.getText(), Integer.parseInt(this.CodigoPostal.getText()), this.Departamento.getText(), this.localidad.getText(), this.carrera.getText(), this.facultad.getText());
+                Alumno alumno = new Alumno(this.nombrePanel.getText(), this.apellidoPanel.getText(), this.tipodocumento.getText(), Integer.parseInt(this.NroDocumento.getText()), fecha, this.Sexo.getText(), this.correo.getText(), this.numeroTelefono.getText(), this.Nacionalidad.getText(), this.domicilio.getText(), Integer.parseInt(this.CodigoPostal.getText()), this.Departamento.getText(), this.localidad.getText(), this.carrera.getText(), this.facultad.getText());
                for (Lector lector1 : lectores){
                     if(alumno.getNumDocumento() == lector1.getNumDocumento()){
                     esta = true;
@@ -464,13 +475,13 @@ public NuevoLector(Bibliotecario b) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ApellidoYNombre;
     private javax.swing.JTextField CodigoPostal;
     private javax.swing.JTextField Departamento;
     private javax.swing.JTextField FechaNacimiento;
     private javax.swing.JTextField Nacionalidad;
     private javax.swing.JTextField NroDocumento;
     private javax.swing.JTextField Sexo;
+    private javax.swing.JTextField apellidoPanel;
     private javax.swing.JButton botonCrear;
     private javax.swing.JTextField carrera;
     private javax.swing.JTextField correo;
@@ -482,6 +493,7 @@ public NuevoLector(Bibliotecario b) {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -490,9 +502,11 @@ public NuevoLector(Bibliotecario b) {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelCarrera;
     private javax.swing.JLabel labelFacultad;
     private javax.swing.JTextField localidad;
+    private javax.swing.JTextPane nombrePanel;
     private javax.swing.JTextField numeroTelefono;
     private javax.swing.JComboBox<String> tipoLector;
     private javax.swing.JTextField tipodocumento;
