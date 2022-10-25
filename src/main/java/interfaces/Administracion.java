@@ -323,7 +323,6 @@ public class Administracion extends javax.swing.JFrame {
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         this.setVisible(false);
         new Login().setVisible(true);
-        System.out.println(bibliotecario);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
