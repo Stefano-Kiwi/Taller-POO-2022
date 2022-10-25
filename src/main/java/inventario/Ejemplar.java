@@ -15,6 +15,7 @@ public class Ejemplar {
     private Baja baja;
     private Adquisicion adquisicion;
     private String linkCodigoQR;
+    private String observaciones;
     
     public Ejemplar(String lugarFisico,Obra obra, Adquisicion adquisicion) {
         this.contadorEj++;
@@ -124,6 +125,22 @@ public class Ejemplar {
     public void setAdquisicion(Adquisicion adquisicion) {
         this.adquisicion = adquisicion;
     }
+
+    public String getLinkCodigoQR() {
+        return linkCodigoQR;
+    }
+
+    public void setLinkCodigoQR(String linkCodigoQR) {
+        this.linkCodigoQR = linkCodigoQR;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
     
     
 
@@ -137,8 +154,10 @@ public class Ejemplar {
 
     @Override
     public String toString() {
-        return "Ejemplar{" + "idUnico=" + idUnico + ", lugarFisico=" + lugarFisico + ", obra=" + obra + ", linkCodigoQR= "+linkCodigoQR + ", baja=" + baja + ", adquisicion=" + adquisicion + '}';
+        return "Ejemplar{" + "idUnico=" + idUnico + ", lugarFisico=" + lugarFisico + ", obra=" + obra + ", baja=" + baja + ", adquisicion=" + adquisicion + ", linkCodigoQR=" + linkCodigoQR + ", observaciones=" + observaciones + '}';
     }
+
+   
 
     
       public String tablaGUI() {

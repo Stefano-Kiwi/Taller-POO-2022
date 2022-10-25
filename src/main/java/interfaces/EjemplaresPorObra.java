@@ -33,6 +33,13 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
             if(esConsulta == true){
             ComboBoxTitulo.setVisible(false);
             labelAdmin.setVisible(false);
+            jLabel1observac.setVisible(false);
+            textoIdEjemplar.setVisible(false);
+            textoObservaciones.setVisible(false);
+            jLabel4.setVisible(false);
+            jLabel5.setVisible(false);
+            botonObservaciones.setVisible(false);
+                setSize(1000,600);
         }
     }
 
@@ -55,7 +62,7 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel1observac = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         textoIdEjemplar = new javax.swing.JTextField();
@@ -130,8 +137,8 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Dotum", 1, 12)); // NOI18N
         jLabel3.setText("bibliotecario más cercano. En caso de no haber ejemplares realizar una reserva.");
 
-        jLabel1.setFont(new java.awt.Font("Franklin Gothic Book", 1, 14)); // NOI18N
-        jLabel1.setText("Para agregar una observacion sobre un ejemplar:");
+        jLabel1observac.setFont(new java.awt.Font("Franklin Gothic Book", 1, 14)); // NOI18N
+        jLabel1observac.setText("Para agregar una observacion sobre un ejemplar:");
 
         jLabel4.setFont(new java.awt.Font("Franklin Gothic Book", 0, 12)); // NOI18N
         jLabel4.setText("id Unico del ejemplar:");
@@ -154,6 +161,11 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
 
         botonObservaciones.setFont(new java.awt.Font("Franklin Gothic Book", 1, 12)); // NOI18N
         botonObservaciones.setText("Modificar observaciones");
+        botonObservaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonObservacionesMouseClicked(evt);
+            }
+        });
         botonObservaciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonObservacionesActionPerformed(evt);
@@ -189,23 +201,22 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel4))
+                                .addComponent(jLabel1observac))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(350, 350, 350)
-                                .addComponent(jLabel5)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(textoIdEjemplar)
-                                    .addComponent(textoObservaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(textoObservaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textoIdEjemplar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(botonObservaciones)
                                 .addGap(115, 115, 115))))))
@@ -238,23 +249,23 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(43, 43, 43)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1observac)
+                            .addComponent(botonObservaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(textoIdEjemplar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(botonObservaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(16, 16, 16)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(textoObservaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textoObservaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonVolver)
@@ -362,6 +373,19 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         
     }//GEN-LAST:event_botonObservacionesActionPerformed
 
+    private void botonObservacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonObservacionesMouseClicked
+        String idEjemplar = textoIdEjemplar.getText();
+        String observaciones = textoObservaciones.getText();
+        System.out.println("El id es: "+idEjemplar+", la observacion "+observaciones);
+        List<Ejemplar> ejemplares = a.getEjemplares();
+        for (Ejemplar ejemplar : ejemplares) {
+            if(ejemplar.getIdUnico().equals(idEjemplar)){
+                ejemplar.setObservaciones(observaciones);
+            }
+        }
+        
+    }//GEN-LAST:event_botonObservacionesMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -452,7 +476,7 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
     private javax.swing.JButton botonObservaciones;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonVolver;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel1observac;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
