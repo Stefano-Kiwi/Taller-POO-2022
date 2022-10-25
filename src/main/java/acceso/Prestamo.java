@@ -10,9 +10,7 @@ public class Prestamo {
     private int horaPrestamo;
     private int idBibliotecario;
     private LocalDate fechaDevolucion;
-    private String codigoDeBarras;
     private Lector lector;
-    //private List<Ejemplar> listaEjemplares;
     private Ejemplar ejemplar;
     private Bibliotecario bibliotecario;
 
@@ -23,9 +21,7 @@ public class Prestamo {
         this.tipoPrestamo = tipoPrestamo;
         this.fechaPrestamo = fechaPrestamo;
         this.horaPrestamo = horaPrestamo;
-        //this.idBibliotecario = idBibliotecario;
         this.fechaDevolucion = fechaDevolucion;
-        //this.codigoDeBarras = codigoDeBarras; falta implementar codigo de barra del ejemplar
         this.lector = lector;
         this.ejemplar = ejemplar;
         this.bibliotecario = bibliotecario;
@@ -33,7 +29,7 @@ public class Prestamo {
 
     @Override
     public String toString() {
-        return "Prestamo{" + "tipoPrestamo=" + tipoPrestamo + ", fechaPrestamo=" + fechaPrestamo + ", horaPrestamo=" + horaPrestamo + ", idBibliotecario=" + idBibliotecario + ", fechaDevolucion=" + fechaDevolucion + ", codigoDeBarras=" + codigoDeBarras + ", lector=" + lector + ", ejemplar=" + ejemplar + '}';
+        return "Prestamo{" + "tipoPrestamo=" + tipoPrestamo + ", fechaPrestamo=" + fechaPrestamo + ", horaPrestamo=" + horaPrestamo + ", idBibliotecario=" + idBibliotecario + ", fechaDevolucion=" + fechaDevolucion + ", lector=" + lector + ", ejemplar=" + ejemplar + '}';
     }
 
     /**
@@ -190,14 +186,6 @@ public class Prestamo {
 
     public void setFechaDevolucion(LocalDate fechaDevolucion) {
         this.fechaDevolucion = fechaDevolucion;
-    }
-
-    public String getCodigoDeBarras() {
-        return codigoDeBarras;
-    }
-
-    public void setCodigoDeBarras(String codigoDeBarras) {
-        this.codigoDeBarras = codigoDeBarras;
     }
 
     public Lector getLector() {
