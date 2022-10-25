@@ -158,7 +158,6 @@ public class RankingLectores extends javax.swing.JFrame {
         Collections.sort(lectors);
         
         for (Lector lector : lectors) {
-            System.out.println(lector.getCantMultas());
             String[] campos = lector.tablaGUIRanking().split(",");
             modelo.addRow(campos);
         }
