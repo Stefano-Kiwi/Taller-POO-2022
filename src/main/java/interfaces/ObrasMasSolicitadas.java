@@ -118,14 +118,16 @@ public class ObrasMasSolicitadas extends javax.swing.JFrame {
       List <Obra> ListaAux = a.getObras();
       
       int tipoLector = 0;
+      
+      String eleccion = TipoLectorComboBox.getSelectedItem().toString();
         
-        switch(TipoLectorComboBox.getSelectedItem().toString()){
+        switch(eleccion){
           case "Alumnos/Docentes":
-              Collections.max(ListaAux,new ComparatorAlumnoDocente());
+              Collections.sort(ListaAux,new ComparatorAlumnoDocente());
               tipoLector = 1;
               break;
           case "Público en general":
-             Collections.max(ListaAux,new ComparatorGeneral());
+             Collections.sort(ListaAux,new ComparatorGeneral());
               tipoLector = 2;
               break;
       }
