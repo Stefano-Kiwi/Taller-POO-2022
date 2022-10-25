@@ -1,5 +1,6 @@
 package interfaces;
 
+import acceso.Bibliotecario;
 import acceso.DatosDeAcceso;
 import acceso.Lector;
 import inventario.Almacenamiento;
@@ -8,6 +9,7 @@ import inventario.Reserva;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,11 +19,23 @@ public class HacerReservas extends javax.swing.JFrame {
 
     
     private int NumOpcion;
-    
-    
+    boolean esConsulta = false;
+    Bibliotecario bibliotecario;
     public HacerReservas() {
         initComponents();
         this.setLocationRelativeTo(null);
+    }
+    
+    public HacerReservas(Bibliotecario b) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        bibliotecario =  b;
+    }
+    
+    public HacerReservas(boolean consulta) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        esConsulta = consulta;
     }
 
     /**
@@ -160,10 +174,14 @@ public class HacerReservas extends javax.swing.JFrame {
     Almacenamiento a = new Almacenamiento();
     a.obtenerObras("recursos/ListadoDeObras.txt");
     
-    int nroDocumento=Integer.valueOf(DNITextField.getText());
+    int nroDocumento = 0;
         //FILTRA EL LECTOR POR SU DOCUMENTO
-        Lector lector=null;    
-        for(Lector lector1:lectores){
+        Lector lector=null;
+        if(DNITextField.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Ingresar un numero de documento");
+        }else{
+            nroDocumento = Integer.valueOf(DNITextField.getText());
+            for(Lector lector1:lectores){
             if(lector1.getNumDocumento()==nroDocumento){
                 lector=lector1;
                 break;
@@ -203,11 +221,19 @@ public class HacerReservas extends javax.swing.JFrame {
         
         this.setVisible(false);
         new Consultas().setVisible(true);
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        new Consultas().setVisible(true);
+        
+        if(esConsulta == true){
+            new EjemplaresPorObra(esConsulta).setVisible(true);
+        }else{
+            new EjemplaresPorObra(bibliotecario).setVisible(true);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void FechaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FechaTextFieldActionPerformed

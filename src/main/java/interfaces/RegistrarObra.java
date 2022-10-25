@@ -1,5 +1,6 @@
 package interfaces;
 
+import acceso.Bibliotecario;
 import inventario.Almacenamiento;
 import inventario.Edicion;
 import inventario.Obra;
@@ -16,6 +17,12 @@ public class RegistrarObra extends javax.swing.JFrame {
     /**
      * Creates new form RegistrarObra
      */
+    Bibliotecario bibliotecario;
+    public RegistrarObra(Bibliotecario b) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        bibliotecario =b;
+    }
     public RegistrarObra() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -263,13 +270,13 @@ public class RegistrarObra extends javax.swing.JFrame {
 
     private void volverJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverJButtonActionPerformed
         this.setVisible(false);
-        new Administracion().setVisible(true);
+        new Administracion(bibliotecario).setVisible(true);
     }//GEN-LAST:event_volverJButtonActionPerformed
 
     private void registrarLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarLabelMouseClicked
         registrarObra();
         this.setVisible(false);
-        new Administracion().setVisible(true);
+        new Administracion(bibliotecario).setVisible(true);
     }//GEN-LAST:event_registrarLabelMouseClicked
 
     /**

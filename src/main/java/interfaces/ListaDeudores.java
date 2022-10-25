@@ -1,5 +1,6 @@
 package interfaces;
 
+import acceso.Bibliotecario;
 import acceso.Lector;
 import acceso.Prestamo;
 import inventario.Almacenamiento;
@@ -20,10 +21,18 @@ public class ListaDeudores extends javax.swing.JFrame {
      */
     
     
-
+    Bibliotecario bibliotecario;
     public ListaDeudores() {
         initComponents();
         cargarDeudores();
+        this.setLocationRelativeTo(null);
+    }
+    
+     public ListaDeudores(Bibliotecario b) {
+        initComponents();
+        cargarDeudores();
+        bibliotecario = b;
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -123,7 +132,7 @@ public class ListaDeudores extends javax.swing.JFrame {
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
         this.setVisible(false);
-        new Administracion().setVisible(true);
+        new Administracion(bibliotecario).setVisible(true);
     }//GEN-LAST:event_VolverActionPerformed
 
     /**

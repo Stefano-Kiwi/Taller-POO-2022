@@ -1,5 +1,6 @@
 package interfaces;
 
+import acceso.Bibliotecario;
 import inventario.Almacenamiento;
 import inventario.Reserva;
 import java.time.LocalDate;
@@ -17,9 +18,18 @@ public class Reservas extends javax.swing.JFrame {
     /**
      * Creates new form Reservas
      */
+    Bibliotecario bibliotecario;
     public Reservas() {
         initComponents();
         cargarDatos();
+        this.setLocationRelativeTo(null);
+    }
+    
+    public Reservas(Bibliotecario b) {
+        initComponents();
+        cargarDatos();
+        bibliotecario = b;
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -184,7 +194,7 @@ public class Reservas extends javax.swing.JFrame {
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         this.setVisible(false);
-        new Administracion().setVisible(true);
+        new Administracion(bibliotecario).setVisible(true);
     }//GEN-LAST:event_volverActionPerformed
 
     /**

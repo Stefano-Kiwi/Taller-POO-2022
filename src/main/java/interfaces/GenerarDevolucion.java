@@ -1,5 +1,6 @@
 package interfaces;
 
+import acceso.Bibliotecario;
 import acceso.Devolucion;
 import acceso.Lector;
 import acceso.Multa;
@@ -28,7 +29,7 @@ public class GenerarDevolucion extends javax.swing.JFrame {
     private Prestamo prestamo;
     private String prestamosADevolver;
     private List<Prestamo> prestamosADev;
-
+    Bibliotecario bibliotecario;
     
     public GenerarDevolucion() {
         initComponents();
@@ -38,6 +39,19 @@ public class GenerarDevolucion extends javax.swing.JFrame {
         texto.setVisible(false);
         BotonDevolver.setVisible(false);
         buscarPrestamos.setVisible(false);
+        this.setLocationRelativeTo(null);
+    }
+    
+    public GenerarDevolucion(Bibliotecario b) {
+        initComponents();
+        a = new Almacenamiento();
+        prestamos=new ArrayList();
+        tagParametroBuscar.setVisible(false);
+        texto.setVisible(false);
+        BotonDevolver.setVisible(false);
+        buscarPrestamos.setVisible(false);
+        this.setLocationRelativeTo(null);
+        bibliotecario = b;
     }
 
     /**
@@ -54,15 +68,16 @@ public class GenerarDevolucion extends javax.swing.JFrame {
         tagParametroBuscar = new javax.swing.JLabel();
         texto = new javax.swing.JTextField();
         BotonDevolver = new javax.swing.JButton();
-        botonVolver = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaPrestamos = new javax.swing.JTable();
         PrestamosADevolver = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         buscarPrestamos = new javax.swing.JButton();
         tagPrestamosADevolver = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Devolución");
 
         TagBuscarPor.setText("Buscar Prestamo Por: ");
 
@@ -83,13 +98,6 @@ public class GenerarDevolucion extends javax.swing.JFrame {
         BotonDevolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonDevolverActionPerformed(evt);
-            }
-        });
-
-        botonVolver.setText("Volver");
-        botonVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonVolverActionPerformed(evt);
             }
         });
 
@@ -124,6 +132,13 @@ public class GenerarDevolucion extends javax.swing.JFrame {
 
         tagPrestamosADevolver.setText("Prestamos a devolver:");
 
+        jButton1.setText("Volver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,8 +162,8 @@ public class GenerarDevolucion extends javax.swing.JFrame {
                             .addComponent(jScrollPane1))
                         .addGap(0, 338, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(175, 175, 175)
+                        .addComponent(jButton1)
+                        .addGap(186, 186, 186)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tagPrestamosADevolver, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
                             .addComponent(PrestamosADevolver, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -177,8 +192,8 @@ public class GenerarDevolucion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonDevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PrestamosADevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PrestamosADevolver, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addGap(17, 17, 17))
         );
 
@@ -236,7 +251,7 @@ public class GenerarDevolucion extends javax.swing.JFrame {
        }
          JOptionPane.showMessageDialog(null,"devolucion/es realizada con exito");
          this.setVisible(false);
-         new Administracion().setVisible(true);
+         new Administracion(bibliotecario).setVisible(true);
     }//GEN-LAST:event_BotonDevolverActionPerformed
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
@@ -317,6 +332,11 @@ public class GenerarDevolucion extends javax.swing.JFrame {
         BotonDevolver.setVisible(true);
     }//GEN-LAST:event_PrestamosADevolverActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setVisible(false);
+        new Administracion(bibliotecario).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -357,9 +377,9 @@ public class GenerarDevolucion extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> PrestamosADevolver;
     private javax.swing.JTable TablaPrestamos;
     private javax.swing.JLabel TagBuscarPor;
-    private javax.swing.JButton botonVolver;
     private javax.swing.JComboBox<String> buscarPrestamoPor;
     private javax.swing.JButton buscarPrestamos;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel tagParametroBuscar;

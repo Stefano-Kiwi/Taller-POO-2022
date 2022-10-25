@@ -18,10 +18,18 @@ public class ListaObras extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    Bibliotecario bibliotecario;
+    
     public ListaObras() {
         initComponents();
         cargarDatos();
         this.setLocationRelativeTo(null);
+    } 
+    public ListaObras(Bibliotecario b) {
+        initComponents();
+        cargarDatos();
+        this.setLocationRelativeTo(null);
+        bibliotecario = b;
     }
     
     public ListaObras(boolean esConsulta) {
@@ -144,7 +152,7 @@ public class ListaObras extends javax.swing.JFrame {
         if(esConsulta==true){
             new Consultas().setVisible(true);
         }else{
-            new Administracion().setVisible(true);
+            new Administracion(bibliotecario).setVisible(true);
         }
         
     }                                      

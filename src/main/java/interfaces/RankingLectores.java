@@ -1,5 +1,6 @@
 package interfaces;
 
+import acceso.Bibliotecario;
 import acceso.DatosDeAcceso;
 import acceso.Lector;
 import acceso.Multa;
@@ -19,12 +20,18 @@ public class RankingLectores extends javax.swing.JFrame {
     /**
      * Creates new form RankingLectores
      */
+    Bibliotecario bibliotecario;
     public RankingLectores() {
         initComponents();
         cargarDatos();
         this.setLocationRelativeTo(null);
     }
-
+ public RankingLectores(Bibliotecario b) {
+        initComponents();
+        cargarDatos();
+        this.setLocationRelativeTo(null);
+        bibliotecario = b;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -84,7 +91,7 @@ public class RankingLectores extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        new Administracion().setVisible(true);
+        new Administracion(bibliotecario).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

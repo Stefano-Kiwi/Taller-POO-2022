@@ -1,5 +1,6 @@
 package interfaces;
 
+import acceso.Bibliotecario;
 import inventario.Adquisicion;
 import inventario.Almacenamiento;
 import inventario.Ejemplar;
@@ -17,8 +18,15 @@ public class RegistrarEjemplar extends javax.swing.JFrame {
     /**
      * Creates new form RegistrarEjemplar
      */
+    Bibliotecario bibliotecario;
     public RegistrarEjemplar() {
         initComponents();
+        this.setLocationRelativeTo(null);
+    }
+    public RegistrarEjemplar(Bibliotecario b) {
+        initComponents();
+        bibliotecario = b;
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -150,7 +158,7 @@ public class RegistrarEjemplar extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        this.setVisible(false);
-       new Administracion().setVisible(true);
+       new Administracion(bibliotecario).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void FechaAdquisionTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FechaAdquisionTextFieldActionPerformed
@@ -174,14 +182,14 @@ public class RegistrarEjemplar extends javax.swing.JFrame {
         if(noEstaObra == true){
            JOptionPane.showMessageDialog(null,"Debe registrarse primero la Obra de este ejemplar", "Ventana emergente", 1);
            this.setVisible(false);
-           new RegistrarObra().setVisible(true);
+           new RegistrarObra(bibliotecario).setVisible(true);
         } else { 
             String [] fechaAux = FechaAdquisionTextField.getText().split("/");
             LocalDate fecha = LocalDate.of(Integer.parseInt(fechaAux[2]), Integer.parseInt(fechaAux[1]), Integer.parseInt(fechaAux[0]));
             Ejemplar ejemplar = new Ejemplar(LugarFisicoTextField.getText(), obraAux,new Adquisicion(fecha,FormaCompraTextField.getText(), obraAux.getAreaTematica()));
             a.escribirCSV("recursos/ListadoDeEjemplares.txt", ejemplar.toCSV(1));
             this.setVisible(false);
-            new Administracion().setVisible(true);
+            new Administracion(bibliotecario).setVisible(true);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

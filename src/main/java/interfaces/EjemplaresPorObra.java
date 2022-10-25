@@ -1,5 +1,6 @@
 package interfaces;
 
+import acceso.Bibliotecario;
 import inventario.Almacenamiento;
 import inventario.Ejemplar;
 import inventario.Obra;
@@ -20,10 +21,18 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
     Almacenamiento a = new Almacenamiento();
     boolean esConsulta = false;
     
-    
+    Bibliotecario bibliotecario;
     public EjemplaresPorObra() {
         initComponents();
         cargarDatos();
+        this.setLocationRelativeTo(null);
+    }
+    
+    public EjemplaresPorObra(Bibliotecario b) {
+        initComponents();
+        cargarDatos();
+        bibliotecario = b;
+        this.setLocationRelativeTo(null);
     }
     
     public EjemplaresPorObra(boolean consulta) {
@@ -41,6 +50,7 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
             botonObservaciones.setVisible(false);
                 setSize(1000,600);
         }
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -317,7 +327,7 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         if(esConsulta==true){
             new Consultas().setVisible(true);
         }else{
-            new Administracion().setVisible(true);
+            new Administracion(bibliotecario).setVisible(true);
         }
         
     }//GEN-LAST:event_jButtonVolverActionPerformed
@@ -355,7 +365,12 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        new HacerReservas().setVisible(true);
+        if(esConsulta == true){
+            new HacerReservas(esConsulta).setVisible(true);
+        }else{
+            new HacerReservas(bibliotecario).setVisible(true);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void labelAdminComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_labelAdminComponentHidden

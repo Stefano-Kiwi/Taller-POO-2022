@@ -267,42 +267,42 @@ public class Administracion extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);   
-        new ListaObras().setVisible(true);
+        new ListaObras(bibliotecario).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void DeudoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeudoresActionPerformed
        this.setVisible(false);
-        new ListaDeudores().setVisible(true);
+        new ListaDeudores(bibliotecario).setVisible(true);
     }//GEN-LAST:event_DeudoresActionPerformed
 
     private void devolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_devolverActionPerformed
        this.setVisible(false);
-        new GenerarDevolucion().setVisible(true);
+        new GenerarDevolucion(bibliotecario).setVisible(true);
     }//GEN-LAST:event_devolverActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
        this.setVisible(false);
-       new NuevoLector().setVisible(true);        
+       new NuevoLector(bibliotecario).setVisible(true);        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         this.setVisible(false);
-        new RegistrarObra().setVisible(true);
+        new RegistrarObra(bibliotecario).setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
      this.setVisible(false);
-     new PrestamosVigentes().setVisible(true);
+     new PrestamosVigentes(bibliotecario).setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void EjemplaresPorObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EjemplaresPorObraActionPerformed
        this.setVisible(false);
-       new EjemplaresPorObra().setVisible(true);
+       new EjemplaresPorObra(bibliotecario).setVisible(true);
     }//GEN-LAST:event_EjemplaresPorObraActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
      this.setVisible(false);
-     new RegistrarEjemplar().setVisible(true);
+     new RegistrarEjemplar(bibliotecario).setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -312,12 +312,12 @@ public class Administracion extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
       this.setVisible(false);
-      new Reservas().setVisible(true);
+      new Reservas(bibliotecario).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         this.setVisible(false);
-        new RankingLectores().setVisible(true);
+        new RankingLectores(bibliotecario).setVisible(true);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed

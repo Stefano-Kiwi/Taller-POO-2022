@@ -1,5 +1,6 @@
 package interfaces;
 
+import acceso.Bibliotecario;
 import acceso.Prestamo;
 import inventario.Almacenamiento;
 import java.util.List;
@@ -14,10 +15,19 @@ public class PrestamosVigentes extends javax.swing.JFrame {
     /**
      * Creates new form PrestamosVigentes
      */
+    Bibliotecario bibliotecario;
+
     public PrestamosVigentes() {
         initComponents();
         this.setLocationRelativeTo(null);
         cargardatos();
+    }
+
+    public PrestamosVigentes(Bibliotecario b) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        cargardatos();
+        bibliotecario = b;
     }
 
     /**
@@ -31,7 +41,7 @@ public class PrestamosVigentes extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         PrestamoVTabla = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Prestamos vigente a la fecha");
@@ -49,10 +59,10 @@ public class PrestamosVigentes extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(PrestamoVTabla);
 
-        jButton1.setText("Volver");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
 
@@ -64,7 +74,7 @@ public class PrestamosVigentes extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(414, 414, 414)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(65, 65, 65)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 861, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -76,17 +86,17 @@ public class PrestamosVigentes extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   this.setVisible(false);
-   new Administracion().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        this.setVisible(false);
+        new Administracion(bibliotecario).setVisible(true);
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -122,7 +132,7 @@ public class PrestamosVigentes extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public void cargardatos() {
         Almacenamiento a = new Almacenamiento();
         a.obtenerObras("recursos/ListadoDeObras.txt");
@@ -146,7 +156,7 @@ public class PrestamosVigentes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable PrestamoVTabla;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

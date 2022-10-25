@@ -296,7 +296,7 @@ public class GenerarPrestamo extends javax.swing.JFrame {
         if(lector==null){
             JOptionPane.showMessageDialog(null, "No existe lector con ese documento!. Debe crearse un lector primero");   
                 this.setVisible(false);
-                new NuevoLector().setVisible(true);
+                new NuevoLector(bibliotecario).setVisible(true);
         }else{
         //prueba agegarle una multa al lector
 //        LocalDate fechamulta=LocalDate.of(2022, 10, 12);
@@ -307,7 +307,7 @@ public class GenerarPrestamo extends javax.swing.JFrame {
         if(multa!=null){
             JOptionPane.showMessageDialog(null, "no se puede realizar el prestamo por que el lector tiene una multa activa"+"\n"+"fecha de vencimiento de la multa: "+multa.fechaVencimiento());
             this.setVisible(false);
-            new Administracion().setVisible(true);
+            new Administracion(bibliotecario).setVisible(true);
         }else{
         
         String fecha=fechaPrestamo.getText();
@@ -345,7 +345,7 @@ public class GenerarPrestamo extends javax.swing.JFrame {
                  lector.AgregarEjemplar(ejemplar1);
                 JOptionPane.showMessageDialog(null, "Prestamo realizado exitosamente");
                 this.setVisible(false);
-                new Administracion().setVisible(true);
+                new Administracion(bibliotecario).setVisible(true);
                 break;
             }
         }

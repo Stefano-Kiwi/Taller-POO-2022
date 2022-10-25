@@ -20,11 +20,17 @@ public class NuevoLector extends javax.swing.JFrame {
     /**
      * Creates new form NuevoLector
      */
+    Bibliotecario bibliotecario;
+    
     public NuevoLector() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-
+public NuevoLector(Bibliotecario b) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        bibliotecario = b;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -410,12 +416,12 @@ public class NuevoLector extends javax.swing.JFrame {
                 break;
         }
         this.setVisible(false);
-        new Administracion().setVisible(true);
+        new Administracion(bibliotecario).setVisible(true);
     }//GEN-LAST:event_botonCrearActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
      this.setVisible(false);
-     new Administracion().setVisible(true);
+     new Administracion(bibliotecario).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
