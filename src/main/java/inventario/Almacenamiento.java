@@ -98,6 +98,93 @@ public class Almacenamiento {
         }
     }
 
+    public void obtenerObservaciones(String direccion) {
+        /*
+        * Lee el archivo pasado por parámetro y modifica el campo observaciones
+        * en cada ejemplar presente en la lista ejemplares, se ejecuta siempre al final de obtenerEjemplares
+         */
+        
+        try {
+            final String regex1 = "^(.*),(.*)$";
+
+            File archivo = new File(direccion);
+            FileReader fr = new FileReader(archivo);
+            BufferedReader br = new BufferedReader(fr);
+
+            Pattern pattern = Pattern.compile(regex1);
+            String linea;
+
+            linea = br.readLine();
+
+            Matcher matcher;
+
+            while ((linea = br.readLine()) != null) {
+                matcher = pattern.matcher(linea);
+                if (matcher.matches()) {    // ID UNICO, OBSERVACIONES
+
+                    String idUnico = matcher.group(1);
+                    System.out.println("El id unico es: " + matcher.group(1));
+
+                    String observaciones = matcher.group(2);
+                    
+                    for (Ejemplar ejemplar : ejemplares) {
+                        if(ejemplar.getIdUnico().equalsIgnoreCase(matcher.group(1))){   // Si coincide el id unico obtener las observaciones
+                            ejemplar.setObservaciones(observaciones);
+                            break;
+                        }
+                    }
+                }
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    public void modificarObservaciones(String id,String observac) {
+        /*
+        * Lee el archivo pasado por parámetro y modifica el campo observaciones
+        * en el mismo archivo
+         */
+        
+        try {
+            final String regex1 = "^(.*),(.*)$";
+            
+            File archivo = new File("recursos/ListaObservaciones.txt");
+            FileReader fr = new FileReader(archivo);
+            BufferedReader br = new BufferedReader(fr);
+
+            Pattern pattern = Pattern.compile(regex1);
+            String linea;
+
+            linea = br.readLine();
+
+            Matcher matcher;
+
+            while ((linea = br.readLine()) != null) {
+                matcher = pattern.matcher(linea);
+                if (matcher.matches()) {    // ID UNICO, OBSERVACIONES
+
+                    String idUnico = matcher.group(1);
+                    System.out.println("El id unico es: " + matcher.group(1));
+
+                    String observaciones = matcher.group(2);
+                    
+                    for (Ejemplar ejemplar : ejemplares) {
+                        if(ejemplar.getIdUnico().equalsIgnoreCase(matcher.group(1))){   // Si coincide el id unico obtener las observaciones
+                            ejemplar.setObservaciones(observaciones);
+                            break;
+                        }
+                    }
+                }
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    
     public List<Reserva> getReservasRealizas() {
         return reservasRealizas;
     }
