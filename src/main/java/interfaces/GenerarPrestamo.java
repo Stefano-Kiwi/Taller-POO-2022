@@ -331,11 +331,7 @@ public class GenerarPrestamo extends javax.swing.JFrame {
                 tpPrestamo=tpPrestamo.SALA;
                 break;
             case "Domicilio":
-                int dias = Integer.parseInt(duracionPrestamo.getSelectedItem().toString());
-                int anio=fechaprestamo.getYear();
-                int mes=fechaprestamo.getMonthValue();
-                int DIA= fechaprestamo.getDayOfMonth()+ dias;
-                fechaDevolucion=LocalDate.of(anio,mes,DIA);
+                fechaDevolucion=fechaprestamo.plusDays(Integer.valueOf(duracionPrestamo.getSelectedItem().toString()));
                 tpPrestamo=tpPrestamo.DOMICILIO;
                 break;
         }
