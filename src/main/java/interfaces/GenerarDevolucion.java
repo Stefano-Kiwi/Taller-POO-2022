@@ -220,7 +220,11 @@ public class GenerarDevolucion extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarPrestamoPorActionPerformed
 
     private void BotonDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDevolverActionPerformed
-
+      if(bibliotecario==null){
+           JOptionPane.showMessageDialog(null, "Necesitas iniciar sesion para realizar esta accion");   
+           this.setVisible(false);
+           new Login().setVisible(true);
+      }else{
       for(Prestamo pres:prestamosADev){   
         prestamo=pres;
         //verifica si la devolucion esta a tiempo o no
@@ -252,6 +256,7 @@ public class GenerarDevolucion extends javax.swing.JFrame {
          JOptionPane.showMessageDialog(null,"devolucion/es realizada con exito");
          this.setVisible(false);
          new Administracion(bibliotecario).setVisible(true);
+      }
     }//GEN-LAST:event_BotonDevolverActionPerformed
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
