@@ -177,7 +177,7 @@ public class Obra {
         return prestamosPublicoGeneral;
     }
     public void agregarNuevoPrestamoPublicoGeneral(){
-        this.prestamosAlumnosODocentes=this.prestamosAlumnosODocentes+1;
+        this.prestamosPublicoGeneral = this.prestamosPublicoGeneral+1;
     }
     
     public void setPrestamosGenerales(int prestamosGenerales) {
