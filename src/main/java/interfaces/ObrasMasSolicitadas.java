@@ -121,11 +121,11 @@ public class ObrasMasSolicitadas extends javax.swing.JFrame {
         
         switch(TipoLectorComboBox.getSelectedItem().toString()){
           case "Alumnos/Docentes":
-              Collections.max(ListaAux,new ComparatorAlumnoDocente());
+              Collections.sort(ListaAux,new ComparatorAlumnoDocente());
               tipoLector = 1;
               break;
           case "Público en general":
-             Collections.max(ListaAux,new ComparatorGeneral());
+             Collections.sort(ListaAux,new ComparatorGeneral());
               tipoLector = 2;
               break;
       }

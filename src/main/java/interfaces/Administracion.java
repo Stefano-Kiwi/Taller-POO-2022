@@ -43,6 +43,8 @@ public class Administracion extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ventana Principal");
@@ -50,6 +52,7 @@ public class Administracion extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        devolver.setBackground(new java.awt.Color(153, 255, 153));
         devolver.setText("Devolver Ejemplar");
         devolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,14 +61,18 @@ public class Administracion extends javax.swing.JFrame {
         });
         jPanel1.add(devolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 142, 50));
 
+        Deudores.setBackground(new java.awt.Color(255, 255, 153));
+        Deudores.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         Deudores.setText("Deudores");
         Deudores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeudoresActionPerformed(evt);
             }
         });
-        jPanel1.add(Deudores, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, 150, 50));
+        jPanel1.add(Deudores, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, 150, 50));
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 153));
+        jButton1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton1.setText("Todas las obras");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +81,8 @@ public class Administracion extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, 150, 50));
 
+        salir.setBackground(new java.awt.Color(255, 51, 51));
+        salir.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         salir.setText("Salir");
         salir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -85,7 +94,7 @@ public class Administracion extends javax.swing.JFrame {
                 salirActionPerformed(evt);
             }
         });
-        jPanel1.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, -1, -1));
+        jPanel1.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 80, 40));
 
         jLabelPrestar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabelPrestar.setText("Consultar");
@@ -120,6 +129,8 @@ public class Administracion extends javax.swing.JFrame {
         });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 140, 50));
 
+        jButton5.setBackground(new java.awt.Color(255, 255, 153));
+        jButton5.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton5.setText("Prestamos vigentes");
         jButton5.setToolTipText("");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -127,15 +138,17 @@ public class Administracion extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 150, 50));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 150, 50));
 
+        EjemplaresPorObra.setBackground(new java.awt.Color(255, 255, 153));
+        EjemplaresPorObra.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         EjemplaresPorObra.setText("Ejemplares por Obra");
         EjemplaresPorObra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EjemplaresPorObraActionPerformed(evt);
             }
         });
-        jPanel1.add(EjemplaresPorObra, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 150, 50));
+        jPanel1.add(EjemplaresPorObra, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 150, 50));
 
         jButton6.setBackground(new java.awt.Color(0, 0, 0));
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
@@ -147,6 +160,7 @@ public class Administracion extends javax.swing.JFrame {
         });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 140, 50));
 
+        jButton7.setBackground(new java.awt.Color(153, 255, 153));
         jButton7.setText("Prestar Ejemplar");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,29 +169,45 @@ public class Administracion extends javax.swing.JFrame {
         });
         jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, 142, 50));
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 153));
+        jButton2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jButton2.setText("Reservas");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 430, 150, 50));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 380, 150, 50));
+
+        jButton8.setBackground(new java.awt.Color(255, 255, 153));
+        jButton8.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButton8.setText("Ranking de multas");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, 150, 50));
+
+        btnLogout.setBackground(new java.awt.Color(153, 255, 255));
+        btnLogout.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 560, 80, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
         );
 
         pack();
@@ -241,6 +271,16 @@ public class Administracion extends javax.swing.JFrame {
       new Reservas().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        this.setVisible(false);
+        new RankingLectores().setVisible(true);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        this.setVisible(false);
+        new Login().setVisible(true);
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -279,6 +319,7 @@ public class Administracion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Deudores;
     private javax.swing.JButton EjemplaresPorObra;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton devolver;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -287,6 +328,7 @@ public class Administracion extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabelPrestamos;
     private javax.swing.JLabel jLabelPrestar;
     private javax.swing.JLabel jLabelRegistrar;
