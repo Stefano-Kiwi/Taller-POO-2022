@@ -18,14 +18,11 @@ public class Multa {
     public Multa(int DiasMulta, LocalDate fecha) {
         this.DiasMulta = DiasMulta;
         this.fecha = fecha;
-//        this.devolucion = devolucion;
-//        this.lector = lector;
     }
     
     public Multa(int DiasMulta, LocalDate fecha,Lector lector) {
         this.DiasMulta = DiasMulta;
         this.fecha = fecha;
-//        this.devolucion = devolucion;
         this.lector = lector;
     }
     
@@ -76,7 +73,11 @@ public class Multa {
         return "Multa{" + "multa=" + DiasMulta + ", fecha=" + fecha +'}';
     }
     
-    
+    /**
+ * Este método se utiliza para crear una cadena de texto con los datos que se
+ *quieren mostrar en la tabla de la interfaz gráfica
+ * @return String
+ */
     public String toCSVMulta(){
         LocalDate a = this.fecha;
         int dia = a.getDayOfMonth();
@@ -85,29 +86,13 @@ public class Multa {
         return this.getLector().getNumDocumento()+","+this.DiasMulta+","+dia+"/"+mes+"/"+anio;
     }
     
-    
+    /**
+     * Este método se utiliza para crear una cadena de texto con los datos que
+     * se quieren mostrar en la tabla de la interfaz gráfica
+     *
+     * @return String
+     */
     public String tablaGUI() {
-        
-//        Almacenamiento a = new Almacenamiento();
-//        DatosDeAcceso datos = new DatosDeAcceso();
-//        
-//        datos.obtenerLectores("recursos/ListadoDeLectores.txt");
-//        a.obtenerMultas("recursos/ListaMultas.txt");
-//        List<Lector> lectores = datos.getLectores();
-//        List<Multa> multas = a.getMultas();
-//        int cant = 0; // contador para contar multas
-//        List<Integer> dnis = new ArrayList();
-//        for (Multa multa : multas) {
-//            dnis.add(multa.getLector().getNumDocumento());
-//            for (Lector lector : lectores) {
-//                if(lector.getNumDocumento() == multa.getLector().getNumDocumento()){
-//                    cant++;
-//                }
-//        }
-//        }
-        
-        
-        
         
         return this.lector.getNombre() +" "+ this.lector.getApellido() +","+this.lector.getNumDocumento()+"\n";
     }

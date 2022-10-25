@@ -19,16 +19,15 @@ public class ListaDeudores extends javax.swing.JFrame {
     /**
      * Creates new form ListaDeudores
      */
-    
-    
     Bibliotecario bibliotecario;
+
     public ListaDeudores() {
         initComponents();
         cargarDeudores();
         this.setLocationRelativeTo(null);
     }
-    
-     public ListaDeudores(Bibliotecario b) {
+
+    public ListaDeudores(Bibliotecario b) {
         initComponents();
         cargarDeudores();
         bibliotecario = b;
@@ -170,25 +169,29 @@ public class ListaDeudores extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Este método lo utilizamos para crear una tabla según un diseño solicitado
+     * y luego muestra a los deudores en esa tabla con sus datos correspondiente
+     */
     public void cargarDeudores() {
         Almacenamiento a = new Almacenamiento();
         List<Lector> deudores = new ArrayList<>();
         a.obtenerObras("recursos/ListadoDeObras.txt");
         a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
         a.obtenerPrestamos("recursos/ListaPrestamos.txt");
-        
+
         List<Prestamo> prestamos = a.getPrestamosActivos();
         LocalDate hoy = LocalDate.now();
-        
+
         for (Prestamo prestamo : prestamos) {
-            if(!prestamo.getFechaDevolucion().isAfter(hoy)){
+            if (!prestamo.getFechaDevolucion().isAfter(hoy)) {
                 prestamo.getLector().AgregarEjemplar(prestamo.getEjemplar());
-                if (!deudores.contains(prestamo.getLector())){
-                deudores.add(prestamo.getLector());
-                }           
+                if (!deudores.contains(prestamo.getLector())) {
+                    deudores.add(prestamo.getLector());
+                }
             }
         }
-              
+
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Nombre");
         modelo.addColumn("Apellido");

@@ -18,12 +18,12 @@ import javax.swing.JOptionPane;
  * @author lucia
  */
 public class Login extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form Login
      */
-    
     Bibliotecario bibliotecario;
+
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -160,14 +160,14 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public Bibliotecario getBibliotecario(){
+    public Bibliotecario getBibliotecario() {
         return this.bibliotecario;
     }
-    
-    private void setBibliotecario(Bibliotecario b){
+
+    private void setBibliotecario(Bibliotecario b) {
         this.bibliotecario = b;
     }
-    
+
     private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
         try {
             Ingresar();
@@ -188,7 +188,7 @@ public class Login extends javax.swing.JFrame {
     private void Contraseña_TextboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Contraseña_TextboxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Contraseña_TextboxActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
@@ -236,11 +236,27 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Este método solo se ejecuta si el método “Ingresar()” fue posteriormente
+     * llamado y tuvo una ejecución exitosa. Recibe como parámetro el
+     * bibliotecario que accedió al sistema
+     *
+     * @param b
+     */
     private void irAdministracion(Bibliotecario b) {
         this.setVisible(false);
         new Administracion(b).setVisible(true);
     }
 
+    /**
+     * Este método sirve para que el bibliotecario pueda acceder al sistema
+     * mediante un usuario y una contraseña. Hace las verificaciones para
+     * iniciar sesión de manera exitosa y obliga al usuario a rellenar los
+     * campos (en caso de dejarlos vacíos) y luego llama al metodo
+     * ”IrAdministracion()”
+     *
+     * @throws Exception IOException
+     */
     private void Ingresar() throws Exception {
         boolean usuarioCorrecto = false;
         boolean contraseniaCorrecta = false;
@@ -251,7 +267,7 @@ public class Login extends javax.swing.JFrame {
             String line = br.readLine();
             while (line != null) {
                 String[] campos = line.split(",");
-               
+
                 if (Usuario_Textbox.getText().isEmpty() || Contraseña_Textbox.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Completar los campos correspondientes");
                 }
@@ -262,11 +278,11 @@ public class Login extends javax.swing.JFrame {
                 if (usuarioCorrecto && Contraseña_Textbox.getText().equals(campos[1])) {
                     String fecha = campos[6];
                     String[] fechaArr = fecha.split("/");
-                    LocalDate fechaNa = LocalDate.of(Integer.parseInt(fechaArr[2]),Integer.parseInt(fechaArr[1]),Integer.parseInt(fechaArr[0]));
-                    Bibliotecario biblio = new Bibliotecario(campos[2],campos[3],campos[4],Integer.parseInt(campos[5]),fechaNa,campos[7],campos[8],campos[9],campos[10],campos[11],Integer.parseInt(campos[12]),campos[13],campos[14],campos[0],campos[1]);
+                    LocalDate fechaNa = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
+                    Bibliotecario biblio = new Bibliotecario(campos[2], campos[3], campos[4], Integer.parseInt(campos[5]), fechaNa, campos[7], campos[8], campos[9], campos[10], campos[11], Integer.parseInt(campos[12]), campos[13], campos[14], campos[0], campos[1]);
                     this.setBibliotecario(biblio);
                     irAdministracion(biblio);
-                   
+
                     contraseniaCorrecta = true;
                 }
 

@@ -4,6 +4,7 @@ import inventario.Ejemplar;
 import java.time.LocalDate;
 
 public class Prestamo {
+
     private TipoPrestamo tipoPrestamo;
     private LocalDate fechaPrestamo;
     private int horaPrestamo;
@@ -12,21 +13,21 @@ public class Prestamo {
     private String codigoDeBarras;
     private Lector lector;
     //private List<Ejemplar> listaEjemplares;
-    private  Ejemplar ejemplar;
+    private Ejemplar ejemplar;
     private Bibliotecario bibliotecario;
-    
+
     public Prestamo() {
     }
 
-    public Prestamo(TipoPrestamo tipoPrestamo, LocalDate fechaPrestamo,int horaPrestamo, Bibliotecario bibliotecario, LocalDate fechaDevolucion,Lector lector,Ejemplar ejemplar) {
+    public Prestamo(TipoPrestamo tipoPrestamo, LocalDate fechaPrestamo, int horaPrestamo, Bibliotecario bibliotecario, LocalDate fechaDevolucion, Lector lector, Ejemplar ejemplar) {
         this.tipoPrestamo = tipoPrestamo;
         this.fechaPrestamo = fechaPrestamo;
-        this.horaPrestamo=horaPrestamo;
+        this.horaPrestamo = horaPrestamo;
         //this.idBibliotecario = idBibliotecario;
         this.fechaDevolucion = fechaDevolucion;
         //this.codigoDeBarras = codigoDeBarras; falta implementar codigo de barra del ejemplar
-        this.lector=lector;
-        this.ejemplar=ejemplar;
+        this.lector = lector;
+        this.ejemplar = ejemplar;
         this.bibliotecario = bibliotecario;
     }
 
@@ -34,92 +35,113 @@ public class Prestamo {
     public String toString() {
         return "Prestamo{" + "tipoPrestamo=" + tipoPrestamo + ", fechaPrestamo=" + fechaPrestamo + ", horaPrestamo=" + horaPrestamo + ", idBibliotecario=" + idBibliotecario + ", fechaDevolucion=" + fechaDevolucion + ", codigoDeBarras=" + codigoDeBarras + ", lector=" + lector + ", ejemplar=" + ejemplar + '}';
     }
-    
-    public String toCSV(int disponibilidad){
+
+    /**
+     * Este método se utiliza para cargar los datos de los nuevos prestamos a un
+     * bloc de notas según su estado(1:préstamo activo 2:préstamo terminado) que
+     * se pasa por parametro
+     *
+     * @param disponibilidad
+     * @return String
+     */
+    public String toCSV(int disponibilidad) {
         //parametro disponibilidad (1:prestamo activo 2:prestamo terminado)
-       String resultado="";
-       LocalDate fechaprestamo=this.fechaPrestamo;
-       int dia=fechaprestamo.getDayOfMonth();
-       int mes=fechaprestamo.getMonthValue();
-       int anio=fechaprestamo.getYear();
-       String DPres;
-       String MPres;
-       if(dia<10){
-           DPres="0"+String.valueOf(dia);
-       }else{
-           DPres=String.valueOf(dia);
-       }
-       if(mes<10){
-           MPres="0"+String.valueOf(mes);
-       }else{
-           MPres=String.valueOf(mes);
-       }
-       
-       LocalDate fechadevolucion=this.fechaDevolucion;
-       int diaDev=fechadevolucion.getDayOfMonth();
-       int mesDev=fechadevolucion.getMonthValue();
-       int anioDev=fechadevolucion.getYear();
-       String DDev;
-       String MDev;
-       if(diaDev<10){
-           DDev="0"+String.valueOf(diaDev);
-       }else{
-           DDev=String.valueOf(diaDev);
-       }
-       if(mesDev<10){
-           MDev="0"+String.valueOf(mesDev);
-       }else{
-           MDev=String.valueOf(mesDev);
-       }
-       
-       if(disponibilidad==1 || disponibilidad==2 ){
-        resultado=disponibilidad+","+this.tipoPrestamo+","+DPres+"/"+MPres+"/"+anio+","+this.horaPrestamo+","+this.bibliotecario.getNumDocumento()+","+DDev+"/"+MDev+"/"+anioDev+","+this.lector.getNumDocumento()+","+this.ejemplar.getIdUnico();
-       }
-       return resultado;
+        String resultado = "";
+        LocalDate fechaprestamo = this.fechaPrestamo;
+        int dia = fechaprestamo.getDayOfMonth();
+        int mes = fechaprestamo.getMonthValue();
+        int anio = fechaprestamo.getYear();
+        String DPres;
+        String MPres;
+        if (dia < 10) {
+            DPres = "0" + String.valueOf(dia);
+        } else {
+            DPres = String.valueOf(dia);
+        }
+        if (mes < 10) {
+            MPres = "0" + String.valueOf(mes);
+        } else {
+            MPres = String.valueOf(mes);
+        }
+
+        LocalDate fechadevolucion = this.fechaDevolucion;
+        int diaDev = fechadevolucion.getDayOfMonth();
+        int mesDev = fechadevolucion.getMonthValue();
+        int anioDev = fechadevolucion.getYear();
+        String DDev;
+        String MDev;
+        if (diaDev < 10) {
+            DDev = "0" + String.valueOf(diaDev);
+        } else {
+            DDev = String.valueOf(diaDev);
+        }
+        if (mesDev < 10) {
+            MDev = "0" + String.valueOf(mesDev);
+        } else {
+            MDev = String.valueOf(mesDev);
+        }
+
+        if (disponibilidad == 1 || disponibilidad == 2) {
+            resultado = disponibilidad + "," + this.tipoPrestamo + "," + DPres + "/" + MPres + "/" + anio + "," + this.horaPrestamo + "," + this.bibliotecario.getNumDocumento() + "," + DDev + "/" + MDev + "/" + anioDev + "," + this.lector.getNumDocumento() + "," + this.ejemplar.getIdUnico();
+        }
+        return resultado;
     }
-    
-    public String tablaPestamosActivo(){
-        
-       LocalDate fechadevolucion=this.fechaDevolucion;
-       int diaDev=fechadevolucion.getDayOfMonth();
-       int mesDev=fechadevolucion.getMonthValue();
-       int anioDev=fechadevolucion.getYear();
-       String DDev;
-       String MDev;
-       if(diaDev<10){
-           DDev="0"+String.valueOf(diaDev);
-       }else{
-           DDev=String.valueOf(diaDev);
-       }
-       if(mesDev<10){
-           MDev="0"+String.valueOf(mesDev);
-       }else{
-           MDev=String.valueOf(mesDev);
-       }
-       
-       return this.ejemplar.getObra().getTitulo()+","+this.ejemplar.getIdUnico()+","+diaDev+"/"+mesDev+"/"+anioDev;
+
+    /**
+     * Este método se utiliza para mostrar todos los prestamos vigentes con los
+     * datos que se quieren es la tabla de la interfaz gráfica
+     * “EjemplaresPrestados” en la sección de consulta
+     *
+     * @return String
+     */
+    public String tablaPestamosActivo() {
+
+        LocalDate fechadevolucion = this.fechaDevolucion;
+        int diaDev = fechadevolucion.getDayOfMonth();
+        int mesDev = fechadevolucion.getMonthValue();
+        int anioDev = fechadevolucion.getYear();
+        String DDev;
+        String MDev;
+        if (diaDev < 10) {
+            DDev = "0" + String.valueOf(diaDev);
+        } else {
+            DDev = String.valueOf(diaDev);
+        }
+        if (mesDev < 10) {
+            MDev = "0" + String.valueOf(mesDev);
+        } else {
+            MDev = String.valueOf(mesDev);
+        }
+
+        return this.ejemplar.getObra().getTitulo() + "," + this.ejemplar.getIdUnico() + "," + diaDev + "/" + mesDev + "/" + anioDev;
     }
-        
-    public String tablaDevolucion(){
-        
-       LocalDate fechadevolucion=this.fechaDevolucion;
-       int diaDev=fechadevolucion.getDayOfMonth();
-       int mesDev=fechadevolucion.getMonthValue();
-       int anioDev=fechadevolucion.getYear();
-       String DDev;
-       String MDev;
-       if(diaDev<10){
-           DDev="0"+String.valueOf(diaDev);
-       }else{
-           DDev=String.valueOf(diaDev);
-       }
-       if(mesDev<10){
-           MDev="0"+String.valueOf(mesDev);
-       }else{
-           MDev=String.valueOf(mesDev);
-       }
-       
-       return this.lector.getNumDocumento()+","+this.ejemplar.getIdUnico()+","+diaDev+"/"+mesDev+"/"+anioDev;
+
+    /**
+     * Retorna una cadena de texto con los datos que se desean mostrar en la
+     * interfaz “GenerarDevolucion”
+     *
+     * @return String
+     */
+    public String tablaDevolucion() {
+
+        LocalDate fechadevolucion = this.fechaDevolucion;
+        int diaDev = fechadevolucion.getDayOfMonth();
+        int mesDev = fechadevolucion.getMonthValue();
+        int anioDev = fechadevolucion.getYear();
+        String DDev;
+        String MDev;
+        if (diaDev < 10) {
+            DDev = "0" + String.valueOf(diaDev);
+        } else {
+            DDev = String.valueOf(diaDev);
+        }
+        if (mesDev < 10) {
+            MDev = "0" + String.valueOf(mesDev);
+        } else {
+            MDev = String.valueOf(mesDev);
+        }
+
+        return this.lector.getNumDocumento() + "," + this.ejemplar.getIdUnico() + "," + diaDev + "/" + mesDev + "/" + anioDev;
     }
 
     public TipoPrestamo getTipoPrestamo() {
@@ -193,13 +215,19 @@ public class Prestamo {
     public void setEjemplar(Ejemplar ejemplar) {
         this.ejemplar = ejemplar;
     }
-    
-   public String tablaGUI() {
-       LocalDate fechaprestamo = this.fechaPrestamo;
-       int dia=fechaprestamo.getDayOfMonth();
-       int mes=fechaprestamo.getMonthValue();
-       int anio=fechaprestamo.getYear();
-        
-        return lector.getNombre()+","+lector.getApellido()+","+ejemplar.getObra().getTitulo()+","+dia+"/"+mes+"/"+anio+"\n";
-    }     
+
+    /**
+     * Retorna una cadena de texto con los datos que se desean mostrar en la
+     * interfaz “PrestamosVigentes”
+     *
+     * @return String
+     */
+    public String tablaGUI() {
+        LocalDate fechaprestamo = this.fechaPrestamo;
+        int dia = fechaprestamo.getDayOfMonth();
+        int mes = fechaprestamo.getMonthValue();
+        int anio = fechaprestamo.getYear();
+
+        return lector.getNombre() + "," + lector.getApellido() + "," + ejemplar.getObra().getTitulo() + "," + dia + "/" + mes + "/" + anio + "\n";
+    }
 }

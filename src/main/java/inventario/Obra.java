@@ -1,8 +1,10 @@
 package inventario;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Obra {
+
     private String titulo;
     private String subtitulo;
     private String autor1;
@@ -22,12 +24,12 @@ public class Obra {
     private List<Edicion> ediciones;
     private List<Ejemplar> listaejemplares;
     Coleccion coleccion = null;
-    
+
     public Obra() {
     }
-    
+
     public Obra(String titulo, String subtitulo, String autor1, String autor2, String autor3, String genero, String caracteristica, String ISBN, int ejemplares,
-            String areaTematica, TipoObra tipo, Edicion edicion,String codigoDeBarras, String observaciones, int prestamosAlumnosODocentes, int prestamosGenerales) {
+            String areaTematica, TipoObra tipo, Edicion edicion, String codigoDeBarras, String observaciones, int prestamosAlumnosODocentes, int prestamosGenerales) {
         this.titulo = titulo;
         this.subtitulo = subtitulo;
         this.autor1 = autor1;
@@ -48,9 +50,9 @@ public class Obra {
         ediciones.add(edicion);
         listaejemplares = new ArrayList();
     }
-    
-     public Obra(String titulo, String subtitulo, String autor1, String autor2, String autor3, String genero, String caracteristica, String ISBN, int ejemplares,
-            String areaTematica, TipoObra tipo, Edicion edicion,String codigoDeBarras, String observaciones, int prestamosAlumnosODocentes, int prestamosGenerales,Coleccion coleccion) {
+
+    public Obra(String titulo, String subtitulo, String autor1, String autor2, String autor3, String genero, String caracteristica, String ISBN, int ejemplares,
+            String areaTematica, TipoObra tipo, Edicion edicion, String codigoDeBarras, String observaciones, int prestamosAlumnosODocentes, int prestamosGenerales, Coleccion coleccion) {
         this.titulo = titulo;
         this.subtitulo = subtitulo;
         this.autor1 = autor1;
@@ -72,27 +74,27 @@ public class Obra {
         listaejemplares = new ArrayList();
         this.coleccion = coleccion;
     }
-     
-    public void AgregarEdicion(Edicion edicion){
-        if(this.ediciones.isEmpty()){
+
+    public void AgregarEdicion(Edicion edicion) {
+        if (this.ediciones.isEmpty()) {
             this.ediciones.add(edicion);
-        }else{
-            if(!this.ediciones.contains(edicion)){
+        } else {
+            if (!this.ediciones.contains(edicion)) {
                 this.ediciones.add(edicion);
             }
         }
     }
-       public void AgregarEjemplar(Ejemplar ejemplar){
-        if(this.listaejemplares.isEmpty()){
+
+    public void AgregarEjemplar(Ejemplar ejemplar) {
+        if (this.listaejemplares.isEmpty()) {
             this.listaejemplares.add(ejemplar);
-        }else{
-            if(!this.listaejemplares.contains(ejemplar)){
+        } else {
+            if (!this.listaejemplares.contains(ejemplar)) {
                 this.listaejemplares.add(ejemplar);
             }
         }
     }
-   
-       
+
     //GETTERS
     public String getTitulo() {
         return titulo;
@@ -136,7 +138,7 @@ public class Obra {
 
     public String getObservaciones() {
         return observaciones;
-    }  
+    }
 
     public String getAutor2() {
         return autor2;
@@ -169,19 +171,21 @@ public class Obra {
     public void setPrestamosAlumnosODocentes(int prestamosAlumnosODocentes) {
         this.prestamosAlumnosODocentes = prestamosAlumnosODocentes;
     }
-    
-    public void agregarNuevoPrestamoAlumnoODocente(){
-        this.prestamosAlumnosODocentes=this.prestamosAlumnosODocentes+1;
+
+    public void agregarNuevoPrestamoAlumnoODocente() {
+        this.prestamosAlumnosODocentes = this.prestamosAlumnosODocentes + 1;
     }
+
     public int getPrestamosGenerales() {
         return prestamosPublicoGeneral;
     }
-    public void agregarNuevoPrestamoPublicoGeneral(){
-        this.prestamosPublicoGeneral = this.prestamosPublicoGeneral+1;
+
+    public void agregarNuevoPrestamoPublicoGeneral() {
+        this.prestamosPublicoGeneral = this.prestamosPublicoGeneral + 1;
     }
-    
+
     public void setPrestamosGenerales(int prestamosGenerales) {
-        this.prestamosPublicoGeneral = this.prestamosPublicoGeneral+1;
+        this.prestamosPublicoGeneral = this.prestamosPublicoGeneral + 1;
     }
 
     public List<Edicion> getEdiciones() {
@@ -218,25 +222,40 @@ public class Obra {
 
     @Override
     public String toString() {
-        return "Obra{" + "titulo=" + titulo + ", subtitulo=" + subtitulo + ", autor1=" + autor1 + ", autor2=" + autor2 + ", autor3=" + autor3 + ", genero=" + genero + ", ISBN=" + ISBN + ", areaTematica=" + areaTematica + ", tipo=" + tipo + ", edicion=" + edicion +", coleccion=" +coleccion+'}';
+        return "Obra{" + "titulo=" + titulo + ", subtitulo=" + subtitulo + ", autor1=" + autor1 + ", autor2=" + autor2 + ", autor3=" + autor3 + ", genero=" + genero + ", ISBN=" + ISBN + ", areaTematica=" + areaTematica + ", tipo=" + tipo + ", edicion=" + edicion + ", coleccion=" + coleccion + '}';
     }
-    
+
+    /**
+     * Este método se utiliza para crear una cadena de texto con los datos que
+     * se quieren mostrar en la tabla de la interfaz gráfica
+     *
+     * @return String
+     */
     public String tablaGUI() {
-        return titulo +","+autor1+","+ISBN+","+genero+","+coleccion.getNombre()+","+coleccion.getISBN();
-    }    
-    
-     public String MasSolicitados(int opcion) {
-         
-         String resultado = "";
-         
-         switch(opcion){
-             case 1:
-                 resultado = titulo + ","+ ISBN + "," + getPrestamosAlumnosODocentes();
-        break;
-             case 2:
-                 resultado = titulo +","+ISBN + "," + getPrestamosGenerales();
-                 break;
-    } 
-         return resultado;
-}
+        return titulo + "," + autor1 + "," + ISBN + "," + genero + "," + coleccion.getNombre() + "," + coleccion.getISBN();
+    }
+
+    /**
+     * Este método recibe como parámetro (1 o 2) y se utiliza para mostrar las
+     * obras mas solicitadas según tipo de lector, retorna una cadena de texto
+     * con los datos solicitados para mostrar en la interfaz grafica
+     * “”ObrasMasSolicitadas”
+     *
+     * @param opcion
+     * @return String
+     */
+    public String MasSolicitados(int opcion) {
+
+        String resultado = "";
+
+        switch (opcion) {
+            case 1:
+                resultado = titulo + "," + ISBN + "," + getPrestamosAlumnosODocentes();
+                break;
+            case 2:
+                resultado = titulo + "," + ISBN + "," + getPrestamosGenerales();
+                break;
+        }
+        return resultado;
+    }
 }

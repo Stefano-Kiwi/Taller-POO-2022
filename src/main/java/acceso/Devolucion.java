@@ -9,17 +9,14 @@ import java.util.Objects;
  * @author Daniel Altamirano
  */
 public class Devolucion {
-    
+
     private LocalDate fechaDevolucion;
-//    private int hora;
     private boolean FueraDeTermino;
-   // private String codigoDeBarras;
     private Bibliotecario bibliotecario;
     private Ejemplar Ejemplar;
 
-    public Devolucion(LocalDate fechaDevolucion,Bibliotecario bibliotecario, Ejemplar Ejemplar) {
+    public Devolucion(LocalDate fechaDevolucion, Bibliotecario bibliotecario, Ejemplar Ejemplar) {
         this.fechaDevolucion = fechaDevolucion;
-//        this.hora = hora;
         this.bibliotecario = bibliotecario;
         this.Ejemplar = Ejemplar;
     }
@@ -60,28 +57,31 @@ public class Devolucion {
     public String toString() {
         return "Devolucion{" + "fechaDevolucion=" + fechaDevolucion + ", FueraDeTermino=" + FueraDeTermino + ", bibliotecario=" + bibliotecario + ", Ejemplar=" + Ejemplar + '}';
     }
-    
-    public String toCSV(){
-       LocalDate fechadevolucion=this.fechaDevolucion;
-       int diaDev=fechadevolucion.getDayOfMonth();
-       int mesDev=fechadevolucion.getMonthValue();
-       int anioDev=fechadevolucion.getYear();
-       String DDev;
-       String MDev;
-       if(diaDev<10){
-           DDev="0"+String.valueOf(diaDev);
-       }else{
-           DDev=String.valueOf(diaDev);
-       }
-       if(mesDev<10){
-           MDev="0"+String.valueOf(mesDev);
-       }else{
-           MDev=String.valueOf(mesDev);
-       }
-       return this.bibliotecario.getNumDocumento()+","+this.Ejemplar.getIdUnico()+","+DDev+"/"+MDev+"/"+anioDev; 
-    }
-    
-   
 
-   
+    /**
+     * Este método es utilizado para cargar los datos de las devoluciones a un
+     * bloc de notas que contiene todas las devoluciones que se hayan realizado
+     *
+     * @return String
+     */
+    public String toCSV() {
+        LocalDate fechadevolucion = this.fechaDevolucion;
+        int diaDev = fechadevolucion.getDayOfMonth();
+        int mesDev = fechadevolucion.getMonthValue();
+        int anioDev = fechadevolucion.getYear();
+        String DDev;
+        String MDev;
+        if (diaDev < 10) {
+            DDev = "0" + String.valueOf(diaDev);
+        } else {
+            DDev = String.valueOf(diaDev);
+        }
+        if (mesDev < 10) {
+            MDev = "0" + String.valueOf(mesDev);
+        } else {
+            MDev = String.valueOf(mesDev);
+        }
+        return this.bibliotecario.getNumDocumento() + "," + this.Ejemplar.getIdUnico() + "," + DDev + "/" + MDev + "/" + anioDev;
+    }
+
 }

@@ -133,6 +133,11 @@ public class PrestamosVigentes extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Este método lo utilizamos para crear una tabla según un diseño solicitado
+     * y luego muestra las prestamos vigentes que aun no se han devuelto
+     */
+    
     public void cargardatos() {
         Almacenamiento a = new Almacenamiento();
         a.obtenerObras("recursos/ListadoDeObras.txt");

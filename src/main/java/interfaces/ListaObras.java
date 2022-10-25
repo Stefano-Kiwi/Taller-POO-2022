@@ -19,25 +19,27 @@ public class ListaObras extends javax.swing.JFrame {
      * Creates new form Principal
      */
     Bibliotecario bibliotecario;
-    
+
     public ListaObras() {
         initComponents();
         cargarDatos();
         this.setLocationRelativeTo(null);
-    } 
+    }
+
     public ListaObras(Bibliotecario b) {
         initComponents();
         cargarDatos();
         this.setLocationRelativeTo(null);
         bibliotecario = b;
     }
-    
+
     public ListaObras(boolean esConsulta) {
         initComponents();
         cargarDatos();
         this.setLocationRelativeTo(null);
         this.esConsulta = esConsulta;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,15 +58,15 @@ public class ListaObras extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
+                new Object[][]{
+                    {null, null, null, null},
+                    {null, null, null, null},
+                    {null, null, null, null},
+                    {null, null, null, null}
+                },
+                new String[]{
+                    "Title 1", "Title 2", "Title 3", "Title 4"
+                }
         ));
         jScrollPane2.setViewportView(jTable1);
 
@@ -80,33 +82,33 @@ public class ListaObras extends javax.swing.JFrame {
         });
 
         Tablita.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Nombre", "Autor", "ISBN", "Genero"
-            }
+                new Object[][]{
+                    {null, null, null, null},
+                    {null, null, null, null},
+                    {null, null, null, null},
+                    {null, null, null, null},
+                    {null, null, null, null},
+                    {null, null, null, null},
+                    {null, null, null, null},
+                    {null, null, null, null},
+                    {null, null, null, null},
+                    {null, null, null, null}
+                },
+                new String[]{
+                    "Nombre", "Autor", "ISBN", "Genero"
+                }
         ) {
-            boolean[] canEdit = new boolean [] {
+            boolean[] canEdit = new boolean[]{
                 false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         jScrollPane1.setViewportView(Tablita);
 
-        editorialBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
+        editorialBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{}));
         editorialBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editorialBoxActionPerformed(evt);
@@ -118,62 +120,62 @@ public class ListaObras extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(editorialBox, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(104, 104, 104)
-                        .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(editorialBox, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(104, 104, 104)
+                                                .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editorialBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(26, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(Volver, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(editorialBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel1))
+                                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>                        
 
-    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {    
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {
         this.setVisible(false);
-        if(esConsulta==true){
+        if (esConsulta == true) {
             new Consultas().setVisible(true);
-        }else{
+        } else {
             new Administracion(bibliotecario).setVisible(true);
         }
-        
-    }                                      
 
-    private void editorialBoxActionPerformed(java.awt.event.ActionEvent evt) {                                             
-    String opcionElegida = editorialBox.getSelectedItem().toString();
-    
-    Almacenamiento a = new Almacenamiento();
-    
-    a.obtenerObras("recursos/ListadoDeObras.txt");
-    
-    List<Obra> obras = a.getObras();
-    
-    List<Obra> obrasAmostrar = new ArrayList();
-    
+    }
+
+    private void editorialBoxActionPerformed(java.awt.event.ActionEvent evt) {
+        String opcionElegida = editorialBox.getSelectedItem().toString();
+
+        Almacenamiento a = new Almacenamiento();
+
+        a.obtenerObras("recursos/ListadoDeObras.txt");
+
+        List<Obra> obras = a.getObras();
+
+        List<Obra> obrasAmostrar = new ArrayList();
+
         for (Obra obra : obras) {
-            if(obra.getEdicion().getNombreEditorial().equals(opcionElegida)){
+            if (obra.getEdicion().getNombreEditorial().equals(opcionElegida)) {
                 obrasAmostrar.add(obra);
             }
         }
-        
+
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Nombre");
         modelo.addColumn("Autor");
@@ -182,13 +184,13 @@ public class ListaObras extends javax.swing.JFrame {
         modelo.addColumn("Nombre Coleccion");
         modelo.addColumn("ISBN Coleccion");
         Tablita.setModel(modelo);
-        
+
         for (Obra obra : obrasAmostrar) {
             String[] campos = obra.tablaGUI().split(",");
             modelo.addRow(campos);
         }
-        
-    }                                            
+
+    }
 
     /**
      * @param args the command line arguments
@@ -227,6 +229,11 @@ public class ListaObras extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Este método lo utilizamos para crear una tabla según un diseño solicitado
+     * y luego muestra las obras con los datos que se solicitan y también
+     * generar un “ComboBox” que permite filtrar por editorial
+     */
     public void cargarDatos() {
 
         DefaultTableModel modelo = new DefaultTableModel();
@@ -242,33 +249,29 @@ public class ListaObras extends javax.swing.JFrame {
         Almacenamiento a = new Almacenamiento();
         a.obtenerObras("recursos/ListadoDeObras.txt");
         List<Obra> obras = a.getObras();
-        
+
         List<String> nombreEditorial = new ArrayList();
-        
+
         for (var obra : obras) {
             String[] campos = obra.tablaGUI().split(",");
             modelo.addRow(campos);
-            if(!nombreEditorial.contains(obra.getEdicion().getNombreEditorial())){
+            if (!nombreEditorial.contains(obra.getEdicion().getNombreEditorial())) {
                 nombreEditorial.add(obra.getEdicion().getNombreEditorial());
             }
         }
-        
+
         //array de Strings para luego usarlo en el combobox
-        
         String[] edit = new String[nombreEditorial.size()];
-        
+
         //Iteramos los nombre de las editoriales
         for (int i = 0; i < nombreEditorial.size(); i++) {
             edit[i] = nombreEditorial.get(i); //Agregamos al array los nombres
         }
-        
+
         // Se muestran los nombres en el combobox
         editorialBox.setModel(new javax.swing.DefaultComboBoxModel<>(edit));
-               
-        
-        
-    }
 
+    }
 
     // Variables declaration - do not modify                     
     private javax.swing.JTable Tablita;

@@ -19,12 +19,13 @@ public class Reservas extends javax.swing.JFrame {
      * Creates new form Reservas
      */
     Bibliotecario bibliotecario;
+
     public Reservas() {
         initComponents();
         cargarDatos();
         this.setLocationRelativeTo(null);
     }
-    
+
     public Reservas(Bibliotecario b) {
         initComponents();
         cargarDatos();
@@ -168,27 +169,27 @@ public class Reservas extends javax.swing.JFrame {
         LocalDate localfecha1 = LocalDate.of(Integer.parseInt(fecha1[2]), Integer.parseInt(fecha1[1]), Integer.parseInt(fecha1[0]));
         String fecha2[] = Fecha2TextField.getText().split("/");
         LocalDate localfecha2 = LocalDate.of(Integer.parseInt(fecha2[2]), Integer.parseInt(fecha2[1]), Integer.parseInt(fecha2[0]));
-        
-        if(localfecha1.isAfter(localfecha2)){
-           JOptionPane.showMessageDialog(null, "LA FECHA 1 DEBE SER ANTERIOR A LA FECHA 2", "Ventana emergente", 1);  
+
+        if (localfecha1.isAfter(localfecha2)) {
+            JOptionPane.showMessageDialog(null, "LA FECHA 1 DEBE SER ANTERIOR A LA FECHA 2", "Ventana emergente", 1);
         } else {
 
-        for (Reserva reserva : reservas) {
-            if (localfecha1.isBefore(reserva.getFecha()) && localfecha2.isAfter(reserva.getFecha())) {
-                reservaFiltradasFecha.add(reserva);
+            for (Reserva reserva : reservas) {
+                if (localfecha1.isBefore(reserva.getFecha()) && localfecha2.isAfter(reserva.getFecha())) {
+                    reservaFiltradasFecha.add(reserva);
+                }
             }
-        }
-        
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Titulo de la obra");
-        modelo.addColumn("DNI solicitante");
-        modelo.addColumn("Fecha reserva");
-        TablaReservas.setModel(modelo);
-        
-        for (Reserva reserva1 : reservaFiltradasFecha) {
-         String[] campos = reserva1.tablaGUI().split(",");
-         modelo.addRow(campos);
-         }
+
+            DefaultTableModel modelo = new DefaultTableModel();
+            modelo.addColumn("Titulo de la obra");
+            modelo.addColumn("DNI solicitante");
+            modelo.addColumn("Fecha reserva");
+            TablaReservas.setModel(modelo);
+
+            for (Reserva reserva1 : reservaFiltradasFecha) {
+                String[] campos = reserva1.tablaGUI().split(",");
+                modelo.addRow(campos);
+            }
         }
     }//GEN-LAST:event_FiltrarBotonActionPerformed
 
@@ -231,25 +232,30 @@ public class Reservas extends javax.swing.JFrame {
             }
         });
     }
- public void cargarDatos() {
+
+    /**
+     * Este método sirve para crear una tabla según un modelo y luego muestra
+     * las reservas que están pendiente
+     */
+    public void cargarDatos() {
 
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Titulo de la obra");
         modelo.addColumn("DNI solicitante");
         modelo.addColumn("Fecha reserva");
         TablaReservas.setModel(modelo);
-        
+
         Almacenamiento a = new Almacenamiento();
         a.obtenerObras("recursos/ListadoDeObras.txt");
         a.ObtenerReservas("recursos/Reservas.txt");
         List<Reserva> reservas = a.getReservas();
-        
+
         for (Reserva reserva1 : reservas) {
-         String[] campos = reserva1.tablaGUI().split(",");
-         modelo.addRow(campos);
-         }   
-     }
-        
+            String[] campos = reserva1.tablaGUI().split(",");
+            modelo.addRow(campos);
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Fecha1TextField;
     private javax.swing.JTextField Fecha2TextField;

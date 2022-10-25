@@ -31,7 +31,10 @@ public class Almacenamiento {
 
     public Almacenamiento() {
     }
-
+    /**
+     * Este método recibe por parámetro la direccion del documento de donde se obtendrán las obras registradas
+     * @param direccion 
+     */
     public void obtenerObras(String direccion) {
         obras = new ArrayList();
         try {
@@ -97,12 +100,13 @@ public class Almacenamiento {
             System.out.println(e);
         }
     }
-    
+    /**
+     * Lee el archivo pasado por parámetro y modifica el campo observaciones
+     * en cada ejemplar presente en la lista ejemplares.
+     * @param direccion 
+     */
     public void obtenerObservaciones(String direccion) {
-        /*
-        * Lee el archivo pasado por parámetro y modifica el campo observaciones
-        * en cada ejemplar presente en la lista ejemplares, se ejecuta siempre al final de obtenerEjemplares
-         */
+       
         
         try {
             final String regex1 = "^(.*),(.*)$";
@@ -154,7 +158,7 @@ public class Almacenamiento {
     public List<Obra> getObras() {
         return this.obras;
     }
-
+    
     public List<Obra> busquedaObras(int tipoBusqueda, String busqueda) {
         List<Obra> resultado = new ArrayList();     // 1 Titulo o subtítulo 2 autor 3 genero 4 ISBN 5 Editorial 6 Nombre de colección
         switch (tipoBusqueda) {
@@ -197,15 +201,15 @@ public class Almacenamiento {
                 }
 
                 break;
-            /*          FALTA IMPLEMENTAR PARA COLECCIONES.
+          
                 case 6:
                 for (Obra obra : obras) {
-                    if((obra.getColeccion().getNombreColeccion().equalsIgnoreCase(busqueda))){
+                    if((obra.getColeccion().getNombre().equalsIgnoreCase(busqueda))){
                         resultado.add(obra);
                     }
                 }
                 
-                break; */
+                break; 
         }
         return resultado;
     }
@@ -214,7 +218,10 @@ public class Almacenamiento {
         obras.add(obra);
 
     }
-
+    /**
+     * Este método recibe por parámetro la dirección del documento de donde se obtendras los ejemplares registrados 
+     * @param direccion 
+     */
     public void obtenerEjemplares(String direccion) {
         this.ejemplares = new ArrayList();
         this.ejemplarDisponibles = new ArrayList();
@@ -309,12 +316,15 @@ public class Almacenamiento {
     public void quitarReserva(int id) {
         reservas.remove(id);
     }
-
+    /**
+     * metodo para escribir una linea en un .txt ; dos parametros
+     * 1er paramatro direccion del .txt a modificar
+     * 2do parametro linea a escribir
+     * @param direccion
+     * @param linea 
+     */
     public void escribirCSV(String direccion, String linea) {
-        /* metodo para escribir una linea en un .txt ; dos parametros
-          1er paramatro direccion del .txt a modificar
-          2do parametro linea a escribir
-         */
+
 
         try {
             File archivo = new File(direccion);
@@ -351,7 +361,12 @@ public class Almacenamiento {
             System.out.println(e);
         }
     }
-
+    /**
+     * Este método recibe dos parámetros, la dirección del documento a modificar,
+     * el contenido que se agregará al documento
+     * @param direccion
+     * @param contenido 
+     */
     public void agregarNuevoRenglonCSV(String direccion, String contenido) {
         try {
             Writer output;
@@ -363,13 +378,17 @@ public class Almacenamiento {
         }
 
     }
-
+    /**
+     * Este método recibe dos parametros, la dirección: del archivo que se modificará
+     * la opcion : 
+     * 1 : borra todo el documento
+     * 2 : borra la primera línea del documento
+     * 3 : borra la ultima línea del documento
+     * @param direccion
+     * @param opcion 
+     */
     public void borrarCSV(String direccion, int opcion) {
-        /*borra lineas del .txt pasado por parametro dependiendo de la opcion
-         opcion 0 = borra todo
-         opcion 1 = borra la primera linea
-         opcion 3 = borra la ultima linea
-         */
+        
         switch (opcion) {
             case 0://borra todo lo que hay en la direccion
                try {
@@ -448,7 +467,11 @@ public class Almacenamiento {
         }
 
     }
-
+    /**
+     * Este método recibe por parámetro una direccion de la cual se utiliza para
+     * obtener todos los prestamos registrados
+     * @param direccion 
+     */
     public void obtenerPrestamos(String direccion) {
 
         this.prestamosActivos = new ArrayList();
@@ -489,7 +512,6 @@ public class Almacenamiento {
                     Ejemplar ejemplar = null;
                     
                     for (Ejemplar ejemplar1 : ejemplares) {
-//                  if(ejemplar1.getObra().getISBN().equals(isbn)){
                         if (idunico.equalsIgnoreCase(ejemplar1.getIdUnico())) {
                             ejemplar = ejemplar1;
                             break;
@@ -549,12 +571,15 @@ public class Almacenamiento {
             System.out.println(e);
         }
     }
-
+    /**
+     * Este método se utiliza para modificar un txt pensado para actualizar el txt
+     * luego de un prestamo o devolución
+     * @param direccion
+     * @param lineaaModificar
+     * @param lineaNueva 
+     */
     public void modificarCSV(String direccion, String lineaaModificar, String lineaNueva) {
-        /*
-        metodo para modificar un txt pensado para actualizar el txt
-        luego de un prestamo o devolucion
-         */
+        
 
         File archivo = new File(direccion);
         try {
@@ -586,7 +611,11 @@ public class Almacenamiento {
             System.out.println(e);
         }
     }
-
+    /**
+     * Este método recibe por parametro una direccion de la cual se extraen todas
+     * las multas que se han aplicado
+     * @param direccion 
+     */
     public void obtenerMultas(String direccion) {
         this.multas = new ArrayList();
         try {
@@ -634,7 +663,10 @@ public class Almacenamiento {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Este método recibe por parametro un lector y permite consultar todas las multas que se le han aplicado.
+     * @param lector 
+     */
     public void obtenerMulta(Lector lector) {
         for (Multa multa : multas) {
             if (multa.getLector().getNumDocumento() == lector.getNumDocumento()) {
@@ -642,7 +674,9 @@ public class Almacenamiento {
             }
         }
     }
-    
+    /**
+     * Este método se utiliza para obtener las devoluciones registradas.
+     */
     public void obtenerDevoluciones(){
         this.devoluciones=new ArrayList();
         DatosDeAcceso da= new DatosDeAcceso(); 
@@ -691,28 +725,7 @@ public class Almacenamiento {
             System.out.println(e);
         }
     }
-    
-    public void obtenerPrestamosBibliotecario(Bibliotecario b){
-        //agrega todos los prestamos a la lista de prestamos del bibliotecario pasado por parametro
-        for(Prestamo p : this.prestamosActivos){
-            if(p.getBibliotecario().getNumDocumento()==b.getNumDocumento()){
-                b.AgregarPrestamo(p);
-            }
-        }
-        for(Prestamo p : this.prestamosTerminados){
-            if(p.getBibliotecario().getNumDocumento()==b.getNumDocumento()){
-                b.AgregarPrestamo(p);
-            }
-        }
-    }
-    
-    public void obtenerDevolucionesBibliotecario(Bibliotecario b){
-        for(Devolucion dev:this.devoluciones){
-            if(dev.getBibliotecario().getNumDocumento()==b.getNumDocumento()){
-                b.AgregarDevolucion(dev);
-            }
-        }
-    }
+
 
     public List<Prestamo> getPrestamosActivos() {
         return prestamosActivos;
@@ -769,7 +782,11 @@ public class Almacenamiento {
     public void setMultas(List<Multa> multas) {
         this.multas = multas;
     }
-
+    
+    /**
+     * Este método recibe por parámetro la dirección del documento de donde se obtendrán las reserves registradas
+     * @param direccion 
+     */
     public void ObtenerReservas(String direccion) {
         //carga los lectores
         DatosDeAcceso da = new DatosDeAcceso();

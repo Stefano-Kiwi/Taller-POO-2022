@@ -18,11 +18,13 @@ public class RegistrarObra extends javax.swing.JFrame {
      * Creates new form RegistrarObra
      */
     Bibliotecario bibliotecario;
+
     public RegistrarObra(Bibliotecario b) {
         initComponents();
         this.setLocationRelativeTo(null);
-        bibliotecario =b;
+        bibliotecario = b;
     }
+
     public RegistrarObra() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -363,40 +365,46 @@ public class RegistrarObra extends javax.swing.JFrame {
     private javax.swing.JButton volverJButton;
     // End of variables declaration//GEN-END:variables
 
-    
-    public void registrarObra(){
+    /**
+     * Este método nos permite crear una nueva instancia de Obra. Hace un
+     * control según el ISBN. Y en el caso de que ya exista avisa al usuario
+     * mediante un mensaje
+     */
+    public void registrarObra() {
         Almacenamiento a = new Almacenamiento();
         a.obtenerObras("recursos/ListadoDeObras.txt");
         List<Obra> obras = a.getObras();
-        
+
         TipoObra tipoObra = TipoObra.LIBRO;
-         switch (ComboBoxTIPO.getSelectedItem().toString()) {
-                        case "LIBRO":
-                            tipoObra = TipoObra.LIBRO;
-                            break;
-                        case "REVISTA":
-                            tipoObra = TipoObra.REVISTA;
-                            break;
-                        case "ENSAYO":
-                            tipoObra = TipoObra.ENSAYO;
-                            break;
-                        case "TESIS":
-                            tipoObra = TipoObra.TESIS;
-                            break;
-                        case "MANUAL":
-                            tipoObra = TipoObra.MANUAL;
-                            break;
-                    }
-        Obra obra = new Obra(tituloTextField.getText(), subtituloTextField.getText(), autorTextField.getText(), autor2TextField.getText(), autor3TextField.getText(), generoTextField.getText(), caracteristicaTextField.getText(), isbnTextField.getText(), 0,areaTematicaTextField.getText(), tipoObra, new Edicion(editorialTextField.getText(),numeroEdicionTextField.getText(), numeroEdicionTextField.getText(), Integer.parseInt(anioEdicionTextField.getText()), Integer.parseInt(volumenesTextField.getText()), idiomaTextField.getText(), Integer.parseInt(paginasTextField.getText()), formatoTextField.getText()), isbnTextField.getText(), "", 0, 0);
-        boolean esta= false;
+        switch (ComboBoxTIPO.getSelectedItem().toString()) {
+            case "LIBRO":
+                tipoObra = TipoObra.LIBRO;
+                break;
+            case "REVISTA":
+                tipoObra = TipoObra.REVISTA;
+                break;
+            case "ENSAYO":
+                tipoObra = TipoObra.ENSAYO;
+                break;
+            case "TESIS":
+                tipoObra = TipoObra.TESIS;
+                break;
+            case "MANUAL":
+                tipoObra = TipoObra.MANUAL;
+                break;
+        }
+        Obra obra = new Obra(tituloTextField.getText(), subtituloTextField.getText(), autorTextField.getText(), autor2TextField.getText(), autor3TextField.getText(), generoTextField.getText(), caracteristicaTextField.getText(), isbnTextField.getText(), 0, areaTematicaTextField.getText(), tipoObra, new Edicion(editorialTextField.getText(), numeroEdicionTextField.getText(), numeroEdicionTextField.getText(), Integer.parseInt(anioEdicionTextField.getText()), Integer.parseInt(volumenesTextField.getText()), idiomaTextField.getText(), Integer.parseInt(paginasTextField.getText()), formatoTextField.getText()), isbnTextField.getText(), "", 0, 0);
+        boolean esta = false;
         for (Obra obra1 : obras) {
-            if(obra.getISBN().equals(obra1.getISBN())){
+            if (obra.getISBN().equals(obra1.getISBN())) {
                 esta = true;
                 break;
             }
         }
-        if (!esta){
-            new Almacenamiento().escribirCSV("recursos/ListadoDeObras.txt", tituloTextField.getText()+","+subtituloTextField.getText()+","+autorTextField.getText()+","+autor2TextField.getText()+","+autor3TextField.getText()+","+generoTextField.getText()+","+caracteristicaTextField.getText()+","+isbnTextField.getText()+","+areaTematicaTextField.getText()+","+ComboBoxTIPO.getSelectedItem().toString()+","+editorialTextField.getText()+","+paisTextField.getText()+","+numeroEdicionTextField.getText()+","+anioEdicionTextField.getText()+","+volumenesTextField.getText()+","+idiomaTextField.getText()+","+paginasTextField.getText()+","+formatoTextField.getText()+","+coleccionTextField.getText()+","+isbnColeccionTextField.getText());
-        } else {JOptionPane.showMessageDialog(null, "Ya existe esta obra!", "Ventana emergente", 1);}
-    }     
+        if (!esta) {
+            new Almacenamiento().escribirCSV("recursos/ListadoDeObras.txt", tituloTextField.getText() + "," + subtituloTextField.getText() + "," + autorTextField.getText() + "," + autor2TextField.getText() + "," + autor3TextField.getText() + "," + generoTextField.getText() + "," + caracteristicaTextField.getText() + "," + isbnTextField.getText() + "," + areaTematicaTextField.getText() + "," + ComboBoxTIPO.getSelectedItem().toString() + "," + editorialTextField.getText() + "," + paisTextField.getText() + "," + numeroEdicionTextField.getText() + "," + anioEdicionTextField.getText() + "," + volumenesTextField.getText() + "," + idiomaTextField.getText() + "," + paginasTextField.getText() + "," + formatoTextField.getText() + "," + coleccionTextField.getText() + "," + isbnColeccionTextField.getText());
+        } else {
+            JOptionPane.showMessageDialog(null, "Ya existe esta obra!", "Ventana emergente", 1);
+        }
+    }
 }

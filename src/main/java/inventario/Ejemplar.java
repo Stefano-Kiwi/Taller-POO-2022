@@ -8,6 +8,7 @@ import java.util.Objects;
 import javax.imageio.ImageIO;
 
 public class Ejemplar {
+
     private static int contadorEj = 0;  // Cuando se crea un nuevo ej aumenta
     private String idUnico;
     private String lugarFisico;
@@ -16,35 +17,38 @@ public class Ejemplar {
     private Adquisicion adquisicion;
     private String linkCodigoQR;
     private String observaciones;
-    
-    public Ejemplar(String lugarFisico,Obra obra, Adquisicion adquisicion) {
+
+    public Ejemplar(String lugarFisico, Obra obra, Adquisicion adquisicion) {
         this.contadorEj++;
         this.lugarFisico = lugarFisico;
         this.obra = obra;
-        this.idUnico = lugarFisico+String.valueOf(contadorEj);
+        this.idUnico = lugarFisico + String.valueOf(contadorEj);
         this.adquisicion = adquisicion;
-        this.linkCodigoQR = "recursos/codigosQR/"+idUnico+".png";
-        
+        this.linkCodigoQR = "recursos/codigosQR/" + idUnico + ".png";
+
     }
-    public Ejemplar(String lugarFisico,Obra obra,Adquisicion adquisicion,Baja baja) {
+
+    public Ejemplar(String lugarFisico, Obra obra, Adquisicion adquisicion, Baja baja) {
         this.contadorEj++;
         this.lugarFisico = lugarFisico;
         this.obra = obra;
-        this.idUnico = lugarFisico+String.valueOf(contadorEj);
+        this.idUnico = lugarFisico + String.valueOf(contadorEj);
         this.baja = baja;
         this.adquisicion = adquisicion;
-        this.linkCodigoQR = "recursos/codigosQR/"+idUnico+".png";
+        this.linkCodigoQR = "recursos/codigosQR/" + idUnico + ".png";
     }
-    public Ejemplar(String lugarFisico,Obra obra,Adquisicion adquisicion,String idunico,Baja baja) {
+
+    public Ejemplar(String lugarFisico, Obra obra, Adquisicion adquisicion, String idunico, Baja baja) {
         this.lugarFisico = lugarFisico;
         this.obra = obra;
         this.idUnico = idunico;
         this.baja = baja;
         this.adquisicion = adquisicion;
-        this.linkCodigoQR = "recursos/codigosQR/"+idUnico+".png";
-        
+        this.linkCodigoQR = "recursos/codigosQR/" + idUnico + ".png";
+
     }
-    public Ejemplar(String lugarFisico,Obra obra, Adquisicion adquisicion,String idunico){
+
+    public Ejemplar(String lugarFisico, Obra obra, Adquisicion adquisicion, String idunico) {
         this.lugarFisico = lugarFisico;
         this.obra = obra;
         this.adquisicion = adquisicion;
@@ -141,8 +145,6 @@ public class Ejemplar {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
-    
-    
 
     public String getIdUnico() {
         return idUnico;
@@ -150,85 +152,95 @@ public class Ejemplar {
 
     public String getLugarFisico() {
         return lugarFisico;
-    }       
+    }
 
     @Override
     public String toString() {
         return "Ejemplar{" + "idUnico=" + idUnico + ", lugarFisico=" + lugarFisico + ", obra=" + obra + ", baja=" + baja + ", adquisicion=" + adquisicion + ", linkCodigoQR=" + linkCodigoQR + ", observaciones=" + observaciones + '}';
     }
 
-   
-
-    
-      public String tablaGUI() {
-        return obra.getTitulo() +","+ this.lugarFisico+","+this.idUnico;
+    public String tablaGUI() {
+        return obra.getTitulo() + "," + this.lugarFisico + "," + this.idUnico;
     }
-    
-    public String toCSV(int disponibilidad){
-          //disponibilidad =(1: disponible 2: prestado)
-        LocalDate fAdquisicion=adquisicion.getFechaAdquisicion();
-        int dia=fAdquisicion.getDayOfMonth();
-        int mes=fAdquisicion.getMonthValue();
-        int año=fAdquisicion.getYear();
-        
+
+    /**
+     * Este método es utilizado para cargar los datos de los ejemplares a un bloc
+     * de notas en el formato correspondiente que contiene a todos los ejemplares
+     *
+     * @return String
+     */
+    public String toCSV(int disponibilidad) {
+        //disponibilidad =(1: disponible 2: prestado)
+        LocalDate fAdquisicion = adquisicion.getFechaAdquisicion();
+        int dia = fAdquisicion.getDayOfMonth();
+        int mes = fAdquisicion.getMonthValue();
+        int año = fAdquisicion.getYear();
+
         String DIA;
         String MES;
-        if(dia<10){
-            DIA="0"+String.valueOf(dia);
-        }else{
-            DIA=String.valueOf(dia);
+        if (dia < 10) {
+            DIA = "0" + String.valueOf(dia);
+        } else {
+            DIA = String.valueOf(dia);
         }
-        if(mes<10){
-            MES="0"+String.valueOf(mes);
-        }else{
-            MES=String.valueOf(mes);
+        if (mes < 10) {
+            MES = "0" + String.valueOf(mes);
+        } else {
+            MES = String.valueOf(mes);
         }
-        String resultado="";
-        if(disponibilidad==1 || disponibilidad==2 ){
-           resultado= disponibilidad+","+obra.getISBN()+","+lugarFisico+","+DIA+"/"+MES+"/"+año+","+adquisicion.getFormaDeCompra()+","+this.idUnico+","+"no"+","+",";
+        String resultado = "";
+        if (disponibilidad == 1 || disponibilidad == 2) {
+            resultado = disponibilidad + "," + obra.getISBN() + "," + lugarFisico + "," + DIA + "/" + MES + "/" + año + "," + adquisicion.getFormaDeCompra() + "," + this.idUnico + "," + "no" + "," + ",";
         }
         return resultado;
     }
-    
-    public String darDeBajaCSV(){
-        
-        LocalDate fAdquisicion=adquisicion.getFechaAdquisicion();
-        int dia=fAdquisicion.getDayOfMonth();
-        int mes=fAdquisicion.getMonthValue();
-        int año=fAdquisicion.getYear();
-        
+
+    /**
+     * Este método se utiliza para modificar el documento donde se registran los
+     * ejemplares respentando el formato de los ejemplares que se han dado de
+     * baja.
+     *
+     * @return String
+     */
+    public String darDeBajaCSV() {
+
+        LocalDate fAdquisicion = adquisicion.getFechaAdquisicion();
+        int dia = fAdquisicion.getDayOfMonth();
+        int mes = fAdquisicion.getMonthValue();
+        int año = fAdquisicion.getYear();
+
         String DIA;
         String MES;
-        if(dia<10){
-            DIA="0"+String.valueOf(dia);
-        }else{
-            DIA=String.valueOf(dia);
+        if (dia < 10) {
+            DIA = "0" + String.valueOf(dia);
+        } else {
+            DIA = String.valueOf(dia);
         }
-        if(mes<10){
-            MES="0"+String.valueOf(mes);
-        }else{
-            MES=String.valueOf(mes);
+        if (mes < 10) {
+            MES = "0" + String.valueOf(mes);
+        } else {
+            MES = String.valueOf(mes);
         }
-        String resultado="";
-        
-        LocalDate fbaja=this.baja.getFechaDadoDeBaja();
-        int diab=fbaja.getDayOfMonth();
-        int mesb=fbaja.getMonthValue();
-        int anioB=fbaja.getYear();
-        
+        String resultado = "";
+
+        LocalDate fbaja = this.baja.getFechaDadoDeBaja();
+        int diab = fbaja.getDayOfMonth();
+        int mesb = fbaja.getMonthValue();
+        int anioB = fbaja.getYear();
+
         String DIAB;
         String MESB;
-        if(diab<10){
-            DIAB="0"+String.valueOf(diab);
-        }else{
-            DIAB=String.valueOf(diab);
+        if (diab < 10) {
+            DIAB = "0" + String.valueOf(diab);
+        } else {
+            DIAB = String.valueOf(diab);
         }
-        if(mesb<10){
-            MESB="0"+String.valueOf(mesb);
-        }else{
-            MESB=String.valueOf(mesb);
+        if (mesb < 10) {
+            MESB = "0" + String.valueOf(mesb);
+        } else {
+            MESB = String.valueOf(mesb);
         }
-        return resultado= 3+","+obra.getISBN()+","+lugarFisico+","+DIA+"/"+MES+"/"+año+","+adquisicion.getFormaDeCompra()+","+this.idUnico+","+"si"+","+DIAB+"/"+MESB+"/"+anioB+","+baja.getMotivoBaja();
-        
+        return resultado = 3 + "," + obra.getISBN() + "," + lugarFisico + "," + DIA + "/" + MES + "/" + año + "," + adquisicion.getFormaDeCompra() + "," + this.idUnico + "," + "si" + "," + DIAB + "/" + MESB + "/" + anioB + "," + baja.getMotivoBaja();
+
     }
 }

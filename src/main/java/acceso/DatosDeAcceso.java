@@ -19,12 +19,19 @@ public class DatosDeAcceso {
 
     // Todos los lectores se guardan en esta lista asd
     private List<Lector> lectores = new ArrayList();
-        
+
     private List<Bibliotecario> usuarios = new ArrayList();
 
     public DatosDeAcceso() {
     }
 
+    /**
+     * Este metodo es utilizado para exportar todos los Lectores ya creados con
+     * anticipación y también aquellos creados desde la interfaz "NuevoLector"
+     * recibe como parametro una direccion a un bloc de notas
+     *
+     * @param direccion
+     */
     public void obtenerLectores(String direccion) {
         try {
             final String regex1 = "^(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*)";
@@ -88,20 +95,27 @@ public class DatosDeAcceso {
             e.printStackTrace();
         }
     }
-    
+
+    /**
+     * Este metodo es utilizado para exportar todos los Bibliotecarios ya
+     * creados con anticipación recibe como parametro una direccion a un bloc de
+     * notas.
+     *
+     * @param direccion
+     */
     public void obtenerBibliotecario() {
         BufferedReader br = null;
-        
+
         try {
             br = new BufferedReader(new FileReader("recursos/usuarios.txt"));
             String line;
-           
-            while ((line=br.readLine()) != null) {
+
+            while ((line = br.readLine()) != null) {
                 String[] campos = line.split(",");
                 String fecha = campos[6];
                 String[] fechaArr = fecha.split("/");
-                LocalDate fechaNa = LocalDate.of(Integer.parseInt(fechaArr[2]),Integer.parseInt(fechaArr[1]),Integer.parseInt(fechaArr[0]));
-                this.usuarios.add(new Bibliotecario(campos[2],campos[3],campos[4],Integer.parseInt(campos[5]),fechaNa,campos[7],campos[8],campos[9],campos[10],campos[11],Integer.parseInt(campos[12]),campos[13],campos[14],campos[0],campos[1]));                    
+                LocalDate fechaNa = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
+                this.usuarios.add(new Bibliotecario(campos[2], campos[3], campos[4], Integer.parseInt(campos[5]), fechaNa, campos[7], campos[8], campos[9], campos[10], campos[11], Integer.parseInt(campos[12]), campos[13], campos[14], campos[0], campos[1]));
             }
             br.close();
 
@@ -111,7 +125,7 @@ public class DatosDeAcceso {
             Component frame = null;
             JOptionPane.showMessageDialog(frame, e.getMessage());
         }
-        
+
     }
 
     public List<Bibliotecario> getUsuarios() {

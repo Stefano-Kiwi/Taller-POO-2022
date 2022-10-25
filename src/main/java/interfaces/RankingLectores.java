@@ -21,17 +21,20 @@ public class RankingLectores extends javax.swing.JFrame {
      * Creates new form RankingLectores
      */
     Bibliotecario bibliotecario;
+
     public RankingLectores() {
         initComponents();
         cargarDatos();
         this.setLocationRelativeTo(null);
     }
- public RankingLectores(Bibliotecario b) {
+
+    public RankingLectores(Bibliotecario b) {
         initComponents();
         cargarDatos();
         this.setLocationRelativeTo(null);
         bibliotecario = b;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -129,6 +132,11 @@ public class RankingLectores extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Este método sirve para crear una tabla con un modelo solicitado y muestra
+     * por pantalla aquellos lectores, en orden descendente, que han tenido
+     * multas según la cantidad de las mismas
+     */
     public void cargarDatos() {
 
         DefaultTableModel modelo = new DefaultTableModel();
@@ -146,31 +154,27 @@ public class RankingLectores extends javax.swing.JFrame {
         List<Multa> multas = a.getMultas();
         List<Lector> lectores = datos.getLectores();
 
-        
         List<String> multados = new ArrayList();
         List<Lector> lectors = new ArrayList();
-        
+
         for (Multa multa : multas) {
-            if(!multados.contains(multa.getLector().tablaGUIRanking())){
+            if (!multados.contains(multa.getLector().tablaGUIRanking())) {
                 multados.add(multa.getLector().tablaGUIRanking());
             }
-            
+
         }
-        
+
         for (Multa multa : multas) {
-            if(!lectors.contains(multa.getLector())){
+            if (!lectors.contains(multa.getLector())) {
                 lectors.add(multa.getLector());
             }
         }
         Collections.sort(lectors);
-        
+
         for (Lector lector : lectors) {
             String[] campos = lector.tablaGUIRanking().split(",");
             modelo.addRow(campos);
         }
-        
-        
- 
 
     }
 

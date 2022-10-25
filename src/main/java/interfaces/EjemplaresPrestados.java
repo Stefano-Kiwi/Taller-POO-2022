@@ -14,21 +14,22 @@ public class EjemplaresPrestados extends javax.swing.JFrame {
     /**
      * Creates new form EjemplaresPrestados
      */
-   
     private List<Prestamo> prestamosActivos;
     private Almacenamiento a;
-    
+
     boolean esConsulta = false;
+
     public EjemplaresPrestados() {
         initComponents();
-        a=new Almacenamiento();
+        a = new Almacenamiento();
         cargardatos();
     }
+
     public EjemplaresPrestados(boolean esConsulta) {
         initComponents();
-        a=new Almacenamiento();
+        a = new Almacenamiento();
         cargardatos();
-        this.esConsulta=esConsulta;
+        this.esConsulta = esConsulta;
     }
 
     /**
@@ -98,9 +99,9 @@ public class EjemplaresPrestados extends javax.swing.JFrame {
 
     private void botonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverActionPerformed
         this.setVisible(false);
-        if(esConsulta==true){
+        if (esConsulta == true) {
             new Consultas().setVisible(true);
-        }else{
+        } else {
             new Administracion().setVisible(true);
         }
     }//GEN-LAST:event_botonVolverActionPerformed
@@ -139,27 +140,30 @@ public class EjemplaresPrestados extends javax.swing.JFrame {
             }
         });
     }
-    
-    public void cargardatos(){
-        
+
+    /**
+     * Este método lo utilizamos para crear una tabla según un modelo y luego
+     * mostrar los ejemplares que han sido prestados
+     */
+    public void cargardatos() {
+
         a.obtenerObras("recursos/ListadoDeObras.txt");
         a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
         a.obtenerPrestamos("recursos/ListaPrestamos.txt");
         prestamosActivos = a.getPrestamosActivos();
-        
+
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("titulo obra");
         modelo.addColumn("ID unico ejemplar");
         modelo.addColumn("Fecha de devolucion");
         tablaPrestados.setModel(modelo);
-        
-        for(Prestamo pres:prestamosActivos){
+
+        for (Prestamo pres : prestamosActivos) {
             String[] campos = pres.tablaPestamosActivo().split(",");
             modelo.addRow(campos);
         }
-        
-    
-}
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonVolver;

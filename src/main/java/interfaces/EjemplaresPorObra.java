@@ -20,26 +20,27 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
      */
     Almacenamiento a = new Almacenamiento();
     boolean esConsulta = false;
-    
+
     Bibliotecario bibliotecario;
+
     public EjemplaresPorObra() {
         initComponents();
         cargarDatos();
         this.setLocationRelativeTo(null);
     }
-    
+
     public EjemplaresPorObra(Bibliotecario b) {
         initComponents();
         cargarDatos();
         bibliotecario = b;
         this.setLocationRelativeTo(null);
     }
-    
+
     public EjemplaresPorObra(boolean consulta) {
         initComponents();
         cargarDatos();
         this.esConsulta = consulta;
-            if(esConsulta == true){
+        if (esConsulta == true) {
             ComboBoxTitulo.setVisible(false);
             labelAdmin.setVisible(false);
             jLabel1observac.setVisible(false);
@@ -48,7 +49,7 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
             jLabel4.setVisible(false);
             jLabel5.setVisible(false);
             botonObservaciones.setVisible(false);
-                setSize(1000,600);
+            setSize(1000, 600);
         }
         this.setLocationRelativeTo(null);
     }
@@ -287,10 +288,7 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
 
 
     private void ComboBoxTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxTituloActionPerformed
-       
-        
-        
-            
+
         String opcionElegida = ComboBoxTitulo.getSelectedItem().toString();
 
         a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
@@ -300,7 +298,7 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         List<Ejemplar> ejemplaresAMostrar = new ArrayList();
 
         //CORRECCION SOLO PIDO EL TITULO DE LA OBRA DEL EJEMPLAR Y COMPARO CON LA OPCION ELEGIDA
-        if(opcionElegida == ""){
+        if (opcionElegida == "") {
             new JOptionPane().showMessageDialog(rootPane, "Seleccionar opción");
         }
         for (Ejemplar ejemplar : ejemplares) {
@@ -319,21 +317,21 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
             String[] campos = ejemplar.tablaGUI().split(",");
             modelo.addRow(campos);
         }
-        
+
     }//GEN-LAST:event_ComboBoxTituloActionPerformed
-   
+
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
         this.setVisible(false);
-        if(esConsulta==true){
+        if (esConsulta == true) {
             new Consultas().setVisible(true);
-        }else{
+        } else {
             new Administracion(bibliotecario).setVisible(true);
         }
-        
+
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
     private void areaTematicaCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areaTematicaCBActionPerformed
-       
+
         String opcionElegida = areaTematicaCB.getSelectedItem().toString();
 
         a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
@@ -343,7 +341,7 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         List<Ejemplar> ejemplaresAMostrar = new ArrayList();
 
         //CORRECCION SOLO PIDO EL TITULO DE LA OBRA DEL EJEMPLAR Y COMPARO CON LA OPCION ELEGIDA
-        if(opcionElegida == ""){
+        if (opcionElegida == "") {
             new JOptionPane().showMessageDialog(rootPane, "Seleccionar opción");
         }
         for (Ejemplar ejemplar : ejemplares) {
@@ -365,12 +363,12 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-        if(esConsulta == true){
+        if (esConsulta == true) {
             new HacerReservas(esConsulta).setVisible(true);
-        }else{
+        } else {
             new HacerReservas(bibliotecario).setVisible(true);
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void labelAdminComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_labelAdminComponentHidden
@@ -412,14 +410,14 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
     private void botonObservacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonObservacionesMouseClicked
         String idEjemplar = textoIdEjemplar.getText();
         String observaciones = textoObservaciones.getText();
-        System.out.println("El id es: "+idEjemplar+", la observacion "+observaciones);
+        System.out.println("El id es: " + idEjemplar + ", la observacion " + observaciones);
         List<Ejemplar> ejemplares = a.getEjemplares();
         for (Ejemplar ejemplar : ejemplares) {
-            if(ejemplar.getIdUnico().equals(idEjemplar)){
+            if (ejemplar.getIdUnico().equals(idEjemplar)) {
                 ejemplar.setObservaciones(observaciones);
             }
         }
-        
+
     }//GEN-LAST:event_botonObservacionesMouseClicked
 
     /**
@@ -457,9 +455,12 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Este método lo utilizamos para crear una tabla según un modelo y luego
+     * mostrar los ejemplares que tiene cada obra
+     */
     public void cargarDatos() {
-        
-        
+
         a.obtenerObras("recursos/ListadoDeObras.txt");
 
         List<Obra> obras = a.getObras();
@@ -470,33 +471,33 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
         TablaEjemplar.setModel(modelo);
 
         List<String> nombreDeObras = new ArrayList();
-        
+
         //Lista para guardar las areas temáticas
         List<String> areasTematicas = new ArrayList();
-        
+
         for (Obra obraNombre : obras) {
             if (!nombreDeObras.contains(obraNombre.getTitulo())) {
                 nombreDeObras.add(obraNombre.getTitulo());
             }
         }
-        
+
         //obtengo las areas temáticas
         for (Obra obra : obras) {
             if (!areasTematicas.contains(obra.getAreaTematica())) {
                 areasTematicas.add(obra.getAreaTematica());
             }
         }
-        
+
         String[] edit = new String[nombreDeObras.size()];
         //edit[0] = "";
-        for (int i =0; i < nombreDeObras.size(); i++) {
+        for (int i = 0; i < nombreDeObras.size(); i++) {
             edit[i] = nombreDeObras.get(i);
         }
-        
+
         //guardo las areas temáticas
         String[] areas = new String[areasTematicas.size()];
-       //areas[0] = ""; //primera posicion string vacio
-        for (int i =0; i < areasTematicas.size(); i++) {
+        //areas[0] = ""; //primera posicion string vacio
+        for (int i = 0; i < areasTematicas.size(); i++) {
             areas[i] = areasTematicas.get(i);
         }
 
