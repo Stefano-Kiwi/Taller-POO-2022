@@ -27,18 +27,16 @@ public class Bibliotecario extends Persona{
         if(this.prestamos.isEmpty()){
             this.prestamos.add(prestamo);
         }else{
-            if(!this.prestamos.contains(prestamo)){
                 this.prestamos.add(prestamo);
-            }
+            
         }
     }
     public void AgregarDevolucion(Devolucion devolucion){
         if(this.devoluciones.isEmpty()){
             this.devoluciones.add(devolucion);
         }else{
-            if(!this.devoluciones.contains(devolucion)){
                 this.devoluciones.add(devolucion);
-            }
+            
         }
     }
 

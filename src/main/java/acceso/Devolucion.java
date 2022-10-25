@@ -1,5 +1,6 @@
 package acceso;
 
+import inventario.Ejemplar;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -9,24 +10,26 @@ import java.util.Objects;
  */
 public class Devolucion {
     
-    private LocalDate fechaYHoraDevolucion;
+    private LocalDate fechaDevolucion;
+//    private int hora;
     private boolean FueraDeTermino;
    // private String codigoDeBarras;
-    private Prestamo prestamo;
+    private Bibliotecario bibliotecario;
+    private Ejemplar Ejemplar;
 
-    public Devolucion(LocalDate fechaYHoraDevolucion, boolean FueraDeTermino,Prestamo prestamo) {
-        this.fechaYHoraDevolucion = fechaYHoraDevolucion;
-        this.FueraDeTermino = FueraDeTermino;
-        //this.codigoDeBarras = codigoDeBarras;
-        this.prestamo = prestamo;
+    public Devolucion(LocalDate fechaDevolucion,Bibliotecario bibliotecario, Ejemplar Ejemplar) {
+        this.fechaDevolucion = fechaDevolucion;
+//        this.hora = hora;
+        this.bibliotecario = bibliotecario;
+        this.Ejemplar = Ejemplar;
     }
 
-    public LocalDate getFechaYHoraDevolucion() {
-        return fechaYHoraDevolucion;
+    public LocalDate getFechaDevolucion() {
+        return fechaDevolucion;
     }
 
-    public void setFechaYHoraDevolucion(LocalDate fechaYHoraDevolucion) {
-        this.fechaYHoraDevolucion = fechaYHoraDevolucion;
+    public void setFechaDevolucion(LocalDate fechaDevolucion) {
+        this.fechaDevolucion = fechaDevolucion;
     }
 
     public boolean isFueraDeTermino() {
@@ -37,46 +40,48 @@ public class Devolucion {
         this.FueraDeTermino = FueraDeTermino;
     }
 
-    public Prestamo getPrestamo() {
-        return prestamo;
+    public Bibliotecario getBibliotecario() {
+        return bibliotecario;
     }
 
-    public void setPrestamo(Prestamo prestamo) {
-        this.prestamo = prestamo;
+    public void setBibliotecario(Bibliotecario bibliotecario) {
+        this.bibliotecario = bibliotecario;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
+    public Ejemplar getEjemplar() {
+        return Ejemplar;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Devolucion other = (Devolucion) obj;
-        if (this.FueraDeTermino != other.FueraDeTermino) {
-            return false;
-        }
-//        if (!Objects.equals(this.codigoDeBarras, other.codigoDeBarras)) {
-//            return false;
-//        }
-        if (!Objects.equals(this.fechaYHoraDevolucion, other.fechaYHoraDevolucion)) {
-            return false;
-        }
-        return Objects.equals(this.prestamo, other.prestamo);
+    public void setEjemplar(Ejemplar Ejemplar) {
+        this.Ejemplar = Ejemplar;
     }
 
     @Override
     public String toString() {
-        return "Devolucion{" + "fechaYHoraDevolucion=" + fechaYHoraDevolucion + ", FueraDeTermino=" + FueraDeTermino + ", prestamo=" + prestamo + '}';
-    }   
+        return "Devolucion{" + "fechaDevolucion=" + fechaDevolucion + ", FueraDeTermino=" + FueraDeTermino + ", bibliotecario=" + bibliotecario + ", Ejemplar=" + Ejemplar + '}';
+    }
+    
+    public String toCSV(){
+       LocalDate fechadevolucion=this.fechaDevolucion;
+       int diaDev=fechadevolucion.getDayOfMonth();
+       int mesDev=fechadevolucion.getMonthValue();
+       int anioDev=fechadevolucion.getYear();
+       String DDev;
+       String MDev;
+       if(diaDev<10){
+           DDev="0"+String.valueOf(diaDev);
+       }else{
+           DDev=String.valueOf(diaDev);
+       }
+       if(mesDev<10){
+           MDev="0"+String.valueOf(mesDev);
+       }else{
+           MDev=String.valueOf(mesDev);
+       }
+       return this.bibliotecario.getNumDocumento()+","+this.Ejemplar.getIdUnico()+","+DDev+"/"+MDev+"/"+anioDev; 
+    }
+    
+   
+
+   
 }

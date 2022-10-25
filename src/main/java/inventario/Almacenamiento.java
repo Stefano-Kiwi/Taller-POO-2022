@@ -27,7 +27,7 @@ public class Almacenamiento {
     private List<Prestamo> prestamosActivos;
     private List<Prestamo> prestamosTerminados;
     private List<Multa> multas;
-    private Lector LectorMultado;
+    private List<Devolucion> devoluciones;
 
     public Almacenamiento() {
     }
@@ -471,7 +471,17 @@ public class Almacenamiento {
                     String fechaDevolucion = matcher.group(6);
                     String[] fechaArr2 = fechaDevolucion.split("/");
                     LocalDate fechaDev = LocalDate.of(Integer.parseInt(fechaArr2[2]), Integer.parseInt(fechaArr2[1]), Integer.parseInt(fechaArr2[0]));
-                    Bibliotecario bibliotecario = da.obtenerBibliotecario();
+                    
+                    int DNIbibliotecario=Integer.parseInt(matcher.group(5));
+                    da.obtenerBibliotecario();
+                    List<Bibliotecario> usuarios=da.getUsuarios();
+                    Bibliotecario bibliotecario=null;
+                    for(Bibliotecario bibli:usuarios){
+                       if(bibli.getNumDocumento()==DNIbibliotecario){
+                           bibliotecario=bibli;
+                       }
+                    }
+                    
                     switch (opcion) {
                         case "1":
                             this.prestamosActivos.add(new Prestamo(tp, fecha, Integer.parseInt(matcher.group(4)), bibliotecario, fechaDev, lector, ejemplar));
@@ -580,6 +590,33 @@ public class Almacenamiento {
                 lector.setMulta(multa);
             }
         }
+    }
+    public void obtenerDevoluciones(){
+        this.devoluciones=new ArrayList();
+        File direccion = new File("recursos/ListaDevoluciones.txt");
+        try{
+            
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    
+    public void obtenerPrestamosBibliotecario(Bibliotecario b){
+        //agrega todos los prestamos a la lista de prestamos del bibliotecario pasado por parametro
+        for(Prestamo p : this.prestamosActivos){
+            if(p.getBibliotecario().getNumDocumento()==b.getNumDocumento()){
+                b.AgregarPrestamo(p);
+            }
+        }
+        for(Prestamo p : this.prestamosTerminados){
+            if(p.getBibliotecario().getNumDocumento()==b.getNumDocumento()){
+                b.AgregarPrestamo(p);
+            }
+        }
+    }
+    
+    public void obtenerDevolucionesBibliotecario(Bibliotecario b){
+        
     }
 
     public List<Prestamo> getPrestamosActivos() {

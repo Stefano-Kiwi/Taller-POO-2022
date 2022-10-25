@@ -230,7 +230,9 @@ public class GenerarDevolucion extends javax.swing.JFrame {
         //no esta funcionando por alguna razon el idunico es distinto 
         a.modificarCSV("recursos/ListaPrestamos.txt", prestamo.toCSV(1),prestamo.toCSV(2));
         
-        Devolucion devolucion=new Devolucion(hoy,fueradeTermino,prestamo);
+        Devolucion devolucion=new Devolucion(hoy,prestamo.getBibliotecario(),ejemplar);
+        a.escribirCSV("recursos/ListaDevoluciones.txt", devolucion.toCSV());
+        
         JOptionPane.showMessageDialog(null,"se devolvio el ejemplar con id unico: "+ejemplar.getIdUnico()+"\n"+"ubiquelo en: "+ejemplar.getLugarFisico());
        }
          JOptionPane.showMessageDialog(null,"devolucion/es realizada con exito");
