@@ -142,7 +142,7 @@ public class Ejemplar {
 
     
       public String tablaGUI() {
-        return obra.getTitulo() +","+ this.lugarFisico;
+        return obra.getTitulo() +","+ this.lugarFisico+","+this.idUnico;
     }
     
     public String toCSV(int disponibilidad){
