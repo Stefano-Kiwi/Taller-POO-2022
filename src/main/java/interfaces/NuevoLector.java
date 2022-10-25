@@ -109,6 +109,11 @@ public NuevoLector(Bibliotecario b) {
         jLabel5.setText("fecha de nacimiento");
 
         FechaNacimiento.setText("dd/mm/aaaa");
+        FechaNacimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FechaNacimientoActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("sexo");
 
@@ -379,12 +384,16 @@ public NuevoLector(Bibliotecario b) {
         da.obtenerLectores("recursos/ListadoDeLectores.txt");
         List<Lector> lectores = da.getLectores();
 
-        String fechaNacimiento = this.FechaNacimiento.getText();
+        
+        
+        String opcion = tipoLector.getSelectedItem().toString();
+        if(opcion.equals("")||this.nombrePanel.getText().equals("")|| this.apellidoPanel.getText().equals("")|| this.tipodocumento.getText().equals("")|| this.NroDocumento.getText().equals("")|| this.FechaNacimiento.getText().equals("")|| this.FechaNacimiento.getText().equals("dd/mm/aaaa") || this.Sexo.getText().equals("")|| this.correo.getText().equals("")|| this.numeroTelefono.getText().equals("")|| this.Nacionalidad.getText().equals("")|| this.domicilio.getText().equals("")|| this.CodigoPostal.getText().equals("")|| this.Departamento.getText().equals("")|| this.localidad.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Completar los campos");
+        }else{
+            String fechaNacimiento = this.FechaNacimiento.getText();
         String[] fechaArr = fechaNacimiento.split("/");
     
         LocalDate fecha = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
-        
-        String opcion = tipoLector.getSelectedItem().toString();
         boolean esta = false;
         switch (opcion) {
             case "Publico General":
@@ -429,12 +438,18 @@ public NuevoLector(Bibliotecario b) {
         }
         this.setVisible(false);
         new Administracion(bibliotecario).setVisible(true);
+        }
+        
     }//GEN-LAST:event_botonCrearActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
      this.setVisible(false);
      new Administracion(bibliotecario).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void FechaNacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FechaNacimientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FechaNacimientoActionPerformed
 
     /**
      * @param args the command line arguments
