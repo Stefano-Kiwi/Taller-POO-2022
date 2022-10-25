@@ -1,0 +1,2 @@
+idUnico, observaciones
+pasillo28, paginas rotas pero todavia sirve

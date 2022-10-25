@@ -3,15 +3,13 @@ package interfaces;
 import inventario.Almacenamiento;
 import inventario.Ejemplar;
 import inventario.Obra;
+import java.awt.Event;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Daniel Altamirano
- */
+
 public class EjemplaresPorObra extends javax.swing.JFrame {
 
     /**
@@ -20,6 +18,11 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
     Almacenamiento a = new Almacenamiento();
     boolean esConsulta = false;
     
+
+    @Override
+    public boolean action(Event evt, Object what) {
+        return super.action(evt, what); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
     
     public EjemplaresPorObra() {
         initComponents();
@@ -376,14 +379,22 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
     private void botonObservacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonObservacionesMouseClicked
         String idEjemplar = textoIdEjemplar.getText();
         String observaciones = textoObservaciones.getText();
-        System.out.println("El id es: "+idEjemplar+", la observacion "+observaciones);
+        boolean encontrado = false;
+        //System.out.println("El id es: "+idEjemplar+", la observacion "+observaciones);
+        a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
+   
         List<Ejemplar> ejemplares = a.getEjemplares();
         for (Ejemplar ejemplar : ejemplares) {
             if(ejemplar.getIdUnico().equals(idEjemplar)){
-                ejemplar.setObservaciones(observaciones);
+                ejemplar.setObservaciones(observaciones);       // Y QUE CAMBIE EL TXT DE OBSERVACIONES TAMBIEN
+                
+                encontrado = true;
+                break;
             }
         }
-        
+        if(encontrado==false){
+            a.agregarNuevoRenglonCSV("recursos/ListadoDeEjemplares.txt", idEjemplar+","+observaciones);
+        }
     }//GEN-LAST:event_botonObservacionesMouseClicked
 
     /**

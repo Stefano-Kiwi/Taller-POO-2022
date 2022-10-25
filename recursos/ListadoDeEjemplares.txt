@@ -14,4 +14,4 @@ disponibilidad(1:disponible 2:prestado 3:dado de baja),ISBN, lugarFisico,fechaAd
 1,9780471778646,pasilloAestanteA,03/01/2003,donacion,pasillo25,no,,
 1,9789876295086,estanteB,02/02/2008,donacion,pasillo26,no,,
 1,9789876295086,estanteB,03/02/2008,donacion,pasillo27,no,,
-1,9789876295086,estanteB,04/02/2008,donacion,pasillo28,no,,
+1,9789876295086,estanteB,04/02/2008,donacion,pasillo28,no,,ID,observaciones,observaciones varias,,ID,observacionesID,observacionesID,observacionesID,observacionesID,observacionesID,observaciones
