@@ -62,7 +62,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="BotonConsulta">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Conulta"/>
+        <Property name="text" type="java.lang.String" value="Consulta"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonConsultaActionPerformed"/>

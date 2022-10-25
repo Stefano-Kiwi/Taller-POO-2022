@@ -20,7 +20,6 @@ public class Administracion extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         this.bibliotecario = b;
-        System.out.println(b);
         this.usuario.setText(b.getNombre()+" "+b.getApellido());
         
     }
