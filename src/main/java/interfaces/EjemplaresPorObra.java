@@ -384,8 +384,28 @@ public class EjemplaresPorObra extends javax.swing.JFrame {
     private void botonObservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonObservacionesActionPerformed
         String idEjemplar = textoIdEjemplar.getText();
         String observaciones = textoObservaciones.getText();
-        System.out.println("El id es: "+idEjemplar+", la observacion "+observaciones);
-        
+        boolean encontrado = false;
+        //System.out.println("El id es: "+idEjemplar+", la observacion "+observaciones);
+        a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
+
+        List<Ejemplar> ejemplares = a.getEjemplares();
+        for (Ejemplar ejemplar : ejemplares) {
+            if (ejemplar.getIdUnico().equals(idEjemplar)) { // SOLO MODIFICO LA LISTA EN ALMACENAMIENTO
+                ejemplar.setObservaciones(observaciones);       
+                encontrado = true;
+                break;
+            }
+        }
+        if (encontrado) {   // Y QUE CAMBIE EL TXT DE OBSERVACIONES TAMBIEN
+            
+            
+            
+            
+        } else {
+            if (encontrado == false) {
+                System.out.println("El id Unico ingresado es incorrecto");
+            }
+        }
     }//GEN-LAST:event_botonObservacionesActionPerformed
 
     private void botonObservacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonObservacionesMouseClicked
