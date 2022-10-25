@@ -73,7 +73,7 @@ public class Prestamo {
        }
        
        if(disponibilidad==1 || disponibilidad==2 ){
-        resultado=disponibilidad+","+this.tipoPrestamo+","+DPres+"/"+MPres+"/"+anio+","+this.bibliotecario.getNumDocumento()+","+DDev+"/"+MDev+"/"+anioDev+","+this.lector.getNumDocumento()+","+this.ejemplar.getIdUnico();
+        resultado=disponibilidad+","+this.tipoPrestamo+","+DPres+"/"+MPres+"/"+anio+","+this.horaPrestamo+","+this.bibliotecario.getNumDocumento()+","+DDev+"/"+MDev+"/"+anioDev+","+this.lector.getNumDocumento()+","+this.ejemplar.getIdUnico();
        }
        return resultado;
     }

@@ -205,7 +205,7 @@ public class GenerarDevolucion extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarPrestamoPorActionPerformed
 
     private void BotonDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDevolverActionPerformed
-        
+
       for(Prestamo pres:prestamosADev){   
         prestamo=pres;
         //verifica si la devolucion esta a tiempo o no
@@ -228,10 +228,7 @@ public class GenerarDevolucion extends javax.swing.JFrame {
         a.modificarCSV("recursos/ListadoDeEjemplares.txt",ejemplar.toCSV(2), ejemplar.toCSV(1));
         //cambia la disponibilidad del prestamo a 2=terminado
         //no esta funcionando por alguna razon el idunico es distinto 
-        a.modificarCSV("recursos/ListaPrestamos.txt", prestamo.toCSV(1),prestamo.toCSV(2));
-        
-        System.out.println("hasta aca");
-        
+        a.modificarCSV("recursos/ListaPrestamos.txt", prestamo.toCSV(1),prestamo.toCSV(2));        
         Devolucion devolucion=new Devolucion(hoy,prestamo.getBibliotecario(),ejemplar);
         a.escribirCSV("recursos/ListaDevoluciones.txt", devolucion.toCSV());
         

@@ -267,7 +267,12 @@ public class GenerarPrestamo extends javax.swing.JFrame {
     }//GEN-LAST:event_opcionBuscarActionPerformed
 
     private void botonPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPrestamoActionPerformed
-        //TRAE LAS OBRAS DISPONIBLES EN LA BIBLIOTECA
+        if(bibliotecario==null){
+            JOptionPane.showMessageDialog(null, "Necesitas iniciar sesion para realizar esta accion");   
+            this.setVisible(false);
+            new Login().setVisible(true);
+        }else{
+        //TRAE LAS OBRAS DISPONIBLES EN LA BIBLIOTECA 
         Almacenamiento a = new Almacenamiento();
         a.obtenerObras("recursos/ListadoDeObras.txt");
         DatosDeAcceso da=new DatosDeAcceso();
@@ -362,7 +367,7 @@ public class GenerarPrestamo extends javax.swing.JFrame {
        }
       }
     }//GEN-LAST:event_botonPrestamoActionPerformed
-
+    }
     private void BusquedaLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BusquedaLibroActionPerformed
          // TODO add your handling code here:
     }//GEN-LAST:event_BusquedaLibroActionPerformed

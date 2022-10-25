@@ -438,9 +438,6 @@ public class Almacenamiento {
                         }
                     }
                      
-                    if(lector==null){
-                        System.out.println("no encuentra lector");
-                    }
                     
                     String idunico = matcher.group(8);
 //                  String isbn = matcher.group(9);//no es necesario ya que la busqueda por idunico funciona
@@ -454,9 +451,6 @@ public class Almacenamiento {
                         }                       
                     }
                     
-                    if(ejemplar==null){
-                        System.out.println("no encuentra ejemplar");
-                    }
                     
                     if (lector instanceof Docente || lector instanceof Alumno) {
                         ejemplar.getObra().agregarNuevoPrestamoAlumnoODocente();
@@ -490,10 +484,7 @@ public class Almacenamiento {
                            bibliotecario=bibli;
                        }
                     }
-                    if(bibliotecario==null){
-                        System.out.println("no encuentra bibliotecario");
-                    }
-                    
+
                     Prestamo p= null;
                     switch (opcion){
                         case "1":
