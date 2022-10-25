@@ -121,7 +121,9 @@ public class DarDeBaja extends javax.swing.JFrame {
        a.obtenerObras("recursos/ListadoDeObras.txt");
        a.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
        List<Ejemplar> ejemplarDisponibles = a.getEjemplarDisponibles();
-       
+       if(IDText.getText().equals("")||this.MotivoBaja.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Completar los campos");
+       }else{
        String IDUnico=IDText.getText();
        Ejemplar ejemplar=null;
        for(Ejemplar ejem:ejemplarDisponibles){
@@ -144,7 +146,8 @@ public class DarDeBaja extends javax.swing.JFrame {
         new Administracion(bibliotecario).setVisible(true);
       }
        
-      }         
+      }
+     }
     }//GEN-LAST:event_DarDeBajaActionPerformed
 
     private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
