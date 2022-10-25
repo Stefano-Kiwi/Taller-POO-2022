@@ -189,4 +189,46 @@ public class Ejemplar {
         }
         return resultado;
     }
+    
+    public String darDeBajaCSV(){
+        
+        LocalDate fAdquisicion=adquisicion.getFechaAdquisicion();
+        int dia=fAdquisicion.getDayOfMonth();
+        int mes=fAdquisicion.getMonthValue();
+        int año=fAdquisicion.getYear();
+        
+        String DIA;
+        String MES;
+        if(dia<10){
+            DIA="0"+String.valueOf(dia);
+        }else{
+            DIA=String.valueOf(dia);
+        }
+        if(mes<10){
+            MES="0"+String.valueOf(mes);
+        }else{
+            MES=String.valueOf(mes);
+        }
+        String resultado="";
+        
+        LocalDate fbaja=this.baja.getFechaDadoDeBaja();
+        int diab=fbaja.getDayOfMonth();
+        int mesb=fbaja.getMonthValue();
+        int anioB=fbaja.getYear();
+        
+        String DIAB;
+        String MESB;
+        if(diab<10){
+            DIAB="0"+String.valueOf(diab);
+        }else{
+            DIAB=String.valueOf(diab);
+        }
+        if(mesb<10){
+            MESB="0"+String.valueOf(mesb);
+        }else{
+            MESB=String.valueOf(mesb);
+        }
+        return resultado= 3+","+obra.getISBN()+","+lugarFisico+","+DIA+"/"+MES+"/"+año+","+adquisicion.getFormaDeCompra()+","+this.idUnico+","+"si"+","+DIAB+"/"+MESB+"/"+anioB+","+baja.getMotivoBaja();
+        
+    }
 }

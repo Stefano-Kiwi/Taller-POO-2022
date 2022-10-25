@@ -51,7 +51,7 @@ public class Administracion extends javax.swing.JFrame {
         jLabelPrestamos = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabelRegistrar = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        DarDeBajaBoton = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         EjemplaresPorObra = new javax.swing.JButton();
@@ -63,6 +63,7 @@ public class Administracion extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         sa = new javax.swing.JPanel();
         usuario = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ventana Principal");
@@ -127,15 +128,15 @@ public class Administracion extends javax.swing.JFrame {
         jLabelRegistrar.setText("Registrar");
         jPanel1.add(jLabelRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, -1));
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Registrar Lector");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        DarDeBajaBoton.setBackground(new java.awt.Color(0, 0, 0));
+        DarDeBajaBoton.setForeground(new java.awt.Color(255, 255, 255));
+        DarDeBajaBoton.setText("Dar de baja Ejemplar");
+        DarDeBajaBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                DarDeBajaBotonActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 140, 50));
+        jPanel1.add(DarDeBajaBoton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 140, 50));
 
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
@@ -243,6 +244,16 @@ public class Administracion extends javax.swing.JFrame {
 
         jPanel1.add(sa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 150, 20));
 
+        jButton9.setBackground(new java.awt.Color(0, 0, 0));
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setText("Registrar Lector");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 140, 50));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -251,7 +262,10 @@ public class Administracion extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -280,10 +294,10 @@ public class Administracion extends javax.swing.JFrame {
         new GenerarDevolucion(bibliotecario).setVisible(true);
     }//GEN-LAST:event_devolverActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void DarDeBajaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DarDeBajaBotonActionPerformed
        this.setVisible(false);
-       new NuevoLector(bibliotecario).setVisible(true);        
-    }//GEN-LAST:event_jButton3ActionPerformed
+       new DarDeBaja(bibliotecario).setVisible(true);        
+    }//GEN-LAST:event_DarDeBajaBotonActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         this.setVisible(false);
@@ -325,6 +339,11 @@ public class Administracion extends javax.swing.JFrame {
         new Login().setVisible(true);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        this.setVisible(false);
+        new DarDeBaja(bibliotecario).setVisible(true);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -362,18 +381,19 @@ public class Administracion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DarDeBajaBoton;
     private javax.swing.JButton Deudores;
     private javax.swing.JButton EjemplaresPorObra;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton devolver;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelPrestamos;
     private javax.swing.JLabel jLabelPrestar;
