@@ -76,6 +76,28 @@ public class Prestamo {
        return resultado;
     }
     
+    public String tablaPestamosActivo(){
+        
+       LocalDate fechadevolucion=this.fechaDevolucion;
+       int diaDev=fechadevolucion.getDayOfMonth();
+       int mesDev=fechadevolucion.getMonthValue();
+       int anioDev=fechadevolucion.getYear();
+       String DDev;
+       String MDev;
+       if(diaDev<10){
+           DDev="0"+String.valueOf(diaDev);
+       }else{
+           DDev=String.valueOf(diaDev);
+       }
+       if(mesDev<10){
+           MDev="0"+String.valueOf(mesDev);
+       }else{
+           MDev=String.valueOf(mesDev);
+       }
+       
+       return this.ejemplar.getObra().getTitulo()+","+this.ejemplar.getIdUnico()+","+diaDev+"/"+mesDev+"/"+anioDev;
+    }
+        
     public String tablaDevolucion(){
         
        LocalDate fechadevolucion=this.fechaDevolucion;

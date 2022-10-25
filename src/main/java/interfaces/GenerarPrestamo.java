@@ -24,6 +24,7 @@ public class GenerarPrestamo extends javax.swing.JFrame {
     /**
      * Creates new form GenerarPrestamo
      */
+
     public GenerarPrestamo() {
         initComponents();
         this.duracionprestamoLabel.setVisible(false);
