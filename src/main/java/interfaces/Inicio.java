@@ -11,6 +11,7 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -100,7 +101,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_botonLogINActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
-         System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_botonSalirActionPerformed
 
     /**
