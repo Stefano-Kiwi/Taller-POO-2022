@@ -171,6 +171,8 @@ public class ListaObras extends javax.swing.JFrame {
         modelo.addColumn("Autor");
         modelo.addColumn("ISBN");
         modelo.addColumn("Genero");
+        modelo.addColumn("Nombre Coleccion");
+        modelo.addColumn("ISBN Coleccion");
         Tablita.setModel(modelo);
         
         for (Obra obra : obrasAmostrar) {
@@ -224,6 +226,8 @@ public class ListaObras extends javax.swing.JFrame {
         modelo.addColumn("Autor");
         modelo.addColumn("ISBN");
         modelo.addColumn("Genero");
+        modelo.addColumn("Nombre Coleccion");
+        modelo.addColumn("ISBN Coleccion");
         Tablita.setModel(modelo);
 
         //Creamos de manaera manual bla bla etc

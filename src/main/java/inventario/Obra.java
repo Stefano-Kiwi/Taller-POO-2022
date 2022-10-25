@@ -222,7 +222,7 @@ public class Obra {
     }
     
     public String tablaGUI() {
-        return titulo +","+autor1+","+ISBN+","+genero+"\n";
+        return titulo +","+autor1+","+ISBN+","+genero+","+coleccion.getNombre()+","+coleccion.getISBN();
     }    
     
      public String MasSolicitados(int opcion) {
