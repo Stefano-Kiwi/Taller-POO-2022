@@ -4,6 +4,8 @@
  */
 package interfaces;
 
+import acceso.Bibliotecario;
+
 /**
  *
  * @author lucia
@@ -13,11 +15,25 @@ public class Administracion extends javax.swing.JFrame {
     /**
      * Creates new form Administracion
      */
+    Bibliotecario bibliotecario;
+    public Administracion(Bibliotecario b) {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        this.bibliotecario = b;
+        System.out.println(b);
+        this.usuario.setText(b.getNombre()+" "+b.getApellido());
+        
+    }
     public Administracion() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
 
+    public Bibliotecario getBibliotecario(){
+        return this.bibliotecario;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,6 +61,9 @@ public class Administracion extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        sa = new javax.swing.JPanel();
+        usuario = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ventana Principal");
@@ -199,6 +218,32 @@ public class Administracion extends javax.swing.JFrame {
         });
         jPanel1.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 560, 80, 40));
 
+        jLabel1.setText("Usuario:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, -1));
+
+        sa.setBackground(new java.awt.Color(0, 0, 0));
+
+        usuario.setBackground(new java.awt.Color(0, 0, 0));
+        usuario.setForeground(new java.awt.Color(255, 255, 255));
+        usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout saLayout = new javax.swing.GroupLayout(sa);
+        sa.setLayout(saLayout);
+        saLayout.setHorizontalGroup(
+            saLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, saLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        saLayout.setVerticalGroup(
+            saLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, saLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(sa, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 150, 20));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -263,7 +308,7 @@ public class Administracion extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
        this.setVisible(false);
-       new GenerarPrestamo().setVisible(true);
+       new GenerarPrestamo(this.bibliotecario).setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -279,12 +324,14 @@ public class Administracion extends javax.swing.JFrame {
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         this.setVisible(false);
         new Login().setVisible(true);
+        System.out.println(bibliotecario);
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -307,7 +354,7 @@ public class Administracion extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Administracion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -329,11 +376,14 @@ public class Administracion extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelPrestamos;
     private javax.swing.JLabel jLabelPrestar;
     private javax.swing.JLabel jLabelRegistrar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel sa;
     private javax.swing.JButton salir;
+    private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 }

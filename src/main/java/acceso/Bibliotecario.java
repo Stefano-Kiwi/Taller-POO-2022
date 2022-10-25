@@ -17,8 +17,8 @@ public class Bibliotecario extends Persona{
             String domicilio, int codigoPostal, String departamento, String localidad, String nombreusuario, String contraseña) {
         super(nombre, apellido, tipoDocumento, numDocumento, fechaNacimiento, sexo, correo, nroCelular,
                 nacionalidad,domicilio, codigoPostal, departamento, localidad);
-        //this.nombreUsuario = nombreusuario;
-        //this.contraseña = contraseña;
+        this.nombreUsuario = nombreusuario;
+        this.contraseña = contraseña;
     }
     
     
@@ -41,4 +41,41 @@ public class Bibliotecario extends Persona{
             }
         }
     }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public List<Devolucion> getDevoluciones() {
+        return devoluciones;
+    }
+
+    public void setDevoluciones(List<Devolucion> devoluciones) {
+        this.devoluciones = devoluciones;
+    }
+
+    public List<Prestamo> getPrestamos() {
+        return prestamos;
+    }
+
+    public void setPrestamos(List<Prestamo> prestamos) {
+        this.prestamos = prestamos;
+    }
+    
+    public String toString(){
+        return this.getApellido() + " " + this.getNombre();
+    }
+    
 }

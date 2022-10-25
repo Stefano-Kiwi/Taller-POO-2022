@@ -1,5 +1,6 @@
 package interfaces;
 import acceso.Alumno;
+import acceso.Bibliotecario;
 import acceso.DatosDeAcceso;
 import acceso.Docente;
 import acceso.Lector;
@@ -25,6 +26,15 @@ public class GenerarPrestamo extends javax.swing.JFrame {
      * Creates new form GenerarPrestamo
      */
 
+    Bibliotecario bibliotecario;
+    public GenerarPrestamo(Bibliotecario bibliotecario) {
+        initComponents();
+        this.duracionprestamoLabel.setVisible(false);
+        this.duracionPrestamo.setVisible(false);
+        this.bibliotecario = bibliotecario;
+        this.setLocationRelativeTo(null);
+    }
+    
     public GenerarPrestamo() {
         initComponents();
         this.duracionprestamoLabel.setVisible(false);
@@ -339,7 +349,7 @@ public class GenerarPrestamo extends javax.swing.JFrame {
         }
         
         int hora=Integer.parseInt(horaPrestamo.getText());
-        Prestamo prestamo=new Prestamo(tpPrestamo,fechaprestamo,hora,3,fechaDevolucion,lector,ejemplar);        
+        Prestamo prestamo=new Prestamo(tpPrestamo,fechaprestamo,hora,bibliotecario,fechaDevolucion,lector,ejemplar);        
         a.escribirCSV("recursos/ListaPrestamos.txt", prestamo.toCSV(1));
         //cambia el estado del ejemplar a prestado(2)
         a.modificarCSV("recursos/ListadoDeEjemplares.txt",ejemplar.toCSV(1),ejemplar.toCSV(2));

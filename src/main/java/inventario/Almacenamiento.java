@@ -471,13 +471,13 @@ public class Almacenamiento {
                     String fechaDevolucion = matcher.group(6);
                     String[] fechaArr2 = fechaDevolucion.split("/");
                     LocalDate fechaDev = LocalDate.of(Integer.parseInt(fechaArr2[2]), Integer.parseInt(fechaArr2[1]), Integer.parseInt(fechaArr2[0]));
-
+                    Bibliotecario bibliotecario = da.obtenerBibliotecario();
                     switch (opcion) {
                         case "1":
-                            this.prestamosActivos.add(new Prestamo(tp, fecha, Integer.parseInt(matcher.group(4)), Integer.parseInt(matcher.group(5)), fechaDev, lector, ejemplar));
+                            this.prestamosActivos.add(new Prestamo(tp, fecha, Integer.parseInt(matcher.group(4)), bibliotecario, fechaDev, lector, ejemplar));
                             break;
                         case "2":
-                            this.prestamosTerminados.add(new Prestamo(tp, fecha, Integer.parseInt(matcher.group(4)), Integer.parseInt(matcher.group(5)), fechaDev, lector, ejemplar));
+                            this.prestamosTerminados.add(new Prestamo(tp, fecha, Integer.parseInt(matcher.group(4)), bibliotecario, fechaDev, lector, ejemplar));
                             break;
                     }
                 }

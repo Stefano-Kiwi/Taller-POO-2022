@@ -1,5 +1,6 @@
 package interfaces;
 
+import acceso.Bibliotecario;
 import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowStateListener;
@@ -7,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -20,9 +22,12 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    
+    Bibliotecario bibliotecario;
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
+        bibliotecario = null;
     }
 
     /**
@@ -170,6 +175,14 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public Bibliotecario getBibliotecario(){
+        return this.bibliotecario;
+    }
+    
+    private void setBibliotecario(Bibliotecario b){
+        this.bibliotecario = b;
+    }
+    
     private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
         try {
             Ingresar();
@@ -244,9 +257,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 
-    private void irAdministracion() {
+    private void irAdministracion(Bibliotecario b) {
         this.setVisible(false);
-        new Administracion().setVisible(true);
+        new Administracion(b).setVisible(true);
     }
 
     private void Ingresar() throws Exception {
@@ -259,7 +272,7 @@ public class Login extends javax.swing.JFrame {
             String line = br.readLine();
             while (line != null) {
                 String[] campos = line.split(",");
-
+               
                 if (Usuario_Textbox.getText().isEmpty() || Contraseña_Textbox.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Completar los campos correspondientes");
                 }
@@ -268,8 +281,13 @@ public class Login extends javax.swing.JFrame {
                     usuarioCorrecto = true;
                 }
                 if (usuarioCorrecto && Contraseña_Textbox.getText().equals(campos[1])) {
-                    irAdministracion();
-
+                    String fecha = campos[6];
+                    String[] fechaArr = fecha.split("/");
+                    LocalDate fechaNa = LocalDate.of(Integer.parseInt(fechaArr[2]),Integer.parseInt(fechaArr[1]),Integer.parseInt(fechaArr[0]));
+                    Bibliotecario biblio = new Bibliotecario(campos[2],campos[3],campos[4],Integer.parseInt(campos[5]),fechaNa,campos[7],campos[8],campos[9],campos[10],campos[11],Integer.parseInt(campos[12]),campos[13],campos[14],campos[0],campos[1]);
+                    this.setBibliotecario(biblio);
+                    irAdministracion(biblio);
+                   
                     contraseniaCorrecta = true;
                 }
 

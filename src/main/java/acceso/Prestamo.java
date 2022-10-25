@@ -13,19 +13,21 @@ public class Prestamo {
     private Lector lector;
     //private List<Ejemplar> listaEjemplares;
     private  Ejemplar ejemplar;
-
+    private Bibliotecario bibliotecario;
+    
     public Prestamo() {
     }
 
-    public Prestamo(TipoPrestamo tipoPrestamo, LocalDate fechaPrestamo,int horaPrestamo, int idBibliotecario, LocalDate fechaDevolucion,Lector lector,Ejemplar ejemplar) {
+    public Prestamo(TipoPrestamo tipoPrestamo, LocalDate fechaPrestamo,int horaPrestamo, Bibliotecario bibliotecario, LocalDate fechaDevolucion,Lector lector,Ejemplar ejemplar) {
         this.tipoPrestamo = tipoPrestamo;
         this.fechaPrestamo = fechaPrestamo;
         this.horaPrestamo=horaPrestamo;
-        this.idBibliotecario = idBibliotecario;
+        //this.idBibliotecario = idBibliotecario;
         this.fechaDevolucion = fechaDevolucion;
         //this.codigoDeBarras = codigoDeBarras; falta implementar codigo de barra del ejemplar
         this.lector=lector;
         this.ejemplar=ejemplar;
+        this.bibliotecario = bibliotecario;
     }
 
     @Override
@@ -71,7 +73,7 @@ public class Prestamo {
        }
        
        if(disponibilidad==1 || disponibilidad==2 ){
-        resultado=disponibilidad+","+this.tipoPrestamo+","+DPres+"/"+MPres+"/"+anio+","+this.horaPrestamo+","+this.idBibliotecario+","+DDev+"/"+MDev+"/"+anioDev+","+this.lector.getNumDocumento()+","+this.ejemplar.getIdUnico();
+        resultado=disponibilidad+","+this.tipoPrestamo+","+DPres+"/"+MPres+"/"+anio+","+this.horaPrestamo+","+this.bibliotecario.getApellido()+" "+this.bibliotecario.getNombre()+","+DDev+"/"+MDev+"/"+anioDev+","+this.lector.getNumDocumento()+","+this.ejemplar.getIdUnico();
        }
        return resultado;
     }
