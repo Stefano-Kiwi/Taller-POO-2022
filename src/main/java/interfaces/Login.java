@@ -46,7 +46,6 @@ public class Login extends javax.swing.JFrame {
         Usuario_Textbox = new javax.swing.JTextField();
         Contraseña_Textbox = new javax.swing.JTextField();
         btn_Salir = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -95,13 +94,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("CONSULTAS");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("usuario:admin, contraseña:admin");
 
         jLabel2.setText("usuario:biblio2022, contraseña:biblio2022");
@@ -112,14 +104,9 @@ public class Login extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(LOGIN, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(108, 108, 108))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addGap(0, 344, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -165,9 +152,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(Contraseña_Textbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                 .addComponent(btn_Salir)
                 .addGap(18, 18, 18))
         );
@@ -192,7 +177,8 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_IngresarActionPerformed
 
     private void btn_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SalirActionPerformed
-        System.exit(0);
+        this.setVisible(false);
+        new Inicio().setVisible(true);
     }//GEN-LAST:event_btn_SalirActionPerformed
 
     private void Usuario_TextboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Usuario_TextboxActionPerformed
@@ -202,12 +188,6 @@ public class Login extends javax.swing.JFrame {
     private void Contraseña_TextboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Contraseña_TextboxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Contraseña_TextboxActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       this.setVisible(false);
-       new Consultas().setVisible(true);
-       
-    }//GEN-LAST:event_jButton1ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -252,7 +232,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel Usuario_etiqueta;
     private javax.swing.JButton btn_Ingresar;
     private javax.swing.JButton btn_Salir;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

@@ -130,7 +130,8 @@ public class Consultas extends javax.swing.JFrame {
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSalirMouseClicked
-        System.exit(0);
+        this.setVisible(false);
+        new Inicio().setVisible(true);   
     }//GEN-LAST:event_botonSalirMouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
