@@ -74,6 +74,7 @@ public NuevoLector(Bibliotecario b) {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Nuevo lector");
 
         jLabel1.setText("tipo lector");
 
@@ -369,9 +370,9 @@ public NuevoLector(Bibliotecario b) {
         String nombre = ApellidoNombre[1];
         String fechaNacimiento = this.FechaNacimiento.getText();
         String[] fechaArr = fechaNacimiento.split("/");
-
+    
         LocalDate fecha = LocalDate.of(Integer.parseInt(fechaArr[2]), Integer.parseInt(fechaArr[1]), Integer.parseInt(fechaArr[0]));
-
+        
         String opcion = tipoLector.getSelectedItem().toString();
         boolean esta = false;
         switch (opcion) {

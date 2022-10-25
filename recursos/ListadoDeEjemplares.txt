@@ -2,11 +2,11 @@ disponibilidad(1:disponible 2:prestado 3:dado de baja),ISBN, lugarFisico,fechaAd
 1,9780470087169,pasillo,13/04/2018,virtual,pasillo3,no,,
 1,1234567890000,entrada,07/08/2019,donacion,entrada4,no,,
 3,9786073237215,estanteA,06/09/2016,donacion,estanteA9,si,15/07/2021,paginas rotas
-2,9780021233977,pasillo,06/10/2018,donacion,pasillo5,no,,
+1,9780021233977,pasillo,06/10/2018,donacion,pasillo5,no,,
 1,9780021233977,pasillo,04/05/2021,comprado,pasillo11,no,,
 1,9780021233977,pasillo,03/03/2018,comprado,pasillo15,no,,
 3,9780021233977,pasillo,03/03/2015,comprado,pasillo18,si,14/06/2021,portada manchada sin recuperacion y dibujos obscenos en pagina 25
-2,9786073237215,pasilloB,02/05/2010,comprado,pasillo19,no,,
+1,9786073237215,pasilloB,02/05/2010,comprado,pasillo19,no,,
 1,9786073237215,pasilloB,03/03/2011,comprado,pasillo20,no,,
 1,9786073237215,pasilloB,28/02/2015,comprado,pasillo22,no,,
 1,9780471778646,pasilloAestanteA,01/01/2003,comprado,pasillo23,no,,

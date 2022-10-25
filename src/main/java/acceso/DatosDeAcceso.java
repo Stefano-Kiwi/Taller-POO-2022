@@ -89,20 +89,19 @@ public class DatosDeAcceso {
         }
     }
     
-    public Bibliotecario obtenerBibliotecario() {
+    public void obtenerBibliotecario() {
         BufferedReader br = null;
-        Bibliotecario biblio = null;
+        
         try {
             br = new BufferedReader(new FileReader("recursos/usuarios.txt"));
             String line;
-            line= br.readLine();
+           
             while ((line=br.readLine()) != null) {
                 String[] campos = line.split(",");
                 String fecha = campos[6];
                 String[] fechaArr = fecha.split("/");
                 LocalDate fechaNa = LocalDate.of(Integer.parseInt(fechaArr[2]),Integer.parseInt(fechaArr[1]),Integer.parseInt(fechaArr[0]));
-                biblio = new Bibliotecario(campos[2],campos[3],campos[4],Integer.parseInt(campos[5]),fechaNa,campos[7],campos[8],campos[9],campos[10],campos[11],Integer.parseInt(campos[12]),campos[13],campos[14],campos[0],campos[1]);
-                this.usuarios.add(biblio);                    
+                this.usuarios.add(new Bibliotecario(campos[2],campos[3],campos[4],Integer.parseInt(campos[5]),fechaNa,campos[7],campos[8],campos[9],campos[10],campos[11],Integer.parseInt(campos[12]),campos[13],campos[14],campos[0],campos[1]));                    
             }
             br.close();
 
@@ -112,11 +111,11 @@ public class DatosDeAcceso {
             Component frame = null;
             JOptionPane.showMessageDialog(frame, e.getMessage());
         }
-        return biblio;
+        
     }
 
     public List<Bibliotecario> getUsuarios() {
-        return usuarios;
+        return this.usuarios;
     }
 
     public void setUsuarios(List<Bibliotecario> usuarios) {

@@ -271,6 +271,7 @@ public class GenerarPrestamo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Necesitas iniciar sesion para realizar esta accion");   
             this.setVisible(false);
             new Login().setVisible(true);
+        
         }else{
         //TRAE LAS OBRAS DISPONIBLES EN LA BIBLIOTECA 
         Almacenamiento a = new Almacenamiento();
@@ -283,9 +284,14 @@ public class GenerarPrestamo extends javax.swing.JFrame {
         //CARGA TODOS LOS LECTORES
         da.obtenerLectores("recursos/ListadoDeLectores.txt");
         List<Lector> lectores=da.getLectores();
-        int nroDocumento=Integer.valueOf(documento.getText());
+        
+        Lector lector=null; 
+        if(documento.getText().equals("") || BusquedaLibro.getText().equals("") || horaPrestamo.getText().equals("")|| fechaPrestamo.getText().equals("") || fechaPrestamo.getText().equals("dd/mm/aaaa")){
+            JOptionPane.showMessageDialog(null, "Ingresar campos faltantes o fecha valida"); 
+        }else{
+        int nroDocumento=Integer.parseInt(documento.getText());
         //FILTRA EL LECTOR POR SU DOCUMENTO
-        Lector lector=null;    
+           
         for(Lector lector1:lectores){
             if(lector1.getNumDocumento()==nroDocumento){
                 lector=lector1;
@@ -293,11 +299,13 @@ public class GenerarPrestamo extends javax.swing.JFrame {
             }
         }
         
+        
         if(lector==null){
             JOptionPane.showMessageDialog(null, "No existe lector con ese documento!. Debe crearse un lector primero");   
                 this.setVisible(false);
                 new NuevoLector(bibliotecario).setVisible(true);
-        }else{
+        }else {
+         
         //prueba agegarle una multa al lector
 //        LocalDate fechamulta=LocalDate.of(2022, 10, 12);
 //        lector.setMulta(new Multa(2,fechamulta));
@@ -366,6 +374,7 @@ public class GenerarPrestamo extends javax.swing.JFrame {
         }
        }
       }
+        }
     }//GEN-LAST:event_botonPrestamoActionPerformed
     }
     private void BusquedaLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BusquedaLibroActionPerformed
@@ -378,7 +387,7 @@ public class GenerarPrestamo extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.setVisible(false);
-        new Administracion().setVisible(true);
+        new Administracion(bibliotecario).setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void duracionPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_duracionPrestamoActionPerformed

@@ -244,7 +244,7 @@ public class GenerarDevolucion extends javax.swing.JFrame {
         //cambia la disponibilidad del prestamo a 2=terminado
         //no esta funcionando por alguna razon el idunico es distinto 
         a.modificarCSV("recursos/ListaPrestamos.txt", prestamo.toCSV(1),prestamo.toCSV(2));        
-        Devolucion devolucion=new Devolucion(hoy,prestamo.getBibliotecario(),ejemplar);
+        Devolucion devolucion=new Devolucion(hoy,bibliotecario,ejemplar);
         a.escribirCSV("recursos/ListaDevoluciones.txt", devolucion.toCSV());
         
         JOptionPane.showMessageDialog(null,"se devolvio el ejemplar con id unico: "+ejemplar.getIdUnico()+"\n"+"ubiquelo en: "+ejemplar.getLugarFisico());
@@ -270,14 +270,26 @@ public class GenerarDevolucion extends javax.swing.JFrame {
         
         switch(opcion){
             case "Lector":
+                if(texto.getText().equals("")){
+                    JOptionPane.showMessageDialog(null, "Ingresar documento");
+                }else{
                 int dni=Integer.valueOf(texto.getText());
                 for(Prestamo p:prestamosActivos){
                     if(p.getLector().getNumDocumento() == dni){
                         prestamos.add(p);
                     }
                 }
+                 if(prestamos.size()==0){
+            JOptionPane.showMessageDialog(null,"no hay prestamos activos para el "+opcion.toLowerCase());
+             this.setVisible(false);
+             new Administracion(bibliotecario).setVisible(true);  
+        }
+                }
                 break;
             case "Ejemplar":
+                if(texto.getText().equals("")){
+                    JOptionPane.showMessageDialog(null, "Ingresar id");
+                }else{
                 String idunico=texto.getText();
                 for(Prestamo p:prestamosActivos){
                     if(p.getEjemplar().getIdUnico().equalsIgnoreCase(idunico)){
@@ -286,13 +298,17 @@ public class GenerarDevolucion extends javax.swing.JFrame {
                         break;
                     }
                 }
-                break;
-        }
-        if (prestamos.size()==0){
+                 if(prestamos.size()==0){
             JOptionPane.showMessageDialog(null,"no hay prestamos activos para el "+opcion.toLowerCase());
              this.setVisible(false);
-             new Administracion().setVisible(true);  
+             new Administracion(bibliotecario).setVisible(true);  
         }
+                }
+                break;
+                
+        }
+       
+        
         
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("DNI Lector");
