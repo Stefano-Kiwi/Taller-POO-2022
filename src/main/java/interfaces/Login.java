@@ -2,10 +2,7 @@ package interfaces;
 
 import acceso.Bibliotecario;
 import java.awt.Component;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowStateListener;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -13,15 +10,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author lucia
- */
+
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
+    
     Bibliotecario bibliotecario;
 
     public Login() {

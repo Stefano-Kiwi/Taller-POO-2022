@@ -3,7 +3,8 @@ package acceso;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Bibliotecario extends Persona{
+public class Bibliotecario extends Persona {
+
     private String nombreUsuario;
     private String contraseña;
     private List<Devolucion> devoluciones;
@@ -16,27 +17,26 @@ public class Bibliotecario extends Persona{
             LocalDate fechaNacimiento, String sexo, String correo, String nroCelular, String nacionalidad,
             String domicilio, int codigoPostal, String departamento, String localidad, String nombreusuario, String contraseña) {
         super(nombre, apellido, tipoDocumento, numDocumento, fechaNacimiento, sexo, correo, nroCelular,
-                nacionalidad,domicilio, codigoPostal, departamento, localidad);
+                nacionalidad, domicilio, codigoPostal, departamento, localidad);
         this.nombreUsuario = nombreusuario;
         this.contraseña = contraseña;
     }
-    
-    
-    
-    public void AgregarPrestamo(Prestamo prestamo){
-        if(this.prestamos.isEmpty()){
+
+    public void AgregarPrestamo(Prestamo prestamo) {
+        if (this.prestamos.isEmpty()) {
             this.prestamos.add(prestamo);
-        }else{
-                this.prestamos.add(prestamo);
-            
+        } else {
+            this.prestamos.add(prestamo);
+
         }
     }
-    public void AgregarDevolucion(Devolucion devolucion){
-        if(this.devoluciones.isEmpty()){
+
+    public void AgregarDevolucion(Devolucion devolucion) {
+        if (this.devoluciones.isEmpty()) {
             this.devoluciones.add(devolucion);
-        }else{
-                this.devoluciones.add(devolucion);
-            
+        } else {
+            this.devoluciones.add(devolucion);
+
         }
     }
 
@@ -71,9 +71,9 @@ public class Bibliotecario extends Persona{
     public void setPrestamos(List<Prestamo> prestamos) {
         this.prestamos = prestamos;
     }
-    
-    public String toString(){
+
+    public String toString() {
         return this.getApellido() + " " + this.getNombre();
     }
-    
+
 }

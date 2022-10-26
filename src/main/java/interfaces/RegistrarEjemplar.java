@@ -9,15 +9,10 @@ import java.time.LocalDate;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Daniel Altamirano
- */
+
 public class RegistrarEjemplar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegistrarEjemplar
-     */
+    
     Bibliotecario bibliotecario;
     public RegistrarEjemplar() {
         initComponents();

@@ -15,9 +15,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
+/**
+ * Almacena los datos de acceso y los distintos lectores.
+ *
+ */
 public class DatosDeAcceso {
 
-    // Todos los lectores se guardan en esta lista asd
     private List<Lector> lectores = new ArrayList();
 
     private List<Bibliotecario> usuarios = new ArrayList();
@@ -50,7 +53,7 @@ public class DatosDeAcceso {
             while ((linea = br.readLine()) != null) {
                 matcher = pattern.matcher(linea);
                 if (matcher.matches()) {
-                    //System.out.println("MATCHEA");
+
                 }
                 //Tipo, si es 0 es publico general, si es 1 es Alumno, si es 2 es Docente
                 String tipo = matcher.group(1);
@@ -91,7 +94,7 @@ public class DatosDeAcceso {
             }
 
         } catch (Exception e) {
-            //System.out.println(e.getStackTrace().toString());
+
             e.printStackTrace();
         }
     }

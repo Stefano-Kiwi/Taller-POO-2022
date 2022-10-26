@@ -5,15 +5,10 @@ import inventario.Almacenamiento;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Maty
- */
+
 public class EjemplaresPrestados extends javax.swing.JFrame {
 
-    /**
-     * Creates new form EjemplaresPrestados
-     */
+    
     private List<Prestamo> prestamosActivos;
     private Almacenamiento a;
 

@@ -10,15 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Daniel Altamirano
- */
+
 public class ListaDeudores extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ListaDeudores
-     */
+   
     Bibliotecario bibliotecario;
 
     public ListaDeudores() {

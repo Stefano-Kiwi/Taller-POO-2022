@@ -1,15 +1,15 @@
 package acceso;
 
 import inventario.*;
-import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * Un cliente creado para hacer pruebas varias, tiene implementada únicamente la
+ * parte de consultas.
  *
- * @author stefa
  */
 public class Cliente {
 
@@ -20,32 +20,11 @@ public class Cliente {
         almacenamiento.obtenerObras("recursos/ListadoDeObras.txt");
         almacenamiento.obtenerEjemplares("recursos/ListadoDeEjemplares.txt");
         datosDeAcceso.obtenerLectores("recursos/ListadoDeLectores.txt");
-        
+
         List<Obra> obras = almacenamiento.getObras();
         List<Lector> lectores = datosDeAcceso.getLectores();
         List<Ejemplar> ejemplares = almacenamiento.getEjemplares();
 
-        /**
-         * int i=0; for(Obra obra:obras){ i++; System.out.println("Obra "+i+":
-         * "+obra); }
-         *
-         * for (Alumno alumno : alumnos) { System.out.println(alumno); }
-         *
-         */
-        //Prueba escribir CSV
-//        
-//          almacenamiento.escribirCSV("recursos/PrestamosAConfirmar.txt", "hola;");
-//          almacenamiento.escribirCSV("recursos/PrestamosAConfirmar.txt", "lala;");
-//          almacenamiento.escribirCSV("recursos/PrestamosAConfirmar.txt", "lolo;");
-//          almacenamiento.escribirCSV("recursos/PrestamosAConfirmar.txt", "laho;");
-//          
-        //Prueba borrar CSV
-        //borra la primera linea
-//          almacenamiento.borrarCSV("recursos/PrestamosAConfirmar.txt",1);
-        //borra la ultima linea
-//            almacenamiento.borrarCSV("recursos/PrestamosAConfirmar.txt",2);
-        //borra todas las lineas
-//          almacenamiento.borrarCSV("recursos/PrestamosAConfirmar.txt", 0);        
         // ----------------------------------------------------------------- Esqueleto del programa -------------------------------------------
         Scanner sc = new Scanner(System.in);
         int opcion = 0;
@@ -122,10 +101,12 @@ public class Cliente {
                             System.out.println("1: Agregar obra\n2: Consultar ejemplares\n3: Agregar ejemplar\n4: Dar de baja ejemplar\n5: Hacer una observacion sobre un ejemplar"
                                     + "\n6: Realizar un préstamo\n7: Consultar prestamos\n8: Devolución de un ejemplar\n0: Cerrar sesión actual");
                             opcion = sc.nextInt();
+                            opcion = sc.nextInt();
                             switch (opcionDeseada) {
                                 case 1:
                                     System.out.println("Titulo, subtitulo, autor1, autor2, autor3, genero, caract, isbn, ejemplares,areaTematica,tipo,nombreEditorial,pais,numeroEdicion,anio,volumenes,idioma,paginas,formato,codigoBarras,observaciones");
                                     String datosNuevaObra = sc.nextLine();
+                                    datosNuevaObra = sc.nextLine();
                                     final String regex1 = "^(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*),(.*)$";
                                     Pattern pattern = Pattern.compile(regex1);
                                     Matcher matcher = pattern.matcher(datosNuevaObra);
@@ -145,5 +126,5 @@ public class Cliente {
         }
 
         //----------------------------------------------------------------- Fin Esqueleto del programa ---------------------------------------------
-    }    
+    }
 }

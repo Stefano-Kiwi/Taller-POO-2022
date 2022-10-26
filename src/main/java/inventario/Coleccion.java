@@ -1,5 +1,9 @@
 package inventario;
 
+/**
+ * 
+ * Clase usada únicamente en Obra
+ */
 public class Coleccion {
     private String nombre;
     private String ISBN;

@@ -1,20 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package interfaces;
 
 import acceso.Bibliotecario;
 
-/**
- *
- * @author lucia
- */
+
 public class Administracion extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Administracion
-     */
+    
     Bibliotecario bibliotecario;
     public Administracion(Bibliotecario b) {
         initComponents();

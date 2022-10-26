@@ -13,15 +13,10 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Maty
- */
+
 public class GenerarDevolucion extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GenerarDevolucion
-     */
+    
     private String opcion;
     private List<Prestamo> prestamosActivos;
     private List<Prestamo> prestamos;

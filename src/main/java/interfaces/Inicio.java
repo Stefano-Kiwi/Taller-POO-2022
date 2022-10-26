@@ -1,14 +1,9 @@
 package interfaces;
 
-/**
- *
- * @author Maty
- */
+
 public class Inicio extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Inicio
-     */
+    
     public Inicio() {
         initComponents();
         this.setLocationRelativeTo(null);

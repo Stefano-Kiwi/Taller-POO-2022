@@ -6,15 +6,10 @@ import inventario.Almacenamiento;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Daniel Altamirano
- */
+
 public class PrestamosVigentes extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PrestamosVigentes
-     */
+   
     Bibliotecario bibliotecario;
 
     public PrestamosVigentes() {

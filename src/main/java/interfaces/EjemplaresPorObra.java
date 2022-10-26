@@ -9,15 +9,10 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Daniel Altamirano
- */
+
 public class EjemplaresPorObra extends javax.swing.JFrame {
 
-    /**
-     * Creates new form EjemplaresPorObra
-     */
+    
     Almacenamiento a = new Almacenamiento();
     boolean esConsulta = false;
 

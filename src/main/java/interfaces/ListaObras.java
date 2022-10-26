@@ -4,20 +4,15 @@ import acceso.*;
 import inventario.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JButton;
+
 
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Daniel Altamirano
- */
+
 public class ListaObras extends javax.swing.JFrame {
 
     boolean esConsulta = false;
-    /**
-     * Creates new form Principal
-     */
+    
     Bibliotecario bibliotecario;
 
     public ListaObras() {

@@ -8,15 +8,10 @@ import inventario.TipoObra;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author lucia
- */
+
 public class RegistrarObra extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegistrarObra
-     */
+    
     Bibliotecario bibliotecario;
 
     public RegistrarObra(Bibliotecario b) {

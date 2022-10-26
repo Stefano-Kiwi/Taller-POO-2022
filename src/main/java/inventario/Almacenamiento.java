@@ -6,15 +6,18 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.Writer;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 
+ * Clase para almacenar datos referidos a las Obras y ejemplares, y levantar datos de CSV.
+ * Cuenta también con métodos de utilidad para todo tipo de operaciones en las interfaces gráficas.
+ */
 public class Almacenamiento {
 
     private List<Obra> obras;
@@ -132,7 +135,7 @@ public class Almacenamiento {
                     String observaciones = matcher.group(2);
                     
                     for (Ejemplar ejemplar : ejemplares) {
-                        if(ejemplar.getIdUnico().equalsIgnoreCase(matcher.group(1))){   // Si coincide el id unico obtener las observaciones
+                        if(ejemplar.getIdUnico().equalsIgnoreCase(matcher.group(1))){   
                             ejemplar.setObservaciones(observaciones);
                             break;
                         }
@@ -202,7 +205,7 @@ public class Almacenamiento {
 
                 break;
           
-                case 6:
+                case 6:     // Nombre de colección
                 for (Obra obra : obras) {
                     if((obra.getColeccion().getNombre().equalsIgnoreCase(busqueda))){
                         resultado.add(obra);
@@ -272,7 +275,7 @@ public class Almacenamiento {
                         Ejemplar ej = new Ejemplar(lugar, obra, new Adquisicion(fechaAdquisicion, matcher.group(5), obra.getAreaTematica()), idunico);
                                 ej.generarQR(); // CON ESTO GENERO SU QR UNICAMENTE.
                         if (obra.getISBN().equals(isbn)) {
-                            obra.setEjemplares(obra.getEjemplares() + 1);  // ESTO LO AGREGA A LA OBRA EN SÍ.
+                            obra.setEjemplares(obra.getEjemplares() + 1);  // ESTO LO AGREGA A LA OBRA CORRESPONDIENTE.
 
                             switch (disponibilidad) {
                                 case "1":
@@ -303,7 +306,7 @@ public class Almacenamiento {
             System.out.println(e);
         }
     }
-
+    
     public Lector buscarLector(int dni) {    // Implementar
         return null;
     }
@@ -784,7 +787,7 @@ public class Almacenamiento {
     }
     
     /**
-     * Este método recibe por parámetro la dirección del documento de donde se obtendrán las reserves registradas
+     * Este método recibe por parámetro la dirección del documento de donde se obtendrán las reservas registradas
      * @param direccion 
      */
     public void ObtenerReservas(String direccion) {

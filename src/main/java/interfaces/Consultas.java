@@ -1,9 +1,6 @@
 package interfaces;
 
-/**
- *
- * @author stefa
- */
+
 public class Consultas extends javax.swing.JFrame {
 
     /**

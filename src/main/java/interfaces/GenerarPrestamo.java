@@ -15,16 +15,11 @@ import javax.swing.JOptionPane;
 
 
 
-/**
- *
- * @author Daniel Altamirano
- */
+
 public class GenerarPrestamo extends javax.swing.JFrame {
     
     private int numOption;
-    /**
-     * Creates new form GenerarPrestamo
-     */
+    
 
     Bibliotecario bibliotecario;
     public GenerarPrestamo(Bibliotecario bibliotecario) {

@@ -2,12 +2,8 @@ package acceso;
 
 import java.time.LocalDate;
 
-/**
- *
- * @author stefano
- */
-
 public abstract class Persona {
+
     private String nombre;
     private String apellido;
     private String tipoDocumento;
@@ -147,9 +143,7 @@ public abstract class Persona {
 
     @Override
     public String toString() {
-        return  "nombre=" + nombre + ", apellido=" + apellido + ", tipoDocumento=" + tipoDocumento + ", numDocumento=" + numDocumento + ", fechaNacimiento=" + fechaNacimiento + ", sexo=" + sexo + ", correo=" + correo + ", nroCelular=" + nroCelular + ", nacionalidad=" + nacionalidad + ", domicilio=" + domicilio + ", codigoPostal=" + codigoPostal + ", departamento=" + departamento + ", localidad=" + localidad ;
+        return "nombre=" + nombre + ", apellido=" + apellido + ", tipoDocumento=" + tipoDocumento + ", numDocumento=" + numDocumento + ", fechaNacimiento=" + fechaNacimiento + ", sexo=" + sexo + ", correo=" + correo + ", nroCelular=" + nroCelular + ", nacionalidad=" + nacionalidad + ", domicilio=" + domicilio + ", codigoPostal=" + codigoPostal + ", departamento=" + departamento + ", localidad=" + localidad;
     }
-    
-    
-    
+
 }

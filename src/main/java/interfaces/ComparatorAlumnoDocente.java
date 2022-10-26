@@ -3,10 +3,7 @@ package interfaces;
 import inventario.Obra;
 import java.util.Comparator;
 
-/**
- *
- * @author Daniel Altamirano
- */
+
 public class ComparatorAlumnoDocente implements Comparator<Obra> {
 
     @Override

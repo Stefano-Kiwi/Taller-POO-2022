@@ -2,12 +2,7 @@ package acceso;
 
 import inventario.Ejemplar;
 import java.time.LocalDate;
-import java.util.Objects;
 
-/**
- *
- * @author Daniel Altamirano
- */
 public class Devolucion {
 
     private LocalDate fechaDevolucion;

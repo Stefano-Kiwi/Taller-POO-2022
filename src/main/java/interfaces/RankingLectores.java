@@ -5,16 +5,12 @@ import acceso.DatosDeAcceso;
 import acceso.Lector;
 import acceso.Multa;
 import inventario.Almacenamiento;
-import inventario.Obra;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author lucia
- */
+
 public class RankingLectores extends javax.swing.JFrame {
 
     /**

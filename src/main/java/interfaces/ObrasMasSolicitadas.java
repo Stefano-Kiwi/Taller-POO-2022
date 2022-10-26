@@ -2,21 +2,14 @@ package interfaces;
 
 import inventario.Almacenamiento;
 import inventario.Obra;
-import inventario.Reserva;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Daniel Altamirano
- */
+
 public class ObrasMasSolicitadas extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ObrasMasSolicitadas
-     */
+    
     public ObrasMasSolicitadas() {
         initComponents();
     }

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package interfaces;
 
 import acceso.Bibliotecario;
@@ -9,19 +6,13 @@ import inventario.Almacenamiento;
 import inventario.Baja;
 import inventario.Ejemplar;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Maty
- */
+
 public class DarDeBaja extends javax.swing.JFrame {
 
-    /**
-     * Creates new form DarDeBaja
-     */
+    
     private Bibliotecario bibliotecario;
     public DarDeBaja(Bibliotecario b) {
         initComponents();

@@ -95,7 +95,7 @@ public class Obra {
         }
     }
 
-    //GETTERS
+    //GETTERS Y SETTERS
     public String getTitulo() {
         return titulo;
     }

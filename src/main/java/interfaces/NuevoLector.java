@@ -5,21 +5,14 @@ import acceso.Docente;
 import acceso.Lector;
 import inventario.Almacenamiento;
 import java.time.LocalDate;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import acceso.*;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Maty
- */
+
 public class NuevoLector extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NuevoLector
-     */
+    
     Bibliotecario bibliotecario;
     
     public NuevoLector() {

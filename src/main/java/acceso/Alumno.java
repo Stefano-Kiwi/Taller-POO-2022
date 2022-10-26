@@ -2,10 +2,6 @@ package acceso;
 
 import java.time.LocalDate;
 
-/**
- *
- * @author Daniel Altamirano
- */
 public class Alumno extends Lector {
 
     private String carrera;

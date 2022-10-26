@@ -1,5 +1,9 @@
 package inventario;
 
+/**
+ * 
+ * Clase utilizada en clase Obra.
+ */
 public class Edicion {
     private String nombreEditorial;
     private String pais;
