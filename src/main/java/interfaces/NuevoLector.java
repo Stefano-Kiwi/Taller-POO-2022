@@ -81,7 +81,7 @@ public NuevoLector(Bibliotecario b) {
             }
         });
 
-        jLabel2.setText("Apellido y Nombre");
+        jLabel2.setText("Apellido");
 
         apellidoPanel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,12 +175,9 @@ public NuevoLector(Bibliotecario b) {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(labelCarrera)
-                                        .addGap(19, 19, 19))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(labelFacultad, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                    .addComponent(labelCarrera)
+                                    .addComponent(labelFacultad, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(facultad)
                                     .addComponent(carrera)))
@@ -245,7 +242,7 @@ public NuevoLector(Bibliotecario b) {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(apellidoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)))
+                                .addComponent(apellidoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)))
                         .addGap(90, 90, 90))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

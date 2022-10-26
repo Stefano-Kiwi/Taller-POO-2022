@@ -333,7 +333,7 @@ public class Administracion extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         this.setVisible(false);
-        new DarDeBaja(bibliotecario).setVisible(true);
+        new NuevoLector(bibliotecario).setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
